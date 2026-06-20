@@ -890,23 +890,6 @@
     <p>"In Tetherpoint, knowledge makes you powerful. But secrets make you untouchable."</p>
   </div>
 
-  <!-- Inline Stats Preview -->
-  <section class="section-wide" id="stats-home">
-    <div class="stats-wrapper">
-      <div class="stats-header">
-        <h3>Elias Lumina — Character Stats</h3>
-        <div class="chapter-toggle">
-          <button class="active" onclick="setChapter(1, 'home')">Ch. 1</button>
-          <button onclick="setChapter(2, 'home')">Ch. 2</button>
-        </div>
-      </div>
-      <div class="stats-section-title">Core Stats</div>
-      <div class="stats-grid" id="core-stats-home"></div>
-      <div class="stats-section-title">Soul Balance (Hidden)</div>
-      <div class="stats-grid" id="soul-stats-home"></div>
-    </div>
-  </section>
-
 </div>
 
 <!-- ════════════════════ CHAPTER 1 ════════════════════ -->
@@ -1542,14 +1525,6 @@ function renderStats(chapter, suffix) {
   });
 }
 
-function setChapter(ch, suffix) {
-  const wrapper = document.getElementById('stats-home');
-  wrapper.querySelectorAll('.chapter-toggle button').forEach((b, i) => {
-    b.classList.toggle('active', i === ch - 1);
-  });
-  renderStats(ch, suffix);
-}
-
 function showPage(id) {
   document.querySelectorAll('.chapter-page').forEach(p => p.classList.remove('active'));
   document.getElementById('page-' + id).classList.add('active');
@@ -1580,7 +1555,6 @@ function toggleMobileSidebar() {
   if (sidebar) sidebar.classList.toggle('mobile-open');
 }
 
-renderStats(1, 'home');
 renderStats(1, 'ch1');
 renderStats(1, 'ch1-sb');
 renderStats(2, 'ch2');
