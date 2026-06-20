@@ -1215,27 +1215,44 @@ renderStats(1, 'ch1');
 renderStats(2, 'ch2');
 
 const INVENTORY = {
-  equipment: [
-    { icon: '🧥', name: 'Worn Traveling Cloak', type: 'Armor — Back', desc: 'A heavy wool cloak from Novilinio, patched many times over. Keeps the cold out, but offers no real protection.', stats: 'No stat bonuses' },
-    { icon: '👕', name: 'Linen Undershirt', type: 'Armor — Chest', desc: 'A simple cream-colored shirt, well-worn from years of farm work. Comfortable but unremarkable.', stats: 'No stat bonuses' },
-    { icon: '👖', name: 'Leather Breeches', type: 'Armor — Legs', desc: 'Sturdy leather trousers built for fieldwork. Scuffed at the knees from the portal landing.', stats: 'No stat bonuses' },
-    { icon: '🥾', name: 'Cobbled Road Boots', type: 'Armor — Feet', desc: 'Heavy boots made by Elias\'s father. Built for long treks, not combat. The soles are nearly worn through.', stats: 'No stat bonuses' },
-    { icon: '🎒', name: 'Canvas Satchel', type: 'Accessory — Bag', desc: 'A weather-beaten bag holding everything Elias owns. Smells faintly of cattle and dried herbs.', stats: 'No stat bonuses' },
-    { icon: '🧣', name: 'Leather Shoulder Strap', type: 'Accessory — Harness', desc: 'A cross-body strap with a small bronze clasp bearing the Tetherpoint Academy crest. Issued at registration.', stats: 'No stat bonuses' },
-  ],
-  items: [
-    { icon: '✉️', name: 'Letter from Uncle Daemeon', type: 'Quest Item', desc: 'A weathered envelope sealed with silver ink. Delivered by a strange owl with one golden eye. Unopened.', stats: 'Cannot be discarded' },
-    { icon: '📜', name: 'Academy Admission Papers', type: 'Document', desc: 'Official papers confirming Elias Lumina\'s enrollment in Tetherpoint Academy, Class 777 — The Golden Cohort.', stats: 'Cannot be discarded' },
-    { icon: '🪙', name: 'Father\'s Lucky Coin', type: 'Keepsake', desc: 'A worn copper coin from Tether, given by Elias\'s father on the day he left Novilinio. "For when you need reminding where you come from."', stats: 'No stat bonuses' },
-  ],
-  potions: []
+  ch1: {
+    equipment: [
+      { icon: '🧥', name: 'Worn Traveling Cloak', type: 'Armor — Back', desc: 'A heavy wool cloak from Novilinio, patched many times over. Keeps the cold out, but offers no real protection.', stats: 'No stat bonuses' },
+      { icon: '👕', name: 'Linen Undershirt', type: 'Armor — Chest', desc: 'A simple cream-colored shirt, well-worn from years of farm work. Comfortable but unremarkable.', stats: 'No stat bonuses' },
+      { icon: '👖', name: 'Leather Breeches', type: 'Armor — Legs', desc: 'Sturdy leather trousers built for fieldwork. Scuffed at the knees from the portal landing.', stats: 'No stat bonuses' },
+      { icon: '🥾', name: 'Cobbled Road Boots', type: 'Armor — Feet', desc: 'Heavy boots made by Elias\'s father. Built for long treks, not combat. The soles are nearly worn through.', stats: 'No stat bonuses' },
+      { icon: '🎒', name: 'Canvas Satchel', type: 'Accessory — Bag', desc: 'A weather-beaten bag holding everything Elias owns. Smells faintly of cattle and dried herbs.', stats: 'No stat bonuses' },
+      { icon: '🧣', name: 'Leather Shoulder Strap', type: 'Accessory — Harness', desc: 'A cross-body strap with a small bronze clasp bearing the Tetherpoint Academy crest. Issued at registration.', stats: 'No stat bonuses' },
+    ],
+    items: [
+      { icon: '📜', name: 'Academy Admission Papers', type: 'Document', desc: 'Official papers confirming Elias Lumina\'s enrollment in Tetherpoint Academy, Class 777 — The Golden Cohort.', stats: 'Cannot be discarded' },
+      { icon: '🪙', name: 'Father\'s Lucky Coin', type: 'Keepsake', desc: 'A worn copper coin from Tether, given by Elias\'s father on the day he left Novilinio. "For when you need reminding where you come from."', stats: 'No stat bonuses' },
+    ],
+    potions: []
+  },
+  ch2: {
+    equipment: [
+      { icon: '🧥', name: 'Worn Traveling Cloak', type: 'Armor — Back', desc: 'A heavy wool cloak from Novilinio, patched many times over. Keeps the cold out, but offers no real protection.', stats: 'No stat bonuses' },
+      { icon: '👕', name: 'Linen Undershirt', type: 'Armor — Chest', desc: 'A simple cream-colored shirt, well-worn from years of farm work. Currently damp from Varric\'s snow attack.', stats: 'No stat bonuses' },
+      { icon: '👖', name: 'Leather Breeches', type: 'Armor — Legs', desc: 'Sturdy leather trousers built for fieldwork. Scuffed at the knees from the portal landing.', stats: 'No stat bonuses' },
+      { icon: '🥾', name: 'Cobbled Road Boots', type: 'Armor — Feet', desc: 'Heavy boots made by Elias\'s father. Built for long treks, not combat. The soles are nearly worn through.', stats: 'No stat bonuses' },
+      { icon: '🎒', name: 'Canvas Satchel', type: 'Accessory — Bag', desc: 'A weather-beaten bag holding everything Elias owns. Smells faintly of cattle and dried herbs.', stats: 'No stat bonuses' },
+      { icon: '🧣', name: 'Leather Shoulder Strap', type: 'Accessory — Harness', desc: 'A cross-body strap with a small bronze clasp bearing the Tetherpoint Academy crest. Issued at registration.', stats: 'No stat bonuses' },
+    ],
+    items: [
+      { icon: '📜', name: 'Academy Admission Papers', type: 'Document', desc: 'Official papers confirming Elias Lumina\'s enrollment in Tetherpoint Academy, Class 777 — The Golden Cohort.', stats: 'Cannot be discarded' },
+      { icon: '🪙', name: 'Father\'s Lucky Coin', type: 'Keepsake', desc: 'A worn copper coin from Tether, given by Elias\'s father on the day he left Novilinio. "For when you need reminding where you come from."', stats: 'No stat bonuses' },
+      { icon: '✉️', name: 'Letter from Uncle Daemeon', type: 'Quest Item', desc: 'A weathered envelope sealed with silver ink. Delivered by a strange owl with one golden eye. Unopened.', stats: 'Cannot be discarded' },
+    ],
+    potions: []
+  }
 };
 
 const SLOT_COUNT = 12;
 
 function renderInventory(chId, tab) {
   const grid = document.getElementById('inv-grid-' + chId);
-  const items = INVENTORY[tab] || [];
+  const items = (INVENTORY[chId] && INVENTORY[chId][tab]) || [];
   let html = '';
   for (let i = 0; i < SLOT_COUNT; i++) {
     if (i < items.length) {
