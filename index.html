@@ -4,6 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Born Good — A Tetherpoint Academy Story</title>
+  <meta name="description" content="Born Good — a dark fantasy web novel following Elias Lumina, a farm boy from Ravenscroft, as he enters the legendary Tetherpoint Academy. Read chapters, track stats, and explore the world of Valerguard.">
+  <meta property="og:title" content="Born Good — A Tetherpoint Academy Story">
+  <meta property="og:description" content="A dark fantasy web novel set at Tetherpoint Academy. Follow Elias Lumina as he discovers hidden stats, forbidden factions, and a legacy he never asked for.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚔️</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
   <style>
@@ -352,11 +357,14 @@
 
     .stats-section-title {
       font-family: 'Cinzel', serif;
-      font-size: 0.7rem;
-      letter-spacing: 0.2em;
+      font-size: 0.75rem;
+      letter-spacing: 0.25em;
       text-transform: uppercase;
-      color: var(--gold-dim);
+      color: var(--gold);
       margin: 1.5rem 0 0.8rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 1px solid rgba(184,154,91,.2);
+      text-shadow: 0 0 8px rgba(184,154,91,.2);
       padding-bottom: 0.4rem;
       border-bottom: 1px solid rgba(184,154,91,.15);
     }
@@ -373,14 +381,15 @@
         var(--bg-deep);
     }
     .chapter-title-block h2 {
-      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      text-shadow: 0 0 30px rgba(184,154,91,.15);
     }
     .chapter-title-block .chapter-num {
       font-family: 'Cinzel', serif;
-      font-size: 0.75rem;
-      letter-spacing: 0.3em;
+      font-size: 0.85rem;
+      letter-spacing: 0.35em;
       text-transform: uppercase;
-      color: var(--gold-dim);
+      color: var(--gold);
       margin-bottom: 0.5rem;
     }
 
@@ -600,8 +609,8 @@
       background: rgba(184,154,91,.04);
     }
     .chapter-text .stat-block {
-      background: var(--bg-mid);
-      border: 1px solid rgba(184,154,91,.2);
+      background: linear-gradient(135deg, var(--bg-mid) 0%, rgba(184,154,91,.08) 100%);
+      border: 1px solid rgba(184,154,91,.3);
       border-radius: 8px;
       padding: 1.5rem 2rem;
       margin: 2rem 0;
@@ -609,11 +618,13 @@
       font-size: 0.85rem;
       line-height: 2;
       color: var(--text-light);
+      box-shadow: 0 0 20px rgba(184,154,91,.08), inset 0 1px 0 rgba(184,154,91,.1);
     }
     .chapter-text .stat-block .name {
-      font-size: 1.1rem;
+      font-size: 1.2rem;
       color: var(--gold);
       margin-bottom: 0.3rem;
+      text-shadow: 0 0 10px rgba(184,154,91,.3);
     }
     .chapter-text .stat-block .meta {
       font-size: 0.75rem;
