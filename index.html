@@ -479,6 +479,70 @@
     }
     @keyframes slideIn { from { transform: translateX(100%); } to { transform: translateX(0); } }
 
+    /* ─── COLLAPSIBLE PANELS ─── */
+    .collapsible {
+      border: 1px solid rgba(184,154,91,.2);
+      border-radius: 12px;
+      overflow: hidden;
+      margin: 1rem 0;
+    }
+    .collapsible-toggle {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 1.5rem;
+      background: var(--bg-mid);
+      border: none;
+      cursor: pointer;
+      transition: background .3s;
+    }
+    .collapsible-toggle:hover { background: var(--bg-card); }
+    .collapsible-toggle h3 {
+      margin: 0;
+      font-size: 0.9rem;
+    }
+    .collapsible-toggle .spoiler-hint {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.75rem;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+    .collapsible-toggle .chevron {
+      color: var(--gold-dim);
+      font-size: 0.8rem;
+      transition: transform .3s;
+      margin-left: 1rem;
+      flex-shrink: 0;
+    }
+    .collapsible.open .collapsible-toggle .chevron {
+      transform: rotate(180deg);
+    }
+    .collapsible-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .4s ease;
+    }
+    .collapsible.open .collapsible-body {
+      max-height: 2000px;
+    }
+    .collapsible-body-inner {
+      padding: 0 1.5rem 1.5rem;
+      background: var(--bg-mid);
+    }
+    .sidebar-inner .collapsible {
+      margin: 0 0 0.8rem 0;
+    }
+    .sidebar-inner .collapsible-toggle {
+      padding: 0.8rem 1rem;
+    }
+    .sidebar-inner .collapsible-toggle h3 {
+      font-size: 0.8rem;
+    }
+    .sidebar-inner .collapsible-body-inner {
+      padding: 0 1rem 1rem;
+    }
+
     .chapter-text {
       max-width: 650px;
       margin: 0 auto;
@@ -954,28 +1018,41 @@
 
   <!-- End-of-chapter dashboard (mobile / below-1024px) -->
   <div class="chapter-end-dashboard">
-    <div class="stats-wrapper">
-      <div class="stats-header"><h3>End of Chapter 1 — Elias Lumina</h3></div>
-      <div class="stats-section-title">Core Stats</div>
-      <div class="stats-grid" id="core-stats-ch1"></div>
-      <div class="stats-section-title">Soul Balance (Hidden)</div>
-      <div class="stats-grid" id="soul-stats-ch1"></div>
+    <div class="collapsible" onclick="this.classList.toggle('open')">
+      <button class="collapsible-toggle">
+        <div><h3>End of Chapter 1 — Stats</h3><span class="spoiler-hint">Contains end-of-chapter spoilers</span></div>
+        <span class="chevron">▼</span>
+      </button>
+      <div class="collapsible-body"><div class="collapsible-body-inner">
+        <div class="stats-section-title">Core Stats</div>
+        <div class="stats-grid" id="core-stats-ch1"></div>
+        <div class="stats-section-title">Soul Balance (Hidden)</div>
+        <div class="stats-grid" id="soul-stats-ch1"></div>
+      </div></div>
     </div>
-    <div class="inv-wrapper" id="inv-ch1">
-      <div class="inv-header">
-        <h3>Inventory</h3>
-        <div class="currency">
-          <span><i class="coin coin-gold"></i> 5</span>
-          <span><i class="coin coin-silver"></i> 50</span>
-          <span><i class="coin coin-copper"></i> 0</span>
+    <div class="collapsible" onclick="this.classList.toggle('open')">
+      <button class="collapsible-toggle">
+        <div><h3>End of Chapter 1 — Inventory</h3><span class="spoiler-hint">Contains end-of-chapter spoilers</span></div>
+        <span class="chevron">▼</span>
+      </button>
+      <div class="collapsible-body"><div class="collapsible-body-inner">
+        <div class="inv-wrapper" id="inv-ch1" style="margin:0;border:none;padding:0">
+          <div class="inv-header">
+            <h3>Inventory</h3>
+            <div class="currency">
+              <span><i class="coin coin-gold"></i> 5</span>
+              <span><i class="coin coin-silver"></i> 50</span>
+              <span><i class="coin coin-copper"></i> 0</span>
+            </div>
+          </div>
+          <div class="inv-tabs">
+            <button class="active" onclick="event.stopPropagation();switchInvTab('ch1','equipment')">Equipment</button>
+            <button onclick="event.stopPropagation();switchInvTab('ch1','items')">Items</button>
+            <button onclick="event.stopPropagation();switchInvTab('ch1','potions')">Potions</button>
+          </div>
+          <div class="inv-grid" id="inv-grid-ch1"></div>
         </div>
-      </div>
-      <div class="inv-tabs">
-        <button class="active" onclick="switchInvTab('ch1','equipment')">Equipment</button>
-        <button onclick="switchInvTab('ch1','items')">Items</button>
-        <button onclick="switchInvTab('ch1','potions')">Potions</button>
-      </div>
-      <div class="inv-grid" id="inv-grid-ch1"></div>
+      </div></div>
     </div>
   </div>
 
@@ -988,28 +1065,41 @@
   <!-- Sticky sidebar (desktop ≥1024px) -->
   <aside class="chapter-sidebar" id="sidebar-ch1">
     <div class="sidebar-inner">
-      <div class="stats-wrapper">
-        <div class="stats-header"><h3>Elias Lumina</h3></div>
-        <div class="stats-section-title">Core Stats</div>
-        <div class="stats-grid" id="core-stats-ch1-sb"></div>
-        <div class="stats-section-title">Soul Balance</div>
-        <div class="stats-grid" id="soul-stats-ch1-sb"></div>
+      <div class="collapsible" onclick="this.classList.toggle('open')">
+        <button class="collapsible-toggle">
+          <div><h3>End of Chapter Stats</h3><span class="spoiler-hint">Spoilers</span></div>
+          <span class="chevron">▼</span>
+        </button>
+        <div class="collapsible-body"><div class="collapsible-body-inner">
+          <div class="stats-section-title">Core Stats</div>
+          <div class="stats-grid" id="core-stats-ch1-sb"></div>
+          <div class="stats-section-title">Soul Balance</div>
+          <div class="stats-grid" id="soul-stats-ch1-sb"></div>
+        </div></div>
       </div>
-      <div class="inv-wrapper" id="inv-ch1-sb">
-        <div class="inv-header">
-          <h3>Inventory</h3>
-          <div class="currency">
-            <span><i class="coin coin-gold"></i> 5</span>
-            <span><i class="coin coin-silver"></i> 50</span>
-            <span><i class="coin coin-copper"></i> 0</span>
+      <div class="collapsible" onclick="this.classList.toggle('open')">
+        <button class="collapsible-toggle">
+          <div><h3>End of Chapter Inventory</h3><span class="spoiler-hint">Spoilers</span></div>
+          <span class="chevron">▼</span>
+        </button>
+        <div class="collapsible-body"><div class="collapsible-body-inner">
+          <div class="inv-wrapper" id="inv-ch1-sb" style="margin:0;border:none;padding:0">
+            <div class="inv-header">
+              <h3>Inventory</h3>
+              <div class="currency">
+                <span><i class="coin coin-gold"></i> 5</span>
+                <span><i class="coin coin-silver"></i> 50</span>
+                <span><i class="coin coin-copper"></i> 0</span>
+              </div>
+            </div>
+            <div class="inv-tabs">
+              <button class="active" onclick="event.stopPropagation();switchInvTab('ch1-sb','equipment')">Equipment</button>
+              <button onclick="event.stopPropagation();switchInvTab('ch1-sb','items')">Items</button>
+              <button onclick="event.stopPropagation();switchInvTab('ch1-sb','potions')">Potions</button>
+            </div>
+            <div class="inv-grid" id="inv-grid-ch1-sb"></div>
           </div>
-        </div>
-        <div class="inv-tabs">
-          <button class="active" onclick="switchInvTab('ch1-sb','equipment')">Equipment</button>
-          <button onclick="switchInvTab('ch1-sb','items')">Items</button>
-          <button onclick="switchInvTab('ch1-sb','potions')">Potions</button>
-        </div>
-        <div class="inv-grid" id="inv-grid-ch1-sb"></div>
+        </div></div>
       </div>
     </div>
   </aside>
@@ -1177,28 +1267,41 @@
 
   <!-- End-of-chapter dashboard (mobile / below-1024px) -->
   <div class="chapter-end-dashboard">
-    <div class="stats-wrapper">
-      <div class="stats-header"><h3>End of Chapter 2 — Elias Lumina</h3></div>
-      <div class="stats-section-title">Core Stats</div>
-      <div class="stats-grid" id="core-stats-ch2"></div>
-      <div class="stats-section-title">Soul Balance (Hidden)</div>
-      <div class="stats-grid" id="soul-stats-ch2"></div>
+    <div class="collapsible" onclick="this.classList.toggle('open')">
+      <button class="collapsible-toggle">
+        <div><h3>End of Chapter 2 — Stats</h3><span class="spoiler-hint">Contains end-of-chapter spoilers</span></div>
+        <span class="chevron">▼</span>
+      </button>
+      <div class="collapsible-body"><div class="collapsible-body-inner">
+        <div class="stats-section-title">Core Stats</div>
+        <div class="stats-grid" id="core-stats-ch2"></div>
+        <div class="stats-section-title">Soul Balance (Hidden)</div>
+        <div class="stats-grid" id="soul-stats-ch2"></div>
+      </div></div>
     </div>
-    <div class="inv-wrapper" id="inv-ch2">
-      <div class="inv-header">
-        <h3>Inventory</h3>
-        <div class="currency">
-          <span><i class="coin coin-gold"></i> 5</span>
-          <span><i class="coin coin-silver"></i> 50</span>
-          <span><i class="coin coin-copper"></i> 0</span>
+    <div class="collapsible" onclick="this.classList.toggle('open')">
+      <button class="collapsible-toggle">
+        <div><h3>End of Chapter 2 — Inventory</h3><span class="spoiler-hint">Contains end-of-chapter spoilers</span></div>
+        <span class="chevron">▼</span>
+      </button>
+      <div class="collapsible-body"><div class="collapsible-body-inner">
+        <div class="inv-wrapper" id="inv-ch2" style="margin:0;border:none;padding:0">
+          <div class="inv-header">
+            <h3>Inventory</h3>
+            <div class="currency">
+              <span><i class="coin coin-gold"></i> 5</span>
+              <span><i class="coin coin-silver"></i> 50</span>
+              <span><i class="coin coin-copper"></i> 0</span>
+            </div>
+          </div>
+          <div class="inv-tabs">
+            <button class="active" onclick="event.stopPropagation();switchInvTab('ch2','equipment')">Equipment</button>
+            <button onclick="event.stopPropagation();switchInvTab('ch2','items')">Items</button>
+            <button onclick="event.stopPropagation();switchInvTab('ch2','potions')">Potions</button>
+          </div>
+          <div class="inv-grid" id="inv-grid-ch2"></div>
         </div>
-      </div>
-      <div class="inv-tabs">
-        <button class="active" onclick="switchInvTab('ch2','equipment')">Equipment</button>
-        <button onclick="switchInvTab('ch2','items')">Items</button>
-        <button onclick="switchInvTab('ch2','potions')">Potions</button>
-      </div>
-      <div class="inv-grid" id="inv-grid-ch2"></div>
+      </div></div>
     </div>
   </div>
 
@@ -1211,28 +1314,41 @@
   <!-- Sticky sidebar (desktop ≥1024px) -->
   <aside class="chapter-sidebar" id="sidebar-ch2">
     <div class="sidebar-inner">
-      <div class="stats-wrapper">
-        <div class="stats-header"><h3>Elias Lumina</h3></div>
-        <div class="stats-section-title">Core Stats</div>
-        <div class="stats-grid" id="core-stats-ch2-sb"></div>
-        <div class="stats-section-title">Soul Balance</div>
-        <div class="stats-grid" id="soul-stats-ch2-sb"></div>
+      <div class="collapsible" onclick="this.classList.toggle('open')">
+        <button class="collapsible-toggle">
+          <div><h3>End of Chapter Stats</h3><span class="spoiler-hint">Spoilers</span></div>
+          <span class="chevron">▼</span>
+        </button>
+        <div class="collapsible-body"><div class="collapsible-body-inner">
+          <div class="stats-section-title">Core Stats</div>
+          <div class="stats-grid" id="core-stats-ch2-sb"></div>
+          <div class="stats-section-title">Soul Balance</div>
+          <div class="stats-grid" id="soul-stats-ch2-sb"></div>
+        </div></div>
       </div>
-      <div class="inv-wrapper" id="inv-ch2-sb">
-        <div class="inv-header">
-          <h3>Inventory</h3>
-          <div class="currency">
-            <span><i class="coin coin-gold"></i> 5</span>
-            <span><i class="coin coin-silver"></i> 50</span>
-            <span><i class="coin coin-copper"></i> 0</span>
+      <div class="collapsible" onclick="this.classList.toggle('open')">
+        <button class="collapsible-toggle">
+          <div><h3>End of Chapter Inventory</h3><span class="spoiler-hint">Spoilers</span></div>
+          <span class="chevron">▼</span>
+        </button>
+        <div class="collapsible-body"><div class="collapsible-body-inner">
+          <div class="inv-wrapper" id="inv-ch2-sb" style="margin:0;border:none;padding:0">
+            <div class="inv-header">
+              <h3>Inventory</h3>
+              <div class="currency">
+                <span><i class="coin coin-gold"></i> 5</span>
+                <span><i class="coin coin-silver"></i> 50</span>
+                <span><i class="coin coin-copper"></i> 0</span>
+              </div>
+            </div>
+            <div class="inv-tabs">
+              <button class="active" onclick="event.stopPropagation();switchInvTab('ch2-sb','equipment')">Equipment</button>
+              <button onclick="event.stopPropagation();switchInvTab('ch2-sb','items')">Items</button>
+              <button onclick="event.stopPropagation();switchInvTab('ch2-sb','potions')">Potions</button>
+            </div>
+            <div class="inv-grid" id="inv-grid-ch2-sb"></div>
           </div>
-        </div>
-        <div class="inv-tabs">
-          <button class="active" onclick="switchInvTab('ch2-sb','equipment')">Equipment</button>
-          <button onclick="switchInvTab('ch2-sb','items')">Items</button>
-          <button onclick="switchInvTab('ch2-sb','potions')">Potions</button>
-        </div>
-        <div class="inv-grid" id="inv-grid-ch2-sb"></div>
+        </div></div>
       </div>
     </div>
   </aside>
