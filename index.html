@@ -61,7 +61,7 @@
       letter-spacing: 0.15em;
       text-transform: uppercase;
     }
-    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
     .nav-links a {
       font-family: 'Cinzel', serif;
       font-size: 0.75rem;
@@ -72,6 +72,64 @@
       transition: color .3s;
     }
     .nav-links a:hover { color: var(--gold); }
+
+    /* ─── TOC DROPDOWN ─── */
+    .toc-dropdown {
+      position: relative;
+    }
+    .toc-toggle {
+      font-family: 'Cinzel', serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      background: none;
+      border: none;
+      cursor: pointer;
+      transition: color .3s;
+      padding: 0;
+    }
+    .toc-toggle:hover { color: var(--gold); }
+    .toc-toggle::after {
+      content: ' ▾';
+      font-size: 0.6rem;
+    }
+    .toc-menu {
+      display: none;
+      position: absolute;
+      top: calc(100% + 12px);
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--bg-mid);
+      border: 1px solid rgba(184,154,91,.25);
+      border-radius: 8px;
+      padding: 0.5rem 0;
+      min-width: 240px;
+      z-index: 200;
+      box-shadow: 0 8px 30px rgba(0,0,0,.5);
+    }
+    .toc-menu.open { display: block; }
+    .toc-menu a {
+      display: block;
+      padding: 0.6rem 1.2rem;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: all .2s;
+    }
+    .toc-menu a:hover {
+      color: var(--gold);
+      background: rgba(184,154,91,.06);
+    }
+    .toc-menu .toc-arc {
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      color: var(--gold-dim);
+      padding: 0.8rem 1.2rem 0.3rem;
+      text-transform: uppercase;
+      pointer-events: none;
+    }
 
     /* ─── HERO ─── */
     .hero {
@@ -326,13 +384,110 @@
       margin-bottom: 0.5rem;
     }
 
-    .chapter-text {
-      max-width: 700px;
+    /* Two-column chapter layout */
+    .chapter-layout {
+      display: flex;
+      max-width: 1200px;
       margin: 0 auto;
-      padding: 2rem 2rem 4rem;
+      gap: 2rem;
+      padding: 0 2rem;
+    }
+    .chapter-main {
+      flex: 1;
+      min-width: 0;
+    }
+
+    /* Sticky sidebar on desktop */
+    .chapter-sidebar {
+      width: 320px;
+      flex-shrink: 0;
+      display: none;
+    }
+    .sidebar-inner {
+      position: sticky;
+      top: 80px;
+      max-height: calc(100vh - 96px);
+      overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: var(--gold-dim) transparent;
+      padding-bottom: 2rem;
+    }
+    .sidebar-inner::-webkit-scrollbar { width: 4px; }
+    .sidebar-inner::-webkit-scrollbar-thumb { background: var(--gold-dim); border-radius: 2px; }
+    .sidebar-inner .stats-wrapper,
+    .sidebar-inner .inv-wrapper {
+      margin: 0 0 1rem 0;
+      padding: 1.2rem;
+    }
+    .sidebar-inner .stats-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.6rem;
+    }
+    .sidebar-inner .inv-grid {
+      grid-template-columns: repeat(auto-fill, minmax(48px, 1fr));
+    }
+    .sidebar-inner h3 { font-size: 0.85rem; }
+    .sidebar-inner .stats-section-title { margin: 1rem 0 0.5rem; }
+
+    @media (min-width: 1024px) {
+      .chapter-sidebar { display: block; }
+      .chapter-end-dashboard { display: none; }
+    }
+
+    /* Mobile toggle button */
+    .sidebar-toggle {
+      display: none;
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      z-index: 90;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 1px solid var(--gold);
+      background: var(--bg-mid);
+      color: var(--gold);
+      font-size: 1.2rem;
+      cursor: pointer;
+      box-shadow: 0 4px 20px rgba(0,0,0,.5);
+      transition: all .3s;
+    }
+    .sidebar-toggle:hover {
+      background: var(--gold);
+      color: var(--bg-deep);
+    }
+    @media (max-width: 1023px) {
+      .sidebar-toggle.in-chapter { display: flex; align-items: center; justify-content: center; }
+      .chapter-sidebar.mobile-open {
+        display: block;
+        position: fixed;
+        top: 64px;
+        right: 0;
+        bottom: 0;
+        width: min(360px, 90vw);
+        background: var(--bg-deep);
+        border-left: 1px solid rgba(184,154,91,.2);
+        z-index: 89;
+        overflow-y: auto;
+        padding: 1rem;
+        animation: slideIn .3s ease;
+      }
+      .chapter-sidebar.mobile-open .sidebar-inner {
+        position: static;
+        max-height: none;
+      }
+    }
+    @keyframes slideIn { from { transform: translateX(100%); } to { transform: translateX(0); } }
+
+    .chapter-text {
+      max-width: 650px;
+      margin: 0 auto;
+      padding: 2rem 1rem 4rem;
+      font-size: 1.05rem;
+      line-height: 1.9;
     }
     .chapter-text p {
-      margin-bottom: 1.4rem;
+      margin-bottom: 1.5rem;
       text-indent: 1.5em;
     }
     .chapter-text p:first-child { text-indent: 0; }
@@ -604,8 +759,9 @@
 
     /* ─── MOBILE NAV ─── */
     @media (max-width: 700px) {
-      .nav-links { gap: 1rem; }
-      .nav-links a { font-size: 0.65rem; }
+      .nav-links { gap: 0.8rem; }
+      .nav-links a, .toc-toggle { font-size: 0.6rem; letter-spacing: 0.08em; }
+      .toc-menu { min-width: 200px; }
     }
   </style>
 </head>
@@ -616,8 +772,14 @@
   <a href="#" class="nav-brand" onclick="showPage('home');return false">Born Good</a>
   <ul class="nav-links">
     <li><a href="#" onclick="showPage('home');return false">Home</a></li>
-    <li><a href="#" onclick="showPage('ch1');return false">Chapter 1</a></li>
-    <li><a href="#" onclick="showPage('ch2');return false">Chapter 2</a></li>
+    <li class="toc-dropdown">
+      <button class="toc-toggle" onclick="toggleToc(event)">Chapters</button>
+      <div class="toc-menu" id="toc-menu">
+        <div class="toc-arc">Arc 1 — Arrival</div>
+        <a href="#" onclick="showPage('ch1');closeToc();return false">Chapter 1 — Tetherpoint Academy</a>
+        <a href="#" onclick="showPage('ch2');closeToc();return false">Chapter 2 — The Weight of a Name</a>
+      </div>
+    </li>
     <li><a href="#" onclick="showPage('characters');return false">Characters</a></li>
     <li><a href="#" onclick="showPage('stats');return false">Stats Guide</a></li>
   </ul>
@@ -689,6 +851,8 @@
     <div class="chapter-num">Chapter One</div>
     <h2>Tetherpoint Academy</h2>
   </div>
+  <div class="chapter-layout">
+  <div class="chapter-main">
   <div class="chapter-text">
     <p>The trek had finally ended.</p>
     <p>Tetherpoint Academy.</p>
@@ -788,17 +952,15 @@
     <p>The message vanished.</p>
   </div>
 
-  <section class="section-wide">
+  <!-- End-of-chapter dashboard (mobile / below-1024px) -->
+  <div class="chapter-end-dashboard">
     <div class="stats-wrapper">
-      <div class="stats-header">
-        <h3>End of Chapter 1 — Elias Lumina</h3>
-      </div>
+      <div class="stats-header"><h3>End of Chapter 1 — Elias Lumina</h3></div>
       <div class="stats-section-title">Core Stats</div>
       <div class="stats-grid" id="core-stats-ch1"></div>
       <div class="stats-section-title">Soul Balance (Hidden)</div>
       <div class="stats-grid" id="soul-stats-ch1"></div>
     </div>
-
     <div class="inv-wrapper" id="inv-ch1">
       <div class="inv-header">
         <h3>Inventory</h3>
@@ -815,12 +977,43 @@
       </div>
       <div class="inv-grid" id="inv-grid-ch1"></div>
     </div>
-  </section>
+  </div>
 
   <div class="chapter-nav">
     <a href="#" class="btn" onclick="showPage('home');return false">← Home</a>
     <a href="#" class="btn btn-primary" onclick="showPage('ch2');return false">Chapter 2 →</a>
   </div>
+  </div><!-- /chapter-main -->
+
+  <!-- Sticky sidebar (desktop ≥1024px) -->
+  <aside class="chapter-sidebar" id="sidebar-ch1">
+    <div class="sidebar-inner">
+      <div class="stats-wrapper">
+        <div class="stats-header"><h3>Elias Lumina</h3></div>
+        <div class="stats-section-title">Core Stats</div>
+        <div class="stats-grid" id="core-stats-ch1-sb"></div>
+        <div class="stats-section-title">Soul Balance</div>
+        <div class="stats-grid" id="soul-stats-ch1-sb"></div>
+      </div>
+      <div class="inv-wrapper" id="inv-ch1-sb">
+        <div class="inv-header">
+          <h3>Inventory</h3>
+          <div class="currency">
+            <span><i class="coin coin-gold"></i> 5</span>
+            <span><i class="coin coin-silver"></i> 50</span>
+            <span><i class="coin coin-copper"></i> 0</span>
+          </div>
+        </div>
+        <div class="inv-tabs">
+          <button class="active" onclick="switchInvTab('ch1-sb','equipment')">Equipment</button>
+          <button onclick="switchInvTab('ch1-sb','items')">Items</button>
+          <button onclick="switchInvTab('ch1-sb','potions')">Potions</button>
+        </div>
+        <div class="inv-grid" id="inv-grid-ch1-sb"></div>
+      </div>
+    </div>
+  </aside>
+  </div><!-- /chapter-layout -->
 </div>
 
 <!-- ════════════════════ CHAPTER 2 ════════════════════ -->
@@ -829,6 +1022,8 @@
     <div class="chapter-num">Chapter Two</div>
     <h2>The Weight of a Name</h2>
   </div>
+  <div class="chapter-layout">
+  <div class="chapter-main">
   <div class="chapter-text">
     <p>The portal deposited us into an enormous stone hall lined with rows of chairs facing a raised podium. It reminded me of a lecture hall, though far grander than anything I had ever seen back in Novilinio. Towering banners hung from the vaulted ceiling, each bearing the crest of Tetherpoint Academy. Everywhere I looked, students were chatting excitedly about their new stats.</p>
     <p class="dialogue">"My Strength is twelve!" "I got a Fire Affinity!" "No way, let me see!"</p>
@@ -980,17 +1175,15 @@
     </div>
   </div>
 
-  <section class="section-wide">
+  <!-- End-of-chapter dashboard (mobile / below-1024px) -->
+  <div class="chapter-end-dashboard">
     <div class="stats-wrapper">
-      <div class="stats-header">
-        <h3>End of Chapter 2 — Elias Lumina</h3>
-      </div>
+      <div class="stats-header"><h3>End of Chapter 2 — Elias Lumina</h3></div>
       <div class="stats-section-title">Core Stats</div>
       <div class="stats-grid" id="core-stats-ch2"></div>
       <div class="stats-section-title">Soul Balance (Hidden)</div>
       <div class="stats-grid" id="soul-stats-ch2"></div>
     </div>
-
     <div class="inv-wrapper" id="inv-ch2">
       <div class="inv-header">
         <h3>Inventory</h3>
@@ -1007,12 +1200,43 @@
       </div>
       <div class="inv-grid" id="inv-grid-ch2"></div>
     </div>
-  </section>
+  </div>
 
   <div class="chapter-nav">
     <a href="#" class="btn" onclick="showPage('ch1');return false">← Chapter 1</a>
     <a href="#" class="btn" onclick="showPage('home');return false">Home</a>
   </div>
+  </div><!-- /chapter-main -->
+
+  <!-- Sticky sidebar (desktop ≥1024px) -->
+  <aside class="chapter-sidebar" id="sidebar-ch2">
+    <div class="sidebar-inner">
+      <div class="stats-wrapper">
+        <div class="stats-header"><h3>Elias Lumina</h3></div>
+        <div class="stats-section-title">Core Stats</div>
+        <div class="stats-grid" id="core-stats-ch2-sb"></div>
+        <div class="stats-section-title">Soul Balance</div>
+        <div class="stats-grid" id="soul-stats-ch2-sb"></div>
+      </div>
+      <div class="inv-wrapper" id="inv-ch2-sb">
+        <div class="inv-header">
+          <h3>Inventory</h3>
+          <div class="currency">
+            <span><i class="coin coin-gold"></i> 5</span>
+            <span><i class="coin coin-silver"></i> 50</span>
+            <span><i class="coin coin-copper"></i> 0</span>
+          </div>
+        </div>
+        <div class="inv-tabs">
+          <button class="active" onclick="switchInvTab('ch2-sb','equipment')">Equipment</button>
+          <button onclick="switchInvTab('ch2-sb','items')">Items</button>
+          <button onclick="switchInvTab('ch2-sb','potions')">Potions</button>
+        </div>
+        <div class="inv-grid" id="inv-grid-ch2-sb"></div>
+      </div>
+    </div>
+  </aside>
+  </div><!-- /chapter-layout -->
 </div>
 
 <!-- ════════════════════ CHARACTERS ════════════════════ -->
@@ -1149,6 +1373,9 @@
   </section>
 </div>
 
+<!-- Mobile sidebar toggle -->
+<button class="sidebar-toggle" id="sidebar-toggle" onclick="toggleMobileSidebar()" title="Toggle Stats &amp; Inventory">⚔</button>
+
 <!-- FOOTER -->
 <footer>
   <div>&copy; 2024 Born Good. All rights reserved.</div>
@@ -1211,11 +1438,37 @@ function showPage(id) {
   document.querySelectorAll('.chapter-page').forEach(p => p.classList.remove('active'));
   document.getElementById('page-' + id).classList.add('active');
   window.scrollTo(0, 0);
+  closeToc();
+  // Close mobile sidebar
+  document.querySelectorAll('.chapter-sidebar').forEach(s => s.classList.remove('mobile-open'));
+  // Show/hide mobile toggle
+  const toggle = document.getElementById('sidebar-toggle');
+  toggle.classList.toggle('in-chapter', id === 'ch1' || id === 'ch2');
+}
+
+// TOC dropdown
+function toggleToc(e) {
+  e.stopPropagation();
+  document.getElementById('toc-menu').classList.toggle('open');
+}
+function closeToc() {
+  document.getElementById('toc-menu').classList.remove('open');
+}
+document.addEventListener('click', closeToc);
+
+// Mobile sidebar toggle
+function toggleMobileSidebar() {
+  const active = document.querySelector('.chapter-page.active');
+  if (!active) return;
+  const sidebar = active.querySelector('.chapter-sidebar');
+  if (sidebar) sidebar.classList.toggle('mobile-open');
 }
 
 renderStats(1, 'home');
 renderStats(1, 'ch1');
+renderStats(1, 'ch1-sb');
 renderStats(2, 'ch2');
+renderStats(2, 'ch2-sb');
 
 const INVENTORY = {
   ch1: {
@@ -1253,9 +1506,14 @@ const INVENTORY = {
 
 const SLOT_COUNT = 12;
 
+function getInvDataKey(chId) {
+  return chId.replace('-sb', '');
+}
+
 function renderInventory(chId, tab) {
   const grid = document.getElementById('inv-grid-' + chId);
-  const items = (INVENTORY[chId] && INVENTORY[chId][tab]) || [];
+  const dataKey = getInvDataKey(chId);
+  const items = (INVENTORY[dataKey] && INVENTORY[dataKey][tab]) || [];
   let html = '';
   for (let i = 0; i < SLOT_COUNT; i++) {
     if (i < items.length) {
@@ -1285,7 +1543,9 @@ function switchInvTab(chId, tab) {
 }
 
 renderInventory('ch1', 'equipment');
+renderInventory('ch1-sb', 'equipment');
 renderInventory('ch2', 'equipment');
+renderInventory('ch2-sb', 'equipment');
 </script>
 
 </body>
