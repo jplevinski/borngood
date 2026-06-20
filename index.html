@@ -429,6 +429,132 @@
     }
 
     /* ─── CHARACTER CARDS ─── */
+
+    /* ─── INVENTORY ─── */
+    .inv-wrapper {
+      background: var(--bg-mid);
+      border: 1px solid rgba(184,154,91,.2);
+      border-radius: 12px;
+      padding: 2rem 2.5rem;
+      margin: 2rem 0;
+    }
+    .inv-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .inv-header h3 { margin: 0; font-size: 1rem; }
+    .currency {
+      display: flex;
+      gap: 1.2rem;
+      font-family: 'Cinzel', serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.05em;
+    }
+    .currency span {
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+    .coin {
+      display: inline-block;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      border: 1.5px solid;
+    }
+    .coin-gold { background: #D4A017; border-color: #B8860B; }
+    .coin-silver { background: #A8A8A8; border-color: #808080; }
+    .coin-copper { background: #B87333; border-color: #8B5A2B; }
+    .inv-tabs {
+      display: flex;
+      gap: 0;
+      border: 1px solid var(--gold-dim);
+      border-radius: 6px;
+      overflow: hidden;
+      margin-bottom: 1.2rem;
+    }
+    .inv-tabs button {
+      font-family: 'Cinzel', serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      padding: 0.4rem 1.2rem;
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all .3s;
+    }
+    .inv-tabs button.active {
+      background: var(--gold);
+      color: var(--bg-deep);
+    }
+    .inv-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+      gap: 0.6rem;
+    }
+    .inv-slot {
+      aspect-ratio: 1;
+      background: var(--bg-card);
+      border: 1px solid rgba(184,154,91,.12);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      position: relative;
+      cursor: default;
+      transition: border-color .3s;
+    }
+    .inv-slot.has-item { border-color: rgba(184,154,91,.35); cursor: help; }
+    .inv-slot.has-item:hover { border-color: var(--gold); }
+    .inv-tooltip {
+      display: none;
+      position: absolute;
+      bottom: calc(100% + 8px);
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--bg-deep);
+      border: 1px solid var(--gold-dim);
+      border-radius: 6px;
+      padding: 0.7rem 1rem;
+      width: 220px;
+      z-index: 50;
+      pointer-events: none;
+    }
+    .inv-slot:hover .inv-tooltip { display: block; }
+    .inv-tooltip .tt-name {
+      font-family: 'Cinzel', serif;
+      font-size: 0.8rem;
+      color: var(--gold);
+      margin-bottom: 0.2rem;
+    }
+    .inv-tooltip .tt-type {
+      font-family: 'Cinzel', serif;
+      font-size: 0.6rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+      margin-bottom: 0.3rem;
+    }
+    .inv-tooltip .tt-desc {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+    .inv-tooltip .tt-stats {
+      font-family: 'Cinzel', serif;
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      margin-top: 0.3rem;
+      font-style: italic;
+    }
+
+    /* ─── CHARACTER CARDS (cont) ─── */
     .char-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -669,6 +795,23 @@
       <div class="stats-section-title">Soul Balance (Hidden)</div>
       <div class="stats-grid" id="soul-stats-ch1"></div>
     </div>
+
+    <div class="inv-wrapper" id="inv-ch1">
+      <div class="inv-header">
+        <h3>Inventory</h3>
+        <div class="currency">
+          <span><i class="coin coin-gold"></i> 5</span>
+          <span><i class="coin coin-silver"></i> 50</span>
+          <span><i class="coin coin-copper"></i> 0</span>
+        </div>
+      </div>
+      <div class="inv-tabs">
+        <button class="active" onclick="switchInvTab('ch1','equipment')">Equipment</button>
+        <button onclick="switchInvTab('ch1','items')">Items</button>
+        <button onclick="switchInvTab('ch1','potions')">Potions</button>
+      </div>
+      <div class="inv-grid" id="inv-grid-ch1"></div>
+    </div>
   </section>
 
   <div class="chapter-nav">
@@ -843,6 +986,23 @@
       <div class="stats-grid" id="core-stats-ch2"></div>
       <div class="stats-section-title">Soul Balance (Hidden)</div>
       <div class="stats-grid" id="soul-stats-ch2"></div>
+    </div>
+
+    <div class="inv-wrapper" id="inv-ch2">
+      <div class="inv-header">
+        <h3>Inventory</h3>
+        <div class="currency">
+          <span><i class="coin coin-gold"></i> 5</span>
+          <span><i class="coin coin-silver"></i> 50</span>
+          <span><i class="coin coin-copper"></i> 0</span>
+        </div>
+      </div>
+      <div class="inv-tabs">
+        <button class="active" onclick="switchInvTab('ch2','equipment')">Equipment</button>
+        <button onclick="switchInvTab('ch2','items')">Items</button>
+        <button onclick="switchInvTab('ch2','potions')">Potions</button>
+      </div>
+      <div class="inv-grid" id="inv-grid-ch2"></div>
     </div>
   </section>
 
@@ -1053,6 +1213,59 @@ function showPage(id) {
 renderStats(1, 'home');
 renderStats(1, 'ch1');
 renderStats(2, 'ch2');
+
+const INVENTORY = {
+  equipment: [
+    { icon: '🧥', name: 'Worn Traveling Cloak', type: 'Armor — Back', desc: 'A heavy wool cloak from Novilinio, patched many times over. Keeps the cold out, but offers no real protection.', stats: 'No stat bonuses' },
+    { icon: '👕', name: 'Linen Undershirt', type: 'Armor — Chest', desc: 'A simple cream-colored shirt, well-worn from years of farm work. Comfortable but unremarkable.', stats: 'No stat bonuses' },
+    { icon: '👖', name: 'Leather Breeches', type: 'Armor — Legs', desc: 'Sturdy leather trousers built for fieldwork. Scuffed at the knees from the portal landing.', stats: 'No stat bonuses' },
+    { icon: '🥾', name: 'Cobbled Road Boots', type: 'Armor — Feet', desc: 'Heavy boots made by Elias\'s father. Built for long treks, not combat. The soles are nearly worn through.', stats: 'No stat bonuses' },
+    { icon: '🎒', name: 'Canvas Satchel', type: 'Accessory — Bag', desc: 'A weather-beaten bag holding everything Elias owns. Smells faintly of cattle and dried herbs.', stats: 'No stat bonuses' },
+    { icon: '🧣', name: 'Leather Shoulder Strap', type: 'Accessory — Harness', desc: 'A cross-body strap with a small bronze clasp bearing the Tetherpoint Academy crest. Issued at registration.', stats: 'No stat bonuses' },
+  ],
+  items: [
+    { icon: '✉️', name: 'Letter from Uncle Daemeon', type: 'Quest Item', desc: 'A weathered envelope sealed with silver ink. Delivered by a strange owl with one golden eye. Unopened.', stats: 'Cannot be discarded' },
+    { icon: '📜', name: 'Academy Admission Papers', type: 'Document', desc: 'Official papers confirming Elias Lumina\'s enrollment in Tetherpoint Academy, Class 777 — The Golden Cohort.', stats: 'Cannot be discarded' },
+    { icon: '🪙', name: 'Father\'s Lucky Coin', type: 'Keepsake', desc: 'A worn copper coin from Tether, given by Elias\'s father on the day he left Novilinio. "For when you need reminding where you come from."', stats: 'No stat bonuses' },
+  ],
+  potions: []
+};
+
+const SLOT_COUNT = 12;
+
+function renderInventory(chId, tab) {
+  const grid = document.getElementById('inv-grid-' + chId);
+  const items = INVENTORY[tab] || [];
+  let html = '';
+  for (let i = 0; i < SLOT_COUNT; i++) {
+    if (i < items.length) {
+      const it = items[i];
+      html += `<div class="inv-slot has-item">
+        ${it.icon}
+        <div class="inv-tooltip">
+          <div class="tt-name">${it.name}</div>
+          <div class="tt-type">${it.type}</div>
+          <div class="tt-desc">${it.desc}</div>
+          <div class="tt-stats">${it.stats}</div>
+        </div>
+      </div>`;
+    } else {
+      html += '<div class="inv-slot"></div>';
+    }
+  }
+  grid.innerHTML = html;
+}
+
+function switchInvTab(chId, tab) {
+  const wrapper = document.getElementById('inv-' + chId);
+  wrapper.querySelectorAll('.inv-tabs button').forEach(b => {
+    b.classList.toggle('active', b.textContent.toLowerCase() === tab);
+  });
+  renderInventory(chId, tab);
+}
+
+renderInventory('ch1', 'equipment');
+renderInventory('ch2', 'equipment');
 </script>
 
 </body>
