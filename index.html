@@ -428,6 +428,51 @@
       margin-top: 0.5rem;
     }
 
+    /* ─── CHARACTER CARDS ─── */
+    .char-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+    .char-card {
+      background: var(--bg-mid);
+      border: 1px solid rgba(184,154,91,.15);
+      border-radius: 10px;
+      overflow: hidden;
+      transition: border-color .3s, transform .3s;
+    }
+    .char-card:hover {
+      border-color: var(--gold);
+      transform: translateY(-4px);
+    }
+    .char-card img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      display: block;
+    }
+    .char-card-body {
+      padding: 1.5rem;
+    }
+    .char-card-body h3 {
+      font-size: 1rem;
+      margin-bottom: 0.3rem;
+    }
+    .char-card-body .char-role {
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+      margin-bottom: 0.8rem;
+    }
+    .char-card-body p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
     /* ─── MOBILE NAV ─── */
     @media (max-width: 700px) {
       .nav-links { gap: 1rem; }
@@ -444,6 +489,7 @@
     <li><a href="#" onclick="showPage('home');return false">Home</a></li>
     <li><a href="#" onclick="showPage('ch1');return false">Chapter 1</a></li>
     <li><a href="#" onclick="showPage('ch2');return false">Chapter 2</a></li>
+    <li><a href="#" onclick="showPage('characters');return false">Characters</a></li>
     <li><a href="#" onclick="showPage('stats');return false">Stats</a></li>
   </ul>
 </nav>
@@ -780,6 +826,65 @@
     <a href="#" class="btn" onclick="showPage('ch1');return false">← Chapter 1</a>
     <a href="#" class="btn" onclick="showPage('home');return false">Home</a>
   </div>
+</div>
+
+<!-- ════════════════════ CHARACTERS ════════════════════ -->
+<div id="page-characters" class="chapter-page">
+  <div class="chapter-title-block">
+    <div class="chapter-num">Meet the Cast</div>
+    <h2>Characters</h2>
+  </div>
+
+  <section class="section-wide">
+    <div class="char-grid">
+
+      <div class="char-card">
+        <img src="images/elias-lumina.png" alt="Elias Lumina">
+        <div class="char-card-body">
+          <h3>Elias Lumina</h3>
+          <div class="char-role">Protagonist — First-Year Novice</div>
+          <p>A farm boy from Novilinio and the first in generations to attend Tetherpoint Academy. Stubborn, principled, and burdened by a family name that carries secrets no one will explain.</p>
+        </div>
+      </div>
+
+      <div class="char-card">
+        <img src="images/kip.png" alt="Kip Krumplnick">
+        <div class="char-card-body">
+          <h3>Kip Krumplnick</h3>
+          <div class="char-role">Ally — First-Year Novice</div>
+          <p>A small, red-haired boy with an intense stare and an oddly literal way of seeing the world. Considers Cassian Drake his friend despite all evidence to the contrary.</p>
+        </div>
+      </div>
+
+      <div class="char-card">
+        <img src="images/cassian.png" alt="Cassian Drake">
+        <div class="char-card-body">
+          <h3>Cassian Drake</h3>
+          <div class="char-role">Rival — First-Year Novice</div>
+          <p>A large, confident bully who uses his size to dominate others. Childhood acquaintance of Kip, though "friend" is a generous description of their dynamic.</p>
+        </div>
+      </div>
+
+      <div class="char-card">
+        <img src="images/archemage-varric.png" alt="Archmage Varric Pyre">
+        <div class="char-card-body">
+          <h3>Archmage Varric Pyre</h3>
+          <div class="char-role">Instructor — Elementalist Extraordinary</div>
+          <p>Master of both ice and fire, veteran of many wars. Reacted to the Lumina name with visible hatred, targeting Elias from their very first encounter.</p>
+        </div>
+      </div>
+
+      <div class="char-card">
+        <img src="images/daemeon-lumina.png" alt="Daemeon Lumina">
+        <div class="char-card-body">
+          <h3>Daemeon Lumina</h3>
+          <div class="char-role">Mystery — Uncle, Member of The Veil</div>
+          <p>Elias's great uncle whose name is never spoken in the family. Once the pride of the Luminas — until he joined The Veil. His letter arrived via a strange, ancient owl.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
 </div>
 
 <!-- ════════════════════ STATS PAGE ════════════════════ -->
