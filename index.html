@@ -490,7 +490,7 @@
     <li><a href="#" onclick="showPage('ch1');return false">Chapter 1</a></li>
     <li><a href="#" onclick="showPage('ch2');return false">Chapter 2</a></li>
     <li><a href="#" onclick="showPage('characters');return false">Characters</a></li>
-    <li><a href="#" onclick="showPage('stats');return false">Stats</a></li>
+    <li><a href="#" onclick="showPage('stats');return false">Stats Guide</a></li>
   </ul>
 </nav>
 
@@ -659,6 +659,18 @@
     <p>The message vanished.</p>
   </div>
 
+  <section class="section-wide">
+    <div class="stats-wrapper">
+      <div class="stats-header">
+        <h3>End of Chapter 1 — Elias Lumina</h3>
+      </div>
+      <div class="stats-section-title">Core Stats</div>
+      <div class="stats-grid" id="core-stats-ch1"></div>
+      <div class="stats-section-title">Soul Balance (Hidden)</div>
+      <div class="stats-grid" id="soul-stats-ch1"></div>
+    </div>
+  </section>
+
   <div class="chapter-nav">
     <a href="#" class="btn" onclick="showPage('home');return false">← Home</a>
     <a href="#" class="btn btn-primary" onclick="showPage('ch2');return false">Chapter 2 →</a>
@@ -822,6 +834,18 @@
     </div>
   </div>
 
+  <section class="section-wide">
+    <div class="stats-wrapper">
+      <div class="stats-header">
+        <h3>End of Chapter 2 — Elias Lumina</h3>
+      </div>
+      <div class="stats-section-title">Core Stats</div>
+      <div class="stats-grid" id="core-stats-ch2"></div>
+      <div class="stats-section-title">Soul Balance (Hidden)</div>
+      <div class="stats-grid" id="soul-stats-ch2"></div>
+    </div>
+  </section>
+
   <div class="chapter-nav">
     <a href="#" class="btn" onclick="showPage('ch1');return false">← Chapter 1</a>
     <a href="#" class="btn" onclick="showPage('home');return false">Home</a>
@@ -887,31 +911,77 @@
   </section>
 </div>
 
-<!-- ════════════════════ STATS PAGE ════════════════════ -->
+<!-- ════════════════════ STATS GUIDE ════════════════════ -->
 <div id="page-stats" class="chapter-page">
   <div class="chapter-title-block">
-    <div class="chapter-num">Character Tracker</div>
-    <h2>Elias Lumina</h2>
+    <div class="chapter-num">The Adventurer's System</div>
+    <h2>Stats Guide</h2>
   </div>
 
-  <section class="section-wide">
+  <section class="section">
+    <p style="text-align:center;color:var(--text-muted);margin-bottom:2rem">Every adventurer in Valerguard receives their stats through the Soul Enchantment performed at the Academy Gate. Core Stats govern physical and mental ability. Soul Balance Stats are hidden — most adventurers never know they exist.</p>
+
     <div class="stats-wrapper">
-      <div class="stats-header">
-        <h3>Level 1 — Unassigned</h3>
-        <div class="chapter-toggle">
-          <button class="active" onclick="setChapter(1, 'stats')">Ch. 1</button>
-          <button onclick="setChapter(2, 'stats')">Ch. 2</button>
+      <div class="stats-section-title">Core Stats</div>
+
+      <div style="display:grid;gap:1.5rem;margin-top:1rem">
+        <div>
+          <h4 style="font-size:.95rem;margin-bottom:.3rem">Strength</h4>
+          <p style="font-size:.9rem;color:var(--text-muted)">Raw physical power. Determines melee damage, carrying capacity, and the ability to overpower opponents. Essential for warriors and frontline fighters.</p>
+        </div>
+        <div>
+          <h4 style="font-size:.95rem;margin-bottom:.3rem">Agility</h4>
+          <p style="font-size:.9rem;color:var(--text-muted)">Speed, reflexes, and coordination. Affects dodge chance, attack speed, and movement. Critical for scouts, rogues, and ranged combatants.</p>
+        </div>
+        <div>
+          <h4 style="font-size:.95rem;margin-bottom:.3rem">Vitality</h4>
+          <p style="font-size:.9rem;color:var(--text-muted)">Health, endurance, and resilience. Determines maximum HP, stamina recovery, and resistance to physical ailments. The foundation of survival.</p>
+        </div>
+        <div>
+          <h4 style="font-size:.95rem;margin-bottom:.3rem">Intelligence</h4>
+          <p style="font-size:.9rem;color:var(--text-muted)">Analytical ability and magical aptitude. Governs spell power, mana capacity, and the ability to learn complex techniques. The primary stat for mages and scholars.</p>
+        </div>
+        <div>
+          <h4 style="font-size:.95rem;margin-bottom:.3rem">Wisdom</h4>
+          <p style="font-size:.9rem;color:var(--text-muted)">Perception, intuition, and judgement. Affects mana regeneration, resistance to mental effects, and the ability to read situations. Valued by healers, strategists, and leaders.</p>
+        </div>
+        <div>
+          <h4 style="font-size:.95rem;margin-bottom:.3rem">Charisma</h4>
+          <p style="font-size:.9rem;color:var(--text-muted)">Force of personality, persuasion, and presence. Influences social interactions, leadership effectiveness, and certain enchantment-based abilities. Rare as a primary stat.</p>
         </div>
       </div>
-      <div class="stats-section-title">Core Stats</div>
-      <div class="stats-grid" id="core-stats-stats"></div>
-      <div class="stats-section-title">Soul Balance Stats (Hidden)</div>
-      <div class="stats-grid" id="soul-stats-stats"></div>
     </div>
 
     <div class="stats-wrapper" style="margin-top:2rem">
-      <h3 style="font-size:1rem;margin-bottom:1rem">Chapter Events Impact</h3>
-      <div id="events-list"></div>
+      <div class="stats-section-title">Soul Balance Stats (Hidden)</div>
+      <p style="font-size:.85rem;color:var(--text-muted);margin-bottom:1.2rem;font-style:italic">These stats are invisible to most adventurers. They shift based on lived experience — choices, trauma, relationships, and identity. Their true purpose within the System remains unknown.</p>
+
+      <div style="display:grid;gap:1.5rem;margin-top:1rem">
+        <div>
+          <h4 style="font-size:.95rem;margin-bottom:.3rem">Mercy</h4>
+          <p style="font-size:.9rem;color:var(--text-muted)">The capacity to forgive, empathize, and value the lives of others above one's own interests. High Mercy increases healing affinity, enhances support magic, and makes bonds easier to form. Low Mercy makes ruthlessness easier, sacrifices more acceptable, and may strengthen offensive abilities.</p>
+        </div>
+        <div>
+          <h4 style="font-size:.95rem;margin-bottom:.3rem">Conviction</h4>
+          <p style="font-size:.9rem;color:var(--text-muted)">The strength of one's beliefs under hardship. Measures how firmly a person holds to their principles when tested. High Conviction grants resistance to mental manipulation and strengthens resolve-based abilities. It rises when a person stands firm — and falls when they compromise what they believe.</p>
+        </div>
+        <div>
+          <h4 style="font-size:.95rem;margin-bottom:.3rem">Resentment</h4>
+          <p style="font-size:.9rem;color:var(--text-muted)">The accumulation of grief, anger, betrayal, and unresolved pain. Unlike other Soul Stats, Resentment is dangerous — it grows from injustice and suffering. High Resentment may unlock dark abilities but risks corrupting other Soul Balance stats. Why the System measures it remains a troubling question.</p>
+        </div>
+        <div>
+          <h4 style="font-size:.95rem;margin-bottom:.3rem">Connection</h4>
+          <p style="font-size:.9rem;color:var(--text-muted)">The depth of bonds with others. Reflects trust, loyalty, and emotional openness. High Connection strengthens party synergies, cooperative magic, and bond-based abilities. It drops when relationships fracture or isolation takes hold.</p>
+        </div>
+        <div>
+          <h4 style="font-size:.95rem;margin-bottom:.3rem">Hope</h4>
+          <p style="font-size:.9rem;color:var(--text-muted)">Belief that the future can be better than the present. Fuels resilience, recovery, and light-aligned magic. When Hope falls, despair creeps in — dulling willpower, slowing recovery, and opening the door to darker paths. Hope is fragile. Once broken, it is difficult to rebuild.</p>
+        </div>
+        <div>
+          <h4 style="font-size:.95rem;margin-bottom:.3rem">Identity</h4>
+          <p style="font-size:.9rem;color:var(--text-muted)">The degree to which a person remains true to their original self. Starts at its highest point and can only erode. Identity falls when a person is forced to become something they are not — through trauma, manipulation, or choices that betray who they once were. If Identity reaches zero, the person the System originally measured no longer exists.</p>
+        </div>
+      </div>
     </div>
   </section>
 </div>
@@ -942,15 +1012,6 @@ const STATS = {
   ]
 };
 
-const EVENTS = [
-  { ch: 1, text: 'Defended Kip from Cassian Drake', effects: '+Mercy, +Conviction, +Connection' },
-  { ch: 1, text: 'Bullied and humiliated by Cassian', effects: '+Resentment (minor)' },
-  { ch: 1, text: 'Discovered hidden Soul Balance stats & Legacy Access', effects: 'Identity holds at 100' },
-  { ch: 2, text: 'Archmage Varric Pyre spits at the Lumina name', effects: '+Resentment, −Hope, −Connection' },
-  { ch: 2, text: 'Publicly humiliated with snow attack', effects: '+Resentment, −Hope, +Conviction' },
-  { ch: 2, text: 'Sent to detention on first day', effects: '−Hope, −Identity' },
-  { ch: 2, text: 'Received letter from Uncle Daemeon', effects: '+Conviction, slight −Identity (questioning self)' },
-];
 
 function renderStats(chapter, suffix) {
   ['core', 'soul'].forEach(type => {
@@ -976,22 +1037,11 @@ function renderStats(chapter, suffix) {
 }
 
 function setChapter(ch, suffix) {
-  const wrapper = suffix === 'home' ? document.getElementById('stats-home') : document.querySelector('#page-stats .stats-wrapper');
+  const wrapper = document.getElementById('stats-home');
   wrapper.querySelectorAll('.chapter-toggle button').forEach((b, i) => {
     b.classList.toggle('active', i === ch - 1);
   });
   renderStats(ch, suffix);
-}
-
-function renderEvents() {
-  const el = document.getElementById('events-list');
-  el.innerHTML = EVENTS.map(e =>
-    `<div style="display:flex;gap:1rem;padding:.6rem 0;border-bottom:1px solid rgba(184,154,91,.1);font-size:.9rem">
-      <span style="font-family:Cinzel;font-size:.65rem;color:var(--gold-dim);min-width:3rem">CH. ${e.ch}</span>
-      <span style="flex:1">${e.text}</span>
-      <span style="color:var(--text-muted);font-size:.8rem;font-style:italic">${e.effects}</span>
-    </div>`
-  ).join('');
 }
 
 function showPage(id) {
@@ -1001,8 +1051,8 @@ function showPage(id) {
 }
 
 renderStats(1, 'home');
-renderStats(1, 'stats');
-renderEvents();
+renderStats(1, 'ch1');
+renderStats(2, 'ch2');
 </script>
 
 </body>
