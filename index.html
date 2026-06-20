@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Born Good — A Tetherpoint Academy Story</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg-deep: #0D1420;
+      --bg-mid: #1A1F2B;
+      --bg-card: #2C3442;
+      --text-muted: #7A7570;
+      --gold: #B89A5B;
+      --gold-dim: #8B7340;
+      --gold-bright: #D4B872;
+      --text: #C8C0B4;
+      --text-light: #E8E0D4;
+      --stat-up: #5BAF5B;
+      --stat-down: #C45050;
+    }
+
+    body {
+      font-family: 'Playfair Display', Georgia, serif;
+      background: var(--bg-deep);
+      color: var(--text);
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4, h5 {
+      font-family: 'Cinzel', serif;
+      color: var(--gold);
+      letter-spacing: 0.08em;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 100;
+      background: rgba(13,20,32,.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(184,154,91,.2);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2rem;
+      height: 64px;
+    }
+    .nav-brand {
+      font-family: 'Cinzel', serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--gold);
+      text-decoration: none;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      font-family: 'Cinzel', serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color .3s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+
+    /* ─── HERO ─── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 6rem 2rem 4rem;
+      background:
+        radial-gradient(ellipse at 50% 30%, rgba(184,154,91,.08) 0%, transparent 60%),
+        var(--bg-deep);
+      position: relative;
+    }
+    .hero::after {
+      content: '◇';
+      display: block;
+      position: absolute;
+      bottom: 3rem;
+      color: var(--gold-dim);
+      font-size: 1.2rem;
+      animation: pulse 3s infinite;
+    }
+    @keyframes pulse { 0%,100%{opacity:.3} 50%{opacity:1} }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    .hero .tagline {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      margin-bottom: 2.5rem;
+    }
+    .hero .subtitle {
+      font-family: 'Cinzel', serif;
+      font-size: 0.85rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+      margin-bottom: 1rem;
+    }
+
+    /* ─── DIVIDER ─── */
+    .divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      padding: 2rem 0;
+    }
+    .divider::before, .divider::after {
+      content: '';
+      width: 80px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold-dim), transparent);
+    }
+    .divider span { color: var(--gold-dim); font-size: 0.8rem; }
+
+    /* ─── SECTIONS ─── */
+    .section {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+    }
+    .section-wide {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+    }
+
+    /* ─── QUOTE BLOCK ─── */
+    .quote-block {
+      background: linear-gradient(135deg, var(--bg-mid), var(--bg-card));
+      border-left: 3px solid var(--gold);
+      padding: 2rem 2.5rem;
+      margin: 3rem auto;
+      max-width: 700px;
+      border-radius: 0 8px 8px 0;
+    }
+    .quote-block p {
+      font-style: italic;
+      font-size: 1.2rem;
+      color: var(--text-light);
+    }
+
+    /* ─── CHAPTER CARDS ─── */
+    .chapter-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+    .chapter-card {
+      background: var(--bg-mid);
+      border: 1px solid rgba(184,154,91,.15);
+      border-radius: 8px;
+      padding: 2rem;
+      transition: border-color .3s, transform .3s;
+      cursor: pointer;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+    .chapter-card:hover {
+      border-color: var(--gold);
+      transform: translateY(-4px);
+    }
+    .chapter-card h3 { font-size: 1rem; margin-bottom: 0.5rem; }
+    .chapter-card p { font-size: 0.9rem; color: var(--text-muted); }
+
+    /* ─── STATS PANEL ─── */
+    .stats-wrapper {
+      background: var(--bg-mid);
+      border: 1px solid rgba(184,154,91,.2);
+      border-radius: 12px;
+      padding: 2rem 2.5rem;
+      margin: 2rem 0;
+    }
+    .stats-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .stats-header h3 { margin: 0; font-size: 1rem; }
+    .chapter-toggle {
+      display: flex;
+      gap: 0;
+      border: 1px solid var(--gold-dim);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    .chapter-toggle button {
+      font-family: 'Cinzel', serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      padding: 0.4rem 1rem;
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all .3s;
+    }
+    .chapter-toggle button.active {
+      background: var(--gold);
+      color: var(--bg-deep);
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+    @media (max-width: 600px) { .stats-grid { grid-template-columns: repeat(2, 1fr); } }
+
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+    .stat-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+    .stat-bar-bg {
+      height: 6px;
+      background: var(--bg-card);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+    .stat-bar {
+      height: 100%;
+      border-radius: 3px;
+      background: var(--gold);
+      transition: width .8s ease;
+    }
+    .stat-value {
+      font-family: 'Cinzel', serif;
+      font-size: 0.9rem;
+      color: var(--text-light);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .stat-change {
+      font-size: 0.7rem;
+      font-weight: 600;
+    }
+    .stat-change.up { color: var(--stat-up); }
+    .stat-change.down { color: var(--stat-down); }
+
+    .stats-section-title {
+      font-family: 'Cinzel', serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+      margin: 1.5rem 0 0.8rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 1px solid rgba(184,154,91,.15);
+    }
+
+    /* ─── CHAPTER CONTENT ─── */
+    .chapter-page { display: none; }
+    .chapter-page.active { display: block; }
+
+    .chapter-title-block {
+      text-align: center;
+      padding: 8rem 2rem 3rem;
+      background:
+        radial-gradient(ellipse at 50% 40%, rgba(184,154,91,.06) 0%, transparent 60%),
+        var(--bg-deep);
+    }
+    .chapter-title-block h2 {
+      font-size: clamp(1.8rem, 4vw, 3rem);
+    }
+    .chapter-title-block .chapter-num {
+      font-family: 'Cinzel', serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+      margin-bottom: 0.5rem;
+    }
+
+    .chapter-text {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 2rem 2rem 4rem;
+    }
+    .chapter-text p {
+      margin-bottom: 1.4rem;
+      text-indent: 1.5em;
+    }
+    .chapter-text p:first-child { text-indent: 0; }
+    .chapter-text .scene-break {
+      text-align: center;
+      text-indent: 0;
+      color: var(--gold-dim);
+      margin: 2rem 0;
+      letter-spacing: 0.5em;
+    }
+    .chapter-text .dialogue {
+      text-indent: 0;
+    }
+    .chapter-text .system-msg {
+      text-align: center;
+      text-indent: 0;
+      font-family: 'Cinzel', serif;
+      font-size: 0.85rem;
+      letter-spacing: 0.15em;
+      color: var(--gold);
+      padding: 1rem;
+      margin: 1.5rem 0;
+      border: 1px solid rgba(184,154,91,.2);
+      border-radius: 6px;
+      background: rgba(184,154,91,.04);
+    }
+    .chapter-text .stat-block {
+      background: var(--bg-mid);
+      border: 1px solid rgba(184,154,91,.2);
+      border-radius: 8px;
+      padding: 1.5rem 2rem;
+      margin: 2rem 0;
+      font-family: 'Cinzel', serif;
+      font-size: 0.85rem;
+      line-height: 2;
+      color: var(--text-light);
+    }
+    .chapter-text .stat-block .name {
+      font-size: 1.1rem;
+      color: var(--gold);
+      margin-bottom: 0.3rem;
+    }
+    .chapter-text .stat-block .meta {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      letter-spacing: 0.1em;
+    }
+
+    /* ─── NAV BUTTONS ─── */
+    .chapter-nav {
+      display: flex;
+      justify-content: space-between;
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+    .btn {
+      font-family: 'Cinzel', serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.7rem 1.6rem;
+      border: 1px solid var(--gold);
+      background: transparent;
+      color: var(--gold);
+      cursor: pointer;
+      transition: all .3s;
+      text-decoration: none;
+    }
+    .btn:hover {
+      background: var(--gold);
+      color: var(--bg-deep);
+    }
+    .btn-primary {
+      background: var(--gold);
+      color: var(--bg-deep);
+    }
+    .btn-primary:hover {
+      background: var(--gold-bright);
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      border-top: 1px solid rgba(184,154,91,.15);
+      padding: 3rem 2rem;
+      text-align: center;
+      font-family: 'Cinzel', serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      color: var(--text-muted);
+      margin-top: 4rem;
+    }
+    footer .motto {
+      font-size: 0.65rem;
+      color: var(--gold-dim);
+      margin-top: 0.5rem;
+    }
+
+    /* ─── MOBILE NAV ─── */
+    @media (max-width: 700px) {
+      .nav-links { gap: 1rem; }
+      .nav-links a { font-size: 0.65rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-brand" onclick="showPage('home');return false">Born Good</a>
+  <ul class="nav-links">
+    <li><a href="#" onclick="showPage('home');return false">Home</a></li>
+    <li><a href="#" onclick="showPage('ch1');return false">Chapter 1</a></li>
+    <li><a href="#" onclick="showPage('ch2');return false">Chapter 2</a></li>
+    <li><a href="#" onclick="showPage('stats');return false">Stats</a></li>
+  </ul>
+</nav>
+
+<!-- ════════════════════ HOME ════════════════════ -->
+<div id="page-home" class="chapter-page active">
+
+  <section class="hero">
+    <div class="subtitle">A Tetherpoint Academy Story</div>
+    <h1>Born Good</h1>
+    <p class="tagline">"Knowledge is power. But secrets make you untouchable."</p>
+    <a href="#" class="btn btn-primary" onclick="showPage('ch1');return false" style="margin-top:1rem">Begin Reading</a>
+  </section>
+
+  <div class="divider"><span>◇</span></div>
+
+  <section class="section" style="text-align:center">
+    <h2 style="font-size:1.4rem;margin-bottom:1rem">The Story So Far</h2>
+    <p style="max-width:600px;margin:0 auto;color:var(--text-muted)">
+      Elias Lumina — a farm boy from Novilinio — arrives at the legendary Tetherpoint Academy
+      to begin his training as an adventurer. But a mysterious family legacy, a hostile archmage,
+      and hidden stats in his Soul Balance suggest his journey will be anything but simple.
+    </p>
+  </section>
+
+  <section class="section-wide">
+    <div class="chapter-grid">
+      <a href="#" class="chapter-card" onclick="showPage('ch1');return false">
+        <h3>Chapter 1 — Tetherpoint Academy</h3>
+        <p>Elias passes through the Academy Gate, discovers the System, and sees stats no one else possesses.</p>
+      </a>
+      <a href="#" class="chapter-card" onclick="showPage('ch2');return false">
+        <h3>Chapter 2 — The Weight of a Name</h3>
+        <p>The Lumina surname draws hostility from Archmage Varric Pyre, and a mysterious owl delivers a letter from Uncle Daemeon.</p>
+      </a>
+    </div>
+  </section>
+
+  <div class="quote-block">
+    <p>"In Tetherpoint, knowledge makes you powerful. But secrets make you untouchable."</p>
+  </div>
+
+  <!-- Inline Stats Preview -->
+  <section class="section-wide" id="stats-home">
+    <div class="stats-wrapper">
+      <div class="stats-header">
+        <h3>Elias Lumina — Character Stats</h3>
+        <div class="chapter-toggle">
+          <button class="active" onclick="setChapter(1, 'home')">Ch. 1</button>
+          <button onclick="setChapter(2, 'home')">Ch. 2</button>
+        </div>
+      </div>
+      <div class="stats-section-title">Core Stats</div>
+      <div class="stats-grid" id="core-stats-home"></div>
+      <div class="stats-section-title">Soul Balance (Hidden)</div>
+      <div class="stats-grid" id="soul-stats-home"></div>
+    </div>
+  </section>
+
+</div>
+
+<!-- ════════════════════ CHAPTER 1 ════════════════════ -->
+<div id="page-ch1" class="chapter-page">
+  <div class="chapter-title-block">
+    <div class="chapter-num">Chapter One</div>
+    <h2>Tetherpoint Academy</h2>
+  </div>
+  <div class="chapter-text">
+    <p>The trek had finally ended.</p>
+    <p>Tetherpoint Academy.</p>
+    <p>All my hard work, all my volunteer service, all those long nights earning top marks had led me here: the premier adventurer academy in all of Valerguard. Standing before its gates, I should have felt triumphant.</p>
+    <p>Instead, I felt terrified.</p>
+    <p>Tetherpoint Academy sat along the Tether River in the town of Mellonwood, just outside the capital city of Tether. Mellonwood was an academy town through and through. Blacksmiths forged gear for students, merchants sold training manuals and enchanted trinkets, and adventurers — real adventurers — walked the streets like ordinary folk. For the next six years, if I minded my Ps and Qs and didn't get myself expelled, this would be my home.</p>
+    <p>It was a far cry from Novilinio.</p>
+    <p>My village was ancient. Nobody knew when it was founded or even where its name came from. A few thousand souls lived there at most, surviving on agriculture and herding. My father oversaw one of the larger cattle stocks and worked as a blacksmith besides. He had originally come from Tether, where he met my mother during her own schooling. They attended a small academy focused on agriculture and community service.</p>
+    <p>Simple folk, we were called.</p>
+    <p>And I was the first in generations to attend Tetherpoint.</p>
+    <p>Though — I did have a great uncle on my mother's side who had attended.</p>
+    <p>He had been the pride of the family. At least until he joined The Veil instead of The Shield. After that, nobody liked talking about him. I had learned, young, that asking about him was the fastest way to make a room go quiet, so I had stopped.</p>
+    <p>The Veil was one of the Four Factions that governed Valerguard. Necessary, according to some. Dangerous, according to most. Their methods were secretive, their magic forbidden in many circles, and more than one history book blamed them for calamities best forgotten. Still, the Four kept the kingdom balanced.</p>
+    <p>Or so everyone said.</p>
+
+    <p class="scene-break">◇ ◇ ◇</p>
+
+    <p class="dialogue">"Alright, out you go."</p>
+    <p>The voice nearly shook me from my thoughts. Its owner was a broad mountain of a man with a black beard thick enough to house birds, currently using it to gesture impatiently at the line of students shuffling forward.</p>
+    <p class="dialogue">"Time to get your stats checked out."</p>
+    <p>A nervous excitement spread through me, despite everything.</p>
+    <p>That was the thing about becoming an adventurer. The Wizards Emporium would perform a Soul Enchantment on every admitted student. Once complete, you'd be able to level up, gain skills, and awaken abilities beyond what ordinary people could ever achieve. Adventurers stood at the peak of society. Only a fraction of a fraction ever became one.</p>
+    <p>Rarely did anyone from little old Novilinio make it this far.</p>
+    <p class="dialogue">"Oi, shit-for-brains."</p>
+    <p>The burly man jabbed a finger into my chest. I yelped. The pain shot through me like an electrified cattle prod.</p>
+    <p class="dialogue">"You gonna stand there daydreaming all afternoon, village boy?"</p>
+    <p class="dialogue">"Y-Yes, sir!"</p>
+    <p class="dialogue">"Then move."</p>
+    <p>He gave my shoulder a shove hard enough to nearly send me stumbling, and I scrambled forward with what little dignity I had left.</p>
+
+    <p class="scene-break">◇ ◇ ◇</p>
+
+    <p>Ahead stood an enormous stone arch built into a tower. Where a door should have been, there churned a swirling vortex of purple, black, and crimson.</p>
+    <p>A portal. The Academy Gate.</p>
+    <p>I had read about portals all my life. Some transported people across continents. Some protected ancient ruins. This one was different. This one made adventurers. And somehow, even after years of dreaming about it, standing in front of it made my chest feel like it was full of birds all trying to leave at once.</p>
+    <p>A short red-haired boy stood directly ahead of me in line. When his turn came, he froze.</p>
+    <p class="dialogue">"I-I don't know if I—"</p>
+    <p class="dialogue">"Oh look," someone behind me sneered. "Baby's scared."</p>
+    <p>A large boy stepped forward. He had the particular look of someone who had learned early that his size made him funny, and had never needed to develop anything else. He grinned at the back of the red-haired boy's head like this was the best part of his day.</p>
+    <p class="dialogue">"Maybe we should send him back to his mama."</p>
+    <p>The red-haired boy lowered his head. His shoulders pulled inward.</p>
+    <p>And before I could stop myself, I opened my mouth.</p>
+    <p class="dialogue">"Leave him alone."</p>
+    <p>The large boy turned to look at me. Then grinned wider.</p>
+    <p class="dialogue">"And who're you?"</p>
+    <p>I swallowed. I was Nobody. Just Elias from Novilinio. But the red-haired kid looked like he was about to disappear into himself, and I had always hated bullies more than I feared consequences.</p>
+    <p class="dialogue">"You heard me," I said.</p>
+    <p>The grin widened. A fist flew. The world spun.</p>
+    <p>I hit the pavement hard. Before I could even process what had happened, three boys had my arms pinned. The cobblestones were cold against my back.</p>
+    <p class="dialogue">"Thought you'd play hero?" the large boy laughed, planting himself over me with the casual confidence of someone who had done this before. Then, to my everlasting horror, he made himself comfortable directly on my face. The sulfuric blast that followed nearly killed me on the spot. The others howled. I flailed uselessly, gagging.</p>
+    <p class="dialogue">"Get off me, you oversized pig!" I shouted, from somewhere I would rather not specify.</p>
+    <p class="dialogue">"Hero's got spirit!" one of them called.</p>
+    <p class="dialogue">"Let's see how brave he is inside!"</p>
+    <p>Strong hands grabbed me. The red-haired boy screamed. And before either of us could protest —</p>
+    <p>We were hurled into the portal.</p>
+    <p>That mouth-breathing bastard and his posse. I wouldn't forget them.</p>
+
+    <p class="scene-break">◇ ◇ ◇</p>
+
+    <p>As my body sailed through, a metallic voice echoed inside my skull.</p>
+    <div class="system-msg">ADVENTURER PROTOCOL INITIATED</div>
+    <p>The world around me dissolved into streaks of purple and silver light.</p>
+    <p>Then another message appeared.</p>
+    <div class="system-msg">STATS SCREEN INITIALIZED</div>
+    <p>Windows of translucent glass unfolded before my eyes, hovering effortlessly in my vision. I gasped.</p>
+    <p>This was the System. And there it was.</p>
+
+    <div class="stat-block">
+      <div class="name">Elias Lumina</div>
+      <div class="meta">Level: 1 | Class: Unassigned | Faction: Unassigned</div>
+      <br>
+      <strong>Core Stats</strong><br>
+      Strength: 6 | Agility: 7 | Vitality: 8<br>
+      Intelligence: 9 | Wisdom: 10 | Charisma: 8<br><br>
+      <strong>Soul Balance Stats (Hidden)</strong><br>
+      Mercy: 94 | Conviction: 72 | Resentment: 4<br>
+      Connection: 91 | Hope: 96 | Identity: 100
+    </div>
+
+    <p>I frowned.</p>
+    <p>I'd never heard of Soul Balance before. Every child in Valerguard learned the six Core Stats before they could read. But Soul Balance? That was new.</p>
+    <p>As I focused on Mercy, the screen shifted.</p>
+    <p><em>Mercy — The capacity to forgive, empathize, and value the lives of others above one's own interests.</em></p>
+    <p>High Mercy increased healing affinity, enhanced support magic, made bonds easier to form. Low Mercy made ruthlessness easier. Made sacrifices more acceptable. Might strengthen offensive abilities.</p>
+    <p>I moved through the others. Conviction, the strength of one's beliefs under hardship. Resentment, the accumulation of grief, anger, betrayal, and unresolved pain. I paused on that one. Why would the System measure it? What did it do with it?</p>
+    <p>Then Connection. Hope. And finally — Identity: the degree to which a person remains true to their original self.</p>
+    <p>I stared at that last one for a moment. Identity: 100.</p>
+    <p>Was that normal? I had no idea. I'd never heard anyone describe their Soul Balance scores, which suggested most people didn't have them at all.</p>
+    <p>My thoughts were interrupted rather abruptly.</p>
+    <p>I crashed knee-first onto cobblestones.</p>
+    <p class="dialogue">"AGH!" Pain exploded through my leg. A green bar flickered into existence in the corner of my vision.</p>
+    <div class="system-msg">HP: 90/100</div>
+    <p>I sat up slowly, rubbing my knee. Around me, dozens of students were scrambling upright, shouting excitedly as they explored their own status screens. I barely noticed them. Because hidden at the bottom of mine, in faint silver letters that flickered like a dying candle, was something I was almost certain hadn't been there a moment ago.</p>
+    <div class="system-msg">Additional Functions Locked<br>Legacy Access: Restricted</div>
+    <p>I leaned forward, trying to focus on the text.</p>
+    <p>And before I could —</p>
+    <p>The message vanished.</p>
+  </div>
+
+  <div class="chapter-nav">
+    <a href="#" class="btn" onclick="showPage('home');return false">← Home</a>
+    <a href="#" class="btn btn-primary" onclick="showPage('ch2');return false">Chapter 2 →</a>
+  </div>
+</div>
+
+<!-- ════════════════════ CHAPTER 2 ════════════════════ -->
+<div id="page-ch2" class="chapter-page">
+  <div class="chapter-title-block">
+    <div class="chapter-num">Chapter Two</div>
+    <h2>The Weight of a Name</h2>
+  </div>
+  <div class="chapter-text">
+    <p>The portal deposited us into an enormous stone hall lined with rows of chairs facing a raised podium. It reminded me of a lecture hall, though far grander than anything I had ever seen back in Novilinio. Towering banners hung from the vaulted ceiling, each bearing the crest of Tetherpoint Academy. Everywhere I looked, students were chatting excitedly about their new stats.</p>
+    <p class="dialogue">"My Strength is twelve!" "I got a Fire Affinity!" "No way, let me see!"</p>
+    <p>The energy in the room was infectious, but I found myself distracted by the translucent menus hovering at the edge of my vision and the strange words that had disappeared from my screen moments earlier.</p>
+    <p>The red-haired boy who had been thrown through the portal with me turned toward me suddenly.</p>
+    <p class="dialogue">"I saw your screen," he said matter-of-factly. "I don't have Legacy Features."</p>
+    <p>I blinked at him. "You what?"</p>
+    <p class="dialogue">"Legacy Features," he repeated. "Mine does not have them."</p>
+    <p>A knot formed in my stomach. I wasn't even sure I had seen them myself. The message had appeared for only an instant before vanishing. I decided to change the subject.</p>
+    <p class="dialogue">"Well, name's Elias. Elias Lumina." I held out my hand.</p>
+    <p>The boy stared at it for a few awkward seconds before taking it in both of his hands and shaking it enthusiastically. "Kip Krumplnick," he announced.</p>
+    <p class="dialogue">"Krumplnick?" I repeated.</p>
+    <p class="dialogue">"That is my surname."</p>
+    <p class="dialogue">"Right."</p>
+    <p>Kip kept staring at me. Not rudely exactly, just intensely, as if he were trying to memorize the shape of my face. It was unsettling.</p>
+    <p class="dialogue">"I noticed," he continued, "that you do not have an Affinity yet. I do not either."</p>
+    <p>I shrugged. "Guess we're both unlucky."</p>
+    <p>To my surprise, Kip smiled broadly. "I am delighted."</p>
+    <p>I wasn't entirely sure how to respond to that.</p>
+
+    <p class="scene-break">◇ ◇ ◇</p>
+
+    <p>A loud snort interrupted us. Across the hall stood the oversized bastard who had thrown us through the portal. The human embodiment of a barnyard animal with anger issues. He pointed at me, rubbed his knee dramatically, and burst out laughing. His friends followed suit.</p>
+    <p>I glared back at him hard enough that I hoped spontaneous combustion might become a hidden skill. No such luck.</p>
+    <p class="dialogue">"Why did you intervene in my social interaction with Cassian?" Kip asked.</p>
+    <p>I looked at him in disbelief. "Your social interaction?"</p>
+    <p class="dialogue">"Yes."</p>
+    <p class="dialogue">"The part where he punched me, pinned me down, and farted on my face?"</p>
+    <p>Kip nodded. "Yes."</p>
+    <p>I stared at him. "You know he's a bully, right?"</p>
+    <p>Kip frowned, genuinely confused. "No. Cassian Drake is my friend."</p>
+    <p>I barked out a laugh before realizing he was serious. "Your friend?"</p>
+    <p class="dialogue">"Oh yes. We have known each other since we were six years old. We wrestle often."</p>
+    <p>Before I could explain that getting beat up by someone twice your size didn't count as wrestling, Kip lit up. "Cassian!" And to my utter disbelief, he trotted straight over to him.</p>
+    <p>Cassian groaned dramatically when he saw him approaching. "Oh gods, the goblin found me."</p>
+    <p>Kip ignored the insult entirely. "Can I see your stats screen?"</p>
+    <p>Cassian grabbed Kip by the collar, pulled him into a headlock, and began grinding his knuckles into the top of his head. "Why are you so damn weird?" Cassian laughed.</p>
+    <p>Kip winced. His face scrunched in pain, but he didn't fight back. He didn't even seem angry. The others laughed while Cassian shoved him away. Kip adjusted his clothes, pushed his hair back into place, and immediately started asking questions about Cassian's Strength score as though nothing had happened.</p>
+    <p>I watched the whole thing in silence. Kip might think Cassian was his friend. But all I saw was a bully who enjoyed hurting people. And for reasons I couldn't quite explain, I hated Cassian Drake a little more than I had five minutes earlier.</p>
+
+    <p class="scene-break">◇ ◇ ◇</p>
+
+    <p class="dialogue">"Welcome! Welcome, Class 777!" a wizard boomed, his voice echoing throughout the enormous hall. "What we have come to call the Golden Cohort!"</p>
+    <p>He stood proudly at the podium, dressed in robes of crimson and gold embroidered with intricate flames that danced along the hems as if alive. He looked to be in his fifties, though the vigor in his voice suggested a much younger man. His hair was dark with streaks of silver at the temples, and his eyes swirled with blue and white light, like a storm trapped behind glass.</p>
+    <p class="dialogue">"You are our hope," he continued, spreading his arms wide. "Our dreams. Triple sevens! The luckiest of numbers. Fortune smiles upon you this day, and history shall remember you as the brightest generation Tetherpoint Academy has ever produced."</p>
+    <p>The room exploded into cheers. Students leapt to their feet. Some embraced one another while others shouted excitedly about their futures. The energy was infectious, but somehow I couldn't share in it.</p>
+    <p>My first day at the Academy had consisted of getting punched in the face, pinned to the ground, and discovering mysterious messages in my status screen that nobody else seemed to possess. Luck wasn't exactly the word I would've used. I was just Elias Lumina. A simple boy from a simple village with simple parents. I wasn't destined for greatness. I wasn't a noble or a prodigy. I was the first person in my family to attend Tetherpoint in generations.</p>
+    <p>Well... the first one anyone liked talking about.</p>
+    <p>Apparently, my lack of enthusiasm was more obvious than I realized. The wizard's eyes landed on me from across the hall.</p>
+    <p class="dialogue">"Interesting," he said, his smile fading. "It appears we have one student in the back who is scowling during my introduction."</p>
+    <p>The laughter that followed made my face burn. I looked around, hoping perhaps he meant someone else. No such luck.</p>
+    <p>The wizard reached beside the podium and picked up a long black staff capped with a crystal of swirling blue ice wrapped in red flame. He began walking toward me. The room grew quieter with every step. When he finally stopped in front of me, I found myself staring directly into those strange eyes. They weren't merely glowing; they felt as though they were searching me, peeling back layers I didn't know existed.</p>
+    <p>Then his expression shifted. "Oh," he said softly. He leaned closer. "I see."</p>
+    <p>I swallowed nervously. "What?"</p>
+    <p class="dialogue">"What is your name, boy?"</p>
+    <p class="dialogue">"Elias."</p>
+    <p>His eyes narrowed. "Your surname."</p>
+    <p class="dialogue">"Lumina."</p>
+    <p>The change in him was immediate. The color drained from his face. His jaw tightened. Then, without warning, he spat. The saliva struck the floor inches from my boots.</p>
+    <p>The entire hall went silent.</p>
+    <p class="dialogue">"What the hell, sir?" I blurted out.</p>
+    <p>A wave of whispers swept through the room.</p>
+    <p class="dialogue">"Did he say Lumina?" "I thought that family was gone." "No wonder..."</p>
+    <p>I looked around in confusion. No wonder what?</p>
+    <p>The wizard straightened and composed himself, though his expression remained cold. "Yes," he muttered. "A Lumina. Of course."</p>
+    <p>I stared at him. I had expected nobles to look down on me because I came from a farming village. I had not expected one of the Academy's most powerful instructors to react to my family name like he'd seen a ghost.</p>
+    <p class="dialogue">"Get to your seat, novice," he ordered.</p>
+    <p>I hesitated. There were a hundred things I wanted to say. A hundred questions boiling up behind my teeth. But something in the dangerous stillness of his expression told me none of them would survive the attempt.</p>
+    <p>I sat down.</p>
+
+    <p class="scene-break">◇ ◇ ◇</p>
+
+    <p>The wizard turned away and returned to the podium, seemingly unconcerned by the confusion he had just caused. Once there, he spread his arms grandly once more.</p>
+    <p class="dialogue">"This is, indeed, a happy moment," he proclaimed. "I am Archmage Varric Pyre, Elementalist Extraordinary, master of both ice and fire, veteran of many wars, and now your prestigious instructor here at Tetherpoint Academy."</p>
+    <p>The students erupted into applause. I barely heard them. For the first time in my life, I found myself wondering something I had never dared ask before: What exactly had my great uncle done?</p>
+    <p>Archmage Varric Pyre continued his lecture as though the strange interaction between us had never happened. He spoke of Tetherpoint Academy's long and storied history, founded nearly eight hundred years ago during the Age of Ashes. He recounted tales of legendary graduates who had slain dragons, sealed demonic rifts, and defended Valerguard from invasion. Every few minutes he would punctuate his stories with a dazzling display of magic, summoning dancing flames that twisted into warriors or conjuring intricate sculptures of ice that shimmered beneath the hall's lights.</p>
+    <p>I tried to pay attention. I really did. But my mind kept circling back to his reaction.</p>
+    <p><em>A Lumina. Of course.</em> Why had he looked afraid? Why had the other students whispered when they heard my surname? And why did nobody in my family ever talk about my great uncle?</p>
+    <p class="dialogue">"Look around you," Varric said, his voice suddenly booming once more. The conversations throughout the hall ceased immediately. "Look to your left. Look to your right. Look at those seated before you and behind you."</p>
+    <p>I reluctantly obeyed. Cassian Drake sat several rows ahead, grinning smugly while half-listening to the lecture. Kip, meanwhile, was staring at the ceiling and mouthing numbers to himself for reasons I could not begin to understand.</p>
+    <p class="dialogue">"Statistics tell us," Varric continued, pacing across the stage, "that only half of you will graduate from Tetherpoint Academy."</p>
+    <p>The hall grew quiet.</p>
+    <p class="dialogue">"Half will fail. Some will quit. Some will discover they are unsuited for the path of the adventurer." A nervous murmur spread through the students. Then Varric grinned. "And I say nay to those statistics."</p>
+    <p>He thrust both hands skyward. A torrent of flame erupted from his palms, soaring high above the crowd before twisting into the shape of a magnificent phoenix. Its wings stretched from one side of the hall to the other, burning bright red and gold. Gasps of amazement echoed around me as the bird circled overhead.</p>
+    <p>Then, with a flick of his fingers, the fire cooled. Tiny flakes of shimmering snow began drifting down from the phoenix's wings, settling gently onto our hair and shoulders before dissolving into harmless motes of light.</p>
+    <p>The students erupted into applause.</p>
+    <p class="dialogue">"This is Class 777!" Varric roared, his voice shaking the room. "The Golden Cohort!"</p>
+    <p>More cheers.</p>
+    <p class="dialogue">"You will not simply beat the odds. You will obliterate them!"</p>
+    <p>The crowd leapt to its feet. Students shouted. Some stomped their feet. Others pumped their fists into the air. For a brief moment, I almost believed him. Almost. For the first time since arriving at Tetherpoint, I felt a smile creeping onto my face. Maybe Archmage Varric was right. Maybe Class 777 really was special. Maybe I belonged here after all.</p>
+    <div class="system-msg">SPLOOSH!</div>
+    <p>Instead of light snow dropping on me, Varric dropped a boulder of snow on my head.</p>
+
+    <p class="scene-break">◇ ◇ ◇</p>
+
+    <p>I gasped as icy slush slid down my neck and soaked the front of my shirt. Shock quickly gave way to anger. I shot to my feet and wiped the snow from my eyes, looking frantically around the hall.</p>
+    <p>Some students stared at me in disbelief. Others looked thoroughly entertained. A few had no idea what had just happened. But one thing was immediately obvious: nobody else was covered in snow. Just me.</p>
+    <p class="dialogue">"Seriously, what the fuck?" I demanded, my voice echoing through the hall.</p>
+    <p>The laughter died instantly.</p>
+    <p>Archmage Varric Pyre turned his attention toward me. Whatever warmth had been in his speech moments earlier had completely vanished. He looked at me, then at the snow dripping from my face, then back at me. He knew. I could see it in the flatness of his eyes — he knew perfectly well I hadn't done anything. And he didn't care.</p>
+    <p class="dialogue">"I warned you, young Lumina," he said coldly. "Do not disrupt this gathering."</p>
+    <p class="dialogue">"But you—" I started.</p>
+    <p>Without thinking, I raised my hand.</p>
+    <p>For a split second, I imagined ripping the staff from Varric's grip and driving it straight through his skull. I could almost feel the weight of it in my hand. I could almost see the look on his face. Something in my chest pulled tight, like I was trying to make it happen. Like it would if I just wanted it badly enough.</p>
+    <p>Nothing happened.</p>
+    <p>Varric didn't even flinch.</p>
+    <p class="dialogue">"I did not ask for your explanation." His voice carried something quiet and final, like a door being shut. "I asked for your silence."</p>
+    <p>I opened my mouth again anyway. Some part of me — the stupid, stubborn part — couldn't just let it go.</p>
+    <p>Varric raised his staff and pointed it directly at me.</p>
+    <p>The world disappeared.</p>
+    <p>There was no flash of light, no dramatic explosion of magic. One moment I was standing in the lecture hall. The next I was falling.</p>
+    <p>I crashed onto cold stone with enough force to knock the air from my lungs. Groaning, I pushed myself upright and looked around. The room was small and dreary. Bare stone walls surrounded me on all sides. A narrow bed occupied one corner, while a tiny wooden desk sat beneath a narrow window that admitted only a sliver of afternoon light. Thick iron bars blocked the doorway.</p>
+    <p>Mounted neatly beside the bars was a brass plaque:</p>
+    <div class="system-msg">DETENTION</div>
+    <p>I stared at it. Then at the bars. Then back at the plaque.</p>
+    <p class="dialogue">"Well," I muttered to myself, "fuck."</p>
+    <p>I sank into the chair at the desk and dropped my head into my hands. The snow was still melting in my hair.</p>
+    <p>What was so important about my last name? Why had Varric reacted like that? Why had some of the students whispered when they heard Lumina? And why did it feel like I was being punished for something I had never done?</p>
+    <p>I had worked my entire life to get here. Long nights studying. Volunteer service. Perfect grades. Years of dreaming about Tetherpoint Academy. Had I really done all of that just to fail on my very first day?</p>
+    <p>I didn't have an answer. The silence of the room offered none either.</p>
+
+    <p class="scene-break">◇ ◇ ◇</p>
+
+    <p>My thoughts spiraled darker and darker, until a shrill screech snapped me out of them.</p>
+    <p>I looked toward the window. Perched there was the strangest owl I had ever seen. It looked ancient. Its feathers were ragged and worn, their colors faded by age. One eye was completely black, darker than midnight itself. The other shone with a radiant golden light that seemed almost too intelligent to belong to an animal.</p>
+    <p>The owl stared at me. Not idly. Not curiously. It studied me. There was a weight to its gaze, a patience that had nothing to do with instinct.</p>
+    <p>After a long silence, it hopped through the window and landed on the desk with a heavy thud. Dust puffed into the air around it. I didn't move. It didn't either. We regarded each other across the small wooden surface like two people at a negotiation, neither willing to speak first.</p>
+    <p>Then, as if I had somehow failed a test I hadn't known I was taking, the owl gave a small, dissatisfied huff, spread its wings, and flew back out the window.</p>
+    <p>But it had not left empty-handed. Or rather — it had not left empty-taloned.</p>
+    <p>Resting on the desk, in a space I was certain had been empty a moment ago, was a weathered envelope. The paper was yellowed at the edges and soft with age, as if it had been written long before today and kept somewhere dark and patient, waiting for exactly this moment.</p>
+    <p>My hands were not entirely steady as I reached for it.</p>
+    <p>Written neatly across the front in silver ink were the words:</p>
+    <div class="system-msg">To: Elias Lumina<br>From: Uncle Daemeon</div>
+    <p>I set it back down. Picked it up again. Set it down once more.</p>
+    <p>Nobody in my family ever talked about Uncle Daemeon. Not once. Not ever. I had learned, young, that his name was the kind that caused conversations to end and eyes to cut away. I had stopped asking about him before I was old enough to understand why.</p>
+    <p>Now, sitting in a detention cell on my very first day at Tetherpoint Academy — snow still drying in my hair, my name apparently a curse, an archmage's vile words still fresh in my mind — I finally had something from him.</p>
+    <p>I picked up the envelope a third time. And this time, I didn't put it down.</p>
+
+    <div class="stat-block">
+      <div class="name">Elias Lumina</div>
+      <div class="meta">Level: 1 | Class: Unassigned | Faction: Unassigned</div>
+      <br>
+      <strong>Core Stats</strong><br>
+      Strength: 6 | Agility: 7 | Vitality: 8<br>
+      Intelligence: 9 | Wisdom: 10 | Charisma: 8<br><br>
+      <strong>Soul Balance Stats (Hidden)</strong><br>
+      Mercy: 88 <span style="color:var(--stat-down)">↓6</span> | Conviction: 78 <span style="color:var(--stat-up)">↑6</span> | Resentment: 27 <span style="color:var(--stat-down)">↑23</span><br>
+      Connection: 84 <span style="color:var(--stat-down)">↓7</span> | Hope: 87 <span style="color:var(--stat-down)">↓9</span> | Identity: 96 <span style="color:var(--stat-down)">↓4</span>
+    </div>
+  </div>
+
+  <div class="chapter-nav">
+    <a href="#" class="btn" onclick="showPage('ch1');return false">← Chapter 1</a>
+    <a href="#" class="btn" onclick="showPage('home');return false">Home</a>
+  </div>
+</div>
+
+<!-- ════════════════════ STATS PAGE ════════════════════ -->
+<div id="page-stats" class="chapter-page">
+  <div class="chapter-title-block">
+    <div class="chapter-num">Character Tracker</div>
+    <h2>Elias Lumina</h2>
+  </div>
+
+  <section class="section-wide">
+    <div class="stats-wrapper">
+      <div class="stats-header">
+        <h3>Level 1 — Unassigned</h3>
+        <div class="chapter-toggle">
+          <button class="active" onclick="setChapter(1, 'stats')">Ch. 1</button>
+          <button onclick="setChapter(2, 'stats')">Ch. 2</button>
+        </div>
+      </div>
+      <div class="stats-section-title">Core Stats</div>
+      <div class="stats-grid" id="core-stats-stats"></div>
+      <div class="stats-section-title">Soul Balance Stats (Hidden)</div>
+      <div class="stats-grid" id="soul-stats-stats"></div>
+    </div>
+
+    <div class="stats-wrapper" style="margin-top:2rem">
+      <h3 style="font-size:1rem;margin-bottom:1rem">Chapter Events Impact</h3>
+      <div id="events-list"></div>
+    </div>
+  </section>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div>&copy; 2024 Born Good. All rights reserved.</div>
+  <div class="motto">Knowledge is Power. Loyalty is Everything.</div>
+</footer>
+
+<script>
+const STATS = {
+  core: [
+    { name: 'Strength', ch1: 6, ch2: 6, max: 20 },
+    { name: 'Agility', ch1: 7, ch2: 7, max: 20 },
+    { name: 'Vitality', ch1: 8, ch2: 8, max: 20 },
+    { name: 'Intelligence', ch1: 9, ch2: 9, max: 20 },
+    { name: 'Wisdom', ch1: 10, ch2: 10, max: 20 },
+    { name: 'Charisma', ch1: 8, ch2: 8, max: 20 },
+  ],
+  soul: [
+    { name: 'Mercy', ch1: 94, ch2: 88, max: 100 },
+    { name: 'Conviction', ch1: 72, ch2: 78, max: 100 },
+    { name: 'Resentment', ch1: 4, ch2: 27, max: 100 },
+    { name: 'Connection', ch1: 91, ch2: 84, max: 100 },
+    { name: 'Hope', ch1: 96, ch2: 87, max: 100 },
+    { name: 'Identity', ch1: 100, ch2: 96, max: 100 },
+  ]
+};
+
+const EVENTS = [
+  { ch: 1, text: 'Defended Kip from Cassian Drake', effects: '+Mercy, +Conviction, +Connection' },
+  { ch: 1, text: 'Bullied and humiliated by Cassian', effects: '+Resentment (minor)' },
+  { ch: 1, text: 'Discovered hidden Soul Balance stats & Legacy Access', effects: 'Identity holds at 100' },
+  { ch: 2, text: 'Archmage Varric Pyre spits at the Lumina name', effects: '+Resentment, −Hope, −Connection' },
+  { ch: 2, text: 'Publicly humiliated with snow attack', effects: '+Resentment, −Hope, +Conviction' },
+  { ch: 2, text: 'Sent to detention on first day', effects: '−Hope, −Identity' },
+  { ch: 2, text: 'Received letter from Uncle Daemeon', effects: '+Conviction, slight −Identity (questioning self)' },
+];
+
+function renderStats(chapter, suffix) {
+  ['core', 'soul'].forEach(type => {
+    const el = document.getElementById(`${type}-stats-${suffix}`);
+    el.innerHTML = STATS[type].map(s => {
+      const val = chapter === 1 ? s.ch1 : s.ch2;
+      const prev = chapter === 2 ? s.ch1 : null;
+      const pct = (val / s.max) * 100;
+      let changeHtml = '';
+      if (chapter === 2 && prev !== null && val !== prev) {
+        const diff = val - prev;
+        const isUp = diff > 0;
+        const cls = (s.name === 'Resentment') ? (isUp ? 'down' : 'up') : (isUp ? 'up' : 'down');
+        changeHtml = `<span class="stat-change ${cls}">${isUp ? '+' : ''}${diff}</span>`;
+      }
+      return `<div class="stat-item">
+        <div class="stat-label">${s.name}</div>
+        <div class="stat-value">${val}${changeHtml}</div>
+        <div class="stat-bar-bg"><div class="stat-bar" style="width:${pct}%"></div></div>
+      </div>`;
+    }).join('');
+  });
+}
+
+function setChapter(ch, suffix) {
+  const wrapper = suffix === 'home' ? document.getElementById('stats-home') : document.querySelector('#page-stats .stats-wrapper');
+  wrapper.querySelectorAll('.chapter-toggle button').forEach((b, i) => {
+    b.classList.toggle('active', i === ch - 1);
+  });
+  renderStats(ch, suffix);
+}
+
+function renderEvents() {
+  const el = document.getElementById('events-list');
+  el.innerHTML = EVENTS.map(e =>
+    `<div style="display:flex;gap:1rem;padding:.6rem 0;border-bottom:1px solid rgba(184,154,91,.1);font-size:.9rem">
+      <span style="font-family:Cinzel;font-size:.65rem;color:var(--gold-dim);min-width:3rem">CH. ${e.ch}</span>
+      <span style="flex:1">${e.text}</span>
+      <span style="color:var(--text-muted);font-size:.8rem;font-style:italic">${e.effects}</span>
+    </div>`
+  ).join('');
+}
+
+function showPage(id) {
+  document.querySelectorAll('.chapter-page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-' + id).classList.add('active');
+  window.scrollTo(0, 0);
+}
+
+renderStats(1, 'home');
+renderStats(1, 'stats');
+renderEvents();
+</script>
+
+</body>
+</html>
