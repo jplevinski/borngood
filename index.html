@@ -800,6 +800,13 @@
       background: var(--gold);
       color: var(--bg-deep);
     }
+    .inv-hint {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.75rem;
+      font-style: italic;
+      color: var(--text-muted);
+      margin-bottom: 0.8rem;
+    }
     .inv-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
@@ -1371,6 +1378,7 @@
             <button onclick="event.stopPropagation();switchInvTab('ch1','items')">Items</button>
             <button onclick="event.stopPropagation();switchInvTab('ch1','potions')">Potions</button>
           </div>
+          <div class="inv-hint">Tap an item to learn more</div>
           <div class="inv-grid" id="inv-grid-ch1"></div>
         </div>
       </div></div>
@@ -1418,6 +1426,7 @@
               <button onclick="event.stopPropagation();switchInvTab('ch1-sb','items')">Items</button>
               <button onclick="event.stopPropagation();switchInvTab('ch1-sb','potions')">Potions</button>
             </div>
+            <div class="inv-hint">Tap an item to learn more</div>
             <div class="inv-grid" id="inv-grid-ch1-sb"></div>
           </div>
         </div></div>
@@ -1620,6 +1629,7 @@
             <button onclick="event.stopPropagation();switchInvTab('ch2','items')">Items</button>
             <button onclick="event.stopPropagation();switchInvTab('ch2','potions')">Potions</button>
           </div>
+          <div class="inv-hint">Tap an item to learn more</div>
           <div class="inv-grid" id="inv-grid-ch2"></div>
         </div>
       </div></div>
@@ -1667,6 +1677,7 @@
               <button onclick="event.stopPropagation();switchInvTab('ch2-sb','items')">Items</button>
               <button onclick="event.stopPropagation();switchInvTab('ch2-sb','potions')">Potions</button>
             </div>
+            <div class="inv-hint">Tap an item to learn more</div>
             <div class="inv-grid" id="inv-grid-ch2-sb"></div>
           </div>
         </div></div>
@@ -1844,6 +1855,7 @@
             <button onclick="event.stopPropagation();switchInvTab('ch3','items')">Items</button>
             <button onclick="event.stopPropagation();switchInvTab('ch3','potions')">Potions</button>
           </div>
+          <div class="inv-hint">Tap an item to learn more</div>
           <div class="inv-grid" id="inv-grid-ch3"></div>
         </div>
       </div></div>
@@ -1891,6 +1903,7 @@
               <button onclick="event.stopPropagation();switchInvTab('ch3-sb','items')">Items</button>
               <button onclick="event.stopPropagation();switchInvTab('ch3-sb','potions')">Potions</button>
             </div>
+            <div class="inv-hint">Tap an item to learn more</div>
             <div class="inv-grid" id="inv-grid-ch3-sb"></div>
           </div>
         </div></div>
