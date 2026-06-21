@@ -1049,6 +1049,22 @@
       border-radius: 50%;
       object-fit: cover;
       filter: drop-shadow(0 0 10px rgba(184,154,91,.25));
+      transition: transform .3s ease, filter .3s ease;
+      cursor: pointer;
+      opacity: 0;
+      animation: crestFadeIn .8s ease forwards;
+    }
+    .faction-crests-row a:nth-child(1) .faction-crest-icon { animation-delay: .1s; }
+    .faction-crests-row a:nth-child(2) .faction-crest-icon { animation-delay: .25s; }
+    .faction-crests-row a:nth-child(3) .faction-crest-icon { animation-delay: .4s; }
+    .faction-crests-row a:nth-child(4) .faction-crest-icon { animation-delay: .55s; }
+    .faction-crest-icon:hover {
+      transform: scale(1.12);
+      filter: drop-shadow(0 0 18px rgba(184,154,91,.5));
+    }
+    @keyframes crestFadeIn {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
     }
     .faction-card {
       border: 1px solid rgba(184,154,91,.15);
@@ -1059,6 +1075,7 @@
       position: relative;
       background-size: cover;
       background-position: center;
+      scroll-margin-top: 70px;
     }
     .faction-card::before {
       content: '';
@@ -2072,15 +2089,15 @@
 
   <section class="section" style="max-width:800px">
     <div class="faction-crests-row">
-      <img src="images/the-shield-hc.png" alt="The Shield" class="faction-crest-icon">
-      <img src="images/the-flame-hc.png" alt="The Flame" class="faction-crest-icon">
-      <img src="images/the-grove-hc.png" alt="The Grove" class="faction-crest-icon">
-      <img src="images/the-veil-hc.png" alt="The Veil" class="faction-crest-icon">
+      <a href="#" onclick="document.getElementById('faction-shield').scrollIntoView({behavior:'smooth',block:'start'});return false"><img src="images/the-shield-hc.png" alt="The Shield" class="faction-crest-icon"></a>
+      <a href="#" onclick="document.getElementById('faction-flame').scrollIntoView({behavior:'smooth',block:'start'});return false"><img src="images/the-flame-hc.png" alt="The Flame" class="faction-crest-icon"></a>
+      <a href="#" onclick="document.getElementById('faction-grove').scrollIntoView({behavior:'smooth',block:'start'});return false"><img src="images/the-grove-hc.png" alt="The Grove" class="faction-crest-icon"></a>
+      <a href="#" onclick="document.getElementById('faction-veil').scrollIntoView({behavior:'smooth',block:'start'});return false"><img src="images/the-veil-hc.png" alt="The Veil" class="faction-crest-icon"></a>
     </div>
     <p style="text-align:center;color:var(--text-muted);margin-bottom:2.5rem">Four factions govern Valerguard — not merely military orders, but competing philosophies that shape the kingdom's politics, culture, and the souls of its people. Every adventurer must eventually choose. Not all choices can be undone.</p>
 
     <!-- THE SHIELD -->
-    <div class="faction-card" style="background-image:url('images/the-shield-bg.jpg')">
+    <div class="faction-card" id="faction-shield" style="background-image:url('images/the-shield-bg.jpg')">
       <div class="faction-header">
         <div class="faction-header-text">
           <h3>The Shield</h3>
@@ -2129,7 +2146,7 @@
     </div>
 
     <!-- THE FLAME -->
-    <div class="faction-card" style="background-image:url('images/the-flame-bg.jpg')">
+    <div class="faction-card" id="faction-flame" style="background-image:url('images/the-flame-bg.jpg')">
       <div class="faction-header">
         <div class="faction-header-text">
           <h3>The Flame</h3>
@@ -2178,7 +2195,7 @@
     </div>
 
     <!-- THE GROVE -->
-    <div class="faction-card" style="background-image:url('images/the-grove-bg.jpg')">
+    <div class="faction-card" id="faction-grove" style="background-image:url('images/the-grove-bg.jpg')">
       <div class="faction-header">
         <div class="faction-header-text">
           <h3>The Grove</h3>
@@ -2227,7 +2244,7 @@
     </div>
 
     <!-- THE VEIL -->
-    <div class="faction-card" style="background-image:url('images/the-veil-bg.jpg');border-color:rgba(184,154,91,.3)">
+    <div class="faction-card" id="faction-veil" style="background-image:url('images/the-veil-bg.jpg');border-color:rgba(184,154,91,.3)">
       <div class="faction-header">
         <div class="faction-header-text">
           <h3>The Veil</h3>
