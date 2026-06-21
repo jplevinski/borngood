@@ -1034,8 +1034,29 @@
     }
     .faction-card:hover { border-color: rgba(184,154,91,.35); }
     .faction-header {
-      padding: 2rem 2.5rem 1.5rem;
+      padding: 2.5rem 2.5rem 1.5rem;
       border-bottom: 1px solid rgba(184,154,91,.1);
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .faction-header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(13,20,32,.55), rgba(13,20,32,.85));
+      z-index: 0;
+    }
+    .faction-header > * { position: relative; z-index: 1; }
+    .faction-crest {
+      width: 140px;
+      height: auto;
+      margin-bottom: 1rem;
+      filter: drop-shadow(0 0 12px rgba(184,154,91,.3));
     }
     .faction-header h3 {
       font-size: 1.4rem;
@@ -1993,7 +2014,8 @@
 
     <!-- THE SHIELD -->
     <div class="faction-card">
-      <div class="faction-header">
+      <div class="faction-header" style="background-image:url('images/the-shield-bg.png')">
+        <img src="images/the-shield-hc.png" alt="The Shield Crest" class="faction-crest">
         <h3>The Shield</h3>
         <div class="faction-motto">"Stand so others may endure."</div>
         <p class="faction-desc">The Shield are the protectors of Valerguard. Knights, guardians, military commanders, city wardens, and defenders of civilization. They believe that duty is the highest calling and that true strength is measured not by what you take, but by what you stand between.</p>
@@ -2040,7 +2062,8 @@
 
     <!-- THE FLAME -->
     <div class="faction-card">
-      <div class="faction-header">
+      <div class="faction-header" style="background-image:url('images/the-flame-bg.png')">
+        <img src="images/the-flame-hc.png" alt="The Flame Crest" class="faction-crest">
         <h3>The Flame</h3>
         <div class="faction-motto">"Life favors the bold."</div>
         <p class="faction-desc">The Flame are warriors, duelists, elementalists, and innovators. They believe greatness is earned through struggle and that the world rewards those who dare to seize it. Competition isn't cruelty — it's the forge that shapes legends.</p>
@@ -2087,7 +2110,8 @@
 
     <!-- THE GROVE -->
     <div class="faction-card">
-      <div class="faction-header">
+      <div class="faction-header" style="background-image:url('images/the-grove-bg.png')">
+        <img src="images/the-grove-hc.png" alt="The Grove Crest" class="faction-crest">
         <h3>The Grove</h3>
         <div class="faction-motto">"All things are connected."</div>
         <p class="faction-desc">The Grove are healers, scholars, alchemists, and caretakers. They believe compassion is the highest virtue and that the world is healed not through force, but through understanding. To them, every life is part of a greater whole.</p>
@@ -2134,7 +2158,8 @@
 
     <!-- THE VEIL -->
     <div class="faction-card" style="border-color:rgba(184,154,91,.3)">
-      <div class="faction-header">
+      <div class="faction-header" style="background-image:url('images/the-veil-bg.png')">
+        <img src="images/the-veil-hc.png" alt="The Veil Crest" class="faction-crest">
         <h3>The Veil</h3>
         <div class="faction-motto">"Truth survives where comfort dies."</div>
         <p class="faction-desc">The most feared faction. The Veil studies souls, memory, identity, shadows, forbidden magic, and Soul Balance itself. Most people believe The Veil meddles with things mortals were never meant to understand. They may be right.</p>
