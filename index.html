@@ -476,8 +476,12 @@
       gap: 0.6rem;
     }
     .sidebar-inner .inv-grid {
-      grid-template-columns: repeat(auto-fill, minmax(48px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(65px, 1fr));
     }
+    .sidebar-inner .inv-slot-name { font-size: 0.45rem; }
+    .sidebar-inner .inv-detail { padding: 0.7rem 0.8rem; }
+    .sidebar-inner .inv-detail .detail-name { font-size: 0.8rem; }
+    .sidebar-inner .inv-detail .detail-desc { font-size: 0.8rem; }
     .sidebar-inner h3 { font-size: 0.85rem; }
     .sidebar-inner .stats-section-title { margin: 1rem 0 0.5rem; }
 
@@ -798,66 +802,69 @@
     }
     .inv-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
       gap: 0.6rem;
     }
     .inv-slot {
-      aspect-ratio: 1;
       background: var(--bg-card);
       border: 1px solid rgba(184,154,91,.12);
       border-radius: 6px;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
+      padding: 0.5rem 0.3rem;
       font-size: 1.5rem;
       position: relative;
       cursor: default;
-      transition: border-color .3s;
+      transition: border-color .3s, background .3s;
+      min-height: 70px;
     }
-    .inv-slot.has-item { border-color: rgba(184,154,91,.35); cursor: help; }
-    .inv-slot.has-item:hover { border-color: var(--gold); }
-    .inv-slot.has-item:hover {
-      z-index: 200;
+    .inv-slot.has-item { border-color: rgba(184,154,91,.35); cursor: pointer; }
+    .inv-slot.has-item:hover, .inv-slot.has-item.selected {
+      border-color: var(--gold);
+      background: rgba(184,154,91,.08);
     }
-    .inv-tooltip {
-      display: none;
-      position: absolute;
-      bottom: calc(100% + 8px);
-      left: 50%;
-      transform: translateX(-50%);
-      background: var(--bg-deep);
-      border: 1px solid var(--gold-dim);
-      border-radius: 6px;
-      padding: 0.7rem 1rem;
-      width: 220px;
-      z-index: 999;
-      pointer-events: none;
-    }
-    .inv-slot:hover .inv-tooltip { display: block; }
-    .inv-tooltip .tt-name {
+    .inv-slot-name {
       font-family: 'Cinzel', serif;
-      font-size: 0.8rem;
+      font-size: 0.5rem;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      text-align: center;
+      margin-top: 0.3rem;
+      line-height: 1.2;
+    }
+    .inv-detail {
+      background: var(--bg-deep);
+      border: 1px solid rgba(184,154,91,.25);
+      border-radius: 8px;
+      padding: 1rem 1.2rem;
+      margin-top: 1rem;
+    }
+    .inv-detail .detail-name {
+      font-family: 'Cinzel', serif;
+      font-size: 0.9rem;
       color: var(--gold);
       margin-bottom: 0.2rem;
     }
-    .inv-tooltip .tt-type {
+    .inv-detail .detail-type {
       font-family: 'Cinzel', serif;
       font-size: 0.6rem;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--gold-dim);
-      margin-bottom: 0.3rem;
+      margin-bottom: 0.5rem;
     }
-    .inv-tooltip .tt-desc {
-      font-size: 0.8rem;
+    .inv-detail .detail-desc {
+      font-size: 0.85rem;
       color: var(--text-muted);
-      line-height: 1.4;
+      line-height: 1.5;
+      margin-bottom: 0.4rem;
     }
-    .inv-tooltip .tt-stats {
+    .inv-detail .detail-stats {
       font-family: 'Cinzel', serif;
       font-size: 0.7rem;
       color: var(--text-muted);
-      margin-top: 0.3rem;
       font-style: italic;
     }
 
@@ -2513,24 +2520,46 @@ function renderInventory(chId, tab) {
   const grid = document.getElementById('inv-grid-' + chId);
   const dataKey = getInvDataKey(chId);
   const items = (INVENTORY[dataKey] && INVENTORY[dataKey][tab]) || [];
+  let detailEl = document.getElementById('inv-detail-' + chId);
+  if (!detailEl) {
+    detailEl = document.createElement('div');
+    detailEl.id = 'inv-detail-' + chId;
+    detailEl.className = 'inv-detail';
+    detailEl.style.display = 'none';
+    grid.parentNode.insertBefore(detailEl, grid.nextSibling);
+  }
+  detailEl.style.display = 'none';
   let html = '';
   for (let i = 0; i < SLOT_COUNT; i++) {
     if (i < items.length) {
       const it = items[i];
-      html += `<div class="inv-slot has-item">
+      html += `<div class="inv-slot has-item" onclick="event.stopPropagation();showInvDetail('${chId}',${i},'${tab}')">
         ${it.icon}
-        <div class="inv-tooltip">
-          <div class="tt-name">${it.name}</div>
-          <div class="tt-type">${it.type}</div>
-          <div class="tt-desc">${it.desc}</div>
-          <div class="tt-stats">${it.stats}</div>
-        </div>
+        <div class="inv-slot-name">${it.name}</div>
       </div>`;
     } else {
       html += '<div class="inv-slot"></div>';
     }
   }
   grid.innerHTML = html;
+}
+
+function showInvDetail(chId, index, tab) {
+  const dataKey = getInvDataKey(chId);
+  const items = (INVENTORY[dataKey] && INVENTORY[dataKey][tab]) || [];
+  const it = items[index];
+  if (!it) return;
+  const detailEl = document.getElementById('inv-detail-' + chId);
+  const grid = document.getElementById('inv-grid-' + chId);
+  grid.querySelectorAll('.inv-slot').forEach(s => s.classList.remove('selected'));
+  grid.children[index].classList.add('selected');
+  detailEl.innerHTML = `
+    <div class="detail-name">${it.icon} ${it.name}</div>
+    <div class="detail-type">${it.type}</div>
+    <div class="detail-desc">${it.desc}</div>
+    <div class="detail-stats">${it.stats}</div>
+  `;
+  detailEl.style.display = 'block';
 }
 
 function switchInvTab(chId, tab) {
