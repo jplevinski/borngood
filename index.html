@@ -1033,6 +1033,19 @@
     .ency-category-title:first-of-type { margin-top: 1rem; }
 
     /* ─── FACTIONS ─── */
+    .faction-crests-row {
+      display: flex;
+      justify-content: center;
+      gap: clamp(1rem, 4vw, 3rem);
+      margin-bottom: 2rem;
+    }
+    .faction-crest-icon {
+      width: clamp(60px, 12vw, 120px);
+      height: clamp(60px, 12vw, 120px);
+      border-radius: 50%;
+      object-fit: cover;
+      filter: drop-shadow(0 0 10px rgba(184,154,91,.25));
+    }
     .faction-card {
       border: 1px solid rgba(184,154,91,.15);
       border-radius: 12px;
@@ -2038,6 +2051,12 @@
   </div>
 
   <section class="section" style="max-width:800px">
+    <div class="faction-crests-row">
+      <img src="images/the-shield-hc.png" alt="The Shield" class="faction-crest-icon">
+      <img src="images/the-flame-hc.png" alt="The Flame" class="faction-crest-icon">
+      <img src="images/the-grove-hc.png" alt="The Grove" class="faction-crest-icon">
+      <img src="images/the-veil-hc.png" alt="The Veil" class="faction-crest-icon">
+    </div>
     <p style="text-align:center;color:var(--text-muted);margin-bottom:2.5rem">Four factions govern Valerguard — not merely military orders, but competing philosophies that shape the kingdom's politics, culture, and the souls of its people. Every adventurer must eventually choose. Not all choices can be undone.</p>
 
     <!-- THE SHIELD -->
