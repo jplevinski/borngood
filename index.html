@@ -875,6 +875,109 @@
       line-height: 1.6;
     }
 
+    /* ─── LORE TOOLTIPS ─── */
+    .lore-term {
+      color: var(--gold);
+      text-decoration: none;
+      border-bottom: 1px dotted var(--gold-dim);
+      position: relative;
+      cursor: help;
+      text-indent: 0;
+    }
+    .lore-term:hover { color: var(--gold-bright); }
+    .lore-tip {
+      display: none;
+      position: absolute;
+      bottom: calc(100% + 10px);
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--bg-deep);
+      border: 1px solid var(--gold-dim);
+      border-radius: 8px;
+      padding: 0.8rem 1rem;
+      width: 280px;
+      z-index: 60;
+      pointer-events: none;
+      box-shadow: 0 8px 30px rgba(0,0,0,.6);
+    }
+    .lore-term:hover .lore-tip { display: block; pointer-events: auto; }
+    .lore-tip .lt-name {
+      font-family: 'Cinzel', serif;
+      font-size: 0.8rem;
+      color: var(--gold);
+      margin-bottom: 0.2rem;
+    }
+    .lore-tip .lt-type {
+      font-family: 'Cinzel', serif;
+      font-size: 0.6rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+      margin-bottom: 0.4rem;
+    }
+    .lore-tip .lt-desc {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+      font-style: normal;
+      text-indent: 0;
+    }
+    .lore-tip .lt-link {
+      display: block;
+      font-family: 'Cinzel', serif;
+      font-size: 0.6rem;
+      color: var(--gold-dim);
+      margin-top: 0.4rem;
+      letter-spacing: 0.1em;
+    }
+    @media (max-width: 700px) {
+      .lore-tip { width: 220px; font-size: 0.75rem; }
+    }
+
+    /* ─── ENCYCLOPEDIA ─── */
+    .ency-grid {
+      display: grid;
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .ency-entry {
+      background: var(--bg-mid);
+      border: 1px solid rgba(184,154,91,.15);
+      border-radius: 10px;
+      padding: 1.5rem 2rem;
+      transition: border-color .3s;
+      scroll-margin-top: 80px;
+    }
+    .ency-entry:hover { border-color: rgba(184,154,91,.35); }
+    .ency-entry h4 {
+      font-size: 1rem;
+      margin-bottom: 0.2rem;
+    }
+    .ency-entry .ency-type {
+      font-family: 'Cinzel', serif;
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+      margin-bottom: 0.6rem;
+    }
+    .ency-entry p {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+    .ency-category-title {
+      font-family: 'Cinzel', serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin: 2.5rem 0 0.5rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 1px solid rgba(184,154,91,.2);
+    }
+    .ency-category-title:first-of-type { margin-top: 1rem; }
+
     /* ─── MOBILE NAV ─── */
     @media (max-width: 700px) {
       .nav-links { gap: 0.8rem; }
@@ -899,6 +1002,7 @@
       </div>
     </li>
     <li><a href="#" onclick="showPage('characters');return false">Characters</a></li>
+    <li><a href="#" onclick="showPage('encyclopedia');return false">Encyclopedia</a></li>
     <li><a href="#" onclick="showPage('stats');return false">Stats Guide</a></li>
   </ul>
 </nav>
@@ -970,16 +1074,16 @@
   <div class="chapter-main">
   <div class="chapter-text">
     <p>I finally made it. I was standing at the gates of Tetherpoint Academy. I never thought this day would come.</p>
-    <p>All my hard work, all my volunteer service, all those long nights studying to earn top marks had led me here: the premier adventurer academy in all of Valerguard. Standing before its glory, I should have felt triumphant.</p>
+    <p>All my hard work, all my volunteer service, all those long nights studying to earn top marks had led me here: the premier adventurer academy in all of <a class="lore-term" onclick="showPage('encyclopedia');document.getElementById('ency-valerguard').scrollIntoView({behavior:'smooth',block:'center'});return false" href="#"><span class="lore-tip"><span class="lt-name">Valerguard</span><span class="lt-type">Kingdom</span><span class="lt-desc">The kingdom in which the story takes place, governed by the Four Factions.</span><span class="lt-link">→ Encyclopedia</span></span>Valerguard</a>. Standing before its glory, I should have felt triumphant.</p>
     <p>Instead, I felt terrified.</p>
-    <p>Tetherpoint Academy sat along the Tether River in the town of Mellonwood, just outside the capital city of Tether. Mellonwood was an academy town through and through. Blacksmiths forged gear for students, merchants sold training manuals and enchanted trinkets, and adventurers — real adventurers — walked the streets like ordinary folk. For the next six years, if I minded my Ps and Qs and didn't get myself expelled, this would be my home.</p>
-    <p>It was a far cry from Ravenscroft, the little village I was from.</p>
+    <p><a class="lore-term" onclick="showPage('encyclopedia');document.getElementById('ency-tetherpoint').scrollIntoView({behavior:'smooth',block:'center'});return false" href="#"><span class="lore-tip"><span class="lt-name">Tetherpoint Academy</span><span class="lt-type">Location — Academy</span><span class="lt-desc">The premier adventurer academy in Valerguard, founded during the Age of Ashes.</span><span class="lt-link">→ Encyclopedia</span></span>Tetherpoint Academy</a> sat along the Tether River in the town of <a class="lore-term" onclick="showPage('encyclopedia');document.getElementById('ency-mellonwood').scrollIntoView({behavior:'smooth',block:'center'});return false" href="#"><span class="lore-tip"><span class="lt-name">Mellonwood</span><span class="lt-type">Location — Town</span><span class="lt-desc">An academy town just outside the capital, built to serve Tetherpoint.</span><span class="lt-link">→ Encyclopedia</span></span>Mellonwood</a>, just outside the capital city of Tether. Mellonwood was an academy town through and through. Blacksmiths forged gear for students, merchants sold training manuals and enchanted trinkets, and adventurers — real adventurers — walked the streets like ordinary folk. For the next six years, if I minded my Ps and Qs and didn't get myself expelled, this would be my home.</p>
+    <p>It was a far cry from <a class="lore-term" onclick="showPage('encyclopedia');document.getElementById('ency-ravenscroft').scrollIntoView({behavior:'smooth',block:'center'});return false" href="#"><span class="lore-tip"><span class="lt-name">Ravenscroft</span><span class="lt-type">Location — Village</span><span class="lt-desc">Elias's ancient home village. Rarely does anyone from here attend Tetherpoint.</span><span class="lt-link">→ Encyclopedia</span></span>Ravenscroft</a>, the little village I was from.</p>
     <p>Ravenscroft was ancient. Nobody knew when it was founded or even where its name came from. A few thousand souls lived there at most, surviving on agriculture and herding. My father oversaw one of the larger cattle stocks and worked as a blacksmith besides. He had originally come from Tether, where he met my mother during her own schooling. They attended a small academy focused on agriculture and community service.</p>
     <p>Simple folk, we were called.</p>
     <p>And I was the first in generations to attend Tetherpoint.</p>
     <p>Though — I did have a great uncle on my mother's side who had attended.</p>
-    <p>He had been the pride of the family. At least until he joined The Veil instead of The Shield. After that, nobody liked talking about him. I had learned, young, that asking about him was the fastest way to make a room go quiet, so I had stopped.</p>
-    <p>The Veil was one of the Four Factions that governed Valerguard. Necessary, according to some. Dangerous, according to most. Their methods were secretive, their magic forbidden in many circles, and more than one history book blamed them for calamities best forgotten. Still, the Four kept the kingdom balanced.</p>
+    <p>He had been the pride of the family. At least until he joined <a class="lore-term" onclick="showPage('encyclopedia');document.getElementById('ency-the-veil').scrollIntoView({behavior:'smooth',block:'center'});return false" href="#"><span class="lore-tip"><span class="lt-name">The Veil</span><span class="lt-type">Faction — One of the Four</span><span class="lt-desc">A secretive faction wielding forbidden magic. Their methods are considered dangerous by most.</span><span class="lt-link">→ Encyclopedia</span></span>The Veil</a> instead of <a class="lore-term" onclick="showPage('encyclopedia');document.getElementById('ency-the-shield').scrollIntoView({behavior:'smooth',block:'center'});return false" href="#"><span class="lore-tip"><span class="lt-name">The Shield</span><span class="lt-type">Faction — One of the Four</span><span class="lt-desc">The most honorable of the Four Factions, focused on protection and defense.</span><span class="lt-link">→ Encyclopedia</span></span>The Shield</a>. After that, nobody liked talking about him. I had learned, young, that asking about him was the fastest way to make a room go quiet, so I had stopped.</p>
+    <p><a class="lore-term" onclick="showPage('encyclopedia');document.getElementById('ency-the-veil').scrollIntoView({behavior:'smooth',block:'center'});return false" href="#"><span class="lore-tip"><span class="lt-name">The Veil</span><span class="lt-type">Faction — One of the Four</span><span class="lt-desc">A secretive faction wielding forbidden magic. Blamed for calamities best forgotten.</span><span class="lt-link">→ Encyclopedia</span></span>The Veil</a> was one of the <a class="lore-term" onclick="showPage('encyclopedia');document.getElementById('ency-four-factions').scrollIntoView({behavior:'smooth',block:'center'});return false" href="#"><span class="lore-tip"><span class="lt-name">The Four Factions</span><span class="lt-type">Political Structure</span><span class="lt-desc">The four governing bodies that maintain balance in Valerguard.</span><span class="lt-link">→ Encyclopedia</span></span>Four Factions</a> that governed Valerguard. Necessary, according to some. Dangerous, according to most. Their methods were secretive, their magic forbidden in many circles, and more than one history book blamed them for calamities best forgotten. Still, the Four kept the kingdom balanced.</p>
     <p>Or so everyone said.</p>
 
     <p class="scene-break">◇ ◇ ◇</p>
@@ -988,7 +1092,7 @@
     <p>The voice nearly shook me from my thoughts. Its owner was a broad mountain of a man with a black beard thick enough to house birds, currently he was gesturing impatiently at the line of students shuffling forward.</p>
     <p class="dialogue">"Time to get your stats checked out."</p>
     <p>A nervous excitement spread through me, despite everything.</p>
-    <p>That was the thing about becoming an adventurer. The Wizards Emporium would perform a Soul Enchantment on every admitted student. Once complete, you'd be able to level up, gain skills, and awaken abilities beyond what ordinary people could ever achieve. Adventurers stood at the peak of society. Only a fraction of a fraction ever became one.</p>
+    <p>That was the thing about becoming an adventurer. The <a class="lore-term" onclick="showPage('encyclopedia');document.getElementById('ency-wizards-emporium').scrollIntoView({behavior:'smooth',block:'center'});return false" href="#"><span class="lore-tip"><span class="lt-name">The Wizards Emporium</span><span class="lt-type">Organization</span><span class="lt-desc">The organization responsible for performing Soul Enchantments on admitted students.</span><span class="lt-link">→ Encyclopedia</span></span>Wizards Emporium</a> would perform a <a class="lore-term" onclick="showPage('encyclopedia');document.getElementById('ency-soul-enchantment').scrollIntoView({behavior:'smooth',block:'center'});return false" href="#"><span class="lore-tip"><span class="lt-name">Soul Enchantment</span><span class="lt-type">Magical Process</span><span class="lt-desc">A ritual that transforms students into adventurers, granting stats, levels, and abilities.</span><span class="lt-link">→ Encyclopedia</span></span>Soul Enchantment</a> on every admitted student. Once complete, you'd be able to level up, gain skills, and awaken abilities beyond what ordinary people could ever achieve. Adventurers stood at the peak of society. Only a fraction of a fraction ever became one.</p>
     <p>Rarely did anyone from little old Ravenscroft make it this far.</p>
     <p class="dialogue">"Oi, shit-for-brains."</p>
     <p>The burly man jabbed a finger into my chest. I yelped. The pain shot through me like an electrified cattle prod.</p>
@@ -1000,7 +1104,7 @@
     <p class="scene-break">◇ ◇ ◇</p>
 
     <p>Ahead stood an enormous stone arch built into a tower. Where a door should have been, there churned a swirling vortex of purple, black, and crimson.</p>
-    <p>A portal. The Academy Gate.</p>
+    <p>A portal. The <a class="lore-term" onclick="showPage('encyclopedia');document.getElementById('ency-academy-gate').scrollIntoView({behavior:'smooth',block:'center'});return false" href="#"><span class="lore-tip"><span class="lt-name">The Academy Gate</span><span class="lt-type">Magical Structure</span><span class="lt-desc">A portal arch that transforms those who pass through into adventurers.</span><span class="lt-link">→ Encyclopedia</span></span>Academy Gate</a>.</p>
     <p>I had read about portals all my life. Some transported people across continents. Some protected ancient ruins. This one was different. This one made adventurers. And somehow, even after years of dreaming about it, standing in front of it made my chest feel like it was full of birds all trying to leave at once.</p>
     <p>A short red-haired boy stood directly ahead of me in line. When his turn came, he froze.</p>
     <p class="dialogue">"I-I don't know if I—"</p>
@@ -1047,7 +1151,7 @@
     </div>
 
     <p>I frowned.</p>
-    <p>I'd never heard of Soul Balance before. Every child in Valerguard learned the six Core Stats before they could read. But Soul Balance? That was new.</p>
+    <p>I'd never heard of <a class="lore-term" onclick="showPage('encyclopedia');document.getElementById('ency-soul-balance').scrollIntoView({behavior:'smooth',block:'center'});return false" href="#"><span class="lore-tip"><span class="lt-name">Soul Balance</span><span class="lt-type">Stat Category — Hidden</span><span class="lt-desc">A mysterious set of hidden stats measuring the moral and emotional fabric of a person.</span><span class="lt-link">→ Encyclopedia</span></span>Soul Balance</a> before. Every child in Valerguard learned the six Core Stats before they could read. But Soul Balance? That was new.</p>
     <p>As I focused on Mercy, the screen shifted.</p>
     <p><em>Mercy — The capacity to forgive, empathize, and value the lives of others above one's own interests.</em></p>
     <p>High Mercy increased healing affinity, enhanced support magic, made bonds easier to form. Low Mercy made ruthlessness easier. Made sacrifices more acceptable. Might strengthen offensive abilities.</p>
@@ -1206,7 +1310,7 @@
 
     <p class="scene-break">◇ ◇ ◇</p>
 
-    <p class="dialogue">"Welcome! Welcome, Class 777!" a wizard boomed, his voice echoing throughout the enormous hall. "What we have come to call the Golden Cohort!"</p>
+    <p class="dialogue">"Welcome! Welcome, <a class="lore-term" onclick="showPage('encyclopedia');document.getElementById('ency-golden-cohort').scrollIntoView({behavior:'smooth',block:'center'});return false" href="#"><span class="lore-tip"><span class="lt-name">Class 777 — The Golden Cohort</span><span class="lt-type">Student Body</span><span class="lt-desc">Elias's incoming class, called "the luckiest of numbers" by Archmage Varric.</span><span class="lt-link">→ Encyclopedia</span></span>Class 777</a>!" a wizard boomed, his voice echoing throughout the enormous hall. "What we have come to call the Golden Cohort!"</p>
     <p>He stood proudly at the podium, dressed in robes of crimson and gold embroidered with intricate flames that danced along the hems as if alive. He looked to be in his fifties, though the vigor in his voice suggested a much younger man. His hair was dark with streaks of silver at the temples, and his eyes swirled with blue and white light, like a storm trapped behind glass.</p>
     <p class="dialogue">"You are our hope," he continued, spreading his arms wide. "Our dreams. Triple sevens! The luckiest of numbers. Fortune smiles upon you this day, and history shall remember you as the brightest generation Tetherpoint Academy has ever produced."</p>
     <p>The room exploded into cheers. Students leapt to their feet. Some embraced one another while others shouted excitedly about their futures. The energy was infectious, but somehow I couldn't share in it.</p>
@@ -1239,7 +1343,7 @@
     <p>The wizard turned away and returned to the podium, seemingly unconcerned by the confusion he had just caused. Once there, he spread his arms grandly once more.</p>
     <p class="dialogue">"This is, indeed, a happy moment," he proclaimed. "I am Archmage Varric Pyre, Elementalist Extraordinary, master of both ice and fire, veteran of many wars, and now your prestigious instructor here at Tetherpoint Academy."</p>
     <p>The students erupted into applause. I barely heard them. For the first time in my life, I found myself wondering something I had never dared ask before: What exactly had my great uncle done?</p>
-    <p>Archmage Varric Pyre continued his lecture as though the strange interaction between us had never happened. He spoke of Tetherpoint Academy's long and storied history, founded nearly eight hundred years ago during the Age of Ashes. He recounted tales of legendary graduates who had slain dragons, sealed demonic rifts, and defended Valerguard from invasion. Every few minutes he would punctuate his stories with a dazzling display of magic, summoning dancing flames that twisted into warriors or conjuring intricate sculptures of ice that shimmered beneath the hall's lights.</p>
+    <p>Archmage Varric Pyre continued his lecture as though the strange interaction between us had never happened. He spoke of Tetherpoint Academy's long and storied history, founded nearly eight hundred years ago during the <a class="lore-term" onclick="showPage('encyclopedia');document.getElementById('ency-age-of-ashes').scrollIntoView({behavior:'smooth',block:'center'});return false" href="#"><span class="lore-tip"><span class="lt-name">The Age of Ashes</span><span class="lt-type">Historical Era</span><span class="lt-desc">An ancient period during which Tetherpoint Academy was founded.</span><span class="lt-link">→ Encyclopedia</span></span>Age of Ashes</a>. He recounted tales of legendary graduates who had slain dragons, sealed demonic rifts, and defended Valerguard from invasion. Every few minutes he would punctuate his stories with a dazzling display of magic, summoning dancing flames that twisted into warriors or conjuring intricate sculptures of ice that shimmered beneath the hall's lights.</p>
     <p>I tried to pay attention. I really did. But my mind kept circling back to his reaction.</p>
     <p><em>A Lumina. Of course.</em> Why had he looked afraid? Why had the other students whispered when they heard my surname? And why did nobody in my family ever talk about my great uncle?</p>
     <p class="dialogue">"Look around you," Varric said, his voice suddenly booming once more. The conversations throughout the hall ceased immediately. "Look to your left. Look to your right. Look at those seated before you and behind you."</p>
@@ -1461,6 +1565,110 @@
       </div>
 
     </div>
+  </section>
+</div>
+
+<!-- ════════════════════ ENCYCLOPEDIA ════════════════════ -->
+<div id="page-encyclopedia" class="chapter-page">
+  <div class="chapter-title-block">
+    <div class="chapter-num">The World of Valerguard</div>
+    <h2>Encyclopedia</h2>
+  </div>
+
+  <section class="section">
+    <p style="text-align:center;color:var(--text-muted);margin-bottom:1rem">A growing compendium of the people, places, factions, and forces that shape the world of Born Good. Entries update as the story unfolds.</p>
+
+    <div class="ency-category-title">Factions</div>
+    <div class="ency-grid">
+      <div class="ency-entry" id="ency-the-veil">
+        <h4>The Veil</h4>
+        <div class="ency-type">Faction — One of the Four</div>
+        <p>One of the Four Factions that govern Valerguard. The Veil operates in secrecy, wielding forbidden magic and methods most consider dangerous. History books blame them for calamities best forgotten, and their name alone can silence a room. Elias's great uncle Daemeon joined The Veil instead of The Shield — a decision that made him a pariah in the Lumina family.</p>
+      </div>
+      <div class="ency-entry" id="ency-the-shield">
+        <h4>The Shield</h4>
+        <div class="ency-type">Faction — One of the Four</div>
+        <p>One of the Four Factions of Valerguard. The Shield is widely considered the most honorable and respected faction, focused on protection and defense of the kingdom. Daemeon Lumina was expected to join The Shield after graduating from Tetherpoint — his choice of The Veil instead caused a family rift that has never healed.</p>
+      </div>
+      <div class="ency-entry" id="ency-four-factions">
+        <h4>The Four Factions</h4>
+        <div class="ency-type">Political Structure</div>
+        <p>The four governing bodies that maintain balance in Valerguard. The Shield and The Veil are two of the four — the remaining factions have not yet been revealed. Together they keep the kingdom balanced, though not everyone agrees on whether that balance is just.</p>
+      </div>
+    </div>
+
+    <div class="ency-category-title">Places</div>
+    <div class="ency-grid">
+      <div class="ency-entry" id="ency-valerguard">
+        <h4>Valerguard</h4>
+        <div class="ency-type">Kingdom</div>
+        <p>The kingdom in which the story takes place. Valerguard is governed by the Four Factions and home to adventurer academies, ancient magic, and a long history of conflict. Its capital city shares a name with the Tether River that runs through it.</p>
+      </div>
+      <div class="ency-entry" id="ency-tetherpoint">
+        <h4>Tetherpoint Academy</h4>
+        <div class="ency-type">Location — Academy</div>
+        <p>The premier adventurer academy in all of Valerguard, situated along the Tether River in the town of Mellonwood. Founded nearly eight hundred years ago during the Age of Ashes. Students who pass through the Academy Gate receive the Soul Enchantment and become adventurers. Only a fraction of applicants are admitted, and statistics say only half of those will graduate.</p>
+      </div>
+      <div class="ency-entry" id="ency-mellonwood">
+        <h4>Mellonwood</h4>
+        <div class="ency-type">Location — Town</div>
+        <p>An academy town just outside the capital city of Tether. Mellonwood exists to serve Tetherpoint Academy — blacksmiths forge gear for students, merchants sell training manuals and enchanted trinkets, and real adventurers walk the streets like ordinary folk.</p>
+      </div>
+      <div class="ency-entry" id="ency-ravenscroft">
+        <h4>Ravenscroft</h4>
+        <div class="ency-type">Location — Village</div>
+        <p>Elias Lumina's home village. Ancient and remote, nobody knows when it was founded or where its name came from. A few thousand souls survive on agriculture and herding. Rarely does anyone from Ravenscroft attend Tetherpoint Academy — Elias is the first in generations.</p>
+      </div>
+      <div class="ency-entry" id="ency-tether">
+        <h4>Tether</h4>
+        <div class="ency-type">Location — Capital City</div>
+        <p>The capital city of Valerguard. Elias's father originally came from Tether before settling in Ravenscroft. The Tether River runs through both the capital and the town of Mellonwood where Tetherpoint Academy sits.</p>
+      </div>
+    </div>
+
+    <div class="ency-category-title">Magic &amp; Systems</div>
+    <div class="ency-grid">
+      <div class="ency-entry" id="ency-academy-gate">
+        <h4>The Academy Gate</h4>
+        <div class="ency-type">Magical Structure</div>
+        <p>An enormous stone arch built into a tower at Tetherpoint Academy. Where a door should be, a swirling vortex of purple, black, and crimson churns — a portal that transforms those who pass through it into adventurers. The Soul Enchantment is performed as students enter, granting them access to stats, levels, and abilities.</p>
+      </div>
+      <div class="ency-entry" id="ency-soul-enchantment">
+        <h4>Soul Enchantment</h4>
+        <div class="ency-type">Magical Process</div>
+        <p>A ritual performed by the Wizards Emporium on every admitted student who passes through the Academy Gate. Once complete, the student becomes an adventurer — able to level up, gain skills, and awaken abilities beyond what ordinary people could achieve. Adventurers stand at the peak of society.</p>
+      </div>
+      <div class="ency-entry" id="ency-wizards-emporium">
+        <h4>The Wizards Emporium</h4>
+        <div class="ency-type">Organization</div>
+        <p>The organization responsible for performing Soul Enchantments on admitted students. Little else is known about their role or structure — only that they hold the power to create adventurers.</p>
+      </div>
+      <div class="ency-entry" id="ency-soul-balance">
+        <h4>Soul Balance</h4>
+        <div class="ency-type">Stat Category — Hidden</div>
+        <p>A mysterious set of stats that most adventurers never know they possess. Unlike Core Stats (Strength, Agility, etc.), Soul Balance measures the moral and emotional fabric of a person: Mercy, Conviction, Resentment, Connection, Hope, and Identity. Elias appears to be one of the few — perhaps the only — student who can see them.</p>
+      </div>
+      <div class="ency-entry" id="ency-legacy-access">
+        <h4>Legacy Access</h4>
+        <div class="ency-type">System Feature — Restricted</div>
+        <p>A cryptic message that appeared briefly at the bottom of Elias's status screen in faint silver letters: "Additional Functions Locked — Legacy Access: Restricted." It vanished before he could examine it further. No other student appears to have this feature. Its purpose remains unknown.</p>
+      </div>
+      <div class="ency-entry" id="ency-age-of-ashes">
+        <h4>The Age of Ashes</h4>
+        <div class="ency-type">Historical Era</div>
+        <p>An ancient period in Valerguard's history during which Tetherpoint Academy was founded, nearly eight hundred years before the events of the story. Little else has been revealed about this era.</p>
+      </div>
+    </div>
+
+    <div class="ency-category-title">Organizations &amp; Groups</div>
+    <div class="ency-grid">
+      <div class="ency-entry" id="ency-golden-cohort">
+        <h4>Class 777 — The Golden Cohort</h4>
+        <div class="ency-type">Student Body</div>
+        <p>Elias's incoming class at Tetherpoint Academy. Archmage Varric Pyre calls them "the luckiest of numbers" and proclaims they will be the brightest generation the academy has ever produced. Whether this is prophecy or showmanship remains to be seen.</p>
+      </div>
+    </div>
+
   </section>
 </div>
 
