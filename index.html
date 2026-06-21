@@ -1025,39 +1025,49 @@
 
     /* ─── FACTIONS ─── */
     .faction-card {
-      background: var(--bg-mid);
       border: 1px solid rgba(184,154,91,.15);
       border-radius: 12px;
       overflow: hidden;
       margin-bottom: 2.5rem;
       transition: border-color .3s;
-    }
-    .faction-card:hover { border-color: rgba(184,154,91,.35); }
-    .faction-header {
-      padding: 2.5rem 2.5rem 1.5rem;
-      border-bottom: 1px solid rgba(184,154,91,.1);
+      position: relative;
       background-size: cover;
       background-position: center;
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
     }
-    .faction-header::before {
+    .faction-card::before {
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(to bottom, rgba(13,20,32,.55), rgba(13,20,32,.85));
+      background: linear-gradient(135deg, rgba(13,20,32,.88) 0%, rgba(13,20,32,.72) 40%, rgba(13,20,32,.82) 100%);
       z-index: 0;
     }
-    .faction-header > * { position: relative; z-index: 1; }
-    .faction-crest {
-      width: 140px;
-      height: auto;
-      margin-bottom: 1rem;
-      filter: drop-shadow(0 0 12px rgba(184,154,91,.3));
+    .faction-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 12px;
+      box-shadow: inset 0 0 40px rgba(13,20,32,.6);
+      pointer-events: none;
+      z-index: 1;
     }
+    .faction-card > * { position: relative; z-index: 2; }
+    .faction-card:hover { border-color: rgba(184,154,91,.35); }
+    .faction-header {
+      padding: 2rem 2.5rem 1.5rem;
+      border-bottom: 1px solid rgba(184,154,91,.1);
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    .faction-crest {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      flex-shrink: 0;
+      filter: drop-shadow(0 0 12px rgba(184,154,91,.25));
+    }
+    .faction-header-text { flex: 1; }
     .faction-header h3 {
       font-size: 1.4rem;
       margin-bottom: 0.3rem;
@@ -1147,6 +1157,8 @@
       .nav-links { gap: 0.8rem; }
       .nav-links a, .toc-toggle { font-size: 0.6rem; letter-spacing: 0.08em; }
       .toc-menu { min-width: 200px; }
+      .faction-header { flex-direction: column; text-align: center; gap: 1rem; }
+      .faction-crest { width: 80px; height: 80px; }
     }
   </style>
 </head>
@@ -2013,12 +2025,14 @@
     <p style="text-align:center;color:var(--text-muted);margin-bottom:2.5rem">Four factions govern Valerguard — not merely military orders, but competing philosophies that shape the kingdom's politics, culture, and the souls of its people. Every adventurer must eventually choose. Not all choices can be undone.</p>
 
     <!-- THE SHIELD -->
-    <div class="faction-card">
-      <div class="faction-header" style="background-image:url('images/the-shield-bg.jpg')">
+    <div class="faction-card" style="background-image:url('images/the-shield-bg.jpg')">
+      <div class="faction-header">
         <img src="images/the-shield-hc.png" alt="The Shield Crest" class="faction-crest">
-        <h3>The Shield</h3>
-        <div class="faction-motto">"Stand so others may endure."</div>
-        <p class="faction-desc">The Shield are the protectors of Valerguard. Knights, guardians, military commanders, city wardens, and defenders of civilization. They believe that duty is the highest calling and that true strength is measured not by what you take, but by what you stand between.</p>
+        <div class="faction-header-text">
+          <h3>The Shield</h3>
+          <div class="faction-motto">"Stand so others may endure."</div>
+          <p class="faction-desc">The Shield are the protectors of Valerguard. Knights, guardians, military commanders, city wardens, and defenders of civilization. They believe that duty is the highest calling and that true strength is measured not by what you take, but by what you stand between.</p>
+        </div>
       </div>
       <div class="faction-body">
         <div class="faction-detail">
@@ -2061,12 +2075,14 @@
     </div>
 
     <!-- THE FLAME -->
-    <div class="faction-card">
-      <div class="faction-header" style="background-image:url('images/the-flame-bg.jpg')">
+    <div class="faction-card" style="background-image:url('images/the-flame-bg.jpg')">
+      <div class="faction-header">
         <img src="images/the-flame-hc.png" alt="The Flame Crest" class="faction-crest">
-        <h3>The Flame</h3>
-        <div class="faction-motto">"Life favors the bold."</div>
-        <p class="faction-desc">The Flame are warriors, duelists, elementalists, and innovators. They believe greatness is earned through struggle and that the world rewards those who dare to seize it. Competition isn't cruelty — it's the forge that shapes legends.</p>
+        <div class="faction-header-text">
+          <h3>The Flame</h3>
+          <div class="faction-motto">"Life favors the bold."</div>
+          <p class="faction-desc">The Flame are warriors, duelists, elementalists, and innovators. They believe greatness is earned through struggle and that the world rewards those who dare to seize it. Competition isn't cruelty — it's the forge that shapes legends.</p>
+        </div>
       </div>
       <div class="faction-body">
         <div class="faction-detail">
@@ -2109,12 +2125,14 @@
     </div>
 
     <!-- THE GROVE -->
-    <div class="faction-card">
-      <div class="faction-header" style="background-image:url('images/the-grove-bg.jpg')">
+    <div class="faction-card" style="background-image:url('images/the-grove-bg.jpg')">
+      <div class="faction-header">
         <img src="images/the-grove-hc.png" alt="The Grove Crest" class="faction-crest">
-        <h3>The Grove</h3>
-        <div class="faction-motto">"All things are connected."</div>
-        <p class="faction-desc">The Grove are healers, scholars, alchemists, and caretakers. They believe compassion is the highest virtue and that the world is healed not through force, but through understanding. To them, every life is part of a greater whole.</p>
+        <div class="faction-header-text">
+          <h3>The Grove</h3>
+          <div class="faction-motto">"All things are connected."</div>
+          <p class="faction-desc">The Grove are healers, scholars, alchemists, and caretakers. They believe compassion is the highest virtue and that the world is healed not through force, but through understanding. To them, every life is part of a greater whole.</p>
+        </div>
       </div>
       <div class="faction-body">
         <div class="faction-detail">
@@ -2157,12 +2175,14 @@
     </div>
 
     <!-- THE VEIL -->
-    <div class="faction-card" style="border-color:rgba(184,154,91,.3)">
-      <div class="faction-header" style="background-image:url('images/the-veil-bg.jpg')">
+    <div class="faction-card" style="background-image:url('images/the-veil-bg.jpg');border-color:rgba(184,154,91,.3)">
+      <div class="faction-header">
         <img src="images/the-veil-hc.png" alt="The Veil Crest" class="faction-crest">
-        <h3>The Veil</h3>
-        <div class="faction-motto">"Truth survives where comfort dies."</div>
-        <p class="faction-desc">The most feared faction. The Veil studies souls, memory, identity, shadows, forbidden magic, and Soul Balance itself. Most people believe The Veil meddles with things mortals were never meant to understand. They may be right.</p>
+        <div class="faction-header-text">
+          <h3>The Veil</h3>
+          <div class="faction-motto">"Truth survives where comfort dies."</div>
+          <p class="faction-desc">The most feared faction. The Veil studies souls, memory, identity, shadows, forbidden magic, and Soul Balance itself. Most people believe The Veil meddles with things mortals were never meant to understand. They may be right.</p>
+        </div>
       </div>
       <div class="faction-body">
         <div class="faction-detail">
