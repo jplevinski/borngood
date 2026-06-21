@@ -570,6 +570,9 @@
     .collapsible.open .collapsible-toggle .chevron {
       transform: rotate(180deg);
     }
+    .collapsible.open {
+      overflow: visible;
+    }
     .collapsible-body {
       max-height: 0;
       overflow: hidden;
@@ -577,6 +580,7 @@
     }
     .collapsible.open .collapsible-body {
       max-height: 2000px;
+      overflow: visible;
     }
     .collapsible-body-inner {
       padding: 0 1.5rem 1.5rem;
@@ -788,6 +792,9 @@
     }
     .inv-slot.has-item { border-color: rgba(184,154,91,.35); cursor: help; }
     .inv-slot.has-item:hover { border-color: var(--gold); }
+    .inv-slot.has-item:hover {
+      z-index: 200;
+    }
     .inv-tooltip {
       display: none;
       position: absolute;
@@ -799,7 +806,7 @@
       border-radius: 6px;
       padding: 0.7rem 1rem;
       width: 220px;
-      z-index: 50;
+      z-index: 999;
       pointer-events: none;
     }
     .inv-slot:hover .inv-tooltip { display: block; }
