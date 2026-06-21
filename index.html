@@ -618,6 +618,30 @@
       margin: 2rem 0;
       letter-spacing: 0.5em;
     }
+    .chapter-media {
+      margin: 2rem -1rem;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid rgba(184,154,91,.2);
+      box-shadow: 0 4px 30px rgba(0,0,0,.4);
+    }
+    .chapter-media video,
+    .chapter-media img {
+      width: 100%;
+      display: block;
+      border-radius: 10px;
+    }
+    .chapter-media video { border-radius: 10px; }
+    .chapter-media .media-caption {
+      font-family: 'Cinzel', serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      color: var(--gold-dim);
+      text-align: center;
+      padding: 0.6rem 1rem;
+      background: var(--bg-mid);
+      text-indent: 0;
+    }
     .chapter-text .dialogue {
       text-indent: 0;
     }
@@ -1226,6 +1250,15 @@
 
     <p>Ahead stood an enormous stone arch built into a tower. Where a door should have been, there churned a swirling vortex of purple, black, and crimson.</p>
     <p>A portal. The <a class="lore-term" onclick="showPage('encyclopedia');document.getElementById('ency-academy-gate').scrollIntoView({behavior:'smooth',block:'center'});return false" href="#"><span class="lore-tip"><span class="lt-name">The Academy Gate</span><span class="lt-type">Magical Structure</span><span class="lt-desc">A portal arch that transforms those who pass through into adventurers.</span><span class="lt-link">→ Encyclopedia</span></span>Academy Gate</a>.</p>
+
+    <div class="chapter-media">
+      <video autoplay muted loop playsinline poster="images/ch1image.jpg">
+        <source src="images/ch1video.mp4" type="video/mp4">
+        <img src="images/ch1image.jpg" alt="Elias and Kip standing before the Academy Gate">
+      </video>
+      <div class="media-caption">Elias and Kip before the Academy Gate</div>
+    </div>
+
     <p>I had read about portals all my life. Some transported people across continents. Some protected ancient ruins. This one was different. This one made adventurers. And somehow, even after years of dreaming about it, standing in front of it made my chest feel like it was full of birds all trying to leave at once.</p>
     <p>A short red-haired boy stood directly ahead of me in line. When his turn came, he froze.</p>
     <p class="dialogue">"I-I don't know if I—"</p>
