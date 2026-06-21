@@ -978,6 +978,104 @@
     }
     .ency-category-title:first-of-type { margin-top: 1rem; }
 
+    /* ─── FACTIONS ─── */
+    .faction-card {
+      background: var(--bg-mid);
+      border: 1px solid rgba(184,154,91,.15);
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 2.5rem;
+      transition: border-color .3s;
+    }
+    .faction-card:hover { border-color: rgba(184,154,91,.35); }
+    .faction-header {
+      padding: 2rem 2.5rem 1.5rem;
+      border-bottom: 1px solid rgba(184,154,91,.1);
+    }
+    .faction-header h3 {
+      font-size: 1.4rem;
+      margin-bottom: 0.3rem;
+    }
+    .faction-motto {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1rem;
+      color: var(--text-light);
+      margin-bottom: 0.8rem;
+    }
+    .faction-desc {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+    .faction-body {
+      padding: 1.5rem 2.5rem 2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+    }
+    .faction-detail h4 {
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      margin-bottom: 0.5rem;
+    }
+    .faction-detail ul {
+      list-style: none;
+      padding: 0;
+    }
+    .faction-detail li {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      padding: 0.2rem 0;
+      padding-left: 1em;
+      position: relative;
+    }
+    .faction-detail li::before {
+      content: '◇';
+      position: absolute;
+      left: 0;
+      color: var(--gold-dim);
+      font-size: 0.6rem;
+      top: 0.35rem;
+    }
+    .faction-note {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-style: italic;
+      margin-top: 0.5rem;
+      padding: 0.8rem 1rem;
+      background: rgba(184,154,91,.04);
+      border-radius: 6px;
+      border-left: 2px solid var(--gold-dim);
+    }
+    .faction-hidden {
+      background: linear-gradient(135deg, var(--bg-mid) 0%, rgba(184,154,91,.06) 100%);
+      border: 1px solid rgba(184,154,91,.25);
+      border-radius: 12px;
+      padding: 2rem 2.5rem;
+      margin-top: 1rem;
+      box-shadow: 0 0 30px rgba(184,154,91,.06);
+    }
+    .faction-hidden h3 {
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+    }
+    .faction-hidden p {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+      margin-bottom: 0.8rem;
+    }
+    .faction-hidden .reveal-text {
+      color: var(--text-light);
+      font-style: italic;
+    }
+    .faction-hidden .danger-text {
+      color: var(--stat-down);
+      font-weight: 600;
+      font-style: normal;
+    }
+
     /* ─── MOBILE NAV ─── */
     @media (max-width: 700px) {
       .nav-links { gap: 0.8rem; }
@@ -1002,6 +1100,7 @@
       </div>
     </li>
     <li><a href="#" onclick="showPage('characters');return false">Characters</a></li>
+    <li><a href="#" onclick="showPage('factions');return false">Factions</a></li>
     <li><a href="#" onclick="showPage('encyclopedia');return false">Encyclopedia</a></li>
     <li><a href="#" onclick="showPage('stats');return false">Stats Guide</a></li>
   </ul>
@@ -1578,6 +1677,218 @@
   </section>
 </div>
 
+<!-- ════════════════════ FACTIONS ════════════════════ -->
+<div id="page-factions" class="chapter-page">
+  <div class="chapter-title-block">
+    <div class="chapter-num">The Powers of Valerguard</div>
+    <h2>The Four Factions</h2>
+  </div>
+
+  <section class="section" style="max-width:800px">
+    <p style="text-align:center;color:var(--text-muted);margin-bottom:2.5rem">Four factions govern Valerguard — not merely military orders, but competing philosophies that shape the kingdom's politics, culture, and the souls of its people. Every adventurer must eventually choose. Not all choices can be undone.</p>
+
+    <!-- THE SHIELD -->
+    <div class="faction-card">
+      <div class="faction-header">
+        <h3>The Shield</h3>
+        <div class="faction-motto">"Stand so others may endure."</div>
+        <p class="faction-desc">The Shield are the protectors of Valerguard. Knights, guardians, military commanders, city wardens, and defenders of civilization. They believe that duty is the highest calling and that true strength is measured not by what you take, but by what you stand between.</p>
+      </div>
+      <div class="faction-body">
+        <div class="faction-detail">
+          <h4>Values</h4>
+          <ul>
+            <li>Duty</li>
+            <li>Honor</li>
+            <li>Sacrifice</li>
+            <li>Order</li>
+          </ul>
+        </div>
+        <div class="faction-detail">
+          <h4>Typical Classes</h4>
+          <ul>
+            <li>Guardian</li>
+            <li>Knight</li>
+            <li>Sentinel</li>
+            <li>Warden</li>
+            <li>Paladin</li>
+          </ul>
+        </div>
+        <div class="faction-detail">
+          <h4>Strengths</h4>
+          <ul>
+            <li>Defense</li>
+            <li>Leadership</li>
+            <li>Protective magic</li>
+          </ul>
+          <h4 style="margin-top:1rem">Weaknesses</h4>
+          <ul>
+            <li>Rigid traditions</li>
+            <li>Bureaucracy</li>
+            <li>Authoritarian tendencies</li>
+          </ul>
+        </div>
+      </div>
+      <div style="padding:0 2.5rem 1.5rem">
+        <div class="faction-note">Cassian Drake would fit naturally into The Shield. He sees strength as protecting those beneath him, even if his methods are rough.</div>
+      </div>
+    </div>
+
+    <!-- THE FLAME -->
+    <div class="faction-card">
+      <div class="faction-header">
+        <h3>The Flame</h3>
+        <div class="faction-motto">"Life favors the bold."</div>
+        <p class="faction-desc">The Flame are warriors, duelists, elementalists, and innovators. They believe greatness is earned through struggle and that the world rewards those who dare to seize it. Competition isn't cruelty — it's the forge that shapes legends.</p>
+      </div>
+      <div class="faction-body">
+        <div class="faction-detail">
+          <h4>Values</h4>
+          <ul>
+            <li>Ambition</li>
+            <li>Courage</li>
+            <li>Competition</li>
+            <li>Personal excellence</li>
+          </ul>
+        </div>
+        <div class="faction-detail">
+          <h4>Typical Classes</h4>
+          <ul>
+            <li>Elementalist</li>
+            <li>Berserker</li>
+            <li>Spellblade</li>
+            <li>Duelist</li>
+            <li>Battle Mage</li>
+          </ul>
+        </div>
+        <div class="faction-detail">
+          <h4>Strengths</h4>
+          <ul>
+            <li>Offensive magic</li>
+            <li>Combat prowess</li>
+            <li>Innovation</li>
+          </ul>
+          <h4 style="margin-top:1rem">Weaknesses</h4>
+          <ul>
+            <li>Pride</li>
+            <li>Arrogance</li>
+            <li>Recklessness</li>
+          </ul>
+        </div>
+      </div>
+      <div style="padding:0 2.5rem 1.5rem">
+        <div class="faction-note">Archmage Varric Pyre is one of The Flame's most respected instructors.</div>
+      </div>
+    </div>
+
+    <!-- THE GROVE -->
+    <div class="faction-card">
+      <div class="faction-header">
+        <h3>The Grove</h3>
+        <div class="faction-motto">"All things are connected."</div>
+        <p class="faction-desc">The Grove are healers, scholars, alchemists, and caretakers. They believe compassion is the highest virtue and that the world is healed not through force, but through understanding. To them, every life is part of a greater whole.</p>
+      </div>
+      <div class="faction-body">
+        <div class="faction-detail">
+          <h4>Values</h4>
+          <ul>
+            <li>Mercy</li>
+            <li>Harmony</li>
+            <li>Community</li>
+            <li>Healing</li>
+          </ul>
+        </div>
+        <div class="faction-detail">
+          <h4>Typical Classes</h4>
+          <ul>
+            <li>Healer</li>
+            <li>Druid</li>
+            <li>Alchemist</li>
+            <li>Spiritcaller</li>
+            <li>Sage</li>
+          </ul>
+        </div>
+        <div class="faction-detail">
+          <h4>Strengths</h4>
+          <ul>
+            <li>Healing</li>
+            <li>Support magic</li>
+            <li>Resilience</li>
+          </ul>
+          <h4 style="margin-top:1rem">Weaknesses</h4>
+          <ul>
+            <li>Idealism</li>
+            <li>Reluctance to fight</li>
+            <li>Vulnerability to exploitation</li>
+          </ul>
+        </div>
+      </div>
+      <div style="padding:0 2.5rem 1.5rem">
+        <div class="faction-note">Young Elias would almost certainly be expected to join The Grove — his extremely high Mercy and Hope make him a natural fit. But expectations and destiny rarely align.</div>
+      </div>
+    </div>
+
+    <!-- THE VEIL -->
+    <div class="faction-card" style="border-color:rgba(184,154,91,.3)">
+      <div class="faction-header">
+        <h3>The Veil</h3>
+        <div class="faction-motto">"Truth survives where comfort dies."</div>
+        <p class="faction-desc">The most feared faction. The Veil studies souls, memory, identity, shadows, forbidden magic, and Soul Balance itself. Most people believe The Veil meddles with things mortals were never meant to understand. They may be right.</p>
+      </div>
+      <div class="faction-body">
+        <div class="faction-detail">
+          <h4>Values</h4>
+          <ul>
+            <li>Truth above comfort</li>
+            <li>Knowledge above tradition</li>
+            <li>Freedom above order</li>
+          </ul>
+        </div>
+        <div class="faction-detail">
+          <h4>Typical Classes</h4>
+          <ul>
+            <li>Soul Weaver</li>
+            <li>Memory Walker</li>
+            <li>Hex Mage</li>
+            <li>Shadowbinder</li>
+            <li>Wraith Knight</li>
+          </ul>
+        </div>
+        <div class="faction-detail">
+          <h4>Strengths</h4>
+          <ul>
+            <li>Ancient knowledge</li>
+            <li>Soul magic</li>
+            <li>Hidden techniques</li>
+          </ul>
+          <h4 style="margin-top:1rem">Weaknesses</h4>
+          <ul>
+            <li>Distrusted by everyone</li>
+            <li>Emotionally dangerous magic</li>
+            <li>Secrecy</li>
+          </ul>
+        </div>
+      </div>
+      <div style="padding:0 2.5rem 1.5rem">
+        <div class="faction-note">Daemeon Lumina chose The Veil over The Shield — a decision that made him a pariah. His reasons have never been explained.</div>
+      </div>
+    </div>
+
+    <!-- HIDDEN HISTORY -->
+    <div class="divider"><span>◇</span></div>
+
+    <div class="faction-hidden">
+      <h3>The Hidden History</h3>
+      <p><strong>The public story:</strong> The Veil corrupted Daemeon Lumina and nearly destroyed Valerguard.</p>
+      <p><span class="reveal-text">The truth: Daemeon Lumina helped create the Soul Balance System itself.</span></p>
+      <p><span class="reveal-text">And perhaps even more troubling:</span></p>
+      <p><span class="reveal-text">The System doesn't just measure people. <span class="danger-text">It changes them.</span></span></p>
+      <p><span class="reveal-text">Which makes Elias's hidden stats — and his growing Resentment — <span class="danger-text">far more dangerous than anyone realizes.</span></span></p>
+    </div>
+
+  </section>
+</div>
+
 <!-- ════════════════════ ENCYCLOPEDIA ════════════════════ -->
 <div id="page-encyclopedia" class="chapter-page">
   <div class="chapter-title-block">
@@ -1593,17 +1904,27 @@
       <div class="ency-entry" id="ency-the-veil">
         <h4>The Veil</h4>
         <div class="ency-type">Faction — One of the Four</div>
-        <p>One of the Four Factions that govern Valerguard. The Veil operates in secrecy, wielding forbidden magic and methods most consider dangerous. History books blame them for calamities best forgotten, and their name alone can silence a room. Elias's great uncle Daemeon joined The Veil instead of The Shield — a decision that made him a pariah in the Lumina family.</p>
+        <p>One of the Four Factions that govern Valerguard. The most feared faction, The Veil studies souls, memory, identity, and forbidden magic. Their motto: "Truth survives where comfort dies." History books blame them for calamities best forgotten, and their name alone can silence a room. Elias's great uncle Daemeon joined The Veil instead of The Shield — a decision that made him a pariah in the Lumina family. <a href="#" class="lore-term" style="border:none" onclick="showPage('factions');return false">→ Full faction details</a></p>
       </div>
       <div class="ency-entry" id="ency-the-shield">
         <h4>The Shield</h4>
         <div class="ency-type">Faction — One of the Four</div>
-        <p>One of the Four Factions of Valerguard. The Shield is widely considered the most honorable and respected faction, focused on protection and defense of the kingdom. Daemeon Lumina was expected to join The Shield after graduating from Tetherpoint — his choice of The Veil instead caused a family rift that has never healed.</p>
+        <p>One of the Four Factions of Valerguard. The Shield is widely considered the most honorable and respected faction, focused on protection and defense of the kingdom. Their motto: "Stand so others may endure." Daemeon Lumina was expected to join The Shield after graduating from Tetherpoint — his choice of The Veil instead caused a family rift that has never healed. <a href="#" class="lore-term" style="border:none" onclick="showPage('factions');return false">→ Full faction details</a></p>
+      </div>
+      <div class="ency-entry" id="ency-the-flame">
+        <h4>The Flame</h4>
+        <div class="ency-type">Faction — One of the Four</div>
+        <p>One of the Four Factions of Valerguard. The Flame are warriors, duelists, elementalists, and innovators who believe greatness is earned through struggle. Their motto: "Life favors the bold." Archmage Varric Pyre is one of The Flame's most respected instructors. <a href="#" class="lore-term" style="border:none" onclick="showPage('factions');return false">→ Full faction details</a></p>
+      </div>
+      <div class="ency-entry" id="ency-the-grove">
+        <h4>The Grove</h4>
+        <div class="ency-type">Faction — One of the Four</div>
+        <p>One of the Four Factions of Valerguard. The Grove are healers, scholars, alchemists, and caretakers who believe compassion is the highest virtue. Their motto: "All things are connected." Elias's high Mercy and Hope stats would make him a natural candidate for The Grove. <a href="#" class="lore-term" style="border:none" onclick="showPage('factions');return false">→ Full faction details</a></p>
       </div>
       <div class="ency-entry" id="ency-four-factions">
         <h4>The Four Factions</h4>
         <div class="ency-type">Political Structure</div>
-        <p>The four governing bodies that maintain balance in Valerguard. The Shield and The Veil are two of the four — the remaining factions have not yet been revealed. Together they keep the kingdom balanced, though not everyone agrees on whether that balance is just.</p>
+        <p>The four governing bodies that maintain balance in Valerguard: The Shield (protectors), The Flame (warriors and innovators), The Grove (healers and scholars), and The Veil (seekers of forbidden truth). Together they keep the kingdom balanced, though not everyone agrees on whether that balance is just. <a href="#" class="lore-term" style="border:none" onclick="showPage('factions');return false">→ Full faction details</a></p>
       </div>
     </div>
 
