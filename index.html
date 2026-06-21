@@ -1162,6 +1162,18 @@
     .faction-note-wrap {
       padding: 0 1.5rem 1.5rem;
     }
+    .faction-top-link {
+      display: block;
+      text-align: center;
+      padding: 0.6rem 1.5rem 1.2rem;
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      color: var(--gold-dim);
+      text-decoration: none;
+      transition: color .3s;
+    }
+    .faction-top-link:hover { color: var(--gold); }
     .faction-note {
       background: rgba(0,0,0,.8);
       border-radius: 10px;
@@ -2088,7 +2100,7 @@
   </div>
 
   <section class="section" style="max-width:800px">
-    <div class="faction-crests-row">
+    <div class="faction-crests-row" id="faction-crests">
       <a href="#" onclick="document.getElementById('faction-shield').scrollIntoView({behavior:'smooth',block:'start'});return false"><img src="images/the-shield-hc.png" alt="The Shield" class="faction-crest-icon"></a>
       <a href="#" onclick="document.getElementById('faction-flame').scrollIntoView({behavior:'smooth',block:'start'});return false"><img src="images/the-flame-hc.png" alt="The Flame" class="faction-crest-icon"></a>
       <a href="#" onclick="document.getElementById('faction-grove').scrollIntoView({behavior:'smooth',block:'start'});return false"><img src="images/the-grove-hc.png" alt="The Grove" class="faction-crest-icon"></a>
@@ -2143,6 +2155,7 @@
       <div class="faction-note-wrap">
         <div class="faction-note">Cassian Drake would fit naturally into The Shield. He sees strength as protecting those beneath him, even if his methods are rough.</div>
       </div>
+      <a href="#" class="faction-top-link" onclick="document.getElementById('faction-crests').scrollIntoView({behavior:'smooth',block:'center'});return false">▲ BACK TO TOP</a>
     </div>
 
     <!-- THE FLAME -->
@@ -2192,6 +2205,7 @@
       <div class="faction-note-wrap">
         <div class="faction-note">Archmage Varric Pyre is one of The Flame's most respected instructors.</div>
       </div>
+      <a href="#" class="faction-top-link" onclick="document.getElementById('faction-crests').scrollIntoView({behavior:'smooth',block:'center'});return false">▲ BACK TO TOP</a>
     </div>
 
     <!-- THE GROVE -->
@@ -2241,6 +2255,7 @@
       <div class="faction-note-wrap">
         <div class="faction-note">Young Elias would almost certainly be expected to join The Grove — his extremely high Mercy and Hope make him a natural fit. But expectations and destiny rarely align.</div>
       </div>
+      <a href="#" class="faction-top-link" onclick="document.getElementById('faction-crests').scrollIntoView({behavior:'smooth',block:'center'});return false">▲ BACK TO TOP</a>
     </div>
 
     <!-- THE VEIL -->
@@ -2289,6 +2304,7 @@
       <div class="faction-note-wrap">
         <div class="faction-note">Daemeon Lumina chose The Veil over The Shield — a decision that made him a pariah. His reasons have never been explained.</div>
       </div>
+      <a href="#" class="faction-top-link" onclick="document.getElementById('faction-crests').scrollIntoView({behavior:'smooth',block:'center'});return false">▲ BACK TO TOP</a>
     </div>
 
     <!-- HIDDEN HISTORY -->
