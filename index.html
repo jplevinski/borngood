@@ -994,6 +994,15 @@
       scroll-margin-top: 80px;
     }
     .ency-entry:hover { border-color: rgba(184,154,91,.35); }
+    .ency-crest {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      float: left;
+      margin: 0 1.2rem 0.5rem 0;
+      filter: drop-shadow(0 0 10px rgba(184,154,91,.25));
+    }
     .ency-entry h4 {
       font-size: 1rem;
       margin-bottom: 0.2rem;
@@ -1058,14 +1067,6 @@
       display: flex;
       align-items: center;
       gap: 1.5rem;
-    }
-    .faction-crest {
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-      object-fit: cover;
-      flex-shrink: 0;
-      filter: drop-shadow(0 0 12px rgba(184,154,91,.25));
     }
     .faction-header-text {
       flex: 1;
@@ -1173,8 +1174,7 @@
       .nav-links { gap: 0.8rem; }
       .nav-links a, .toc-toggle { font-size: 0.6rem; letter-spacing: 0.08em; }
       .toc-menu { min-width: 200px; }
-      .faction-header { flex-direction: column; text-align: center; gap: 1rem; }
-      .faction-crest { width: 80px; height: 80px; }
+      .ency-crest { width: 60px; height: 60px; }
     }
   </style>
 </head>
@@ -2043,7 +2043,6 @@
     <!-- THE SHIELD -->
     <div class="faction-card" style="background-image:url('images/the-shield-bg.jpg')">
       <div class="faction-header">
-        <img src="images/the-shield-hc.png" alt="The Shield Crest" class="faction-crest">
         <div class="faction-header-text">
           <h3>The Shield</h3>
           <div class="faction-motto">"Stand so others may endure."</div>
@@ -2093,7 +2092,6 @@
     <!-- THE FLAME -->
     <div class="faction-card" style="background-image:url('images/the-flame-bg.jpg')">
       <div class="faction-header">
-        <img src="images/the-flame-hc.png" alt="The Flame Crest" class="faction-crest">
         <div class="faction-header-text">
           <h3>The Flame</h3>
           <div class="faction-motto">"Life favors the bold."</div>
@@ -2143,7 +2141,6 @@
     <!-- THE GROVE -->
     <div class="faction-card" style="background-image:url('images/the-grove-bg.jpg')">
       <div class="faction-header">
-        <img src="images/the-grove-hc.png" alt="The Grove Crest" class="faction-crest">
         <div class="faction-header-text">
           <h3>The Grove</h3>
           <div class="faction-motto">"All things are connected."</div>
@@ -2193,7 +2190,6 @@
     <!-- THE VEIL -->
     <div class="faction-card" style="background-image:url('images/the-veil-bg.jpg');border-color:rgba(184,154,91,.3)">
       <div class="faction-header">
-        <img src="images/the-veil-hc.png" alt="The Veil Crest" class="faction-crest">
         <div class="faction-header-text">
           <h3>The Veil</h3>
           <div class="faction-motto">"Truth survives where comfort dies."</div>
@@ -2267,21 +2263,25 @@
     <div class="ency-category-title">Factions</div>
     <div class="ency-grid">
       <div class="ency-entry" id="ency-the-veil">
+        <img src="images/the-veil-hc.png" alt="The Veil Crest" class="ency-crest">
         <h4>The Veil</h4>
         <div class="ency-type">Faction — One of the Four</div>
         <p>One of the Four Factions that govern Valerguard. The most feared faction, The Veil studies souls, memory, identity, and forbidden magic. Their motto: "Truth survives where comfort dies." History books blame them for calamities best forgotten, and their name alone can silence a room. Elias's great uncle Daemeon joined The Veil instead of The Shield — a decision that made him a pariah in the Lumina family. <a href="#" class="lore-term" style="border:none" onclick="showPage('factions');return false">→ Full faction details</a></p>
       </div>
       <div class="ency-entry" id="ency-the-shield">
+        <img src="images/the-shield-hc.png" alt="The Shield Crest" class="ency-crest">
         <h4>The Shield</h4>
         <div class="ency-type">Faction — One of the Four</div>
         <p>One of the Four Factions of Valerguard. The Shield is widely considered the most honorable and respected faction, focused on protection and defense of the kingdom. Their motto: "Stand so others may endure." Daemeon Lumina was expected to join The Shield after graduating from Tetherpoint — his choice of The Veil instead caused a family rift that has never healed. <a href="#" class="lore-term" style="border:none" onclick="showPage('factions');return false">→ Full faction details</a></p>
       </div>
       <div class="ency-entry" id="ency-the-flame">
+        <img src="images/the-flame-hc.png" alt="The Flame Crest" class="ency-crest">
         <h4>The Flame</h4>
         <div class="ency-type">Faction — One of the Four</div>
         <p>One of the Four Factions of Valerguard. The Flame are warriors, duelists, elementalists, and innovators who believe greatness is earned through struggle. Their motto: "Life favors the bold." Archmage Varric Pyre is one of The Flame's most respected instructors. <a href="#" class="lore-term" style="border:none" onclick="showPage('factions');return false">→ Full faction details</a></p>
       </div>
       <div class="ency-entry" id="ency-the-grove">
+        <img src="images/the-grove-hc.png" alt="The Grove Crest" class="ency-crest">
         <h4>The Grove</h4>
         <div class="ency-type">Faction — One of the Four</div>
         <p>One of the Four Factions of Valerguard. The Grove are healers, scholars, alchemists, and caretakers who believe compassion is the highest virtue. Their motto: "All things are connected." Elias's high Mercy and Hope stats would make him a natural candidate for The Grove. <a href="#" class="lore-term" style="border:none" onclick="showPage('factions');return false">→ Full faction details</a></p>
