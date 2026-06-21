@@ -1038,7 +1038,7 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(135deg, rgba(13,20,32,.88) 0%, rgba(13,20,32,.72) 40%, rgba(13,20,32,.82) 100%);
+      background: linear-gradient(135deg, rgba(13,20,32,.45) 0%, rgba(13,20,32,.3) 40%, rgba(13,20,32,.45) 100%);
       z-index: 0;
     }
     .faction-card::after {
@@ -1067,7 +1067,13 @@
       flex-shrink: 0;
       filter: drop-shadow(0 0 12px rgba(184,154,91,.25));
     }
-    .faction-header-text { flex: 1; }
+    .faction-header-text {
+      flex: 1;
+      background: rgba(0,0,0,.8);
+      padding: 1.2rem 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0,0,0,.5);
+    }
     .faction-header h3 {
       font-size: 1.4rem;
       margin-bottom: 0.3rem;
@@ -1085,7 +1091,11 @@
       line-height: 1.7;
     }
     .faction-body {
-      padding: 1.5rem 2.5rem 2rem;
+      margin: 0 1.5rem 0;
+      padding: 1.5rem;
+      background: rgba(0,0,0,.8);
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0,0,0,.5);
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 1.5rem;
@@ -1114,7 +1124,13 @@
       font-size: 0.6rem;
       top: 0.35rem;
     }
+    .faction-note-wrap {
+      padding: 0 1.5rem 1.5rem;
+    }
     .faction-note {
+      background: rgba(0,0,0,.8);
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0,0,0,.5);
       font-size: 0.85rem;
       color: var(--text-muted);
       font-style: italic;
@@ -2069,7 +2085,7 @@
           </ul>
         </div>
       </div>
-      <div style="padding:0 2.5rem 1.5rem">
+      <div class="faction-note-wrap">
         <div class="faction-note">Cassian Drake would fit naturally into The Shield. He sees strength as protecting those beneath him, even if his methods are rough.</div>
       </div>
     </div>
@@ -2119,7 +2135,7 @@
           </ul>
         </div>
       </div>
-      <div style="padding:0 2.5rem 1.5rem">
+      <div class="faction-note-wrap">
         <div class="faction-note">Archmage Varric Pyre is one of The Flame's most respected instructors.</div>
       </div>
     </div>
@@ -2169,7 +2185,7 @@
           </ul>
         </div>
       </div>
-      <div style="padding:0 2.5rem 1.5rem">
+      <div class="faction-note-wrap">
         <div class="faction-note">Young Elias would almost certainly be expected to join The Grove — his extremely high Mercy and Hope make him a natural fit. But expectations and destiny rarely align.</div>
       </div>
     </div>
@@ -2218,7 +2234,7 @@
           </ul>
         </div>
       </div>
-      <div style="padding:0 2.5rem 1.5rem">
+      <div class="faction-note-wrap">
         <div class="faction-note">Daemeon Lumina chose The Veil over The Shield — a decision that made him a pariah. His reasons have never been explained.</div>
       </div>
     </div>
