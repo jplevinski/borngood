@@ -1658,6 +1658,68 @@
       .lore-timeline { padding-left: 2rem; }
       .lore-era::before { left: -2rem; }
     }
+    .lore-map-wrap {
+      margin: 2rem 0;
+      text-align: center;
+    }
+    .lore-map-wrap img {
+      width: 100%;
+      max-width: 900px;
+      border-radius: 12px;
+      border: 1px solid rgba(184,154,91,.25);
+      box-shadow: 0 4px 30px rgba(0,0,0,.4);
+    }
+    .lore-map-caption {
+      font-family: 'Cinzel', serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+      margin-top: 0.8rem;
+    }
+    .lore-region-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.2rem;
+      margin: 1.5rem 0;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .lore-region {
+      background: var(--bg-mid);
+      border: 1px solid rgba(184,154,91,.15);
+      border-radius: 10px;
+      padding: 1.5rem 1.8rem;
+      transition: border-color .3s;
+    }
+    .lore-region:hover { border-color: rgba(184,154,91,.35); }
+    .lore-region h4 { font-size: 1rem; margin-bottom: 0.2rem; }
+    .lore-region .lore-region-type {
+      font-family: 'Cinzel', serif;
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+      margin-bottom: 0.6rem;
+    }
+    .lore-region p {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+    .lore-region .lore-locations {
+      margin-top: 0.6rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+    .lore-region .lore-locations strong {
+      color: var(--gold-dim);
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
 
     /* ─── MOBILE NAV ─── */
     /* ─── HAMBURGER MENU ─── */
@@ -3224,6 +3286,79 @@
 
     </div>
   </section>
+
+  <section class="section">
+    <div class="chapter-title-block" style="margin-bottom:1rem">
+      <div class="chapter-num">The Known World</div>
+      <h2>Geography of Valerguard</h2>
+    </div>
+    <p style="text-align:center;color:var(--text-muted);margin-bottom:2rem;max-width:700px;margin-left:auto;margin-right:auto">The modern borders of Valerguard are defined entirely by the scars of the Cataclysm. With The Maw anchoring the southeastern edge of the continent, the surrounding landscape is a volatile mix of natural barriers, ancient ruins, and transformed nations.</p>
+
+    <div class="lore-map-wrap">
+      <img src="images/valerguard-map.png" alt="Map of Valerguard and the surrounding regions">
+      <div class="lore-map-caption">The Known World — Year 777</div>
+    </div>
+
+    <div class="lore-region-grid">
+
+      <div class="lore-region">
+        <h4>The Kingdom of Valerguard</h4>
+        <div class="lore-region-type">Central Heartland</div>
+        <p>The kingdom forged by the 15 Original Magi at Year 0. Valerguard's heartland stretches from the Tether River basin to the Golden Highlands in the east, bounded by mountains to the north and wetlands to the south. The capital city of Tether sits at its center — a sprawling seat of power where the Four Factions maintain their political grip. Most of the kingdom's population lives within its borders, protected by Adventurers and the System that sustains them.</p>
+        <div class="lore-locations"><strong>Key locations:</strong> Tether, Red Brick, Mors, Golden Highlands, Crypt of the Ancient King</div>
+      </div>
+
+      <div class="lore-region">
+        <h4>Ravenscroft &amp; the Northern Reaches</h4>
+        <div class="lore-region-type">Rural Frontier</div>
+        <p>The remote northwestern corner of the kingdom, where farming villages cling to the foothills beneath the Dwarven Realms. <a class="lore-term" onclick="showPage('encyclopedia');document.getElementById('ency-ravenscroft').scrollIntoView({behavior:'smooth',block:'center'});return false" href="#"><span class="lore-tip"><span class="lt-name">Ravenscroft</span><span class="lt-type">Location — Village</span><span class="lt-desc">Elias's home village. Ancient, remote, and largely forgotten.</span><span class="lt-link">→ Encyclopedia</span></span>Ravenscroft</a> — Elias's home — sits here: ancient, forgotten, and far from the Academy's golden spires. Few from this region ever attend Tetherpoint. Those who do carry the weight of proving an entire village wrong.</p>
+        <div class="lore-locations"><strong>Key locations:</strong> Ravenscroft, Barklston, Highmeadow, Fen Meadow</div>
+      </div>
+
+      <div class="lore-region">
+        <h4>Mellonwood &amp; Tetherpoint</h4>
+        <div class="lore-region-type">Academy Territory</div>
+        <p>The academy town of <a class="lore-term" onclick="showPage('encyclopedia');document.getElementById('ency-mellonwood').scrollIntoView({behavior:'smooth',block:'center'});return false" href="#"><span class="lore-tip"><span class="lt-name">Mellonwood</span><span class="lt-type">Location — Town</span><span class="lt-desc">An academy town built to serve Tetherpoint. Blacksmiths, merchants, and real Adventurers.</span><span class="lt-link">→ Encyclopedia</span></span>Mellonwood</a> and <a class="lore-term" onclick="showPage('encyclopedia');document.getElementById('ency-tetherpoint').scrollIntoView({behavior:'smooth',block:'center'});return false" href="#"><span class="lore-tip"><span class="lt-name">Tetherpoint Academy</span><span class="lt-type">Location — Academy</span><span class="lt-desc">The premier adventurer academy in Valerguard.</span><span class="lt-link">→ Encyclopedia</span></span>Tetherpoint Academy</a> occupy the western bank of the Tether River, connected to the capital by the River's Fork trade route. Everything in Mellonwood exists to serve the Academy — from blacksmiths forging training gear to taverns filled with retired Adventurers trading war stories.</p>
+        <div class="lore-locations"><strong>Key locations:</strong> Tetherpoint Academy, Mellonwood, River's Fork, Dwarven Gate</div>
+      </div>
+
+      <div class="lore-region">
+        <h4>The Dwarven Realms</h4>
+        <div class="lore-region-type">Northern Mountains</div>
+        <p>A vast mountain range spanning the entire northern border. The Dwarven Realms predate the Cataclysm — their deep-mountain fortresses survived the Great Blunder largely intact, shielded by thousands of feet of solid rock. The dwarves maintain a cautious alliance with Valerguard, trading rare ores and masterwork weapons in exchange for surface goods and political neutrality. The Dwarven Gate near Mellonwood marks the primary trade route between the two civilizations.</p>
+        <div class="lore-locations"><strong>Key locations:</strong> Dwarven Gate, River's Bend, Barklston (trade post)</div>
+      </div>
+
+      <div class="lore-region">
+        <h4>The Great Forests &amp; Elven Wilds</h4>
+        <div class="lore-region-type">Western Wilderness</div>
+        <p>West of Valerguard's settled lands, the Great Forests stretch endlessly into the Elven Wilds — an ancient, untamed expanse that has never been mapped by human cartographers. The elves withdrew deeper into their territory after the Cataclysm, and contact with them is rare. The Whispering Grotto at the forest's edge is said to be one of the few places where human and elven paths still cross, though few who enter return unchanged.</p>
+        <div class="lore-locations"><strong>Key locations:</strong> Great Forests, Elven Wilds, Whispering Grotto</div>
+      </div>
+
+      <div class="lore-region">
+        <h4>The Wetlands &amp; Orcish Tribes</h4>
+        <div class="lore-region-type">Southern Frontier</div>
+        <p>The southern reaches dissolve into a vast marshland that serves as a natural barrier between Valerguard and the Orcish tribal territories beyond. The wetlands are treacherous — filled with poisonous flora, aggressive fauna, and dungeon breaches that spew low-tier monsters into the bogs. The orcish tribes are neither allies nor enemies; they exist in a tense, pragmatic coexistence with the kingdom, occasionally trading and frequently raiding.</p>
+        <div class="lore-locations"><strong>Key locations:</strong> Wetlands, Bog Entry, Ember Caves, Scorlaan</div>
+      </div>
+
+      <div class="lore-region">
+        <h4>The Eastern Coast</h4>
+        <div class="lore-region-type">Maritime Frontier</div>
+        <p>The eastern edge of the continent faces the open ocean — and, ominously, <a class="lore-term" onclick="showPage('encyclopedia');document.getElementById('ency-the-maw').scrollIntoView({behavior:'smooth',block:'center'});return false" href="#"><span class="lore-tip"><span class="lt-name">The Maw</span><span class="lt-type">Location — Oceanic Scar</span><span class="lt-desc">The churning crater at ground zero of the Cataclysm. Home to apex monsters.</span><span class="lt-link">→ Encyclopedia</span></span>The Maw</a> to the southeast. Merchant's Port handles the kingdom's maritime trade, while the Volcanic Islands offshore are home to creatures mutated by proximity to the Maw's ambient chaos. The Dreadnought Ruins along the coast are remnants of a pre-Cataclysm naval fortress, now infested with high-level monsters. Pirate Cove, tucked behind the volcanic chain, operates outside Valerguard's law entirely.</p>
+        <div class="lore-locations"><strong>Key locations:</strong> Merchant's Port, Dreadnought Ruins, Volcanic Islands, Pirate Cove, Gypsy's Last Market, Whispers Cutter</div>
+      </div>
+
+      <div class="lore-region">
+        <h4>The Maw</h4>
+        <div class="lore-region-type">Cataclysm Ground Zero</div>
+        <p>The churning, black oceanic scar at the southeastern edge of the map. The epicenter of the Great Blunder, where the 300-megaton detonation vaporized the ancient capital. The environmental mana pressure here is lethal to baseline humans. Its surrounding waters are occupied by the most powerful, intelligent, and terrifying monsters in existence — apex creatures that have fed on concentrated chaos magic for 777 years. Valerguard's highest-level Adventurers are permanently stationed at its borders.</p>
+        <div class="lore-locations"><strong>Key locations:</strong> The Maw, Crypt of the Damned (coastal approach)</div>
+      </div>
+
+    </div>
+  </section>
 </div>
 
 <!-- ════════════════════ STATS GUIDE ════════════════════ -->
@@ -3751,6 +3886,20 @@ const ENCY_ENTRIES = [
     desc:'The premier magic-wielders to emerge from the Catastrophe Crystals during the Dark Age. In the third year of the apocalypse, they gathered in the ruins and forged the Original Consensus — a historic treaty that organized the remaining survivors into Four Factions based on soul resonance, established the kingdom of Valerguard, and reset the calendar to Year 0. <a href="#" class="lore-term" style="border:none" onclick="showPage(\'lore\');return false">→ Full lore</a>' },
   { id:'ency-the-covenant', title:'The Covenant', sort:'Covenant', type:'Organization — Founding Faction', cat:'people', img:'',
     desc:'One of the four original factions formed during the Consensus of the Fifteen. Comprised of those focused on spiritual binding, community faith, and the absolute ideological unity required to hold the remnants of human society together. Their role in modern Valerguard has not yet been revealed.' },
+  { id:'ency-dwarven-realms', title:'The Dwarven Realms', sort:'Dwarven Realms', type:'Region — Northern Mountains', cat:'places', img:'',
+    desc:'A vast mountain range spanning the entire northern border of Valerguard. Their deep-mountain fortresses survived the Great Blunder largely intact. The dwarves maintain a cautious alliance with Valerguard, trading rare ores and masterwork weapons. The Dwarven Gate near Mellonwood marks the primary trade route between the two civilizations. <a href="#" class="lore-term" style="border:none" onclick="showPage(\'lore\');return false">→ World Lore</a>' },
+  { id:'ency-elven-wilds', title:'The Elven Wilds', sort:'Elven Wilds', type:'Region — Western Wilderness', cat:'places', img:'',
+    desc:'An ancient, untamed expanse beyond the Great Forests that has never been mapped by human cartographers. The elves withdrew deeper into their territory after the Cataclysm, and contact with them is rare. The Whispering Grotto at the forest\'s edge is said to be one of the few places where human and elven paths still cross. <a href="#" class="lore-term" style="border:none" onclick="showPage(\'lore\');return false">→ World Lore</a>' },
+  { id:'ency-great-forests', title:'The Great Forests', sort:'Great Forests', type:'Region — Western Valerguard', cat:'places', img:'',
+    desc:'Dense, ancient woodlands stretching westward from Valerguard\'s settled lands into the Elven Wilds. These forests predate the Cataclysm and harbor creatures and magic that the kingdom has never fully catalogued. The Whispering Grotto sits at their eastern edge. <a href="#" class="lore-term" style="border:none" onclick="showPage(\'lore\');return false">→ World Lore</a>' },
+  { id:'ency-orcish-tribes', title:'The Orcish Tribes', sort:'Orcish Tribes', type:'Region — Southern Frontier', cat:'places', img:'',
+    desc:'Tribal territories beyond the southern wetlands of Valerguard. The orcish tribes exist in a tense, pragmatic coexistence with the kingdom — occasionally trading, frequently raiding. They are neither allies nor enemies, and their internal politics remain largely unknown to Valerguard\'s scholars. <a href="#" class="lore-term" style="border:none" onclick="showPage(\'lore\');return false">→ World Lore</a>' },
+  { id:'ency-volcanic-islands', title:'The Volcanic Islands', sort:'Volcanic Islands', type:'Region — Eastern Coast', cat:'places', img:'',
+    desc:'A chain of volcanic islands off the eastern coast of Valerguard, dangerously close to The Maw. Home to creatures mutated by centuries of exposure to concentrated ambient chaos magic. Pirate Cove operates from behind the volcanic chain, outside Valerguard\'s law entirely. <a href="#" class="lore-term" style="border:none" onclick="showPage(\'lore\');return false">→ World Lore</a>' },
+  { id:'ency-merchants-port', title:'Merchant\'s Port', sort:'Merchants Port', type:'Location — Coastal City', cat:'places', img:'',
+    desc:'The kingdom\'s primary maritime trade hub on the eastern coast. Merchant\'s Port handles goods flowing in from coastal settlements, the Volcanic Islands, and the rare brave traders who skirt the edges of The Maw\'s influence. The Gypsy\'s Last Market operates nearby as a shadier alternative for goods the main port won\'t touch.' },
+  { id:'ency-dreadnought-ruins', title:'Dreadnought Ruins', sort:'Dreadnought Ruins', type:'Location — Ruins', cat:'places', img:'',
+    desc:'The remains of a massive pre-Cataclysm naval fortress on the eastern coast. Once a symbol of the ancient world\'s maritime power, the ruins are now infested with high-level monsters drawn by the residual magic and proximity to The Maw. Adventurer parties occasionally clear sections for salvage, but no one has fully reclaimed the site.' },
 ];
 
 let currentEncyTab = 'all';
