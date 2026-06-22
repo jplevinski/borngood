@@ -1677,6 +1677,109 @@
       color: var(--gold-dim);
       margin-top: 0.8rem;
     }
+    /* ─── INTERACTIVE MAP ─── */
+    .interactive-map {
+      position: relative;
+      display: inline-block;
+      max-width: 1100px;
+      width: 100%;
+      margin: 0 auto;
+    }
+    .interactive-map img {
+      width: 100%;
+      display: block;
+      border-radius: 12px;
+      border: 1px solid rgba(184,154,91,.25);
+      box-shadow: 0 4px 30px rgba(0,0,0,.4);
+    }
+    .map-pin {
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      transform: translate(-50%, -50%);
+      cursor: pointer;
+      z-index: 10;
+    }
+    .map-pin::before {
+      content: '';
+      display: block;
+      width: 10px;
+      height: 10px;
+      margin: 4px;
+      border-radius: 50%;
+      background: var(--gold);
+      border: 1.5px solid rgba(0,0,0,.4);
+      box-shadow: 0 0 6px rgba(184,154,91,.5);
+      transition: all .2s;
+    }
+    .map-pin:hover::before {
+      transform: scale(1.5);
+      box-shadow: 0 0 14px rgba(184,154,91,.8);
+    }
+    .map-pin.region::before {
+      width: 14px;
+      height: 14px;
+      margin: 2px;
+      background: transparent;
+      border: 2px solid var(--gold);
+      box-shadow: 0 0 8px rgba(184,154,91,.4);
+    }
+    .map-pin.region:hover::before {
+      background: rgba(184,154,91,.3);
+      transform: scale(1.4);
+    }
+    .map-tooltip {
+      display: none;
+      position: absolute;
+      bottom: calc(100% + 10px);
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--bg-deep);
+      border: 1px solid rgba(184,154,91,.3);
+      border-radius: 8px;
+      padding: 0.7rem 1rem;
+      width: 220px;
+      z-index: 50;
+      box-shadow: 0 4px 20px rgba(0,0,0,.6);
+      pointer-events: none;
+      text-align: left;
+    }
+    .map-pin:hover .map-tooltip,
+    .map-pin.active .map-tooltip {
+      display: block;
+    }
+    .map-tooltip-name {
+      font-family: 'Cinzel', serif;
+      font-size: 0.8rem;
+      color: var(--gold);
+      margin-bottom: 0.2rem;
+    }
+    .map-tooltip-type {
+      font-family: 'Cinzel', serif;
+      font-size: 0.55rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+      margin-bottom: 0.4rem;
+    }
+    .map-tooltip-desc {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+    @media (max-width: 600px) {
+      .map-tooltip { width: 180px; padding: 0.5rem 0.7rem; }
+      .map-tooltip-name { font-size: 0.7rem; }
+      .map-tooltip-desc { font-size: 0.7rem; }
+      .map-pin::before { width: 8px; height: 8px; }
+    }
+    [data-theme="light"] .map-tooltip {
+      background: #1a1a2e;
+      border-color: rgba(184,154,91,.4);
+    }
+    [data-theme="light"] .map-tooltip-name { color: #b89a5b; }
+    [data-theme="light"] .map-tooltip-type { color: #8a7a5a; }
+    [data-theme="light"] .map-tooltip-desc { color: #a0a0b0; }
     .lore-region-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -3297,8 +3400,52 @@
     <p style="text-align:center;color:var(--text-muted);margin-bottom:2rem;max-width:700px;margin-left:auto;margin-right:auto">The modern borders of Valerguard are defined entirely by the scars of the Cataclysm. With The Maw anchoring the southeastern edge of the continent, the surrounding landscape is a volatile mix of natural barriers, ancient ruins, and transformed nations.</p>
 
     <div class="lore-map-wrap">
-      <img src="images/valerguard-map.png" alt="Map of Valerguard and the surrounding regions">
-      <div class="lore-map-caption">The Known World — Year 777</div>
+      <div class="interactive-map" id="interactive-map">
+        <img src="images/maplight.png" alt="Map of Valerguard and the surrounding regions">
+
+        <!-- Region labels -->
+        <div class="map-pin region" style="top:10%;left:12%"><div class="map-tooltip"><div class="map-tooltip-name">Dwarven Realms</div><div class="map-tooltip-type">Region</div><div class="map-tooltip-desc">Mountain strongholds of the dwarven clans, rich in ore and ancient craft. Few outsiders are welcomed beyond the gates.</div></div></div>
+        <div class="map-pin region" style="top:48%;left:7%"><div class="map-tooltip"><div class="map-tooltip-name">Great Forests</div><div class="map-tooltip-type">Region</div><div class="map-tooltip-desc">Dense, primordial woodland stretching along the western frontier. Home to creatures untouched by the System.</div></div></div>
+        <div class="map-pin region" style="top:62%;left:5%"><div class="map-tooltip"><div class="map-tooltip-name">Elven Wilds</div><div class="map-tooltip-type">Region</div><div class="map-tooltip-desc">Untamed lands south of the Great Forests where elven clans maintain their ancient ways, free of faction politics.</div></div></div>
+        <div class="map-pin region" style="top:88%;left:35%"><div class="map-tooltip"><div class="map-tooltip-name">Orcish Tribes</div><div class="map-tooltip-type">Region</div><div class="map-tooltip-desc">Scattered tribal territories south of the Wetlands. Fierce, independent, and wary of Valerguard's expansion.</div></div></div>
+        <div class="map-pin region" style="top:78%;left:30%"><div class="map-tooltip"><div class="map-tooltip-name">Wetlands</div><div class="map-tooltip-type">Region</div><div class="map-tooltip-desc">Sprawling marshes and bogs marking the southern boundary of civilized Valerguard. Treacherous and largely uncharted.</div></div></div>
+        <div class="map-pin region" style="top:25%;left:55%"><div class="map-tooltip"><div class="map-tooltip-name">Valerguard</div><div class="map-tooltip-type">Kingdom — Central Heartland</div><div class="map-tooltip-desc">The kingdom forged by the 15 Original Magi. Its heartland stretches from the Tether River basin to the Golden Highlands.</div></div></div>
+
+        <!-- Cities & towns -->
+        <div class="map-pin" style="top:28%;left:30%"><div class="map-tooltip"><div class="map-tooltip-name">Ravenscroft</div><div class="map-tooltip-type">Village</div><div class="map-tooltip-desc">Elias's home village — ancient, remote, and largely forgotten by the wider kingdom.</div></div></div>
+        <div class="map-pin" style="top:22%;left:24%"><div class="map-tooltip"><div class="map-tooltip-name">Barklston</div><div class="map-tooltip-type">Town</div><div class="map-tooltip-desc">A northern foothill town near the Dwarven Realms, known for its hardy folk and mountain trade routes.</div></div></div>
+        <div class="map-pin" style="top:19%;left:42%"><div class="map-tooltip"><div class="map-tooltip-name">River's Bend</div><div class="map-tooltip-type">Town</div><div class="map-tooltip-desc">A river crossing settlement where northern trade caravans converge before heading south to Tether.</div></div></div>
+        <div class="map-pin" style="top:18%;left:52%"><div class="map-tooltip"><div class="map-tooltip-name">Gorham</div><div class="map-tooltip-type">Town</div><div class="map-tooltip-desc">A fortified town guarding the eastern mountain passes into the Dwarven Realms.</div></div></div>
+        <div class="map-pin" style="top:18%;left:62%"><div class="map-tooltip"><div class="map-tooltip-name">Highmarkets</div><div class="map-tooltip-type">Town</div><div class="map-tooltip-desc">A prosperous trade hub in the northeastern highlands, famous for its grand bazaars and merchant guilds.</div></div></div>
+        <div class="map-pin" style="top:34%;left:25%"><div class="map-tooltip"><div class="map-tooltip-name">Fen Hollow</div><div class="map-tooltip-type">Village</div><div class="map-tooltip-desc">A small settlement at the edge of the fenlands, often shrouded in mist.</div></div></div>
+        <div class="map-pin" style="top:32%;left:30%"><div class="map-tooltip"><div class="map-tooltip-name">Highmeadow</div><div class="map-tooltip-type">Village</div><div class="map-tooltip-desc">Rolling farmland community between Ravenscroft and the central river valleys.</div></div></div>
+        <div class="map-pin" style="top:38%;left:18%"><div class="map-tooltip"><div class="map-tooltip-name">Stonefells</div><div class="map-tooltip-type">Settlement</div><div class="map-tooltip-desc">Rocky outpost on the western frontier where the forests meet the mountain foothills.</div></div></div>
+        <div class="map-pin" style="top:50%;left:33%"><div class="map-tooltip"><div class="map-tooltip-name">Tetherpoint Academy & Mellonwood</div><div class="map-tooltip-type">Academy & Town</div><div class="map-tooltip-desc">The premier adventurer academy in Valerguard and the town built to serve it. Everything here revolves around training the next generation.</div></div></div>
+        <div class="map-pin" style="top:44%;left:15%"><div class="map-tooltip"><div class="map-tooltip-name">Oakraven</div><div class="map-tooltip-type">Settlement</div><div class="map-tooltip-desc">A woodland settlement deep in the western forests, surviving on lumber and foraging.</div></div></div>
+        <div class="map-pin" style="top:55%;left:16%"><div class="map-tooltip"><div class="map-tooltip-name">Gloom Caves</div><div class="map-tooltip-type">Dungeon</div><div class="map-tooltip-desc">A network of dark caverns beneath the western forests, rumored to connect to the deep underground.</div></div></div>
+        <div class="map-pin" style="top:48%;left:26%"><div class="map-tooltip"><div class="map-tooltip-name">Dwarven Gate</div><div class="map-tooltip-type">Landmark</div><div class="map-tooltip-desc">An ancient stone gateway marking the traditional border between human lands and the Dwarven Realms.</div></div></div>
+        <div class="map-pin" style="top:48%;left:30%"><div class="map-tooltip"><div class="map-tooltip-name">River's Fork</div><div class="map-tooltip-type">Trade Route</div><div class="map-tooltip-desc">Where the Tether River splits, creating the main trade artery connecting Mellonwood to the capital.</div></div></div>
+        <div class="map-pin" style="top:64%;left:18%"><div class="map-tooltip"><div class="map-tooltip-name">Whispering Grotto</div><div class="map-tooltip-type">Dungeon</div><div class="map-tooltip-desc">A haunted cave system in the southern forests where strange echoes carry voices from ages past.</div></div></div>
+        <div class="map-pin" style="top:68%;left:24%"><div class="map-tooltip"><div class="map-tooltip-name">Hollmartin</div><div class="map-tooltip-type">Village</div><div class="map-tooltip-desc">A remote southern village clinging to the edge of the Wetlands, often the last stop before the marshes.</div></div></div>
+        <div class="map-pin" style="top:42%;left:40%"><div class="map-tooltip"><div class="map-tooltip-name">Red Brick</div><div class="map-tooltip-type">Town</div><div class="map-tooltip-desc">Named for its distinctive clay architecture, this town sits along the Tether River north of the capital.</div></div></div>
+        <div class="map-pin" style="top:44%;left:46%"><div class="map-tooltip"><div class="map-tooltip-name">Mors</div><div class="map-tooltip-type">Town</div><div class="map-tooltip-desc">A somber town in central Valerguard, known for its ancient cemetery and proximity to old battlefields.</div></div></div>
+        <div class="map-pin" style="top:58%;left:42%"><div class="map-tooltip"><div class="map-tooltip-name">Tether</div><div class="map-tooltip-type">Capital City</div><div class="map-tooltip-desc">The sprawling capital of Valerguard where the Four Factions maintain their political grip. Seat of all major power.</div></div></div>
+        <div class="map-pin" style="top:42%;left:62%"><div class="map-tooltip"><div class="map-tooltip-name">Crypt of the Ancient King</div><div class="map-tooltip-type">Dungeon</div><div class="map-tooltip-desc">A legendary burial site in the eastern highlands, said to hold relics from before the Cataclysm.</div></div></div>
+        <div class="map-pin" style="top:50%;left:68%"><div class="map-tooltip"><div class="map-tooltip-name">Greenvalid Market</div><div class="map-tooltip-type">Town</div><div class="map-tooltip-desc">An eastern trade town serving as the gateway between Valerguard's heartland and the coastal regions.</div></div></div>
+        <div class="map-pin" style="top:30%;left:72%"><div class="map-tooltip"><div class="map-tooltip-name">Dreadnought Ruins</div><div class="map-tooltip-type">Ruins</div><div class="map-tooltip-desc">The shattered remains of an ancient fortress, destroyed during the Cataclysm. A high-level dungeon site.</div></div></div>
+        <div class="map-pin" style="top:55%;left:75%"><div class="map-tooltip"><div class="map-tooltip-name">Serpent's Lair</div><div class="map-tooltip-type">Dungeon</div><div class="map-tooltip-desc">A dangerous eastern dungeon carved by massive serpentine creatures, now home to deadly monsters.</div></div></div>
+        <div class="map-pin" style="top:18%;left:82%"><div class="map-tooltip"><div class="map-tooltip-name">Whispers Cutter</div><div class="map-tooltip-type">Coastal Settlement</div><div class="map-tooltip-desc">A windswept outpost on the northeastern coast, known for its shipbuilders and fisherfolk.</div></div></div>
+        <div class="map-pin" style="top:60%;left:78%"><div class="map-tooltip"><div class="map-tooltip-name">Merchant's Port</div><div class="map-tooltip-type">Port City</div><div class="map-tooltip-desc">The largest port on Valerguard's eastern coast, hub of maritime trade and naval power.</div></div></div>
+        <div class="map-pin" style="top:68%;left:38%"><div class="map-tooltip"><div class="map-tooltip-name">Ember Caves</div><div class="map-tooltip-type">Dungeon</div><div class="map-tooltip-desc">Volcanic caverns south of Tether where molten rivers flow beneath the surface.</div></div></div>
+        <div class="map-pin" style="top:72%;left:44%"><div class="map-tooltip"><div class="map-tooltip-name">Scorlaan</div><div class="map-tooltip-type">Town</div><div class="map-tooltip-desc">A gritty southern settlement built atop ancient ruins, surviving on salvage and monster bounties.</div></div></div>
+        <div class="map-pin" style="top:80%;left:45%"><div class="map-tooltip"><div class="map-tooltip-name">Crypt of the Dungeon</div><div class="map-tooltip-type">Dungeon</div><div class="map-tooltip-desc">A deep underground labyrinth in the southern marshlands, feared even by experienced Adventurers.</div></div></div>
+        <div class="map-pin" style="top:82%;left:52%"><div class="map-tooltip"><div class="map-tooltip-name">Bog Entry</div><div class="map-tooltip-type">Landmark</div><div class="map-tooltip-desc">The treacherous threshold where firm ground gives way to the endless southern marshes.</div></div></div>
+        <div class="map-pin" style="top:62%;left:87%"><div class="map-tooltip"><div class="map-tooltip-name">Volcanic Islands</div><div class="map-tooltip-type">Island Chain</div><div class="map-tooltip-desc">Smoldering islands off the eastern coast, rich in rare minerals but plagued by volcanic activity and monsters.</div></div></div>
+        <div class="map-pin" style="top:68%;left:82%"><div class="map-tooltip"><div class="map-tooltip-name">Pirate Cove</div><div class="map-tooltip-type">Settlement</div><div class="map-tooltip-desc">A lawless haven among the volcanic islands where smugglers and pirates operate beyond faction control.</div></div></div>
+        <div class="map-pin" style="top:88%;left:78%"><div class="map-tooltip"><div class="map-tooltip-name">The Maw</div><div class="map-tooltip-type">Cataclysm Site</div><div class="map-tooltip-desc">The swirling vortex in the southeastern sea — the wound left by the Great Blunder. It anchors the System itself and warps reality around it.</div></div></div>
+        <div class="map-pin" style="top:66%;left:32%"><div class="map-tooltip"><div class="map-tooltip-name">Elmer's Caves</div><div class="map-tooltip-type">Dungeon</div><div class="map-tooltip-desc">A modest cave system southwest of Tether, often used as a training ground for lower-level Adventurers.</div></div></div>
+      </div>
+      <div class="lore-map-caption">The Known World — Year 777 · Hover or tap locations for details</div>
     </div>
 
     <div class="lore-region-grid">
@@ -3566,6 +3713,15 @@ function closeHamburger() {
   document.getElementById('hamburger').classList.remove('open');
   document.getElementById('nav-links').classList.remove('mobile-open');
 }
+
+// Interactive map: tap-to-toggle for mobile
+document.addEventListener('click', function(e) {
+  var pin = e.target.closest('.map-pin');
+  document.querySelectorAll('.map-pin.active').forEach(function(p) {
+    if (p !== pin) p.classList.remove('active');
+  });
+  if (pin) pin.classList.toggle('active');
+});
 
 // Mobile sidebar toggle
 function toggleMobileSidebar() {
