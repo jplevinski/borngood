@@ -1552,6 +1552,113 @@
       line-height: 1.7;
     }
 
+    /* ─── LORE TIMELINE ─── */
+    .lore-timeline {
+      position: relative;
+      padding-left: 3rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .lore-timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--gold), rgba(184,154,91,.15));
+    }
+    .lore-era {
+      position: relative;
+      margin-bottom: 3rem;
+    }
+    .lore-era::before {
+      content: '';
+      position: absolute;
+      left: -3rem;
+      top: 0.6rem;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--gold);
+      border: 2px solid var(--bg-deep);
+      box-shadow: 0 0 12px rgba(184,154,91,.4);
+      transform: translateX(-5px);
+    }
+    .lore-era-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.3rem;
+    }
+    .lore-era h3 {
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      line-height: 1.4;
+    }
+    .lore-era p {
+      font-size: 1rem;
+      color: var(--text);
+      line-height: 1.9;
+      margin-bottom: 1rem;
+    }
+    .lore-era p:last-child { margin-bottom: 0; }
+    .lore-callout {
+      background: var(--bg-mid);
+      border: 1px solid rgba(184,154,91,.15);
+      border-left: 3px solid var(--gold);
+      border-radius: 0 8px 8px 0;
+      padding: 1.2rem 1.5rem;
+      margin: 1rem 0;
+    }
+    .lore-callout h4 {
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.4rem;
+    }
+    .lore-callout p {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 0;
+    }
+    .lore-faction-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1rem;
+      margin: 1rem 0;
+    }
+    .lore-faction-item {
+      background: var(--bg-mid);
+      border: 1px solid rgba(184,154,91,.15);
+      border-radius: 10px;
+      padding: 1.2rem 1.5rem;
+    }
+    .lore-faction-item h4 {
+      font-size: 0.9rem;
+      margin-bottom: 0.3rem;
+    }
+    .lore-faction-item .lore-faction-subtitle {
+      font-family: 'Cinzel', serif;
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+      margin-bottom: 0.5rem;
+    }
+    .lore-faction-item p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 0;
+    }
+    @media (max-width: 600px) {
+      .lore-timeline { padding-left: 2rem; }
+      .lore-era::before { left: -2rem; }
+    }
+
     /* ─── MOBILE NAV ─── */
     /* ─── HAMBURGER MENU ─── */
     .hamburger {
@@ -1649,6 +1756,7 @@
     <li><a href="#" onclick="showPage('characters');return false">Characters</a></li>
     <li><a href="#" onclick="showPage('factions');return false">Factions</a></li>
     <li><a href="#" onclick="showPage('encyclopedia');return false">Encyclopedia</a></li>
+    <li><a href="#" onclick="showPage('lore');return false">World Lore</a></li>
     <li><a href="#" onclick="showPage('stats');return false">Stats Guide</a></li>
     <li><button class="theme-toggle" onclick="toggleTheme()" title="Toggle light/dark mode">☀</button></li>
   </ul>
@@ -3017,6 +3125,107 @@
   </section>
 </div>
 
+<!-- ════════════════════ WORLD LORE ════════════════════ -->
+<div id="page-lore" class="chapter-page">
+  <div class="chapter-title-block">
+    <div class="chapter-num">A History of Valerguard</div>
+    <h2>World Lore</h2>
+  </div>
+
+  <section class="section">
+    <p style="text-align:center;color:var(--text-muted);margin-bottom:2.5rem;max-width:650px;margin-left:auto;margin-right:auto">The world didn't end because of a dark lord or an army of demons. It ended because a dungeon monster got greedy.</p>
+
+    <div class="lore-timeline">
+
+      <div class="lore-era">
+        <div class="lore-era-label">Year -3</div>
+        <h3>The Great Blunder</h3>
+        <p>Eight hundred years ago, mortal civilization stood at its apex. It did not fall to conquest or invasion. It fell to a single <a class="lore-term" onclick="showPage('encyclopedia');document.getElementById('ency-mimic').scrollIntoView({behavior:'smooth',block:'center'});return false" href="#"><span class="lore-tip"><span class="lt-name">Mimic</span><span class="lt-type">Creature — Dungeon Monster</span><span class="lt-desc">The baseline dungeon creature whose cosmic theft triggered the Cataclysm.</span><span class="lt-link">→ Encyclopedia</span></span>Mimic</a>'s greed.</p>
+        <p>Driven by an anomalous surge of instinct, this creature committed a cosmic taboo: it detached and stole a <a class="lore-term" onclick="showPage('encyclopedia');document.getElementById('ency-dungeon-core').scrollIntoView({behavior:'smooth',block:'center'});return false" href="#"><span class="lore-tip"><span class="lt-name">Dungeon Core</span><span class="lt-type">Magical Object</span><span class="lt-desc">Living magical anchors that bind monsters to their dungeons. This one was a vessel for the God of Chaos.</span><span class="lt-link">→ Encyclopedia</span></span>Dungeon Core</a> from deep beneath the earth. This particular core was no ordinary anchor — it was a direct vessel for the <a class="lore-term" onclick="showPage('encyclopedia');document.getElementById('ency-god-of-chaos').scrollIntoView({behavior:'smooth',block:'center'});return false" href="#"><span class="lore-tip"><span class="lt-name">The God of Chaos</span><span class="lt-type">Deity</span><span class="lt-desc">An ancient, volatile divine entity whose power was channeled through a stolen Dungeon Core.</span><span class="lt-link">→ Encyclopedia</span></span>God of Chaos</a>.</p>
+        <p>As the Mimic roamed the surface, the stolen core became a violent magical siphon, gorging on ambient mana and environmental energy in an exponential feedback loop. The creature's body could not contain it.</p>
+        <p>The result was a 300-megaton arcane detonation that shattered reality itself.</p>
+
+        <div class="lore-callout">
+          <h4>The Maw of Chaos</h4>
+          <p>The blast instantly vaporized the geographic, cultural, and political capital of the ancient world. The massive crater left behind was swallowed by the ocean, forming <a class="lore-term" onclick="showPage('encyclopedia');document.getElementById('ency-the-maw').scrollIntoView({behavior:'smooth',block:'center'});return false" href="#"><span class="lore-tip"><span class="lt-name">The Maw</span><span class="lt-type">Location — Oceanic Scar</span><span class="lt-desc">The churning, black aquatic crater at ground zero of the Cataclysm. Home to the most dangerous creatures alive.</span><span class="lt-link">→ Encyclopedia</span></span>The Maw</a> — the churning, black aquatic scar that bounds modern Valerguard.</p>
+        </div>
+
+        <div class="lore-callout">
+          <h4>The Toll</h4>
+          <p>One-third of the global population was instantly eradicated by the shockwave, thermal radiation, and mana-storms that followed.</p>
+        </div>
+      </div>
+
+      <div class="lore-era">
+        <div class="lore-era-label">Years -3 to 0</div>
+        <h3>The Dark Age</h3>
+        <p>The explosion was only the beginning. A toxic cloud of pulverized rock, soot, and fractured mana blotted out the sun entirely, plunging the world into freezing darkness and ecological freefall.</p>
+
+        <div class="lore-callout">
+          <h4>The Great Starvation</h4>
+          <p>With agriculture destroyed overnight, 90% of the surviving population was lost to famine, societal collapse, and resource wars in the years that followed.</p>
+        </div>
+
+        <p>But amidst the ash, something new emerged. Raw mana solidified into dense, irradiated remnants known as <a class="lore-term" onclick="showPage('encyclopedia');document.getElementById('ency-catastrophe-crystals').scrollIntoView({behavior:'smooth',block:'center'});return false" href="#"><span class="lore-tip"><span class="lt-name">Catastrophe Crystals</span><span class="lt-type">Magical Object</span><span class="lt-desc">Irradiated mana shards that granted the first Adventurers their power through a flash of Great Understanding.</span><span class="lt-link">→ Encyclopedia</span></span>Catastrophe Crystals</a>. While the masses starved, a rare 10% of survivors discovered these glowing shards scattered through the wreckage.</p>
+        <p>Touching a Crystal triggered a flash of <em>Great Understanding</em> — a forced evolutionary leap that anchored the world's chaotic energy into a structured framework. This was the birth of the <a class="lore-term" onclick="showPage('encyclopedia');document.getElementById('ency-soul-enchantment').scrollIntoView({behavior:'smooth',block:'center'});return false" href="#"><span class="lore-tip"><span class="lt-name">Soul Enchantment</span><span class="lt-type">Magical Process</span><span class="lt-desc">The ritual that transforms students into Adventurers with stats, levels, and abilities.</span><span class="lt-link">→ Encyclopedia</span></span>System Interface</a> — and the world's very first Adventurers.</p>
+      </div>
+
+      <div class="lore-era">
+        <div class="lore-era-label">Year 0</div>
+        <h3>The Consensus of the Fifteen</h3>
+        <p>In the absolute depth of the third winter of darkness, with humanity on the brink of extinction, the <a class="lore-term" onclick="showPage('encyclopedia');document.getElementById('ency-fifteen-magi').scrollIntoView({behavior:'smooth',block:'center'});return false" href="#"><span class="lore-tip"><span class="lt-name">The 15 Original Magi</span><span class="lt-type">Historical Figures</span><span class="lt-desc">The premier magic-wielders who forged the Original Consensus and established the Four Factions.</span><span class="lt-link">→ Encyclopedia</span></span>15 Original Magi</a> — the premier magic-wielders to emerge from the catastrophe — gathered in the ruins to forge a treaty that would save what remained of the species.</p>
+        <p>The magic released by the Catastrophe was highly reactive to human consciousness. Under the guidance of the Fifteen, the surviving 10% of humanity instinctively sorted themselves into four factions based entirely on the character and resonance of their souls.</p>
+
+        <div class="lore-faction-grid">
+          <div class="lore-faction-item">
+            <h4>The Shield</h4>
+            <div class="lore-faction-subtitle">The Lion</div>
+            <p>Formed by those whose souls resonated with an unyielding, protective instinct. In the Dark Age, they used their awakened Strength and Vitality to stand on the front lines against starvation and madness.</p>
+          </div>
+          <div class="lore-faction-item">
+            <h4>The Veil</h4>
+            <div class="lore-faction-subtitle">The Hooded Eye</div>
+            <p>Formed by those whose souls gravitated toward secrecy, survival, and the taboo aspects of Chaos magic. They realized that to preserve humanity, someone had to wield the hidden knives in the dark.</p>
+          </div>
+          <div class="lore-faction-item">
+            <h4>The Wizards Emporium</h4>
+            <div class="lore-faction-subtitle">The Analytical Minds</div>
+            <p>Formed by the analytical, high-Intelligence minds who sought to study the Crystals, codify the System's mechanics, and master the structural manipulation of the soul.</p>
+          </div>
+          <div class="lore-faction-item">
+            <h4>The Covenant</h4>
+            <div class="lore-faction-subtitle">The Spiritual Binders</div>
+            <p>Formed by those focused on spiritual binding, community faith, and the absolute ideological unity required to hold the remnants of human society together.</p>
+          </div>
+        </div>
+
+        <p>To mark humanity's triumph over cosmic destruction, the Fifteen discarded the old world's calendar, established the kingdom of <a class="lore-term" onclick="showPage('encyclopedia');document.getElementById('ency-valerguard').scrollIntoView({behavior:'smooth',block:'center'});return false" href="#"><span class="lore-tip"><span class="lt-name">Valerguard</span><span class="lt-type">Kingdom</span><span class="lt-desc">The kingdom in which the story takes place, founded at Year 0 after the Cataclysm.</span><span class="lt-link">→ Encyclopedia</span></span>Valerguard</a>, and declared Year 0.</p>
+      </div>
+
+      <div class="lore-era">
+        <div class="lore-era-label">Year 2 onward</div>
+        <h3>The Ecosystem of Chaos</h3>
+        <p>The atmosphere cleared in Year 2, but the world beneath it was unrecognizable.</p>
+        <p>Before the Cataclysm, the mortal world and the monster world were strictly separated. Dangerous creatures were bound by ancient laws to deep, subterranean <a class="lore-term" onclick="showPage('encyclopedia');document.getElementById('ency-dungeons').scrollIntoView({behavior:'smooth',block:'center'});return false" href="#"><span class="lore-tip"><span class="lt-name">Dungeons</span><span class="lt-type">Subterranean Structures</span><span class="lt-desc">Ancient underground networks where monsters were contained. The Cataclysm cracked their seals forever.</span><span class="lt-link">→ Encyclopedia</span></span>Dungeons</a> where they could be contained or cleared by early hunters.</p>
+        <p>The 300-megaton blast cracked the seals of the world's dungeon networks, releasing a flood of raw mana across the surface. This is why modern Valerguard is plagued by roaming monsters — beasts that were never meant to breathe surface air, now hunting freely across the kingdom's wild frontiers, ruins, and coastlines.</p>
+
+        <div class="lore-callout">
+          <h4>The Intelligence Shift</h4>
+          <p>Near <a class="lore-term" onclick="showPage('encyclopedia');document.getElementById('ency-the-maw').scrollIntoView({behavior:'smooth',block:'center'});return false" href="#"><span class="lore-tip"><span class="lt-name">The Maw</span><span class="lt-type">Location — Oceanic Scar</span><span class="lt-desc">The churning, black aquatic crater at ground zero of the Cataclysm.</span><span class="lt-link">→ Encyclopedia</span></span>The Maw</a>, creatures have absorbed centuries of concentrated ambient magic. They don't hunt by instinct — they strategize, form hierarchies, and possess a deep understanding of the System itself. For 777 years, Valerguard's finest Adventurers have been deployed to the borders of The Maw just to keep its horrors contained.</p>
+        </div>
+      </div>
+
+      <div class="lore-era">
+        <div class="lore-era-label">Year 777 — Present Day</div>
+        <h3>The Golden Cohort</h3>
+        <p>Exactly 777 years since the Consensus, <a class="lore-term" onclick="showPage('encyclopedia');document.getElementById('ency-tetherpoint').scrollIntoView({behavior:'smooth',block:'center'});return false" href="#"><span class="lore-tip"><span class="lt-name">Tetherpoint Academy</span><span class="lt-type">Location — Academy</span><span class="lt-desc">The premier adventurer academy in Valerguard, founded during the Age of Ashes.</span><span class="lt-link">→ Encyclopedia</span></span>Tetherpoint Academy</a> opens its gates to <a class="lore-term" onclick="showPage('encyclopedia');document.getElementById('ency-golden-cohort').scrollIntoView({behavior:'smooth',block:'center'});return false" href="#"><span class="lore-tip"><span class="lt-name">Class 777 — The Golden Cohort</span><span class="lt-type">Student Body</span><span class="lt-desc">Elias's incoming class, declared by Varric to be the luckiest of numbers.</span><span class="lt-link">→ Encyclopedia</span></span>Class 777: The Golden Cohort</a>.</p>
+        <p>To the kingdom, this milestone is a symbol of institutional pride, noble legacy, and triumph over ancient chaos. But underneath the golden spires and public celebrations, the raw metrics of the original System still watch from the shadows — waiting for the timeline to align.</p>
+      </div>
+
+    </div>
+  </section>
+</div>
+
 <!-- ════════════════════ STATS GUIDE ════════════════════ -->
 <div id="page-stats" class="chapter-page">
   <div class="chapter-title-block">
@@ -3522,8 +3731,26 @@ const ENCY_ENTRIES = [
     desc:'One of the Four Factions that govern Valerguard. The most feared faction, The Veil studies souls, memory, identity, and forbidden magic. Their motto: "Truth survives where comfort dies." History books blame them for calamities best forgotten, and their name alone can silence a room. Elias\'s great uncle Daemeon joined The Veil instead of The Shield — a decision that made him a pariah in the Lumina family. <a href="#" class="lore-term" style="border:none" onclick="showPage(\'factions\');return false">→ Full faction details</a>' },
   { id:'ency-valerguard', title:'Valerguard', sort:'Valerguard', type:'Kingdom', cat:'places', img:'',
     desc:'The kingdom in which the story takes place. Valerguard is governed by the Four Factions and home to adventurer academies, ancient magic, and a long history of conflict. Its capital city shares a name with the Tether River that runs through it.' },
-  { id:'ency-wizards-emporium', title:'The Wizards Emporium', sort:'Wizards Emporium', type:'Organization', cat:'people', img:'',
-    desc:'The organization responsible for performing Soul Enchantments on admitted students. Little else is known about their role or structure — only that they hold the power to create adventurers.' },
+  { id:'ency-wizards-emporium', title:'The Wizards Emporium', sort:'Wizards Emporium', type:'Organization — Founding Faction', cat:'people', img:'',
+    desc:'One of the four original factions formed during the Consensus of the Fifteen. Born from the analytical, high-Intelligence minds who sought to study the Catastrophe Crystals, codify the System\'s mechanics, and master the structural manipulation of the soul. Today they are responsible for performing Soul Enchantments on admitted students at Tetherpoint Academy.' },
+  { id:'ency-cataclysm', title:'The Great Blunder', sort:'Great Blunder', type:'Historical Event — Year -3', cat:'magic', img:'',
+    desc:'The extinction-level event that ended the old world. A single Mimic stole a Dungeon Core — a vessel for the God of Chaos — and carried it to the surface. The resulting 300-megaton arcane detonation killed one-third of the global population instantly, vaporized the ancient capital, and plunged the world into years of freezing darkness. <a href="#" class="lore-term" style="border:none" onclick="showPage(\'lore\');return false">→ Full lore</a>' },
+  { id:'ency-catastrophe-crystals', title:'Catastrophe Crystals', sort:'Catastrophe Crystals', type:'Magical Object', cat:'magic', img:'',
+    desc:'Dense, irradiated remnants of raw mana that solidified amidst the ash of the Cataclysm. A rare 10% of survivors who touched these glowing shards experienced a flash of "Great Understanding" — a forced evolutionary leap that created the System Interface and the world\'s first Adventurers. <a href="#" class="lore-term" style="border:none" onclick="showPage(\'lore\');return false">→ Full lore</a>' },
+  { id:'ency-the-maw', title:'The Maw', sort:'Maw', type:'Location — Oceanic Scar', cat:'places', img:'',
+    desc:'The churning, black aquatic crater at the epicenter of the Great Blunder. Home to the most powerful, mutated, and terrifyingly intelligent monsters in existence — creatures that have absorbed 777 years of concentrated ambient magic and possess a deep understanding of the System itself. For centuries, Valerguard\'s finest Adventurers have been deployed to its borders just to keep its horrors contained. <a href="#" class="lore-term" style="border:none" onclick="showPage(\'lore\');return false">→ Full lore</a>' },
+  { id:'ency-dungeon-core', title:'Dungeon Core', sort:'Dungeon Core', type:'Magical Object', cat:'magic', img:'',
+    desc:'A living magical anchor that binds monsters to subterranean Dungeons. The specific core stolen by the Mimic was a direct vessel for the God of Chaos. When removed from its resting place and carried to the surface, it became a violent magical siphon that triggered the Great Blunder.' },
+  { id:'ency-dungeons', title:'Dungeons', sort:'Dungeons', type:'Subterranean Structures', cat:'places', img:'',
+    desc:'Ancient underground networks where monsters were bound by natural law, contained deep beneath the earth. Before the Cataclysm, dangerous creatures were systematically cleared by early hunters. The 300-megaton blast cracked the seals of the world\'s dungeon networks forever, releasing monsters onto the surface — which is why modern Valerguard is plagued by roaming beasts.' },
+  { id:'ency-god-of-chaos', title:'The God of Chaos', sort:'God of Chaos', type:'Deity', cat:'magic', img:'',
+    desc:'An ancient, volatile divine entity whose power was channeled through a specific Dungeon Core deep beneath the earth. When a Mimic stole that core and carried it to the surface, the God\'s chaotic energy fed into an exponential feedback loop that detonated in the Great Blunder. The Maw — ground zero of the explosion — remains saturated with the God\'s released magic to this day.' },
+  { id:'ency-mimic', title:'Mimic', sort:'Mimic', type:'Creature — Dungeon Monster', cat:'creatures', img:'',
+    desc:'A baseline dungeon monster whose anomalous surge of greed triggered the end of the old world. By committing the cosmic taboo of stealing a Dungeon Core — one that happened to be a vessel for the God of Chaos — this single creature inadvertently caused the Great Blunder, the extinction of most of humanity, and the birth of the Adventurer System.' },
+  { id:'ency-fifteen-magi', title:'The 15 Original Magi', sort:'Fifteen Original Magi', type:'Historical Figures', cat:'people', img:'',
+    desc:'The premier magic-wielders to emerge from the Catastrophe Crystals during the Dark Age. In the third year of the apocalypse, they gathered in the ruins and forged the Original Consensus — a historic treaty that organized the remaining survivors into Four Factions based on soul resonance, established the kingdom of Valerguard, and reset the calendar to Year 0. <a href="#" class="lore-term" style="border:none" onclick="showPage(\'lore\');return false">→ Full lore</a>' },
+  { id:'ency-the-covenant', title:'The Covenant', sort:'Covenant', type:'Organization — Founding Faction', cat:'people', img:'',
+    desc:'One of the four original factions formed during the Consensus of the Fifteen. Comprised of those focused on spiritual binding, community faith, and the absolute ideological unity required to hold the remnants of human society together. Their role in modern Valerguard has not yet been revealed.' },
 ];
 
 let currentEncyTab = 'all';
