@@ -2965,12 +2965,6 @@ renderStats(2, 'ch3-sb');
 renderStats(3, 'ch4');
 renderStats(3, 'ch4-sb');
 
-// End of chapter summaries
-renderEndSummary(1, 'ch1');
-renderEndSummary(2, 'ch2');
-renderEndSummary(3, 'ch3');
-renderEndSummary(4, 'ch4');
-
 const INVENTORY = {
   ch1: {
     equipment: [
@@ -3108,6 +3102,12 @@ renderInventory('ch3', 'equipment');
 renderInventory('ch3-sb', 'equipment');
 renderInventory('ch4', 'equipment');
 renderInventory('ch4-sb', 'equipment');
+
+// End of chapter summaries (after INVENTORY is defined)
+renderEndSummary(1, 'ch1');
+renderEndSummary(2, 'ch2');
+renderEndSummary(3, 'ch3');
+renderEndSummary(4, 'ch4');
 </script>
 
 </body>
