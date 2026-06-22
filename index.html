@@ -1242,6 +1242,73 @@
     }
     .ency-category-title:first-of-type { margin-top: 1rem; }
 
+    /* ─── ENCYCLOPEDIA TABS ─── */
+    .ency-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+    }
+    .ency-tabs button {
+      font-family: 'Cinzel', serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.5rem 1rem;
+      border: 1px solid rgba(184,154,91,.2);
+      border-radius: 6px;
+      background: transparent;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all .3s;
+    }
+    .ency-tabs button:hover { color: var(--gold); border-color: var(--gold); }
+    .ency-tabs button.active {
+      background: var(--gold);
+      color: var(--bg-deep);
+      border-color: var(--gold);
+    }
+    .ency-letter-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+    }
+    .ency-letter-nav a {
+      font-family: 'Cinzel', serif;
+      font-size: 0.7rem;
+      width: 28px;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 4px;
+      color: var(--gold);
+      text-decoration: none;
+      border: 1px solid rgba(184,154,91,.15);
+      transition: all .2s;
+    }
+    .ency-letter-nav a:hover { background: var(--gold); color: var(--bg-deep); }
+    .ency-letter-nav a.disabled {
+      color: var(--text-muted);
+      opacity: 0.3;
+      pointer-events: none;
+      border-color: transparent;
+    }
+    .ency-letter-heading {
+      font-family: 'Cinzel', serif;
+      font-size: 1.4rem;
+      color: var(--gold);
+      margin: 2rem 0 0.8rem;
+      padding-bottom: 0.3rem;
+      border-bottom: 1px solid rgba(184,154,91,.2);
+      scroll-margin-top: 80px;
+    }
+    .ency-tab-content { display: none; }
+    .ency-tab-content.active { display: block; }
+
     /* ─── FACTIONS ─── */
     .faction-crests-row {
       display: flex;
@@ -2932,178 +2999,20 @@
   </div>
 
   <section class="section">
-    <p style="text-align:center;color:var(--text-muted);margin-bottom:1rem">A growing compendium of the people, places, factions, and forces that shape the world of Born Good. Entries update as the story unfolds.</p>
+    <p style="text-align:center;color:var(--text-muted);margin-bottom:1.5rem">A growing compendium of the people, places, factions, and forces that shape the world of Born Good. Entries update as the story unfolds.</p>
 
-    <div class="ency-category-title">Factions</div>
-    <div class="ency-grid">
-      <div class="ency-entry" id="ency-the-veil">
-        <img src="images/the-veil-hc.png" alt="The Veil Crest" class="ency-crest">
-        <h4>The Veil</h4>
-        <div class="ency-type">Faction — One of the Four</div>
-        <p>One of the Four Factions that govern Valerguard. The most feared faction, The Veil studies souls, memory, identity, and forbidden magic. Their motto: "Truth survives where comfort dies." History books blame them for calamities best forgotten, and their name alone can silence a room. Elias's great uncle Daemeon joined The Veil instead of The Shield — a decision that made him a pariah in the Lumina family. <a href="#" class="lore-term" style="border:none" onclick="showPage('factions');return false">→ Full faction details</a></p>
-      </div>
-      <div class="ency-entry" id="ency-the-shield">
-        <img src="images/the-shield-hc.png" alt="The Shield Crest" class="ency-crest">
-        <h4>The Shield</h4>
-        <div class="ency-type">Faction — One of the Four</div>
-        <p>One of the Four Factions of Valerguard. The Shield is widely considered the most honorable and respected faction, focused on protection and defense of the kingdom. Their motto: "Stand so others may endure." Daemeon Lumina was expected to join The Shield after graduating from Tetherpoint — his choice of The Veil instead caused a family rift that has never healed. <a href="#" class="lore-term" style="border:none" onclick="showPage('factions');return false">→ Full faction details</a></p>
-      </div>
-      <div class="ency-entry" id="ency-the-flame">
-        <img src="images/the-flame-hc.png" alt="The Flame Crest" class="ency-crest">
-        <h4>The Flame</h4>
-        <div class="ency-type">Faction — One of the Four</div>
-        <p>One of the Four Factions of Valerguard. The Flame are warriors, duelists, elementalists, and innovators who believe greatness is earned through struggle. Their motto: "Life favors the bold." Archmage Varric Pyre is one of The Flame's most respected instructors. <a href="#" class="lore-term" style="border:none" onclick="showPage('factions');return false">→ Full faction details</a></p>
-      </div>
-      <div class="ency-entry" id="ency-the-grove">
-        <img src="images/the-grove-hc.png" alt="The Grove Crest" class="ency-crest">
-        <h4>The Grove</h4>
-        <div class="ency-type">Faction — One of the Four</div>
-        <p>One of the Four Factions of Valerguard. The Grove are healers, scholars, alchemists, and caretakers who believe compassion is the highest virtue. Their motto: "All things are connected." Elias's high Mercy and Hope stats would make him a natural candidate for The Grove. <a href="#" class="lore-term" style="border:none" onclick="showPage('factions');return false">→ Full faction details</a></p>
-      </div>
-      <div class="ency-entry" id="ency-four-factions">
-        <h4>The Four Factions</h4>
-        <div class="ency-type">Political Structure</div>
-        <p>The four governing bodies that maintain balance in Valerguard: The Shield (protectors), The Flame (warriors and innovators), The Grove (healers and scholars), and The Veil (seekers of forbidden truth). Together they keep the kingdom balanced, though not everyone agrees on whether that balance is just. <a href="#" class="lore-term" style="border:none" onclick="showPage('factions');return false">→ Full faction details</a></p>
-      </div>
+    <div class="ency-tabs" id="ency-tabs">
+      <button class="active" onclick="switchEncyTab('all')">All</button>
+      <button onclick="switchEncyTab('factions')">Factions</button>
+      <button onclick="switchEncyTab('places')">Places</button>
+      <button onclick="switchEncyTab('magic')">Magic &amp; Systems</button>
+      <button onclick="switchEncyTab('creatures')">Creatures</button>
+      <button onclick="switchEncyTab('people')">People &amp; Groups</button>
     </div>
 
-    <div class="ency-category-title">Places</div>
-    <div class="ency-grid">
-      <div class="ency-entry" id="ency-valerguard">
-        <h4>Valerguard</h4>
-        <div class="ency-type">Kingdom</div>
-        <p>The kingdom in which the story takes place. Valerguard is governed by the Four Factions and home to adventurer academies, ancient magic, and a long history of conflict. Its capital city shares a name with the Tether River that runs through it.</p>
-      </div>
-      <div class="ency-entry" id="ency-tetherpoint">
-        <h4>Tetherpoint Academy</h4>
-        <div class="ency-type">Location — Academy</div>
-        <p>The premier adventurer academy in all of Valerguard, situated along the Tether River in the town of Mellonwood. Founded nearly eight hundred years ago during the Age of Ashes. Students who pass through the Academy Gate receive the Soul Enchantment and become adventurers. Only a fraction of applicants are admitted, and statistics say only half of those will graduate.</p>
-      </div>
-      <div class="ency-entry" id="ency-mellonwood">
-        <h4>Mellonwood</h4>
-        <div class="ency-type">Location — Town</div>
-        <p>An academy town just outside the capital city of Tether. Mellonwood exists to serve Tetherpoint Academy — blacksmiths forge gear for students, merchants sell training manuals and enchanted trinkets, and real adventurers walk the streets like ordinary folk.</p>
-      </div>
-      <div class="ency-entry" id="ency-ravenscroft">
-        <h4>Ravenscroft</h4>
-        <div class="ency-type">Location — Village</div>
-        <p>Elias Lumina's home village. Ancient and remote, nobody knows when it was founded or where its name came from. A few thousand souls survive on agriculture and herding. Rarely does anyone from Ravenscroft attend Tetherpoint Academy — Elias is the first in generations.</p>
-      </div>
-      <div class="ency-entry" id="ency-tether">
-        <h4>Tether</h4>
-        <div class="ency-type">Location — Capital City</div>
-        <p>The capital city of Valerguard. Elias's father originally came from Tether before settling in Ravenscroft. The Tether River runs through both the capital and the town of Mellonwood where Tetherpoint Academy sits.</p>
-      </div>
-    </div>
+    <div class="ency-letter-nav" id="ency-letter-nav"></div>
 
-    <div class="ency-category-title">Locations</div>
-    <div class="ency-grid">
-      <div class="ency-entry" id="ency-great-hall">
-        <h4>The Great Hall</h4>
-        <div class="ency-type">Location — Tetherpoint Academy</div>
-        <p>The central gathering space within Tetherpoint Academy where major announcements and ceremonies take place. Archmage Varric Pyre addresses students here, and it is where Faction Tryouts are announced. The detention block lies beneath it, accessible by a spiral staircase leading to a massive wooden door.</p>
-      </div>
-      <div class="ency-entry" id="ency-detention-block">
-        <h4>The Detention Block</h4>
-        <div class="ency-type">Location — Tetherpoint Academy</div>
-        <p>An underground holding area beneath the Great Hall of Tetherpoint Academy. Cells are barred with iron doors and overseen by Borin Grimhall. Elias is sent here on his first day after being singled out by Archmage Varric. Despite its grim appearance, the detention block becomes the site of unexpected alliances.</p>
-      </div>
-    </div>
-
-    <div class="ency-category-title">Magic &amp; Systems</div>
-    <div class="ency-grid">
-      <div class="ency-entry" id="ency-academy-gate">
-        <h4>The Academy Gate</h4>
-        <div class="ency-type">Magical Structure</div>
-        <p>An enormous stone arch built into a tower at Tetherpoint Academy. Where a door should be, a swirling vortex of purple, black, and crimson churns — a portal that transforms those who pass through it into adventurers. The Soul Enchantment is performed as students enter, granting them access to stats, levels, and abilities.</p>
-      </div>
-      <div class="ency-entry" id="ency-soul-enchantment">
-        <h4>Soul Enchantment</h4>
-        <div class="ency-type">Magical Process</div>
-        <p>A ritual performed by the Wizards Emporium on every admitted student who passes through the Academy Gate. Once complete, the student becomes an adventurer — able to level up, gain skills, and awaken abilities beyond what ordinary people could achieve. Adventurers stand at the peak of society.</p>
-      </div>
-      <div class="ency-entry" id="ency-wizards-emporium">
-        <h4>The Wizards Emporium</h4>
-        <div class="ency-type">Organization</div>
-        <p>The organization responsible for performing Soul Enchantments on admitted students. Little else is known about their role or structure — only that they hold the power to create adventurers.</p>
-      </div>
-      <div class="ency-entry" id="ency-soul-balance">
-        <h4>Soul Balance</h4>
-        <div class="ency-type">Stat Category — Hidden</div>
-        <p>A mysterious set of stats that most adventurers never know they possess. Unlike Core Stats (Strength, Agility, etc.), Soul Balance measures the moral and emotional fabric of a person: Mercy, Conviction, Resentment, Connection, Hope, and Identity. Elias appears to be one of the few — perhaps the only — student who can see them.</p>
-      </div>
-      <div class="ency-entry" id="ency-legacy-access">
-        <h4>Legacy Access</h4>
-        <div class="ency-type">System Feature — Restricted</div>
-        <p>A cryptic message that appeared briefly at the bottom of Elias's status screen in faint silver letters: "Additional Functions Locked — Legacy Access: Restricted." It vanished before he could examine it further. No other student appears to have this feature. Its purpose remains unknown.</p>
-      </div>
-      <div class="ency-entry" id="ency-luminus-pendant">
-        <h4>Luminus Pendant</h4>
-        <div class="ency-type">Legacy Item — Dormant</div>
-        <p>A mysterious pendant sent to Elias by Uncle Daemeon via owl post. Blue-green light swirls beneath its surface like a miniature ocean trapped beneath glass, with ancient symbols drifting through the glow. According to Daemeon's letter, the pendant will only awaken if Elias joins The Veil — and with it, he will discover the truth of the Lumina family's ancient heritage. The system identifies it as an "Unknown Legacy Item" with restrictions active.</p>
-      </div>
-      <div class="ency-entry" id="ency-legacy-items">
-        <h4>Legacy Items</h4>
-        <div class="ency-type">System Category</div>
-        <p>Items tied to an adventurer's family bloodline or heritage. Legacy Items appear to carry restrictions and conditions for activation. The Luminus Pendant is the first known example, requiring faction allegiance to The Veil before it will awaken. The system flags them as "Unknown Legacy Item" — suggesting even the system itself may not fully understand their nature.</p>
-      </div>
-      <div class="ency-entry" id="ency-faction-tryouts">
-        <h4>Faction Tryouts</h4>
-        <div class="ency-type">Academy Event</div>
-        <p>An exercise announced by Archmage Varric Pyre in the Great Hall. Students whose souls are deemed ideal representatives are selected as faction leaders, with faction insignias materializing on their uniforms in golden light. The tryouts determine — or at least preview — which of the Four Factions a student may eventually join. Cassian Drake was selected as the leader for The Shield.</p>
-      </div>
-      <div class="ency-entry" id="ency-age-of-ashes">
-        <h4>The Age of Ashes</h4>
-        <div class="ency-type">Historical Era</div>
-        <p>An ancient period in Valerguard's history during which Tetherpoint Academy was founded, nearly eight hundred years before the events of the story. Little else has been revealed about this era.</p>
-      </div>
-    </div>
-
-    <div class="ency-category-title">Organizations &amp; Groups</div>
-    <div class="ency-grid">
-      <div class="ency-entry" id="ency-golden-cohort">
-        <h4>Class 777 — The Golden Cohort</h4>
-        <div class="ency-type">Student Body</div>
-        <p>Elias's incoming class at Tetherpoint Academy. Archmage Varric Pyre calls them "the luckiest of numbers" and proclaims they will be the brightest generation the academy has ever produced. Whether this is prophecy or showmanship remains to be seen.</p>
-      </div>
-      <div class="ency-entry" id="ency-rustlefoot-goblins">
-        <h4>Rustlefoot Goblins</h4>
-        <div class="ency-type">Creature — Enemy</div>
-        <p>Bottom-tier pests found outside the town of Tether. Level three at best. Their bands consist of three types: the Foot (basic grunts who dual-wield daggers), the Clerk (fumbling alchemists with weak heals and fire bombs), and the Handler (who commands mangy wild strays and throws pebbles). After years of scavenging the landfill, they graduated to robbing civilians — and murdered Grannie Ezmerelda when she resisted. The first-year students' inaugural field exercise targets them.</p>
-      </div>
-    </div>
-
-    <div class="ency-category-title">Creatures</div>
-    <div class="ency-grid">
-      <div class="ency-entry" id="ency-shiver-beak-rooster">
-        <h4>Shiver-Beak Rooster</h4>
-        <div class="ency-type">Creature — Magical Beast</div>
-        <p>A scrawny, enchanted bird whose screech drains mana and the will to live from anyone within earshot. Used by Sylin Merryweather as a morning alarm for the first-year barracks. Its cry costs 2 mana per screech and causes skull-rattling pain, teeth-chattering vibrations, and a profound desire to not exist. A weapon of psychological warfare disguised as poultry.</p>
-      </div>
-    </div>
-
-    <div class="ency-category-title">Locations — Academy</div>
-    <div class="ency-grid">
-      <div class="ency-entry" id="ency-barracks">
-        <h4>Year 1 Male Barracks</h4>
-        <div class="ency-type">Location — Tetherpoint Academy</div>
-        <p>A cramped maze of bunks where all first-year male students are housed together before faction sorting takes place. The cots are threadbare, the air stinks, and personal space is a fantasy. Sylin Merryweather, a Year 6 Residential Assistant from The Grove, wakes the barracks each morning with an enchanted staff and a Shiver-Beak Rooster.</p>
-      </div>
-    </div>
-
-    <div class="ency-category-title">Lore &amp; Traditions</div>
-    <div class="ency-grid">
-      <div class="ency-entry" id="ency-insignia-oath">
-        <h4>The Insignia Oath</h4>
-        <div class="ency-type">Academy Tradition</div>
-        <p>The formal ceremony by which a student officially pledges allegiance to one of the Four Factions. Until the Oath is taken, students are merely "trying to find a fit" — participating in faction activities on a trial basis. The Oath appears to be a binding commitment with serious consequences, though its full nature has not yet been revealed.</p>
-      </div>
-      <div class="ency-entry" id="ency-grannie-ezmerelda">
-        <h4>Grannie Ezmerelda</h4>
-        <div class="ency-type">Person — Deceased</div>
-        <p>A beloved former cook who served in the Tetherpoint Academy kitchens for decades before retirement. She was murdered by Rustlefoot Goblins when she attempted to defend herself with a cane during one of their raids outside Tether. Her death became the catalyst for the first-year students' inaugural field exercise.</p>
-      </div>
-    </div>
+    <div id="ency-content"></div>
 
   </section>
 </div>
@@ -3285,6 +3194,7 @@ function showPage(id) {
   window.scrollTo(0, 0);
   closeToc();
   closeHamburger();
+  if (id === 'encyclopedia' && currentEncyTab !== 'all') switchEncyTab('all');
   // Close mobile sidebar
   document.querySelectorAll('.chapter-sidebar').forEach(s => s.classList.remove('mobile-open'));
   // Show/hide mobile toggle
@@ -3557,6 +3467,115 @@ function toggleTheme() {
     document.querySelector('.theme-toggle').textContent = '☾';
   }
 })();
+
+// ─── ENCYCLOPEDIA DATA & TABS ───
+const ENCY_ENTRIES = [
+  { id:'ency-academy-gate', title:'The Academy Gate', sort:'Academy Gate', type:'Magical Structure', cat:'magic', img:'',
+    desc:'An enormous stone arch built into a tower at Tetherpoint Academy. Where a door should be, a swirling vortex of purple, black, and crimson churns — a portal that transforms those who pass through it into adventurers. The Soul Enchantment is performed as students enter, granting them access to stats, levels, and abilities.' },
+  { id:'ency-age-of-ashes', title:'The Age of Ashes', sort:'Age of Ashes', type:'Historical Era', cat:'magic', img:'',
+    desc:'An ancient period in Valerguard\'s history during which Tetherpoint Academy was founded, nearly eight hundred years before the events of the story. Little else has been revealed about this era.' },
+  { id:'ency-barracks', title:'Year 1 Male Barracks', sort:'Year 1 Male Barracks', type:'Location — Tetherpoint Academy', cat:'places', img:'',
+    desc:'A cramped maze of bunks where all first-year male students are housed together before faction sorting takes place. The cots are threadbare, the air stinks, and personal space is a fantasy. Sylin Merryweather, a Year 6 Residential Assistant from The Grove, wakes the barracks each morning with an enchanted staff and a Shiver-Beak Rooster.' },
+  { id:'ency-golden-cohort', title:'Class 777 — The Golden Cohort', sort:'Class 777', type:'Student Body', cat:'people', img:'',
+    desc:'Elias\'s incoming class at Tetherpoint Academy. Archmage Varric Pyre calls them "the luckiest of numbers" and proclaims they will be the brightest generation the academy has ever produced. Whether this is prophecy or showmanship remains to be seen.' },
+  { id:'ency-detention-block', title:'The Detention Block', sort:'Detention Block', type:'Location — Tetherpoint Academy', cat:'places', img:'',
+    desc:'An underground holding area beneath the Great Hall of Tetherpoint Academy. Cells are barred with iron doors and overseen by Borin Grimhall. Elias is sent here on his first day after being singled out by Archmage Varric. Despite its grim appearance, the detention block becomes the site of unexpected alliances.' },
+  { id:'ency-faction-tryouts', title:'Faction Tryouts', sort:'Faction Tryouts', type:'Academy Event', cat:'magic', img:'',
+    desc:'An exercise announced by Archmage Varric Pyre in the Great Hall. Students whose souls are deemed ideal representatives are selected as faction leaders, with faction insignias materializing on their uniforms in golden light. The tryouts determine — or at least preview — which of the Four Factions a student may eventually join. Cassian Drake was selected as the leader for The Shield.' },
+  { id:'ency-four-factions', title:'The Four Factions', sort:'Four Factions', type:'Political Structure', cat:'factions', img:'',
+    desc:'The four governing bodies that maintain balance in Valerguard: The Shield (protectors), The Flame (warriors and innovators), The Grove (healers and scholars), and The Veil (seekers of forbidden truth). Together they keep the kingdom balanced, though not everyone agrees on whether that balance is just. <a href="#" class="lore-term" style="border:none" onclick="showPage(\'factions\');return false">→ Full faction details</a>' },
+  { id:'ency-grannie-ezmerelda', title:'Grannie Ezmerelda', sort:'Grannie Ezmerelda', type:'Person — Deceased', cat:'people', img:'',
+    desc:'A beloved former cook who served in the Tetherpoint Academy kitchens for decades before retirement. She was murdered by Rustlefoot Goblins when she attempted to defend herself with a cane during one of their raids outside Tether. Her death became the catalyst for the first-year students\' inaugural field exercise.' },
+  { id:'ency-great-hall', title:'The Great Hall', sort:'Great Hall', type:'Location — Tetherpoint Academy', cat:'places', img:'',
+    desc:'The central gathering space within Tetherpoint Academy where major announcements and ceremonies take place. Archmage Varric Pyre addresses students here, and it is where Faction Tryouts are announced. The detention block lies beneath it, accessible by a spiral staircase leading to a massive wooden door.' },
+  { id:'ency-insignia-oath', title:'The Insignia Oath', sort:'Insignia Oath', type:'Academy Tradition', cat:'magic', img:'',
+    desc:'The formal ceremony by which a student officially pledges allegiance to one of the Four Factions. Until the Oath is taken, students are merely "trying to find a fit" — participating in faction activities on a trial basis. The Oath appears to be a binding commitment with serious consequences, though its full nature has not yet been revealed.' },
+  { id:'ency-legacy-access', title:'Legacy Access', sort:'Legacy Access', type:'System Feature — Restricted', cat:'magic', img:'',
+    desc:'A cryptic message that appeared briefly at the bottom of Elias\'s status screen in faint silver letters: "Additional Functions Locked — Legacy Access: Restricted." It vanished before he could examine it further. No other student appears to have this feature. Its purpose remains unknown.' },
+  { id:'ency-legacy-items', title:'Legacy Items', sort:'Legacy Items', type:'System Category', cat:'magic', img:'',
+    desc:'Items tied to an adventurer\'s family bloodline or heritage. Legacy Items appear to carry restrictions and conditions for activation. The Luminus Pendant is the first known example, requiring faction allegiance to The Veil before it will awaken. The system flags them as "Unknown Legacy Item" — suggesting even the system itself may not fully understand their nature.' },
+  { id:'ency-luminus-pendant', title:'Luminus Pendant', sort:'Luminus Pendant', type:'Legacy Item — Dormant', cat:'magic', img:'',
+    desc:'A mysterious pendant sent to Elias by Uncle Daemeon via owl post. Blue-green light swirls beneath its surface like a miniature ocean trapped beneath glass, with ancient symbols drifting through the glow. According to Daemeon\'s letter, the pendant will only awaken if Elias joins The Veil — and with it, he will discover the truth of the Lumina family\'s ancient heritage. The system identifies it as an "Unknown Legacy Item" with restrictions active.' },
+  { id:'ency-mellonwood', title:'Mellonwood', sort:'Mellonwood', type:'Location — Town', cat:'places', img:'',
+    desc:'An academy town just outside the capital city of Tether. Mellonwood exists to serve Tetherpoint Academy — blacksmiths forge gear for students, merchants sell training manuals and enchanted trinkets, and real adventurers walk the streets like ordinary folk.' },
+  { id:'ency-ravenscroft', title:'Ravenscroft', sort:'Ravenscroft', type:'Location — Village', cat:'places', img:'',
+    desc:'Elias Lumina\'s home village. Ancient and remote, nobody knows when it was founded or where its name came from. A few thousand souls survive on agriculture and herding. Rarely does anyone from Ravenscroft attend Tetherpoint Academy — Elias is the first in generations.' },
+  { id:'ency-rustlefoot-goblins', title:'Rustlefoot Goblins', sort:'Rustlefoot Goblins', type:'Creature — Enemy', cat:'creatures', img:'',
+    desc:'Bottom-tier pests found outside the town of Tether. Level three at best. Their bands consist of three types: the Foot (basic grunts who dual-wield daggers), the Clerk (fumbling alchemists with weak heals and fire bombs), and the Handler (who commands mangy wild strays and throws pebbles). After years of scavenging the landfill, they graduated to robbing civilians — and murdered Grannie Ezmerelda when she resisted. The first-year students\' inaugural field exercise targets them.' },
+  { id:'ency-shiver-beak-rooster', title:'Shiver-Beak Rooster', sort:'Shiver-Beak Rooster', type:'Creature — Magical Beast', cat:'creatures', img:'',
+    desc:'A scrawny, enchanted bird whose screech drains mana and the will to live from anyone within earshot. Used by Sylin Merryweather as a morning alarm for the first-year barracks. Its cry costs 2 mana per screech and causes skull-rattling pain, teeth-chattering vibrations, and a profound desire to not exist. A weapon of psychological warfare disguised as poultry.' },
+  { id:'ency-soul-balance', title:'Soul Balance', sort:'Soul Balance', type:'Stat Category — Hidden', cat:'magic', img:'',
+    desc:'A mysterious set of stats that most adventurers never know they possess. Unlike Core Stats (Strength, Agility, etc.), Soul Balance measures the moral and emotional fabric of a person: Mercy, Conviction, Resentment, Connection, Hope, and Identity. Elias appears to be one of the few — perhaps the only — student who can see them.' },
+  { id:'ency-soul-enchantment', title:'Soul Enchantment', sort:'Soul Enchantment', type:'Magical Process', cat:'magic', img:'',
+    desc:'A ritual performed by the Wizards Emporium on every admitted student who passes through the Academy Gate. Once complete, the student becomes an adventurer — able to level up, gain skills, and awaken abilities beyond what ordinary people could achieve. Adventurers stand at the peak of society.' },
+  { id:'ency-tether', title:'Tether', sort:'Tether', type:'Location — Capital City', cat:'places', img:'',
+    desc:'The capital city of Valerguard. Elias\'s father originally came from Tether before settling in Ravenscroft. The Tether River runs through both the capital and the town of Mellonwood where Tetherpoint Academy sits.' },
+  { id:'ency-tetherpoint', title:'Tetherpoint Academy', sort:'Tetherpoint Academy', type:'Location — Academy', cat:'places', img:'',
+    desc:'The premier adventurer academy in all of Valerguard, situated along the Tether River in the town of Mellonwood. Founded nearly eight hundred years ago during the Age of Ashes. Students who pass through the Academy Gate receive the Soul Enchantment and become adventurers. Only a fraction of applicants are admitted, and statistics say only half of those will graduate.' },
+  { id:'ency-the-flame', title:'The Flame', sort:'Flame', type:'Faction — One of the Four', cat:'factions', img:'images/the-flame-hc.png',
+    desc:'One of the Four Factions of Valerguard. The Flame are warriors, duelists, elementalists, and innovators who believe greatness is earned through struggle. Their motto: "Life favors the bold." Archmage Varric Pyre is one of The Flame\'s most respected instructors. <a href="#" class="lore-term" style="border:none" onclick="showPage(\'factions\');return false">→ Full faction details</a>' },
+  { id:'ency-the-grove', title:'The Grove', sort:'Grove', type:'Faction — One of the Four', cat:'factions', img:'images/the-grove-hc.png',
+    desc:'One of the Four Factions of Valerguard. The Grove are healers, scholars, alchemists, and caretakers who believe compassion is the highest virtue. Their motto: "All things are connected." Elias\'s high Mercy and Hope stats would make him a natural candidate for The Grove. <a href="#" class="lore-term" style="border:none" onclick="showPage(\'factions\');return false">→ Full faction details</a>' },
+  { id:'ency-the-shield', title:'The Shield', sort:'Shield', type:'Faction — One of the Four', cat:'factions', img:'images/the-shield-hc.png',
+    desc:'One of the Four Factions of Valerguard. The Shield is widely considered the most honorable and respected faction, focused on protection and defense of the kingdom. Their motto: "Stand so others may endure." Daemeon Lumina was expected to join The Shield after graduating from Tetherpoint — his choice of The Veil instead caused a family rift that has never healed. <a href="#" class="lore-term" style="border:none" onclick="showPage(\'factions\');return false">→ Full faction details</a>' },
+  { id:'ency-the-veil', title:'The Veil', sort:'Veil', type:'Faction — One of the Four', cat:'factions', img:'images/the-veil-hc.png',
+    desc:'One of the Four Factions that govern Valerguard. The most feared faction, The Veil studies souls, memory, identity, and forbidden magic. Their motto: "Truth survives where comfort dies." History books blame them for calamities best forgotten, and their name alone can silence a room. Elias\'s great uncle Daemeon joined The Veil instead of The Shield — a decision that made him a pariah in the Lumina family. <a href="#" class="lore-term" style="border:none" onclick="showPage(\'factions\');return false">→ Full faction details</a>' },
+  { id:'ency-valerguard', title:'Valerguard', sort:'Valerguard', type:'Kingdom', cat:'places', img:'',
+    desc:'The kingdom in which the story takes place. Valerguard is governed by the Four Factions and home to adventurer academies, ancient magic, and a long history of conflict. Its capital city shares a name with the Tether River that runs through it.' },
+  { id:'ency-wizards-emporium', title:'The Wizards Emporium', sort:'Wizards Emporium', type:'Organization', cat:'people', img:'',
+    desc:'The organization responsible for performing Soul Enchantments on admitted students. Little else is known about their role or structure — only that they hold the power to create adventurers.' },
+];
+
+let currentEncyTab = 'all';
+
+function switchEncyTab(cat) {
+  currentEncyTab = cat;
+  document.querySelectorAll('#ency-tabs button').forEach(b => b.classList.remove('active'));
+  document.querySelector(`#ency-tabs button[onclick*="'${cat}'"]`).classList.add('active');
+  renderEncyclopedia();
+}
+
+function renderEncyclopedia() {
+  const cat = currentEncyTab;
+  const filtered = cat === 'all' ? [...ENCY_ENTRIES] : ENCY_ENTRIES.filter(e => e.cat === cat);
+  filtered.sort((a, b) => a.sort.localeCompare(b.sort));
+
+  const letters = {};
+  filtered.forEach(e => {
+    const letter = e.sort[0].toUpperCase();
+    if (!letters[letter]) letters[letter] = [];
+    letters[letter].push(e);
+  });
+
+  const allLetters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+  const navEl = document.getElementById('ency-letter-nav');
+  navEl.innerHTML = allLetters.map(l =>
+    letters[l]
+      ? `<a href="#" onclick="document.getElementById('ency-letter-${l}').scrollIntoView({behavior:'smooth',block:'start'});return false">${l}</a>`
+      : `<a class="disabled">${l}</a>`
+  ).join('');
+
+  const contentEl = document.getElementById('ency-content');
+  let html = '';
+  const sortedLetters = Object.keys(letters).sort();
+  sortedLetters.forEach(letter => {
+    html += `<div class="ency-letter-heading" id="ency-letter-${letter}">${letter}</div>`;
+    html += '<div class="ency-grid">';
+    letters[letter].forEach(e => {
+      html += `<div class="ency-entry" id="${e.id}">`;
+      if (e.img) html += `<img src="${e.img}" alt="${e.title}" class="ency-crest">`;
+      html += `<h4>${e.title}</h4>`;
+      html += `<div class="ency-type">${e.type}</div>`;
+      html += `<p>${e.desc}</p>`;
+      html += '</div>';
+    });
+    html += '</div>';
+  });
+
+  contentEl.innerHTML = html;
+}
+
+renderEncyclopedia();
 </script>
 
 </body>
