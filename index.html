@@ -214,6 +214,45 @@
     }
     .theme-toggle:hover { color: var(--gold); border-color: var(--gold); }
 
+    nav, nav * { font-size: inherit; }
+    nav { font-size: 16px !important; }
+
+    /* ─── FONT SIZE DROPDOWN ─── */
+    .font-size-dropdown { position: relative; }
+    .font-size-menu {
+      display: none;
+      position: absolute;
+      top: calc(100% + 12px);
+      right: 0;
+      background: var(--bg-mid);
+      border: 1px solid rgba(184,154,91,.25);
+      border-radius: 8px;
+      padding: 0.4rem 0;
+      min-width: 140px;
+      z-index: 200;
+      box-shadow: 0 8px 30px rgba(0,0,0,.5);
+    }
+    .font-size-menu.open { display: block; }
+    .font-opt {
+      display: block;
+      padding: 0.5rem 1rem;
+      font-family: 'Cinzel', serif;
+      font-size: 0.75rem !important;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: all .2s;
+    }
+    .font-opt:hover { color: var(--gold); background: rgba(184,154,91,.06); }
+    .font-opt.active { color: var(--gold); }
+    .font-opt-label {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.65rem !important;
+      color: var(--text-muted);
+      opacity: .6;
+      margin-left: 0.3rem;
+    }
+
     /* ─── TOC DROPDOWN ─── */
     .toc-dropdown {
       position: relative;
@@ -1904,6 +1943,14 @@
         width: auto;
         align-self: flex-start;
       }
+      .font-size-menu {
+        position: static;
+        min-width: 0;
+        box-shadow: none;
+        border: none;
+        background: transparent;
+        padding: 0 0 0 1rem;
+      }
       .toc-menu {
         position: static;
         transform: none;
@@ -1945,7 +1992,14 @@
     <li><a href="#" onclick="showPage('geography');return false">Geography</a></li>
     <li><a href="#" onclick="showPage('stats');return false">Stats Guide</a></li>
     <li><button class="theme-toggle" onclick="toggleTheme()" title="Toggle light/dark mode">☀</button></li>
-    <li><button class="theme-toggle" onclick="cycleFontSize()" id="font-size-btn" title="Increase font size">A+</button></li>
+    <li class="font-size-dropdown">
+      <button class="theme-toggle" onclick="toggleFontMenu(event)" id="font-size-btn" title="Font size">A</button>
+      <div class="font-size-menu" id="font-size-menu">
+        <a href="#" class="font-opt" data-size="0" onclick="setFontSize(0);return false">A <span class="font-opt-label">Default</span></a>
+        <a href="#" class="font-opt active" data-size="1" onclick="setFontSize(1);return false">A+ <span class="font-opt-label">Large</span></a>
+        <a href="#" class="font-opt" data-size="2" onclick="setFontSize(2);return false">A++ <span class="font-opt-label">Larger</span></a>
+      </div>
+    </li>
   </ul>
 </nav>
 
@@ -3965,18 +4019,30 @@ function toggleTheme() {
 })();
 
 var fontSizes = ['100%', '115%', '130%'];
-var fontLabels = ['A+', 'A++', 'A'];
-var fontIdx = parseInt(localStorage.getItem('fontSizeIdx') || '0');
+var fontBtnLabels = ['A', 'A+', 'A++'];
+var fontIdx = parseInt(localStorage.getItem('fontSizeIdx') || '1');
 function applyFontSize() {
   document.documentElement.style.fontSize = fontSizes[fontIdx];
-  document.getElementById('font-size-btn').textContent = fontLabels[fontIdx];
+  document.getElementById('font-size-btn').textContent = fontBtnLabels[fontIdx];
+  document.querySelectorAll('.font-opt').forEach(function(el) {
+    el.classList.toggle('active', parseInt(el.getAttribute('data-size')) === fontIdx);
+  });
 }
-function cycleFontSize() {
-  fontIdx = (fontIdx + 1) % fontSizes.length;
+function setFontSize(idx) {
+  fontIdx = idx;
   localStorage.setItem('fontSizeIdx', fontIdx);
   applyFontSize();
+  closeFontMenu();
 }
-if (fontIdx !== 0) applyFontSize();
+function toggleFontMenu(e) {
+  e.stopPropagation();
+  document.getElementById('font-size-menu').classList.toggle('open');
+}
+function closeFontMenu() {
+  document.getElementById('font-size-menu').classList.remove('open');
+}
+document.addEventListener('click', function() { closeFontMenu(); });
+applyFontSize();
 
 // ─── ENCYCLOPEDIA DATA & TABS ───
 const ENCY_ENTRIES = [
