@@ -3170,7 +3170,7 @@
         <div class="faction-header-text">
           <h3>The Veil</h3>
           <div class="faction-motto">"Truth survives where comfort dies."</div>
-          <p class="faction-desc">The most feared faction. The Veil studies souls, memory, identity, shadows, forbidden magic, and Soul Balance itself. Most people believe The Veil meddles with things mortals were never meant to understand. They may be right.</p>
+          <p class="faction-desc">The most feared faction. The Veil studies souls, memory, identity, shadows, and forbidden magic. Their research into the Soul Balance — how to reveal it, how to channel it — is among their most closely guarded secrets. Most people believe The Veil meddles with things mortals were never meant to understand. They may be right.</p>
         </div>
       </div>
       <div class="faction-body">
@@ -3255,7 +3255,7 @@
     <div class="faction-hidden">
       <h3>The Hidden History</h3>
       <p><strong>The public story:</strong> The Veil corrupted Daemeon Lumina and nearly destroyed Valerguard.</p>
-      <p><span class="reveal-text">The truth: Daemeon Lumina helped create the Soul Balance System itself.</span></p>
+      <p><span class="reveal-text">The truth: Daemeon Lumina discovered how to make the Soul Balance visible through the System Interface — but only for those with specific bloodlines. And with a Maw Shard, those same bloodlines can channel power directly from the Soul Bar itself.</span></p>
       <p><span class="reveal-text">And perhaps even more troubling:</span></p>
       <p><span class="reveal-text">The System doesn't just measure people. <span class="danger-text">It changes them.</span></span></p>
       <p><span class="reveal-text">Which makes Elias's hidden stats — and his growing Resentment — <span class="danger-text">far more dangerous than anyone realizes.</span></span></p>
@@ -3778,7 +3778,7 @@ const INVENTORY = {
       { icon: '🥾', name: 'Academy Uniform — Boots', type: 'Armor — Feet', desc: 'Standard leather boots issued at registration. Stiff and not yet broken in.', stats: 'No stat bonuses' },
       { icon: '🧥', name: 'Academy Uniform — Cloak', type: 'Armor — Back', desc: 'A charcoal-gray cloak with the Tetherpoint crest clasped at the throat. Keeps the cold out, but offers no real protection.', stats: 'No stat bonuses' },
       { icon: '🎒', name: 'Canvas Satchel', type: 'Accessory — Bag', desc: 'A weather-beaten bag holding everything Elias owns. Smells faintly of cattle and dried herbs from home.', stats: 'No stat bonuses' },
-      { icon: '🔮', name: 'Luminus Pendant', type: 'Accessory — Neck (Dormant)', desc: 'A mysterious pendant from Uncle Daemeon. Blue-green light swirls beneath its surface like a miniature ocean. Ancient symbols drift through the glow. Will only awaken if its bearer joins The Veil.', stats: 'UNKNOWN LEGACY ITEM — Restrictions Active' },
+      { icon: '🔮', name: 'Luminus Pendant', type: 'Accessory — Neck (Dormant)', desc: 'A Maw Shard pendant from Uncle Daemeon. Blue-green light swirls beneath its surface like a miniature ocean. Ancient symbols drift through the glow. For those with the right bloodline, it can unlock the power to channel the Soul Bar. Will only awaken if its bearer joins The Veil.', stats: 'UNKNOWN LEGACY ITEM — Restrictions Active' },
     ],
     items: [
       { icon: '📜', name: 'Academy Admission Papers', type: 'Document', desc: 'Official papers confirming Elias Lumina\'s enrollment in Tetherpoint Academy, Class 777 — The Golden Cohort.', stats: 'Cannot be discarded' },
@@ -3794,7 +3794,7 @@ const INVENTORY = {
       { icon: '🥾', name: 'Academy Uniform — Boots', type: 'Armor — Feet', desc: 'Standard leather boots issued at registration. Stiff and not yet broken in.', stats: 'No stat bonuses' },
       { icon: '🧥', name: 'Academy Uniform — Cloak', type: 'Armor — Back', desc: 'A charcoal-gray cloak with the Tetherpoint crest clasped at the throat. Keeps the cold out, but offers no real protection.', stats: 'No stat bonuses' },
       { icon: '🎒', name: 'Canvas Satchel', type: 'Accessory — Bag', desc: 'A weather-beaten bag holding everything Elias owns. Smells faintly of cattle and dried herbs from home.', stats: 'No stat bonuses' },
-      { icon: '🔮', name: 'Luminus Pendant', type: 'Accessory — Neck (Dormant)', desc: 'A mysterious pendant from Uncle Daemeon. Blue-green light swirls beneath its surface like a miniature ocean. Ancient symbols drift through the glow. Will only awaken if its bearer joins The Veil.', stats: 'UNKNOWN LEGACY ITEM — Restrictions Active' },
+      { icon: '🔮', name: 'Luminus Pendant', type: 'Accessory — Neck (Dormant)', desc: 'A Maw Shard pendant from Uncle Daemeon. Blue-green light swirls beneath its surface like a miniature ocean. Ancient symbols drift through the glow. For those with the right bloodline, it can unlock the power to channel the Soul Bar. Will only awaken if its bearer joins The Veil.', stats: 'UNKNOWN LEGACY ITEM — Restrictions Active' },
       { icon: '🛡️', name: 'Trainee\'s Shield', type: 'Off-Hand — Shield', desc: 'A battered wooden shield issued from the Academy equipment racks. Scratched, dented, and smelling faintly of sweat. Gets the job done.', stats: '+5 Defense | Gains [Block] Ability' },
       { icon: '🔨', name: 'Trainee\'s Mace', type: 'Weapon — One-Handed', desc: 'A simple iron mace with a leather-wrapped grip. Heavy enough to crack goblin skulls, light enough for a novice to swing.', stats: '+2 Attack, +3 Defense | Gains [Smash] Ability' },
     ],
@@ -3997,7 +3997,7 @@ const ENCY_ENTRIES = [
   { id:'ency-legacy-items', title:'Legacy Items', sort:'Legacy Items', type:'System Category', cat:'magic', img:'',
     desc:'Items tied to an adventurer\'s family bloodline or heritage. Legacy Items appear to carry restrictions and conditions for activation. The Luminus Pendant is the first known example, requiring faction allegiance to The Veil before it will awaken. The system flags them as "Unknown Legacy Item" — suggesting even the system itself may not fully understand their nature.' },
   { id:'ency-luminus-pendant', title:'Luminus Pendant', sort:'Luminus Pendant', type:'Legacy Item — Dormant', cat:'magic', img:'',
-    desc:'A mysterious pendant sent to Elias by Uncle Daemeon via owl post. Blue-green light swirls beneath its surface like a miniature ocean trapped beneath glass, with ancient symbols drifting through the glow. According to Daemeon\'s letter, the pendant will only awaken if Elias joins The Veil — and with it, he will discover the truth of the Lumina family\'s ancient heritage. The system identifies it as an "Unknown Legacy Item" with restrictions active.' },
+    desc:'A Maw Shard set into a pendant, sent to Elias by Uncle Daemeon via owl post. Blue-green light swirls beneath its surface like a miniature ocean trapped beneath glass, with ancient symbols drifting through the glow. Maw Shards are fragments tied to the Cataclysm itself — and for those with the right bloodline, they unlock the ability to channel power directly from the Soul Bar. According to Daemeon\'s letter, the pendant will only awaken if Elias joins The Veil. The System identifies it as an "Unknown Legacy Item" with restrictions active.' },
   { id:'ency-mellonwood', title:'Mellonwood', sort:'Mellonwood', type:'Location — Town', cat:'places', img:'',
     desc:'An academy town just outside the capital city of Tether. Mellonwood exists to serve Tetherpoint Academy — blacksmiths forge gear for students, merchants sell training manuals and enchanted trinkets, and real adventurers walk the streets like ordinary folk.' },
   { id:'ency-ravenscroft', title:'Ravenscroft', sort:'Ravenscroft', type:'Location — Village', cat:'places', img:'',
@@ -4007,7 +4007,7 @@ const ENCY_ENTRIES = [
   { id:'ency-shiver-beak-rooster', title:'Shiver-Beak Rooster', sort:'Shiver-Beak Rooster', type:'Creature — Magical Beast', cat:'creatures', img:'',
     desc:'A scrawny, enchanted bird whose screech drains mana and the will to live from anyone within earshot. Used by Sylin Merryweather as a morning alarm for the first-year barracks. Its cry costs 2 mana per screech and causes skull-rattling pain, teeth-chattering vibrations, and a profound desire to not exist. A weapon of psychological warfare disguised as poultry.' },
   { id:'ency-soul-balance', title:'Soul Balance', sort:'Soul Balance', type:'Stat Category — Hidden', cat:'magic', img:'',
-    desc:'A mysterious set of stats that most adventurers never know they possess. Unlike Core Stats (Strength, Agility, etc.), Soul Balance measures the moral and emotional fabric of a person: Mercy, Conviction, Resentment, Connection, Hope, and Identity. Elias appears to be one of the few — perhaps the only — student who can see them.' },
+    desc:'A mysterious set of stats that most adventurers never know they possess. Unlike Core Stats (Strength, Agility, etc.), Soul Balance measures the moral and emotional fabric of a person: Mercy, Conviction, Resentment, Connection, Hope, and Identity. The Soul Balance exists within everyone, but only those with specific bloodlines — and the work of Daemeon Lumina — can see it displayed in their System Interface. With a Maw Shard, those same individuals may even channel power from the Soul Bar directly.' },
   { id:'ency-soul-enchantment', title:'Soul Enchantment', sort:'Soul Enchantment', type:'Magical Process', cat:'magic', img:'',
     desc:'A ritual performed by the Wizards Emporium on every admitted student who passes through the Academy Gate. Once complete, the student becomes an adventurer — able to level up, gain skills, and awaken abilities beyond what ordinary people could achieve. Adventurers stand at the peak of society.' },
   { id:'ency-tether', title:'Tether', sort:'Tether', type:'Location — Capital City', cat:'places', img:'',
