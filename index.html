@@ -1945,6 +1945,7 @@
     <li><a href="#" onclick="showPage('geography');return false">Geography</a></li>
     <li><a href="#" onclick="showPage('stats');return false">Stats Guide</a></li>
     <li><button class="theme-toggle" onclick="toggleTheme()" title="Toggle light/dark mode">☀</button></li>
+    <li><button class="theme-toggle" onclick="cycleFontSize()" id="font-size-btn" title="Increase font size">A+</button></li>
   </ul>
 </nav>
 
@@ -3962,6 +3963,20 @@ function toggleTheme() {
     document.querySelector('.theme-toggle').textContent = '☾';
   }
 })();
+
+var fontSizes = ['100%', '115%', '130%'];
+var fontLabels = ['A+', 'A++', 'A'];
+var fontIdx = parseInt(localStorage.getItem('fontSizeIdx') || '0');
+function applyFontSize() {
+  document.documentElement.style.fontSize = fontSizes[fontIdx];
+  document.getElementById('font-size-btn').textContent = fontLabels[fontIdx];
+}
+function cycleFontSize() {
+  fontIdx = (fontIdx + 1) % fontSizes.length;
+  localStorage.setItem('fontSizeIdx', fontIdx);
+  applyFontSize();
+}
+if (fontIdx !== 0) applyFontSize();
 
 // ─── ENCYCLOPEDIA DATA & TABS ───
 const ENCY_ENTRIES = [
