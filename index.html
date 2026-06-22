@@ -63,10 +63,7 @@
     [data-theme="light"] .chapter-text .dialogue {
       border-left-color: var(--gold);
     }
-    /* Dark-background elements keep dark-mode colors in light theme */
-    [data-theme="light"] .hero,
-    [data-theme="light"] .faction-card,
-    [data-theme="light"] .faction-hidden,
+    /* Small dark popups keep dark-mode colors in light theme */
     [data-theme="light"] .lore-tip,
     [data-theme="light"] .stat-reason {
       --text: #D8D2C8;
@@ -78,11 +75,59 @@
       --bg-mid: #1A1F2B;
       --bg-card: #2C3442;
     }
+    /* Hero: keep light text over the dark video, but blend the bottom
+       edge into the light page so there's no harsh dark band */
+    [data-theme="light"] .hero {
+      --text: #D8D2C8;
+      --text-light: #F0EBE2;
+      --gold: #D4B872;
+      --gold-dim: #B89A5B;
+    }
+    [data-theme="light"] .hero::before {
+      background:
+        linear-gradient(to bottom, rgba(13,20,32,.4) 0%, rgba(13,20,32,.45) 45%, rgba(13,20,32,.7) 80%, var(--bg-deep) 100%),
+        radial-gradient(ellipse at 50% 30%, rgba(184,154,91,.1) 0%, transparent 60%);
+    }
+    /* Faction cards: wash the dark crest art into a soft light backdrop
+       with frosted light inner panels so they match the light aesthetic */
     [data-theme="light"] .faction-card {
-      box-shadow: 0 4px 20px rgba(0,0,0,.15);
+      box-shadow: 0 4px 24px rgba(120,100,60,.18);
+      border-color: rgba(139,115,64,.25);
+    }
+    [data-theme="light"] .faction-card::before {
+      background: linear-gradient(135deg, rgba(245,240,232,.9) 0%, rgba(238,231,220,.82) 45%, rgba(245,240,232,.9) 100%);
+    }
+    [data-theme="light"] .faction-card::after {
+      box-shadow: inset 0 0 40px rgba(200,188,165,.5);
+    }
+    [data-theme="light"] .faction-header {
+      border-bottom-color: rgba(139,115,64,.18);
+    }
+    [data-theme="light"] .faction-header-text,
+    [data-theme="light"] .faction-body,
+    [data-theme="light"] .faction-note,
+    [data-theme="light"] .quadrant-analysis {
+      background: rgba(255,253,248,.86);
+      box-shadow: 0 2px 14px rgba(120,100,60,.1);
+    }
+    [data-theme="light"] .faction-note {
+      background: rgba(184,154,91,.1);
+      border-left-color: var(--gold);
+    }
+    [data-theme="light"] .faction-hidden {
+      background: linear-gradient(135deg, rgba(255,253,248,.9) 0%, rgba(184,154,91,.1) 100%);
+      border-color: rgba(139,115,64,.3);
+      box-shadow: 0 2px 18px rgba(120,100,60,.12);
+    }
+    [data-theme="light"] .quadrant-analysis {
+      border-color: rgba(139,115,64,.2);
+    }
+    [data-theme="light"] .quadrant-analysis .qa-warning {
+      background: rgba(184,154,91,.1);
+      border-color: rgba(139,115,64,.2);
     }
     [data-theme="light"] .faction-crests-row {
-      background: rgba(0,0,0,.06);
+      background: rgba(120,100,60,.08);
       border-radius: 12px;
       padding: 1rem;
     }
