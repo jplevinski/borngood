@@ -494,14 +494,8 @@
     .sidebar-inner {
       position: sticky;
       top: 80px;
-      max-height: calc(100vh - 96px);
-      overflow-y: auto;
-      scrollbar-width: thin;
-      scrollbar-color: var(--gold-dim) transparent;
       padding-bottom: 2rem;
     }
-    .sidebar-inner::-webkit-scrollbar { width: 4px; }
-    .sidebar-inner::-webkit-scrollbar-thumb { background: var(--gold-dim); border-radius: 2px; }
     .sidebar-inner .stats-wrapper,
     .sidebar-inner .inv-wrapper {
       margin: 0 0 1rem 0;
@@ -1597,28 +1591,42 @@
   <aside class="chapter-sidebar" id="sidebar-ch1">
     <div class="sidebar-inner">
       <p class="sidebar-note">These reflect the stats and the inventory at the start of the chapter.</p>
-      <h3>Stats</h3>
-      <div class="stats-section-title">Core Stats</div>
-      <div class="stats-grid" id="core-stats-ch1-sb"></div>
-      <div class="stats-section-title">Soul Balance</div>
-      <div class="stats-grid" id="soul-stats-ch1-sb"></div>
-      <h3 style="margin-top:1.5rem">Inventory</h3>
-      <div class="inv-wrapper" id="inv-ch1-sb" style="margin:0;border:none;padding:0">
-        <div class="inv-header">
-          <h3>Inventory</h3>
-          <div class="currency">
-            <span><i class="coin coin-gold"></i> 5</span>
-            <span><i class="coin coin-silver"></i> 50</span>
-            <span><i class="coin coin-copper"></i> 0</span>
+      <div class="collapsible open" onclick="this.classList.toggle('open')">
+        <button class="collapsible-toggle">
+          <div><h3>Stats</h3></div>
+          <span class="chevron">▼</span>
+        </button>
+        <div class="collapsible-body"><div class="collapsible-body-inner">
+          <div class="stats-section-title">Core Stats</div>
+          <div class="stats-grid" id="core-stats-ch1-sb"></div>
+          <div class="stats-section-title">Soul Balance</div>
+          <div class="stats-grid" id="soul-stats-ch1-sb"></div>
+        </div></div>
+      </div>
+      <div class="collapsible open" onclick="this.classList.toggle('open')">
+        <button class="collapsible-toggle">
+          <div><h3>Inventory</h3></div>
+          <span class="chevron">▼</span>
+        </button>
+        <div class="collapsible-body"><div class="collapsible-body-inner">
+          <div class="inv-wrapper" id="inv-ch1-sb" style="margin:0;border:none;padding:0">
+            <div class="inv-header">
+              <h3>Inventory</h3>
+              <div class="currency">
+                <span><i class="coin coin-gold"></i> 5</span>
+                <span><i class="coin coin-silver"></i> 50</span>
+                <span><i class="coin coin-copper"></i> 0</span>
+              </div>
+            </div>
+            <div class="inv-tabs">
+              <button class="active" onclick="event.stopPropagation();switchInvTab('ch1-sb','equipment')">Equipment</button>
+              <button onclick="event.stopPropagation();switchInvTab('ch1-sb','items')">Items</button>
+              <button onclick="event.stopPropagation();switchInvTab('ch1-sb','potions')">Potions</button>
+            </div>
+            <div class="inv-hint">Tap an item to learn more</div>
+            <div class="inv-grid" id="inv-grid-ch1-sb"></div>
           </div>
-        </div>
-        <div class="inv-tabs">
-          <button class="active" onclick="switchInvTab('ch1-sb','equipment')">Equipment</button>
-          <button onclick="switchInvTab('ch1-sb','items')">Items</button>
-          <button onclick="switchInvTab('ch1-sb','potions')">Potions</button>
-        </div>
-        <div class="inv-hint">Tap an item to learn more</div>
-        <div class="inv-grid" id="inv-grid-ch1-sb"></div>
+        </div></div>
       </div>
     </div>
   </aside>
@@ -1844,28 +1852,42 @@
   <aside class="chapter-sidebar" id="sidebar-ch2">
     <div class="sidebar-inner">
       <p class="sidebar-note">These reflect the stats and the inventory at the start of the chapter.</p>
-      <h3>Stats</h3>
-      <div class="stats-section-title">Core Stats</div>
-      <div class="stats-grid" id="core-stats-ch2-sb"></div>
-      <div class="stats-section-title">Soul Balance</div>
-      <div class="stats-grid" id="soul-stats-ch2-sb"></div>
-      <h3 style="margin-top:1.5rem">Inventory</h3>
-      <div class="inv-wrapper" id="inv-ch2-sb" style="margin:0;border:none;padding:0">
-        <div class="inv-header">
-          <h3>Inventory</h3>
-          <div class="currency">
-            <span><i class="coin coin-gold"></i> 5</span>
-            <span><i class="coin coin-silver"></i> 50</span>
-            <span><i class="coin coin-copper"></i> 0</span>
+      <div class="collapsible open" onclick="this.classList.toggle('open')">
+        <button class="collapsible-toggle">
+          <div><h3>Stats</h3></div>
+          <span class="chevron">▼</span>
+        </button>
+        <div class="collapsible-body"><div class="collapsible-body-inner">
+          <div class="stats-section-title">Core Stats</div>
+          <div class="stats-grid" id="core-stats-ch2-sb"></div>
+          <div class="stats-section-title">Soul Balance</div>
+          <div class="stats-grid" id="soul-stats-ch2-sb"></div>
+        </div></div>
+      </div>
+      <div class="collapsible open" onclick="this.classList.toggle('open')">
+        <button class="collapsible-toggle">
+          <div><h3>Inventory</h3></div>
+          <span class="chevron">▼</span>
+        </button>
+        <div class="collapsible-body"><div class="collapsible-body-inner">
+          <div class="inv-wrapper" id="inv-ch2-sb" style="margin:0;border:none;padding:0">
+            <div class="inv-header">
+              <h3>Inventory</h3>
+              <div class="currency">
+                <span><i class="coin coin-gold"></i> 5</span>
+                <span><i class="coin coin-silver"></i> 50</span>
+                <span><i class="coin coin-copper"></i> 0</span>
+              </div>
+            </div>
+            <div class="inv-tabs">
+              <button class="active" onclick="event.stopPropagation();switchInvTab('ch2-sb','equipment')">Equipment</button>
+              <button onclick="event.stopPropagation();switchInvTab('ch2-sb','items')">Items</button>
+              <button onclick="event.stopPropagation();switchInvTab('ch2-sb','potions')">Potions</button>
+            </div>
+            <div class="inv-hint">Tap an item to learn more</div>
+            <div class="inv-grid" id="inv-grid-ch2-sb"></div>
           </div>
-        </div>
-        <div class="inv-tabs">
-          <button class="active" onclick="switchInvTab('ch2-sb','equipment')">Equipment</button>
-          <button onclick="switchInvTab('ch2-sb','items')">Items</button>
-          <button onclick="switchInvTab('ch2-sb','potions')">Potions</button>
-        </div>
-        <div class="inv-hint">Tap an item to learn more</div>
-        <div class="inv-grid" id="inv-grid-ch2-sb"></div>
+        </div></div>
       </div>
     </div>
   </aside>
@@ -2078,28 +2100,42 @@
   <aside class="chapter-sidebar" id="sidebar-ch3">
     <div class="sidebar-inner">
       <p class="sidebar-note">These reflect the stats and the inventory at the start of the chapter.</p>
-      <h3>Stats</h3>
-      <div class="stats-section-title">Core Stats</div>
-      <div class="stats-grid" id="core-stats-ch3-sb"></div>
-      <div class="stats-section-title">Soul Balance</div>
-      <div class="stats-grid" id="soul-stats-ch3-sb"></div>
-      <h3 style="margin-top:1.5rem">Inventory</h3>
-      <div class="inv-wrapper" id="inv-ch3-sb" style="margin:0;border:none;padding:0">
-        <div class="inv-header">
-          <h3>Inventory</h3>
-          <div class="currency">
-            <span><i class="coin coin-gold"></i> 5</span>
-            <span><i class="coin coin-silver"></i> 50</span>
-            <span><i class="coin coin-copper"></i> 0</span>
+      <div class="collapsible open" onclick="this.classList.toggle('open')">
+        <button class="collapsible-toggle">
+          <div><h3>Stats</h3></div>
+          <span class="chevron">▼</span>
+        </button>
+        <div class="collapsible-body"><div class="collapsible-body-inner">
+          <div class="stats-section-title">Core Stats</div>
+          <div class="stats-grid" id="core-stats-ch3-sb"></div>
+          <div class="stats-section-title">Soul Balance</div>
+          <div class="stats-grid" id="soul-stats-ch3-sb"></div>
+        </div></div>
+      </div>
+      <div class="collapsible open" onclick="this.classList.toggle('open')">
+        <button class="collapsible-toggle">
+          <div><h3>Inventory</h3></div>
+          <span class="chevron">▼</span>
+        </button>
+        <div class="collapsible-body"><div class="collapsible-body-inner">
+          <div class="inv-wrapper" id="inv-ch3-sb" style="margin:0;border:none;padding:0">
+            <div class="inv-header">
+              <h3>Inventory</h3>
+              <div class="currency">
+                <span><i class="coin coin-gold"></i> 5</span>
+                <span><i class="coin coin-silver"></i> 50</span>
+                <span><i class="coin coin-copper"></i> 0</span>
+              </div>
+            </div>
+            <div class="inv-tabs">
+              <button class="active" onclick="event.stopPropagation();switchInvTab('ch3-sb','equipment')">Equipment</button>
+              <button onclick="event.stopPropagation();switchInvTab('ch3-sb','items')">Items</button>
+              <button onclick="event.stopPropagation();switchInvTab('ch3-sb','potions')">Potions</button>
+            </div>
+            <div class="inv-hint">Tap an item to learn more</div>
+            <div class="inv-grid" id="inv-grid-ch3-sb"></div>
           </div>
-        </div>
-        <div class="inv-tabs">
-          <button class="active" onclick="switchInvTab('ch3-sb','equipment')">Equipment</button>
-          <button onclick="switchInvTab('ch3-sb','items')">Items</button>
-          <button onclick="switchInvTab('ch3-sb','potions')">Potions</button>
-        </div>
-        <div class="inv-hint">Tap an item to learn more</div>
-        <div class="inv-grid" id="inv-grid-ch3-sb"></div>
+        </div></div>
       </div>
     </div>
   </aside>
@@ -2245,28 +2281,42 @@
   <aside class="chapter-sidebar" id="sidebar-ch4">
     <div class="sidebar-inner">
       <p class="sidebar-note">These reflect the stats and the inventory at the start of the chapter.</p>
-      <h3>Stats</h3>
-      <div class="stats-section-title">Core Stats</div>
-      <div class="stats-grid" id="core-stats-ch4-sb"></div>
-      <div class="stats-section-title">Soul Balance</div>
-      <div class="stats-grid" id="soul-stats-ch4-sb"></div>
-      <h3 style="margin-top:1.5rem">Inventory</h3>
-      <div class="inv-wrapper" id="inv-ch4-sb" style="margin:0;border:none;padding:0">
-        <div class="inv-header">
-          <h3>Inventory</h3>
-          <div class="currency">
-            <span><i class="coin coin-gold"></i> 5</span>
-            <span><i class="coin coin-silver"></i> 50</span>
-            <span><i class="coin coin-copper"></i> 0</span>
+      <div class="collapsible open" onclick="this.classList.toggle('open')">
+        <button class="collapsible-toggle">
+          <div><h3>Stats</h3></div>
+          <span class="chevron">▼</span>
+        </button>
+        <div class="collapsible-body"><div class="collapsible-body-inner">
+          <div class="stats-section-title">Core Stats</div>
+          <div class="stats-grid" id="core-stats-ch4-sb"></div>
+          <div class="stats-section-title">Soul Balance</div>
+          <div class="stats-grid" id="soul-stats-ch4-sb"></div>
+        </div></div>
+      </div>
+      <div class="collapsible open" onclick="this.classList.toggle('open')">
+        <button class="collapsible-toggle">
+          <div><h3>Inventory</h3></div>
+          <span class="chevron">▼</span>
+        </button>
+        <div class="collapsible-body"><div class="collapsible-body-inner">
+          <div class="inv-wrapper" id="inv-ch4-sb" style="margin:0;border:none;padding:0">
+            <div class="inv-header">
+              <h3>Inventory</h3>
+              <div class="currency">
+                <span><i class="coin coin-gold"></i> 5</span>
+                <span><i class="coin coin-silver"></i> 50</span>
+                <span><i class="coin coin-copper"></i> 0</span>
+              </div>
+            </div>
+            <div class="inv-tabs">
+              <button class="active" onclick="event.stopPropagation();switchInvTab('ch4-sb','equipment')">Equipment</button>
+              <button onclick="event.stopPropagation();switchInvTab('ch4-sb','items')">Items</button>
+              <button onclick="event.stopPropagation();switchInvTab('ch4-sb','potions')">Potions</button>
+            </div>
+            <div class="inv-hint">Tap an item to learn more</div>
+            <div class="inv-grid" id="inv-grid-ch4-sb"></div>
           </div>
-        </div>
-        <div class="inv-tabs">
-          <button class="active" onclick="switchInvTab('ch4-sb','equipment')">Equipment</button>
-          <button onclick="switchInvTab('ch4-sb','items')">Items</button>
-          <button onclick="switchInvTab('ch4-sb','potions')">Potions</button>
-        </div>
-        <div class="inv-hint">Tap an item to learn more</div>
-        <div class="inv-grid" id="inv-grid-ch4-sb"></div>
+        </div></div>
       </div>
     </div>
   </aside>
