@@ -3235,7 +3235,7 @@
       <div class="lore-era">
         <div class="lore-era-label">Year 0</div>
         <h3>The Consensus of the Fifteen</h3>
-        <p>In the absolute depth of the third winter of darkness, with humanity on the brink of extinction, the <a class="lore-term" onclick="showPage('encyclopedia');document.getElementById('ency-fifteen-magi').scrollIntoView({behavior:'smooth',block:'center'});return false" href="#"><span class="lore-tip"><span class="lt-name">The 15 Original Magi</span><span class="lt-type">Historical Figures</span><span class="lt-desc">The premier magic-wielders who forged the Original Consensus and established the Four Factions.</span><span class="lt-link">→ Encyclopedia</span></span>15 Original Magi</a> — the premier magic-wielders to emerge from the catastrophe — gathered in the ruins to forge a treaty that would save what remained of the species.</p>
+        <p>In the absolute depth of the third winter of darkness, with humanity on the brink of extinction, the <a class="lore-term" onclick="showPage('encyclopedia');document.getElementById('ency-fifteen-magi').scrollIntoView({behavior:'smooth',block:'center'});return false" href="#"><span class="lore-tip"><span class="lt-name">The 15 Original Magi</span><span class="lt-type">Historical Figures</span><span class="lt-desc">The premier magic-wielders who forged the Original Consensus, established the Four Factions, and founded the Wizards Emporium.</span><span class="lt-link">→ Encyclopedia</span></span>15 Original Magi</a> — the premier magic-wielders to emerge from the catastrophe — gathered in the ruins to forge a treaty that would save what remained of the species.</p>
         <p>The magic released by the Catastrophe was highly reactive to human consciousness. Under the guidance of the Fifteen, the surviving 10% of humanity instinctively sorted themselves into four factions based entirely on the character and resonance of their souls.</p>
 
         <div class="lore-faction-grid">
@@ -3245,21 +3245,23 @@
             <p>Formed by those whose souls resonated with an unyielding, protective instinct. In the Dark Age, they used their awakened Strength and Vitality to stand on the front lines against starvation and madness.</p>
           </div>
           <div class="lore-faction-item">
+            <h4>The Flame</h4>
+            <div class="lore-faction-subtitle">The Phoenix</div>
+            <p>Formed by those whose souls burned with ambition, courage, and the drive to rebuild through struggle. Warriors, duelists, and innovators who believed greatness was earned, not given.</p>
+          </div>
+          <div class="lore-faction-item">
+            <h4>The Grove</h4>
+            <div class="lore-faction-subtitle">The World Tree</div>
+            <p>Formed by those whose souls resonated with compassion, healing, and the interconnectedness of all living things. They became the healers, scholars, and caretakers who nursed the remnants of civilization back to health.</p>
+          </div>
+          <div class="lore-faction-item">
             <h4>The Veil</h4>
             <div class="lore-faction-subtitle">The Hooded Eye</div>
             <p>Formed by those whose souls gravitated toward secrecy, survival, and the taboo aspects of Chaos magic. They realized that to preserve humanity, someone had to wield the hidden knives in the dark.</p>
           </div>
-          <div class="lore-faction-item">
-            <h4>The Wizards Emporium</h4>
-            <div class="lore-faction-subtitle">The Analytical Minds</div>
-            <p>Formed by the analytical, high-Intelligence minds who sought to study the Crystals, codify the System's mechanics, and master the structural manipulation of the soul.</p>
-          </div>
-          <div class="lore-faction-item">
-            <h4>The Covenant</h4>
-            <div class="lore-faction-subtitle">The Spiritual Binders</div>
-            <p>Formed by those focused on spiritual binding, community faith, and the absolute ideological unity required to hold the remnants of human society together.</p>
-          </div>
         </div>
+
+        <p>The Fifteen themselves did not join any faction. Instead, they formed the <a class="lore-term" onclick="showPage('encyclopedia');document.getElementById('ency-wizards-emporium').scrollIntoView({behavior:'smooth',block:'center'});return false" href="#"><span class="lore-tip"><span class="lt-name">The Wizards Emporium</span><span class="lt-type">Organization</span><span class="lt-desc">Founded by the 15 Original Magi to study the Crystals, codify the System, and perform Soul Enchantments.</span><span class="lt-link">→ Encyclopedia</span></span>Wizards Emporium</a> — a fifth body dedicated to studying the Catastrophe Crystals, codifying the System's mechanics, and mastering the structural manipulation of the soul. To this day, the Emporium stands apart from the Four Factions, serving as the neutral authority that performs Soul Enchantments on every admitted student.</p>
 
         <p>To mark humanity's triumph over cosmic destruction, the Fifteen discarded the old world's calendar, established the kingdom of <a class="lore-term" onclick="showPage('encyclopedia');document.getElementById('ency-valerguard').scrollIntoView({behavior:'smooth',block:'center'});return false" href="#"><span class="lore-tip"><span class="lt-name">Valerguard</span><span class="lt-type">Kingdom</span><span class="lt-desc">The kingdom in which the story takes place, founded at Year 0 after the Cataclysm.</span><span class="lt-link">→ Encyclopedia</span></span>Valerguard</a>, and declared Year 0.</p>
       </div>
@@ -3866,8 +3868,8 @@ const ENCY_ENTRIES = [
     desc:'One of the Four Factions that govern Valerguard. The most feared faction, The Veil studies souls, memory, identity, and forbidden magic. Their motto: "Truth survives where comfort dies." History books blame them for calamities best forgotten, and their name alone can silence a room. Elias\'s great uncle Daemeon joined The Veil instead of The Shield — a decision that made him a pariah in the Lumina family. <a href="#" class="lore-term" style="border:none" onclick="showPage(\'factions\');return false">→ Full faction details</a>' },
   { id:'ency-valerguard', title:'Valerguard', sort:'Valerguard', type:'Kingdom', cat:'places', img:'',
     desc:'The kingdom in which the story takes place. Valerguard is governed by the Four Factions and home to adventurer academies, ancient magic, and a long history of conflict. Its capital city shares a name with the Tether River that runs through it.' },
-  { id:'ency-wizards-emporium', title:'The Wizards Emporium', sort:'Wizards Emporium', type:'Organization — Founding Faction', cat:'people', img:'',
-    desc:'One of the four original factions formed during the Consensus of the Fifteen. Born from the analytical, high-Intelligence minds who sought to study the Catastrophe Crystals, codify the System\'s mechanics, and master the structural manipulation of the soul. Today they are responsible for performing Soul Enchantments on admitted students at Tetherpoint Academy.' },
+  { id:'ency-wizards-emporium', title:'The Wizards Emporium', sort:'Wizards Emporium', type:'Organization', cat:'people', img:'',
+    desc:'Founded by the 15 Original Magi during the Consensus of the Fifteen. Rather than joining any of the Four Factions, the Fifteen formed the Emporium as a neutral fifth body dedicated to studying the Catastrophe Crystals, codifying the System\'s mechanics, and mastering the structural manipulation of the soul. To this day, the Emporium stands apart from faction politics, serving as the authority that performs Soul Enchantments on every admitted student at Tetherpoint Academy. <a href="#" class="lore-term" style="border:none" onclick="showPage(\'lore\');return false">→ Full lore</a>' },
   { id:'ency-cataclysm', title:'The Great Blunder', sort:'Great Blunder', type:'Historical Event — Year -3', cat:'magic', img:'',
     desc:'The extinction-level event that ended the old world. A single Mimic stole a Dungeon Core — a vessel for the God of Chaos — and carried it to the surface. The resulting 300-megaton arcane detonation killed one-third of the global population instantly, vaporized the ancient capital, and plunged the world into years of freezing darkness. <a href="#" class="lore-term" style="border:none" onclick="showPage(\'lore\');return false">→ Full lore</a>' },
   { id:'ency-catastrophe-crystals', title:'Catastrophe Crystals', sort:'Catastrophe Crystals', type:'Magical Object', cat:'magic', img:'',
@@ -3883,9 +3885,7 @@ const ENCY_ENTRIES = [
   { id:'ency-mimic', title:'Mimic', sort:'Mimic', type:'Creature — Dungeon Monster', cat:'creatures', img:'',
     desc:'A baseline dungeon monster whose anomalous surge of greed triggered the end of the old world. By committing the cosmic taboo of stealing a Dungeon Core — one that happened to be a vessel for the God of Chaos — this single creature inadvertently caused the Great Blunder, the extinction of most of humanity, and the birth of the Adventurer System.' },
   { id:'ency-fifteen-magi', title:'The 15 Original Magi', sort:'Fifteen Original Magi', type:'Historical Figures', cat:'people', img:'',
-    desc:'The premier magic-wielders to emerge from the Catastrophe Crystals during the Dark Age. In the third year of the apocalypse, they gathered in the ruins and forged the Original Consensus — a historic treaty that organized the remaining survivors into Four Factions based on soul resonance, established the kingdom of Valerguard, and reset the calendar to Year 0. <a href="#" class="lore-term" style="border:none" onclick="showPage(\'lore\');return false">→ Full lore</a>' },
-  { id:'ency-the-covenant', title:'The Covenant', sort:'Covenant', type:'Organization — Founding Faction', cat:'people', img:'',
-    desc:'One of the four original factions formed during the Consensus of the Fifteen. Comprised of those focused on spiritual binding, community faith, and the absolute ideological unity required to hold the remnants of human society together. Their role in modern Valerguard has not yet been revealed.' },
+    desc:'The premier magic-wielders to emerge from the Catastrophe Crystals during the Dark Age. In the third year of the apocalypse, they gathered in the ruins and forged the Original Consensus — a historic treaty that organized the remaining survivors into the Four Factions (The Shield, The Flame, The Grove, and The Veil) based on soul resonance, established the kingdom of Valerguard, and reset the calendar to Year 0. The Fifteen themselves did not join any faction, instead founding the Wizards Emporium as a neutral body to study the System and perform Soul Enchantments. <a href="#" class="lore-term" style="border:none" onclick="showPage(\'lore\');return false">→ Full lore</a>' },
   { id:'ency-dwarven-realms', title:'The Dwarven Realms', sort:'Dwarven Realms', type:'Region — Northern Mountains', cat:'places', img:'',
     desc:'A vast mountain range spanning the entire northern border of Valerguard. Their deep-mountain fortresses survived the Great Blunder largely intact. The dwarves maintain a cautious alliance with Valerguard, trading rare ores and masterwork weapons. The Dwarven Gate near Mellonwood marks the primary trade route between the two civilizations. <a href="#" class="lore-term" style="border:none" onclick="showPage(\'lore\');return false">→ World Lore</a>' },
   { id:'ency-elven-wilds', title:'The Elven Wilds', sort:'Elven Wilds', type:'Region — Western Wilderness', cat:'places', img:'',
