@@ -44,47 +44,55 @@
       border-bottom-color: rgba(139,115,64,.3);
     }
     [data-theme="light"] .stat-bar-bg {
-      background: rgba(0,0,0,.1);
+      background: rgba(0,0,0,.12);
     }
+    [data-theme="light"] .collapsible {
+      border-color: rgba(100,80,50,.2);
+    }
+    [data-theme="light"] .collapsible-toggle {
+      background: var(--bg-mid);
+    }
+    [data-theme="light"] .sidebar-portrait img {
+      border-color: var(--gold);
+    }
+    [data-theme="light"] .system-msg {
+      color: #B03030;
+      border-color: rgba(176,48,48,.2);
+      background: rgba(176,48,48,.06);
+    }
+    [data-theme="light"] .chapter-text .dialogue {
+      border-left-color: var(--gold);
+    }
+    /* Dark-background elements keep dark-mode colors in light theme */
+    [data-theme="light"] .hero,
     [data-theme="light"] .faction-card,
     [data-theme="light"] .faction-hidden,
-    [data-theme="light"] .chapter-end-dashboard .collapsible,
-    [data-theme="light"] .sidebar-inner .collapsible {
+    [data-theme="light"] .lore-tip,
+    [data-theme="light"] .stat-reason {
       --text: #D8D2C8;
       --text-light: #F0EBE2;
       --text-muted: #A09A94;
       --gold: #B89A5B;
       --gold-dim: #8B7340;
+      --gold-bright: #D4B872;
+      --bg-mid: #1A1F2B;
       --bg-card: #2C3442;
     }
-    [data-theme="light"] .hero {
-      --text: #D8D2C8;
-      --text-light: #F0EBE2;
-      --text-muted: #A09A94;
-      --gold: #B89A5B;
-    }
-    [data-theme="light"] .hero::before {
-      background:
-        linear-gradient(to bottom, rgba(13,20,32,.55) 0%, rgba(13,20,32,.7) 50%, rgba(13,20,32,.95) 100%),
-        radial-gradient(ellipse at 50% 30%, rgba(184,154,91,.08) 0%, transparent 60%);
+    [data-theme="light"] .faction-card {
+      box-shadow: 0 4px 20px rgba(0,0,0,.15);
     }
     [data-theme="light"] .faction-crests-row {
-      background: rgba(0,0,0,.15);
+      background: rgba(0,0,0,.06);
       border-radius: 12px;
       padding: 1rem;
     }
-    [data-theme="light"] .lore-tip {
-      --text: #D8D2C8;
-      --text-light: #F0EBE2;
-      --text-muted: #A09A94;
-      --bg-mid: #1A1F2B;
+    [data-theme="light"] .char-card {
+      box-shadow: 0 2px 12px rgba(0,0,0,.08);
     }
-    [data-theme="light"] .stat-reason {
-      --bg-mid: #1A1F2B;
-      --text-light: #F0EBE2;
-    }
-    [data-theme="light"] .system-msg {
-      color: #C45050;
+    [data-theme="light"] .sidebar-toggle {
+      background: var(--bg-mid);
+      border-color: var(--gold);
+      box-shadow: 0 4px 20px rgba(0,0,0,.15);
     }
 
     /* ─── READING PROGRESS BAR ─── */
