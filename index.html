@@ -28,6 +28,37 @@
       --stat-down: #C45050;
     }
 
+    [data-theme="light"] {
+      --bg-deep: #F5F0E8;
+      --bg-mid: #EDE7DC;
+      --bg-card: #DDD6C8;
+      --text-muted: #6B6560;
+      --gold: #8B7340;
+      --gold-dim: #6B5530;
+      --gold-bright: #A07D3A;
+      --text: #3A342E;
+      --text-light: #2A2520;
+    }
+    [data-theme="light"] nav {
+      background: rgba(245,240,232,.95);
+      border-bottom-color: rgba(139,115,64,.3);
+    }
+    [data-theme="light"] .stat-bar-bg {
+      background: rgba(0,0,0,.1);
+    }
+
+    /* ─── READING PROGRESS BAR ─── */
+    .reading-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      background: var(--gold);
+      z-index: 200;
+      width: 0%;
+      transition: width 50ms linear;
+    }
+
     body {
       font-family: 'Playfair Display', Georgia, serif;
       background: var(--bg-deep);
@@ -77,6 +108,18 @@
       transition: color .3s;
     }
     .nav-links a:hover { color: var(--gold); }
+    .theme-toggle {
+      background: none;
+      border: 1px solid rgba(184,154,91,.3);
+      border-radius: 6px;
+      color: var(--text-muted);
+      cursor: pointer;
+      font-size: 1rem;
+      padding: 0.3rem 0.5rem;
+      transition: all .3s;
+      line-height: 1;
+    }
+    .theme-toggle:hover { color: var(--gold); border-color: var(--gold); }
 
     /* ─── TOC DROPDOWN ─── */
     .toc-dropdown {
@@ -378,6 +421,45 @@
     }
     .stat-change.up { color: var(--stat-up); }
     .stat-change.down { color: var(--stat-down); }
+    .stat-item { position: relative; }
+    .stat-reason {
+      display: none;
+      position: absolute;
+      bottom: calc(100% + 8px);
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--bg-mid);
+      border: 1px solid rgba(184,154,91,.3);
+      border-radius: 6px;
+      padding: 0.4rem 0.7rem;
+      font-size: 0.7rem;
+      color: var(--text-light);
+      white-space: nowrap;
+      z-index: 50;
+      pointer-events: none;
+      box-shadow: 0 4px 12px rgba(0,0,0,.4);
+    }
+    .stat-item:hover .stat-reason { display: block; }
+
+    /* ─── SIDEBAR PORTRAIT ─── */
+    .sidebar-portrait {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+    .sidebar-portrait img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--gold-dim);
+    }
+    .sidebar-portrait .portrait-name {
+      font-family: 'Cinzel', serif;
+      font-size: 0.7rem;
+      color: var(--gold);
+      letter-spacing: 0.1em;
+      margin-top: 0.4rem;
+    }
 
     .summary-stats {
       display: flex;
@@ -1322,6 +1404,7 @@
 <body>
 
 <!-- NAV -->
+<div class="reading-progress" id="reading-progress"></div>
 <nav>
   <a href="#" class="nav-brand" onclick="showPage('home');return false">Born Good</a>
   <ul class="nav-links">
@@ -1340,6 +1423,7 @@
     <li><a href="#" onclick="showPage('factions');return false">Factions</a></li>
     <li><a href="#" onclick="showPage('encyclopedia');return false">Encyclopedia</a></li>
     <li><a href="#" onclick="showPage('stats');return false">Stats Guide</a></li>
+    <li><button class="theme-toggle" onclick="toggleTheme()" title="Toggle light/dark mode">☀</button></li>
   </ul>
 </nav>
 
@@ -1588,6 +1672,10 @@
   <!-- Sticky sidebar (desktop ≥1024px) -->
   <aside class="chapter-sidebar" id="sidebar-ch1">
     <div class="sidebar-inner">
+      <div class="sidebar-portrait">
+        <img src="images/elias-lumina.png" alt="Elias Lumina">
+        <div class="portrait-name">Elias Lumina</div>
+      </div>
       <p class="sidebar-note">These reflect the stats and the inventory at the start of the chapter.</p>
       <div class="collapsible" onclick="this.classList.toggle('open')">
         <button class="collapsible-toggle">
@@ -1849,6 +1937,10 @@
   <!-- Sticky sidebar (desktop ≥1024px) -->
   <aside class="chapter-sidebar" id="sidebar-ch2">
     <div class="sidebar-inner">
+      <div class="sidebar-portrait">
+        <img src="images/elias-lumina.png" alt="Elias Lumina">
+        <div class="portrait-name">Elias Lumina</div>
+      </div>
       <p class="sidebar-note">These reflect the stats and the inventory at the start of the chapter.</p>
       <div class="collapsible" onclick="this.classList.toggle('open')">
         <button class="collapsible-toggle">
@@ -2097,6 +2189,10 @@
   <!-- Sticky sidebar (desktop ≥1024px) -->
   <aside class="chapter-sidebar" id="sidebar-ch3">
     <div class="sidebar-inner">
+      <div class="sidebar-portrait">
+        <img src="images/elias-lumina.png" alt="Elias Lumina">
+        <div class="portrait-name">Elias Lumina</div>
+      </div>
       <p class="sidebar-note">These reflect the stats and the inventory at the start of the chapter.</p>
       <div class="collapsible" onclick="this.classList.toggle('open')">
         <button class="collapsible-toggle">
@@ -2278,6 +2374,10 @@
   <!-- Sticky sidebar (desktop ≥1024px) -->
   <aside class="chapter-sidebar" id="sidebar-ch4">
     <div class="sidebar-inner">
+      <div class="sidebar-portrait">
+        <img src="images/elias-lumina.png" alt="Elias Lumina">
+        <div class="portrait-name">Elias Lumina</div>
+      </div>
       <p class="sidebar-note">These reflect the stats and the inventory at the start of the chapter.</p>
       <div class="collapsible" onclick="this.classList.toggle('open')">
         <button class="collapsible-toggle">
@@ -3165,6 +3265,91 @@ renderEndSummary(1, 'ch1');
 renderEndSummary(2, 'ch2');
 renderEndSummary(3, 'ch3');
 renderEndSummary(4, 'ch4');
+
+// Soul stat change reasons (for tooltip on hover)
+const SOUL_REASONS = {
+  Mercy: {
+    ch2: 'Varric\'s cruelty tested his compassion',
+    ch3: 'No change this chapter',
+    ch4: 'Witnessed violence in the field exercise',
+  },
+  Conviction: {
+    ch2: 'Stood firm against Varric\'s attack',
+    ch3: 'Refused to be broken by detention',
+    ch4: 'Chose to protect others in combat',
+  },
+  Resentment: {
+    ch2: 'Targeted unfairly by Archmage Varric',
+    ch3: 'Punished despite being the victim',
+    ch4: 'Anger building from repeated injustice',
+  },
+  Connection: {
+    ch2: 'Distance from home and family',
+    ch3: 'Found an ally in Borin',
+    ch4: 'Bonds tested by Academy trials',
+  },
+  Hope: {
+    ch2: 'Academy darker than he imagined',
+    ch3: 'Struggling under the weight of his name',
+    ch4: 'Doubts deepening about his future',
+  },
+  Identity: {
+    ch2: 'The Lumina name carries unknown baggage',
+    ch3: 'No change this chapter',
+    ch4: 'Wrestling with who the world says he is',
+  },
+};
+
+function addSoulTooltips() {
+  document.querySelectorAll('.stats-grid[id^="soul-stats-"]').forEach(grid => {
+    const suffix = grid.id.replace('soul-stats-', '');
+    const ch = suffix.replace('-sb', '');
+    const chNum = parseInt(ch.replace('ch', ''));
+    if (chNum <= 1) return;
+    grid.querySelectorAll('.stat-item').forEach(item => {
+      const label = item.querySelector('.stat-label');
+      if (!label) return;
+      const name = label.textContent.trim();
+      const reasons = SOUL_REASONS[name];
+      if (!reasons || !reasons[ch]) return;
+      const stat = STATS.soul.find(s => s.name === name);
+      if (!stat) return;
+      const prevCh = chNum - 1;
+      const val = stat['ch' + chNum];
+      const prev = stat['ch' + prevCh];
+      if (val === prev) return;
+      const tip = document.createElement('div');
+      tip.className = 'stat-reason';
+      tip.textContent = reasons[ch];
+      item.appendChild(tip);
+    });
+  });
+}
+addSoulTooltips();
+
+// Reading progress bar
+window.addEventListener('scroll', function() {
+  const bar = document.getElementById('reading-progress');
+  const h = document.documentElement.scrollHeight - window.innerHeight;
+  bar.style.width = h > 0 ? (window.scrollY / h * 100) + '%' : '0%';
+});
+
+// Theme toggle
+function toggleTheme() {
+  const html = document.documentElement;
+  const current = html.getAttribute('data-theme');
+  const next = current === 'light' ? 'dark' : 'light';
+  html.setAttribute('data-theme', next);
+  document.querySelector('.theme-toggle').textContent = next === 'light' ? '☾' : '☀';
+  localStorage.setItem('theme', next);
+}
+(function() {
+  const saved = localStorage.getItem('theme');
+  if (saved === 'light') {
+    document.documentElement.setAttribute('data-theme', 'light');
+    document.querySelector('.theme-toggle').textContent = '☾';
+  }
+})();
 </script>
 
 </body>
