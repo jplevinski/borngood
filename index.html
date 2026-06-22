@@ -2917,6 +2917,7 @@ const STATS = {
 function renderStats(chapter, suffix) {
   ['core', 'soul'].forEach(type => {
     const el = document.getElementById(`${type}-stats-${suffix}`);
+    if (!el) return;
     el.innerHTML = STATS[type].map(s => {
       const val = s['ch' + chapter];
       const pct = (val / s.max) * 100;
@@ -3101,6 +3102,7 @@ function getInvDataKey(chId) {
 
 function renderInventory(chId, tab) {
   const grid = document.getElementById('inv-grid-' + chId);
+  if (!grid) return;
   const dataKey = getInvDataKey(chId);
   const items = (INVENTORY[dataKey] && INVENTORY[dataKey][tab]) || [];
   let detailEl = document.getElementById('inv-detail-' + chId);
