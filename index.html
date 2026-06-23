@@ -1359,6 +1359,168 @@
       color: var(--text-muted);
       line-height: 1.6;
     }
+    .char-card.clickable { cursor: pointer; }
+    .char-card.clickable:hover { border-color: var(--gold-bright); }
+    .char-read-more {
+      display: inline-block;
+      margin-top: 0.6rem;
+      font-family: 'Cinzel', serif;
+      font-size: 0.7rem;
+      color: var(--gold);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color .2s;
+    }
+    .char-card.clickable:hover .char-read-more { color: var(--gold-bright); }
+
+    /* ── Character Overlay ── */
+    .char-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 10002;
+      background: rgba(0,0,0,.88);
+      justify-content: center;
+      align-items: flex-start;
+      padding: 2rem 1rem;
+      overflow-y: auto;
+    }
+    .char-overlay.open { display: flex; }
+    .char-overlay-inner {
+      background: var(--bg-card);
+      border: 1px solid rgba(184,154,91,.25);
+      border-radius: 14px;
+      max-width: 700px;
+      width: 100%;
+      padding: 2rem 2.5rem;
+      position: relative;
+      box-shadow: 0 0 60px rgba(0,0,0,.6), 0 0 20px rgba(184,154,91,.1);
+    }
+    .char-overlay-close {
+      position: absolute;
+      top: 1rem;
+      right: 1.2rem;
+      background: none;
+      border: none;
+      color: var(--gold-dim);
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: color .2s;
+      line-height: 1;
+    }
+    .char-overlay-close:hover { color: var(--gold-bright); }
+    .char-overlay-header {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+    .char-overlay-portrait {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid rgba(184,154,91,.3);
+      box-shadow: 0 0 20px rgba(0,0,0,.5);
+      flex-shrink: 0;
+    }
+    .char-overlay-title h3 {
+      font-size: 1.3rem;
+      margin-bottom: 0.2rem;
+    }
+    .char-overlay-title .char-role {
+      font-family: 'Cinzel', serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+      margin-bottom: 0.3rem;
+    }
+    .char-overlay-title .char-overlay-level {
+      font-family: 'Cinzel', serif;
+      font-size: 0.72rem;
+      color: var(--gold);
+    }
+    .char-overlay-desc {
+      font-size: 0.9rem;
+      color: var(--text);
+      line-height: 1.75;
+      margin-bottom: 1.5rem;
+    }
+    .char-overlay-section {
+      margin-bottom: 1.3rem;
+    }
+    .char-overlay-section h4 {
+      font-family: 'Cinzel', serif;
+      font-size: 0.78rem;
+      color: var(--gold);
+      letter-spacing: 0.08em;
+      margin-bottom: 0.7rem;
+      padding-bottom: 0.3rem;
+      border-bottom: 1px solid rgba(184,154,91,.15);
+    }
+    .char-overlay-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.3rem 1.5rem;
+    }
+    .char-overlay-stat-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.25rem 0;
+      font-size: 0.82rem;
+    }
+    .char-overlay-stat-row span:first-child { color: var(--text-muted); }
+    .char-overlay-stat-row span:last-child { color: var(--gold); font-family: 'Cinzel', serif; }
+    .char-overlay-ability {
+      display: flex;
+      gap: 0.6rem;
+      align-items: flex-start;
+      padding: 0.4rem 0;
+      border-bottom: 1px solid rgba(184,154,91,.08);
+    }
+    .char-overlay-ability:last-child { border-bottom: none; }
+    .char-overlay-ability-icon { font-size: 1.1rem; flex-shrink: 0; }
+    .char-overlay-ability-name {
+      font-family: 'Cinzel', serif;
+      font-size: 0.75rem;
+      color: var(--gold);
+    }
+    .char-overlay-ability-type {
+      font-size: 0.65rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .char-overlay-ability-desc {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+    .char-overlay-achievement {
+      display: flex;
+      gap: 0.5rem;
+      align-items: flex-start;
+      padding: 0.35rem 0;
+    }
+    .char-overlay-achievement-icon { font-size: 0.9rem; flex-shrink: 0; }
+    .char-overlay-achievement-text {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+    .char-overlay-achievement-text strong {
+      color: var(--gold);
+      font-family: 'Cinzel', serif;
+      font-size: 0.75rem;
+    }
+    @media (max-width: 600px) {
+      .char-overlay-inner { padding: 1.5rem 1.2rem; }
+      .char-overlay-header { flex-direction: column; text-align: center; }
+      .char-overlay-portrait { width: 100px; height: 100px; }
+      .char-overlay-stats { grid-template-columns: 1fr; }
+    }
 
     /* ─── LORE TOOLTIPS ─── */
     .lore-term {
@@ -3711,30 +3873,33 @@
     <div class="stats-section-title" style="text-align:center;font-size:0.85rem;margin-bottom:1rem">Main Characters</div>
     <div class="char-grid">
 
-      <div class="char-card">
+      <div class="char-card clickable" onclick="openCharOverlay('elias')">
         <img src="images/elias-lumina.png" alt="Elias Lumina">
         <div class="char-card-body">
           <h3>Elias Lumina</h3>
-          <div class="char-role">Protagonist — First-Year Novice</div>
-          <p>A farm boy from Ravenscroft and the first in generations to attend Tetherpoint Academy. Stubborn, principled, and burdened by a family name that carries secrets no one will explain.</p>
+          <div class="char-role">Protagonist — Level 2 Tank</div>
+          <p>A farm boy from Ravenscroft burdened by a family name that carries secrets no one will explain. Stubborn, principled, and simmering with quiet rage.</p>
+          <span class="char-read-more">→ Read More</span>
         </div>
       </div>
 
-      <div class="char-card">
+      <div class="char-card clickable" onclick="openCharOverlay('kip')">
         <img src="images/kip.png" alt="Kip Krumplnick">
         <div class="char-card-body">
           <h3>Kip Krumplnick</h3>
-          <div class="char-role">Ally — First-Year Novice, Group 3 Squad Leader</div>
-          <p>A small, red-haired boy from Tether with an intense stare and an oddly literal way of seeing the world. Beneath his flat, eccentric demeanor lies an ice-cold tactical brilliance — he reads battlefields with unnerving precision. A skilled archer and Group 3's squad leader, he is fiercely loyal to both Cassian and Elias, somehow navigating their mutual hostility without choosing a side.</p>
+          <div class="char-role">Ally — Group 3 Squad Leader</div>
+          <p>A small, red-haired boy from Tether with an intense stare and ice-cold tactical brilliance. Fiercely loyal to both Cassian and Elias.</p>
+          <span class="char-read-more">→ Read More</span>
         </div>
       </div>
 
-      <div class="char-card">
+      <div class="char-card clickable" onclick="openCharOverlay('cassian')">
         <img src="images/cassian.png" alt="Cassian Drake">
         <div class="char-card-body">
           <h3>Cassian Drake</h3>
-          <div class="char-role">Rival — First-Year Shield Candidate, Faction Leader</div>
-          <p>A towering, iron-willed first-year selected as faction leader for The Shield during tryouts. What Elias sees as cruelty, Cassian's private field notes reveal as calculated strategy — he deliberately engineers pressure to forge stronger soldiers. A childhood acquaintance of Kip from Tether, he is being actively groomed for institutional command and demands absolute compliance from his cohort.</p>
+          <div class="char-role">Rival — Shield Faction Leader</div>
+          <p>A towering, iron-willed first-year selected as faction leader for The Shield. What Elias sees as cruelty, his field notes reveal as calculated strategy.</p>
+          <span class="char-read-more">→ Read More</span>
         </div>
       </div>
 
@@ -4649,7 +4814,154 @@
   </div>
 </div>
 
+<!-- Character Detail Overlay -->
+<div class="char-overlay" id="char-overlay" onclick="if(event.target===this)closeCharOverlay()">
+  <div class="char-overlay-inner">
+    <button class="char-overlay-close" onclick="closeCharOverlay()">&times;</button>
+    <div id="char-overlay-content"></div>
+  </div>
+</div>
+
 <script>
+const MAIN_CHARS = {
+  elias: {
+    name: 'Elias Lumina',
+    role: 'Protagonist — Level 2 Tank',
+    level: 'Level 2 — Tank (The Shield)',
+    img: 'images/elias-lumina.png',
+    desc: 'Elias Lumina is a farm boy from the remote village of Ravenscroft — the first in generations to attend Tetherpoint Academy. He carries the weight of the Lumina name, a once-great Shield legacy now buried under layers of institutional silence and deliberate erasure. Stubborn, principled, and deeply moral, Elias entered the academy with high Mercy, soaring Hope, and virtually no Resentment. The system had other plans.<br><br>From the moment he spoke his name, Archmage Varric Pyre singled him out with visible hatred, throwing him into detention on his first day. Cassian Drake, the self-appointed faction leader of The Shield, assigned Elias to the tank position — a role that directly contradicts his natural agility and striker instincts. The assignment was deliberate: Cassian\'s field notes reveal he is engineering Elias\'s rage, pushing him toward a Rage-Based Tank archetype that grows more lethal the more damage he absorbs.<br><br>Elias doesn\'t know any of this. All he knows is that the world keeps punching him, and the fire in his chest keeps getting hotter. His Soul Balance is shifting rapidly — Resentment climbing, Hope falling, Mercy eroding. Whether he becomes the weapon Cassian is forging or something else entirely remains to be seen.',
+    stats: {
+      hp: '150 / 150', mp: '48 / 50',
+      str: 7, agi: 9, vit: 10, int: 9, wis: 10, cha: 8
+    },
+    soul: { mercy: 80, conviction: 89, resentment: 63, connection: 78, hope: 64, identity: 90 },
+    abilities: [
+      { icon: '🛡️', name: 'Block', type: 'Active — Shield', desc: 'Raise your shield to intercept incoming attacks. Reduces damage based on shield quality and Strength.' },
+      { icon: '🔨', name: 'Smash', type: 'Active — Mace', desc: 'A heavy overhead strike that deals bonus damage. Can stagger enemies on critical hits.' },
+      { icon: '👟', name: 'Fast Feet', type: 'Passive — Job Lv.1', desc: 'Increases Dodge Chance by 5% per Job Level. Unlocked upon reaching Level 2.' }
+    ],
+    achievements: [
+      { icon: '⚔️', text: '<strong>First Blood</strong> — Participated in the Rustlefoot Goblin culling as Group 3\'s tank. Survived sustained melee combat against dagger-wielders despite inadequate healing support.' },
+      { icon: '📈', text: '<strong>Level 2</strong> — Leveled up during his first combat encounter, gaining +50 HP, +2 Vitality, +2 Agility, +1 Strength, and unlocking the Fast Feet passive.' },
+      { icon: '🔒', text: '<strong>Legacy Access: Restricted</strong> — A cryptic message briefly appeared on his status screen in faint silver letters before vanishing. No other student has this feature.' },
+      { icon: '🔮', text: '<strong>Luminus Pendant</strong> — Received a dormant Maw Shard pendant from Uncle Daemeon. Will only awaken if Elias joins The Veil.' },
+      { icon: '🏰', text: '<strong>Detention Survivor</strong> — Sent to the detention block beneath Tetherpoint on his first day by Archmage Varric. Met Borin Grimhall, who hinted at deeper truths about the Lumina name.' }
+    ]
+  },
+  kip: {
+    name: 'Kip Krumplnick',
+    role: 'Ally — Group 3 Squad Leader',
+    level: 'Level 1 — Archer (The Shield)',
+    img: 'images/kip.png',
+    desc: 'Kip Krumplnick is a small, red-haired boy from the capital city of Tether with an oddly literal way of seeing the world and an intense, unblinking stare that unsettles most people around him. His flat, monotone delivery and eccentric mannerisms make the other commoners uneasy — but beneath that peculiar exterior lies an ice-cold tactical brilliance that even Cassian Drake privately considers a strategic asset.<br><br>Kip is a skilled archer with pinpoint precision, capable of threading arrows through eye sockets mid-combat. Cassian selected him as Group 3\'s squad leader during the Rustlefoot Goblin culling — a position that gave Kip direct command over Elias, the twins, and Markko. His battlefield calls were textbook: isolating threats, routing skirmishers, and managing engagement flow with clinical efficiency.<br><br>What makes Kip truly unusual is his split loyalty. He is fiercely, genuinely loyal to Cassian — viewing his harsh discipline as necessary and just. Yet he is simultaneously Elias\'s friend, showing a raw, intense loyalty that never wavers. He navigates their mutual hostility without choosing a side, a balancing act that grows more precarious with every chapter. Cassian\'s field notes indicate he is actively developing Kip\'s command confidence, keeping him on the leash as squad leader to force assertiveness under pressure.',
+    stats: {
+      hp: '100 / 100', mp: '50 / 50',
+      str: 5, agi: 10, vit: 5, int: 8, wis: 7, cha: 4
+    },
+    soul: null,
+    abilities: [
+      { icon: '🏹', name: 'Precision Shot', type: 'Active — Bow', desc: 'A carefully aimed arrow with increased accuracy and critical hit chance against stationary or staggered targets.' },
+      { icon: '🎯', name: 'Volley', type: 'Active — Bow', desc: 'Rapid consecutive shots that suppress enemy movement. Effective against fleeing or low-HP targets.' }
+    ],
+    achievements: [
+      { icon: '⚔️', text: '<strong>Squad Leader</strong> — Selected by Cassian Drake to lead Group 3 during the Rustlefoot Goblin culling. Issued precise tactical commands under live combat conditions.' },
+      { icon: '💀', text: '<strong>Killing Blow</strong> — Landed a perfect arrow through the eye socket of a staggered Rustlefoot Goblin, instantly depleting its remaining 50 HP.' },
+      { icon: '🔗', text: '<strong>Trans-Com Crystal Bearer</strong> — Entrusted with a trans-communication crystal, providing Cassian with a direct visual data-stream and teleportation anchor to Group 3\'s location.' },
+      { icon: '🧠', text: '<strong>Tactical Prodigy</strong> — Diagnosed battlefield threats in real-time: pinning dagger-wielders, routing stone-throwers, and coordinating the full squad with monotone precision.' }
+    ]
+  },
+  cassian: {
+    name: 'Cassian Drake',
+    role: 'Rival — Shield Faction Leader',
+    level: 'Level ?? — Commander (The Shield)',
+    img: 'images/cassian.png',
+    desc: 'Cassian Drake is a towering, iron-willed first-year from the capital city of Tether, selected as faction leader for The Shield during the Faction Tryouts — his insignia materializing in golden light on his uniform. He commands with absolute authority, demands total compliance, and punishes hesitation without mercy. To Elias and most of the cohort, he is a bully — a brute who uses his size and position to dominate others.<br><br>His private field notes tell a very different story. Cassian is a calculating strategist who views every interaction as a training exercise. He identified Elias as a "volatile, high-potential" asset from the moment he stepped through the Academy Gate, flagging his instinctive leadership qualities and the deep reservoir of rage simmering beneath the surface. The tank assignment, the deliberate humiliation, the constant pressure — all of it is engineered. Cassian is systematically stoking Elias\'s anger to forge him into a Rage-Based Tank archetype, one that grows more lethal the more blood it spills.<br><br>His assessment of Kip is equally calculated: he considers Kip a "strategic asset" with absolute tactical brilliance, and is deliberately keeping him in high-pressure squad leadership to force confidence development. Cassian doesn\'t see people — he sees raw material to be shaped. Whether his methods produce soldiers or enemies remains the central tension of his character. He is being actively groomed for institutional command by the academy hierarchy, and his field notes suggest he is fully aware of the Lumina legacy.',
+    stats: {
+      hp: '??? / ???', mp: '??? / ???',
+      str: '??', agi: '??', vit: '??', int: '??', wis: '??', cha: '??'
+    },
+    soul: null,
+    abilities: [
+      { icon: '📡', name: 'Trans-Com Command', type: 'Active — Leadership', desc: 'Issues orders through trans-communication crystals. Provides real-time visual data-streams and targeted teleportation anchors to any squad\'s location.' },
+      { icon: '👁️', name: 'Tactical Assessment', type: 'Passive — Commander', desc: 'Reads trainee potential, psychological vulnerabilities, and combat readiness at a glance. Used to engineer pressure scenarios for maximum development.' },
+      { icon: '🔱', name: 'Faction Authority', type: 'Passive — Shield Leader', desc: 'System-recognized faction leader for The Shield. Commands carry institutional weight; disobedience triggers compliance protocols.' }
+    ],
+    achievements: [
+      { icon: '🛡️', text: '<strong>Faction Leader</strong> — Selected by the System as leader of The Shield during Faction Tryouts. His insignia materialized in golden light — a mark of the System\'s recognition.' },
+      { icon: '📋', text: '<strong>Field Commander</strong> — Organized thirty Shield trainees into standard five-man adventuring cells, designed a semi-circle strategic formation, and maintained real-time oversight of all squads via trans-communication crystals.' },
+      { icon: '📓', text: '<strong>Field Notes</strong> — Maintains a private tactical journal documenting detailed psychological profiles and development plans for every trainee he considers strategically valuable.' },
+      { icon: '🧠', text: '<strong>The Lumina Factor</strong> — Aware of the Lumina legacy and its historical significance to The Shield. Deliberately engineering Elias\'s development based on this knowledge.' }
+    ]
+  }
+};
+
+function openCharOverlay(charId) {
+  const c = MAIN_CHARS[charId];
+  if (!c) return;
+  let html = '<div class="char-overlay-header">';
+  html += '<img src="' + c.img + '" alt="' + c.name + '" class="char-overlay-portrait">';
+  html += '<div class="char-overlay-title"><h3>' + c.name + '</h3>';
+  html += '<div class="char-role">' + c.role + '</div>';
+  html += '<div class="char-overlay-level">' + c.level + '</div></div></div>';
+  html += '<div class="char-overlay-desc">' + c.desc + '</div>';
+
+  html += '<div class="char-overlay-section"><h4>Stats</h4>';
+  html += '<div class="char-overlay-stats">';
+  html += '<div class="char-overlay-stat-row"><span>HP</span><span>' + c.stats.hp + '</span></div>';
+  html += '<div class="char-overlay-stat-row"><span>MP</span><span>' + c.stats.mp + '</span></div>';
+  html += '<div class="char-overlay-stat-row"><span>Strength</span><span>' + c.stats.str + '</span></div>';
+  html += '<div class="char-overlay-stat-row"><span>Agility</span><span>' + c.stats.agi + '</span></div>';
+  html += '<div class="char-overlay-stat-row"><span>Vitality</span><span>' + c.stats.vit + '</span></div>';
+  html += '<div class="char-overlay-stat-row"><span>Intelligence</span><span>' + c.stats.int + '</span></div>';
+  html += '<div class="char-overlay-stat-row"><span>Wisdom</span><span>' + c.stats.wis + '</span></div>';
+  html += '<div class="char-overlay-stat-row"><span>Charisma</span><span>' + c.stats.cha + '</span></div>';
+  html += '</div>';
+  if (c.soul) {
+    html += '<div class="char-overlay-stats" style="margin-top:0.8rem">';
+    html += '<div class="char-overlay-stat-row"><span>Mercy</span><span>' + c.soul.mercy + '</span></div>';
+    html += '<div class="char-overlay-stat-row"><span>Conviction</span><span>' + c.soul.conviction + '</span></div>';
+    html += '<div class="char-overlay-stat-row"><span>Resentment</span><span>' + c.soul.resentment + '</span></div>';
+    html += '<div class="char-overlay-stat-row"><span>Connection</span><span>' + c.soul.connection + '</span></div>';
+    html += '<div class="char-overlay-stat-row"><span>Hope</span><span>' + c.soul.hope + '</span></div>';
+    html += '<div class="char-overlay-stat-row"><span>Identity</span><span>' + c.soul.identity + '</span></div>';
+    html += '</div>';
+  }
+  html += '</div>';
+
+  html += '<div class="char-overlay-section"><h4>Abilities</h4>';
+  c.abilities.forEach(function(a) {
+    html += '<div class="char-overlay-ability">';
+    html += '<span class="char-overlay-ability-icon">' + a.icon + '</span>';
+    html += '<div><div class="char-overlay-ability-name">' + a.name + '</div>';
+    html += '<div class="char-overlay-ability-type">' + a.type + '</div>';
+    html += '<div class="char-overlay-ability-desc">' + a.desc + '</div></div></div>';
+  });
+  html += '</div>';
+
+  html += '<div class="char-overlay-section"><h4>Notable Achievements</h4>';
+  c.achievements.forEach(function(a) {
+    html += '<div class="char-overlay-achievement">';
+    html += '<span class="char-overlay-achievement-icon">' + a.icon + '</span>';
+    html += '<div class="char-overlay-achievement-text">' + a.text + '</div></div>';
+  });
+  html += '</div>';
+
+  document.getElementById('char-overlay-content').innerHTML = html;
+  document.getElementById('char-overlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeCharOverlay() {
+  document.getElementById('char-overlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape' && document.getElementById('char-overlay').classList.contains('open')) {
+    closeCharOverlay();
+  }
+});
+
 const STATS = {
   core: [
     { name: 'Strength', ch1: 6, ch2: 6, ch3: 6, ch4: 6, ch5: 7, max: 20 },
