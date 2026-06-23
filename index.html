@@ -2123,9 +2123,14 @@
     </li>
     <li><a href="#" onclick="showPage('characters');return false">Characters</a></li>
     <li><a href="#" onclick="showPage('factions');return false">Factions</a></li>
-    <li><a href="#" onclick="showPage('encyclopedia');return false">Encyclopedia</a></li>
-    <li><a href="#" onclick="showPage('lore');return false">World Lore</a></li>
-    <li><a href="#" onclick="showPage('geography');return false">Geography</a></li>
+    <li class="toc-dropdown">
+      <button class="toc-toggle" onclick="toggleWorldMenu(event)">World</button>
+      <div class="toc-menu" id="world-menu">
+        <a href="#" onclick="showPage('encyclopedia');closeWorldMenu();return false">Encyclopedia</a>
+        <a href="#" onclick="showPage('geography');closeWorldMenu();return false">Geography</a>
+        <a href="#" onclick="showPage('lore');closeWorldMenu();return false">World Lore</a>
+      </div>
+    </li>
     <li><a href="#" onclick="showPage('stats');return false">Stats Guide</a></li>
     <li><button class="theme-toggle" onclick="toggleTheme()" title="Toggle light/dark mode">☀</button></li>
     <li class="font-size-dropdown">
@@ -4347,6 +4352,7 @@ function showPage(id) {
   document.getElementById('page-' + id).classList.add('active');
   window.scrollTo(0, 0);
   closeToc();
+  closeWorldMenu();
   closeHamburger();
   if (id === 'encyclopedia' && currentEncyTab !== 'all') switchEncyTab('all');
   // Close mobile sidebar
@@ -4359,12 +4365,21 @@ function showPage(id) {
 // TOC dropdown
 function toggleToc(e) {
   e.stopPropagation();
+  closeWorldMenu();
   document.getElementById('toc-menu').classList.toggle('open');
 }
 function closeToc() {
   document.getElementById('toc-menu').classList.remove('open');
 }
-document.addEventListener('click', closeToc);
+function toggleWorldMenu(e) {
+  e.stopPropagation();
+  closeToc();
+  document.getElementById('world-menu').classList.toggle('open');
+}
+function closeWorldMenu() {
+  document.getElementById('world-menu').classList.remove('open');
+}
+document.addEventListener('click', function() { closeToc(); closeWorldMenu(); });
 
 function toggleHamburger() {
   document.getElementById('hamburger').classList.toggle('open');
