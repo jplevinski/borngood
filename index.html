@@ -1521,6 +1521,58 @@
       .char-overlay-portrait { width: 100px; height: 100px; }
       .char-overlay-stats { grid-template-columns: 1fr; }
     }
+    .char-spoiler-warning {
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+    .char-spoiler-icon {
+      font-size: 2.5rem;
+      margin-bottom: 0.8rem;
+    }
+    .char-spoiler-warning h3 {
+      font-size: 1.2rem;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+    .char-spoiler-warning p {
+      font-size: 0.92rem;
+      color: var(--text);
+      line-height: 1.7;
+      max-width: 440px;
+      margin: 0 auto;
+    }
+    .char-spoiler-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 1.8rem;
+    }
+    .char-spoiler-btn {
+      font-family: 'Cinzel', serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      padding: 0.6rem 1.8rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all .2s;
+      border: 1px solid rgba(184,154,91,.3);
+    }
+    .char-spoiler-btn.continue {
+      background: rgba(184,154,91,.15);
+      color: var(--gold);
+    }
+    .char-spoiler-btn.continue:hover {
+      background: rgba(184,154,91,.3);
+      border-color: var(--gold);
+    }
+    .char-spoiler-btn.back {
+      background: transparent;
+      color: var(--text-muted);
+    }
+    .char-spoiler-btn.back:hover {
+      background: rgba(255,255,255,.05);
+      color: var(--text);
+    }
 
     /* ─── LORE TOOLTIPS ─── */
     .lore-term {
@@ -4898,6 +4950,23 @@ const MAIN_CHARS = {
 function openCharOverlay(charId) {
   const c = MAIN_CHARS[charId];
   if (!c) return;
+  let html = '<div class="char-spoiler-warning">';
+  html += '<div class="char-spoiler-icon">⚠</div>';
+  html += '<h3>Spoiler Warning</h3>';
+  html += '<p>This character sheet contains detailed information about <strong>' + c.name + '</strong>, including story developments, hidden stats, and plot-sensitive details through <strong>Chapter 5</strong>.</p>';
+  html += '<p style="color:var(--text-muted);font-size:0.82rem;margin-top:0.3rem">Are you sure you want to continue?</p>';
+  html += '<div class="char-spoiler-buttons">';
+  html += '<button class="char-spoiler-btn continue" onclick="revealCharSheet(\'' + charId + '\')">Continue</button>';
+  html += '<button class="char-spoiler-btn back" onclick="closeCharOverlay()">Go Back</button>';
+  html += '</div></div>';
+  document.getElementById('char-overlay-content').innerHTML = html;
+  document.getElementById('char-overlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function revealCharSheet(charId) {
+  const c = MAIN_CHARS[charId];
+  if (!c) return;
   let html = '<div class="char-overlay-header">';
   html += '<img src="' + c.img + '" alt="' + c.name + '" class="char-overlay-portrait">';
   html += '<div class="char-overlay-title"><h3>' + c.name + '</h3>';
@@ -4947,8 +5016,7 @@ function openCharOverlay(charId) {
   html += '</div>';
 
   document.getElementById('char-overlay-content').innerHTML = html;
-  document.getElementById('char-overlay').classList.add('open');
-  document.body.style.overflow = 'hidden';
+  document.getElementById('char-overlay').scrollTop = 0;
 }
 
 function closeCharOverlay() {
