@@ -3303,7 +3303,7 @@
   <div class="mobile-dashboard">
     <div class="collapsible" onclick="this.classList.toggle('open')">
       <button class="collapsible-toggle">
-        <div><h3>Beginning of Chapter 5 — Stats</h3></div>
+        <div><h3>End of Chapter 5 — Stats</h3></div>
         <span class="chevron">▼</span>
       </button>
       <div class="collapsible-body"><div class="collapsible-body-inner">
@@ -3316,7 +3316,7 @@
     </div>
     <div class="collapsible" onclick="this.classList.toggle('open')">
       <button class="collapsible-toggle">
-        <div><h3>Beginning of Chapter 5 — Inventory</h3></div>
+        <div><h3>End of Chapter 5 — Inventory</h3></div>
         <span class="chevron">▼</span>
       </button>
       <div class="collapsible-body"><div class="collapsible-body-inner">
@@ -3341,7 +3341,7 @@
     </div>
     <div class="collapsible" onclick="this.classList.toggle('open')">
       <button class="collapsible-toggle">
-        <div><h3>Beginning of Chapter 5 — Abilities</h3></div>
+        <div><h3>End of Chapter 5 — Abilities</h3></div>
         <span class="chevron">▼</span>
       </button>
       <div class="collapsible-body"><div class="collapsible-body-inner">
@@ -3372,7 +3372,7 @@
         <img src="images/elias-lumina.png" alt="Elias Lumina">
         <div class="portrait-name">Elias Lumina</div>
       </div>
-      <p class="sidebar-note">These reflect the stats and the inventory at the start of the chapter.</p>
+      <p class="sidebar-note">These reflect the stats, inventory, and abilities at the end of the chapter.</p>
       <div class="collapsible" onclick="this.classList.toggle('open')">
         <button class="collapsible-toggle">
           <div><h3>Stats</h3></div>
@@ -4411,8 +4411,8 @@ renderStats(2, 'ch3');
 renderStats(2, 'ch3-sb');
 renderStats(3, 'ch4');
 renderStats(3, 'ch4-sb');
-renderStats(4, 'ch5');
-renderStats(4, 'ch5-sb');
+renderStats(5, 'ch5');
+renderStats(5, 'ch5-sb');
 
 const INVENTORY = {
   ch1: {
@@ -4518,7 +4518,7 @@ const INVENTORY = {
 
 const SLOT_COUNT = 12;
 
-const BEGIN_INV_MAP = { ch1: 'ch1', ch2: 'ch1', ch3: 'ch2', ch4: 'ch3', ch5: 'ch4' };
+const BEGIN_INV_MAP = { ch1: 'ch1', ch2: 'ch1', ch3: 'ch2', ch4: 'ch3', ch5: 'ch5' };
 function getInvDataKey(chId) {
   const base = chId.replace('-sb', '');
   return BEGIN_INV_MAP[base] || base;
@@ -4599,8 +4599,8 @@ renderAbilities(2, 'ch3');
 renderAbilities(2, 'ch3-sb');
 renderAbilities(3, 'ch4');
 renderAbilities(3, 'ch4-sb');
-renderAbilities(4, 'ch5');
-renderAbilities(4, 'ch5-sb');
+renderAbilities(5, 'ch5');
+renderAbilities(5, 'ch5-sb');
 
 // End of chapter summaries (after INVENTORY is defined)
 renderEndSummary(1, 'ch1');
