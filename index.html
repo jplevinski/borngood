@@ -4927,21 +4927,25 @@ const MAIN_CHARS = {
   cassian: {
     name: 'Cassian Drake',
     role: 'Rival — Shield Faction Leader',
-    level: 'Level ?? — Commander (The Shield)',
+    level: 'Level 3 — Commander (The Shield)',
     img: 'images/cassian.png',
     desc: 'Cassian Drake is a towering, iron-willed first-year from the capital city of Tether, selected as faction leader for The Shield during the Faction Tryouts — his insignia materializing in golden light on his uniform. He commands with absolute authority, demands total compliance, and punishes hesitation without mercy. To Elias and most of the cohort, he is a bully — a brute who uses his size and position to dominate others.<br><br>His private field notes tell a very different story. Cassian is a calculating strategist who views every interaction as a training exercise. He identified Elias as a "volatile, high-potential" asset from the moment he stepped through the Academy Gate, flagging his instinctive leadership qualities and the deep reservoir of rage simmering beneath the surface. The tank assignment, the deliberate humiliation, the constant pressure — all of it is engineered. Cassian is systematically stoking Elias\'s anger to forge him into a Rage-Based Tank archetype, one that grows more lethal the more blood it spills.<br><br>His assessment of Kip is equally calculated: he considers Kip a "strategic asset" with absolute tactical brilliance, and is deliberately keeping him in high-pressure squad leadership to force confidence development. Cassian doesn\'t see people — he sees raw material to be shaped. Whether his methods produce soldiers or enemies remains the central tension of his character. He is being actively groomed for institutional command by the academy hierarchy, and his field notes suggest he is fully aware of the Lumina legacy.',
     stats: {
-      hp: '??? / ???', mp: '??? / ???',
-      str: '??', agi: '??', vit: '??', int: '??', wis: '??', cha: '??'
+      hp: '220 / 220', mp: '60 / 60',
+      str: 14, agi: 8, vit: 13, int: 10, wis: 9, cha: 12
     },
     soul: null,
     abilities: [
-      { icon: '📡', name: 'Trans-Com Command', type: 'Active — Leadership', desc: 'Issues orders through trans-communication crystals. Provides real-time visual data-streams and targeted teleportation anchors to any squad\'s location.' },
-      { icon: '👁️', name: 'Tactical Assessment', type: 'Passive — Commander', desc: 'Reads trainee potential, psychological vulnerabilities, and combat readiness at a glance. Used to engineer pressure scenarios for maximum development.' },
-      { icon: '🔱', name: 'Faction Authority', type: 'Passive — Shield Leader', desc: 'System-recognized faction leader for The Shield. Commands carry institutional weight; disobedience triggers compliance protocols.' }
+      { icon: '🛡️', name: 'Shield Wall', type: 'Active — Shield, Lv.1', desc: 'Plants shield and assumes an immovable defensive stance. Reduces all incoming frontal damage by 40% and generates increased threat. Cannot move while active.' },
+      { icon: '⚔️', name: 'Commanding Strike', type: 'Active — Weapon, Lv.2', desc: 'A disciplined heavy strike that deals bonus damage and grants nearby allies a temporary attack speed buff. Unlocked upon reaching Level 2.' },
+      { icon: '📡', name: 'Trans-Com Command', type: 'Active — Leadership, Lv.2', desc: 'Issues orders through trans-communication crystals. Provides real-time visual data-streams from all connected squad leaders and a high-priority targeted teleportation anchor to any squad\'s location.' },
+      { icon: '🔱', name: 'Faction Authority', type: 'Passive — Shield Leader, Lv.2', desc: 'System-recognized faction leader for The Shield. Commands carry institutional weight; disobedience triggers compliance protocols. Grants a passive morale buff to all Shield-aligned units within range.' },
+      { icon: '👁️', name: 'Tactical Assessment', type: 'Passive — Commander, Lv.2', desc: 'Reads trainee potential, psychological vulnerabilities, and combat readiness at a glance. Used to engineer pressure scenarios for maximum soldier development.' },
+      { icon: '📣', name: 'Rally', type: 'Active — Commander, Lv.3', desc: 'Issues a battlefield command that restores a small amount of HP to all allied units in earshot and clears minor debuffs. Unlocked upon reaching Level 3 as a Commander.' }
     ],
     achievements: [
-      { icon: '🛡️', text: '<strong>Faction Leader</strong> — Selected by the System as leader of The Shield during Faction Tryouts. His insignia materialized in golden light — a mark of the System\'s recognition.' },
+      { icon: '📈', text: '<strong>Level 2 — Faction Selection</strong> — Leveled up when the System selected him as faction leader for The Shield during Faction Tryouts. His insignia materialized in golden light, and the System granted him Commander-class abilities.' },
+      { icon: '📈', text: '<strong>Level 3 — Field Promotion</strong> — Leveled up after commanding the full Shield cohort through the first round of Rustlefoot Goblin culling. The System recognized his oversight of all six squads and rewarded the Rally ability.' },
       { icon: '📋', text: '<strong>Field Commander</strong> — Organized thirty Shield trainees into standard five-man adventuring cells, designed a semi-circle strategic formation, and maintained real-time oversight of all squads via trans-communication crystals.' },
       { icon: '📓', text: '<strong>Field Notes</strong> — Maintains a private tactical journal documenting detailed psychological profiles and development plans for every trainee he considers strategically valuable.' },
       { icon: '🧠', text: '<strong>The Lumina Factor</strong> — Aware of the Lumina legacy and its historical significance to The Shield. Deliberately engineering Elias\'s development based on this knowledge.' }
