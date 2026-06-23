@@ -554,6 +554,21 @@
     .ability-name { font-family: 'Cinzel', serif; font-size: 0.75rem; color: var(--gold); }
     .ability-type { font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; }
     .ability-desc { font-size: 0.78rem; color: var(--text-muted); margin-top: 0.15rem; }
+    .field-notes-nav { display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: center; margin-bottom: 2rem; }
+    .field-notes-nav button { font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.1em; padding: 0.5rem 1.2rem; border: 1px solid rgba(184,154,91,.25); border-radius: 6px; background: transparent; color: var(--text-muted); cursor: pointer; transition: all .3s; }
+    .field-notes-nav button:hover { color: var(--gold); border-color: var(--gold); }
+    .field-notes-nav button.active { color: var(--gold); border-color: var(--gold); background: rgba(184,154,91,.08); }
+    .field-entry { background: var(--bg-card); border: 1px solid rgba(184,154,91,.15); border-radius: 10px; padding: 1.5rem 1.8rem; margin-bottom: 1.5rem; }
+    .field-entry-header { font-family: 'Cinzel', serif; font-size: 0.95rem; color: var(--gold); margin-bottom: 0.3rem; }
+    .field-entry-context { font-size: 0.75rem; color: var(--text-muted); letter-spacing: 0.08em; margin-bottom: 1rem; font-style: italic; }
+    .field-entry blockquote { border-left: 3px solid rgba(184,154,91,.3); padding-left: 1rem; margin: 0 0 1.2rem; font-style: italic; color: var(--text-muted); font-size: 0.88rem; line-height: 1.7; }
+    .field-assessment { margin-bottom: 1.2rem; padding-bottom: 1.2rem; border-bottom: 1px solid rgba(184,154,91,.08); }
+    .field-assessment:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .field-assessment h4 { font-family: 'Cinzel', serif; font-size: 0.8rem; color: var(--gold); margin-bottom: 0.15rem; }
+    .field-assessment .field-label { font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem; }
+    .field-assessment p { font-size: 0.88rem; color: var(--text); line-height: 1.7; margin-bottom: 0.5rem; }
+    .field-assessment .field-note-label { font-family: 'Cinzel', serif; font-size: 0.7rem; color: var(--gold-dim); margin-top: 0.6rem; margin-bottom: 0.2rem; }
+    @media (max-width: 600px) { .field-entry { padding: 1rem 1.2rem; } }
     .stat-value {
       font-family: 'Cinzel', serif;
       font-size: 0.9rem;
@@ -2145,6 +2160,12 @@
         <a href="#" onclick="showPage('stats');closeWorldMenu();return false">Stats Guide</a>
       </div>
     </li>
+    <li class="toc-dropdown">
+      <button class="toc-toggle" onclick="togglePerspMenu(event)">Perspectives</button>
+      <div class="toc-menu" id="persp-menu">
+        <a href="#" onclick="showPage('cassian-notes');closePerspMenu();return false">Cassian's Field Notes</a>
+      </div>
+    </li>
     <li><button class="theme-toggle" onclick="toggleTheme()" title="Toggle light/dark mode">☀</button></li>
     <li class="font-size-dropdown">
       <button class="theme-toggle" onclick="toggleFontMenu(event)" id="font-size-btn" title="Font size">A</button>
@@ -3443,6 +3464,46 @@
   </div><!-- /chapter-layout -->
 </div>
 
+<!-- ════════════════════ CASSIAN'S FIELD NOTES ════════════════════ -->
+<div id="page-cassian-notes" class="chapter-page">
+  <div class="chapter-title-block">
+    <div class="chapter-num">Other Perspectives</div>
+    <h2>Cassian's Field Notes</h2>
+  </div>
+
+  <section class="section">
+    <p style="text-align:center;color:var(--text-muted);margin-bottom:0.5rem;max-width:700px;margin-left:auto;margin-right:auto;font-style:italic">Private tactical journal of Cassian Drake, First-Year Shield Candidate. These entries represent his unfiltered assessments of Cohort 777 — written in his own hand, for his eyes only.</p>
+    <p style="text-align:center;color:var(--gold-dim);margin-bottom:2.5rem;font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase">⚠ Contains alternate-perspective spoilers</p>
+
+    <div class="field-entry">
+      <div class="field-entry-header">Entry 01 — Day One: Induction and Evaluation</div>
+      <div class="field-entry-context">Written after lights-out, Year 1 Male Barracks — Day of Arrival</div>
+
+      <blockquote>The instructors at Tetherpoint keep calling Cohort 777 "The Golden Cohort," but raw ore means nothing without a furnace. Discipline is the only line of defense between order and collapse, and if I have to be the hammer that shapes these recruits, so be it. Most will break. A few will endure.</blockquote>
+
+      <div class="stats-section-title" style="margin-bottom:1rem">👥 Initial Trainee Assessments</div>
+
+      <div class="field-assessment">
+        <h4>Trainee: Kip</h4>
+        <div class="field-label">Priority — High | Classification — Strategic Asset</div>
+        <p>The focus of my primary evaluation today. I watched him closely during the gate chaotic entry. I've known of Kip since our primary school days back in the capital city of Tether; the boy is undeniably weird, an eccentric outlier who makes the other commoners uneasy. But beneath that flat, literal demeanor lies an absolute tactical brilliance.</p>
+        <div class="field-note-label">Operational Note</div>
+        <p>Today was a stress test. I need to see exactly how much pressure Kip can absorb before his composure fractures. If he can retain his ice-cold analytical state while the world is burning around him, he won't just be a soldier — he will make a fantastic strategist for my high-tier unit. He passed the first baseline test with total compliance.</p>
+      </div>
+
+      <div class="field-assessment">
+        <h4>Trainee: Lumina, Elias</h4>
+        <div class="field-label">Priority — Critical | Classification — Volatile / High Potential</div>
+        <p>The most volatile element in the barracks. The second he stepped through the gate, I flagged him. He possesses an undeniable, instinctive leadership potential — the kind that makes weak men follow him blindly. More importantly, I watched how he moves. The boy carries a baseline velocity and a deep, simmering reservoir of internal rage.</p>
+        <div class="field-note-label">Tactical Application</div>
+        <p>He is completely unsuited for a passive, defensive frontline role, but that raw fury makes him the perfect candidate for a high-threat, Rage-Based Tank archetype. A meat-shield who grows more lethal the more blood he spills. He doesn't know it yet, but I am deliberately pushing his buttons, isolating him, and engineering scenarios to systematically stoke that rage. I need that fire white-hot if it's going to forge his stats properly.</p>
+        <div class="field-note-label">The Lumina Factor</div>
+        <p>I didn't miss Archmage Varric's immediate, hostile reaction when the boy spoke his name. I know the Lumina legacy. They are historically a great, highly decorated line of high-achieving Shield warriors, regardless of whatever dirty secrets the academy hierarchy buried. Elias has the pedigree in his blood. I just need to completely break his soft, village-boy illusions first so I can rebuild him into what The Shield actually requires.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
 <!-- ════════════════════ CHARACTERS ════════════════════ -->
 <div id="page-characters" class="chapter-page">
   <div class="chapter-title-block">
@@ -4364,8 +4425,7 @@ function showPage(id) {
   document.querySelectorAll('.chapter-page').forEach(p => p.classList.remove('active'));
   document.getElementById('page-' + id).classList.add('active');
   window.scrollTo(0, 0);
-  closeToc();
-  closeWorldMenu();
+  closeAllMenus();
   closeHamburger();
   if (id === 'encyclopedia' && currentEncyTab !== 'all') switchEncyTab('all');
   // Close mobile sidebar
@@ -4376,9 +4436,10 @@ function showPage(id) {
 }
 
 // TOC dropdown
+function closeAllMenus() { closeToc(); closeWorldMenu(); closePerspMenu(); }
 function toggleToc(e) {
   e.stopPropagation();
-  closeWorldMenu();
+  closeWorldMenu(); closePerspMenu();
   document.getElementById('toc-menu').classList.toggle('open');
 }
 function closeToc() {
@@ -4386,13 +4447,21 @@ function closeToc() {
 }
 function toggleWorldMenu(e) {
   e.stopPropagation();
-  closeToc();
+  closeToc(); closePerspMenu();
   document.getElementById('world-menu').classList.toggle('open');
 }
 function closeWorldMenu() {
   document.getElementById('world-menu').classList.remove('open');
 }
-document.addEventListener('click', function() { closeToc(); closeWorldMenu(); });
+function togglePerspMenu(e) {
+  e.stopPropagation();
+  closeToc(); closeWorldMenu();
+  document.getElementById('persp-menu').classList.toggle('open');
+}
+function closePerspMenu() {
+  document.getElementById('persp-menu').classList.remove('open');
+}
+document.addEventListener('click', closeAllMenus);
 
 function toggleHamburger() {
   document.getElementById('hamburger').classList.toggle('open');
