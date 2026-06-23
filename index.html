@@ -2087,13 +2087,26 @@
         padding: 0 0 0 1rem;
       }
       .toc-menu {
+        display: block !important;
         position: static;
         transform: none;
         min-width: 0;
         box-shadow: none;
         border: none;
         background: transparent;
-        padding: 0 0 0 1rem;
+        padding: 0;
+        overflow: hidden;
+        max-height: 0;
+        transition: max-height .4s ease, opacity .3s ease;
+        opacity: 0;
+      }
+      .toc-menu.open {
+        max-height: 500px;
+        opacity: 1;
+      }
+      .toc-menu a {
+        padding: 0.5rem 1.5rem;
+        font-size: 0.7rem;
       }
       .ency-crest { width: 60px; height: 60px; }
     }
