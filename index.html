@@ -705,6 +705,13 @@
       flex-shrink: 0;
       border: 2px solid rgba(184,154,91,.25);
       box-shadow: 0 0 16px rgba(0,0,0,.5);
+      cursor: pointer;
+      transition: transform .2s, border-color .2s, box-shadow .2s;
+    }
+    .beast-portrait:hover {
+      transform: scale(1.08);
+      border-color: var(--gold);
+      box-shadow: 0 0 24px rgba(184,154,91,.4);
     }
     .beast-title-block { flex: 1; min-width: 0; }
     .beast-title-block h3 {
@@ -4717,7 +4724,7 @@
       <!-- RUSTLEFOOT GOBLINS -->
       <div class="beast-card" id="beast-rustlefoot-goblins">
         <div class="beast-header">
-          <img src="images/rustlefoot-goblins.jpg" alt="Rustlefoot Goblins" class="beast-portrait">
+          <img src="images/rustlefoot-goblins.jpg" alt="Rustlefoot Goblins" class="beast-portrait" onclick="document.getElementById('beast-lightbox-img').src=this.src;document.getElementById('beast-lightbox').classList.add('open')" style="cursor:pointer">
           <div class="beast-title-block">
             <h3>Rustlefoot Goblins</h3>
             <div class="beast-type">Creature — Enemy</div>
@@ -4766,7 +4773,7 @@
       <!-- SHIVER-BEAK ROOSTER -->
       <div class="beast-card" id="beast-shiver-beak-rooster">
         <div class="beast-header">
-          <img src="images/shiver-beak-rooster.jpg" alt="Shiver-Beak Rooster" class="beast-portrait">
+          <img src="images/shiver-beak-rooster.jpg" alt="Shiver-Beak Rooster" class="beast-portrait" onclick="document.getElementById('beast-lightbox-img').src=this.src;document.getElementById('beast-lightbox').classList.add('open')" style="cursor:pointer">
           <div class="beast-title-block">
             <h3>Shiver-Beak Rooster</h3>
             <div class="beast-type">Creature — Magical Beast</div>
@@ -4808,7 +4815,7 @@
       <!-- MIMIC -->
       <div class="beast-card" id="beast-mimic">
         <div class="beast-header">
-          <img src="images/mimic.jpg" alt="Mimic" class="beast-portrait">
+          <img src="images/mimic.jpg" alt="Mimic" class="beast-portrait" onclick="document.getElementById('beast-lightbox-img').src=this.src;document.getElementById('beast-lightbox').classList.add('open')" style="cursor:pointer">
           <div class="beast-title-block">
             <h3>Mimic</h3>
             <div class="beast-type">Creature — Dungeon Monster</div>
@@ -4872,6 +4879,11 @@
   <div>&copy; 2026 Born Good. All rights reserved.</div>
   <div class="motto">Knowledge is Power. Loyalty is Everything.</div>
 </footer>
+
+<!-- ════════════════════ BESTIARY LIGHTBOX ════════════════════ -->
+<div class="stat-lightbox" id="beast-lightbox" onclick="this.classList.remove('open')">
+  <img id="beast-lightbox-img" src="" alt="Creature — Full Size">
+</div>
 
 <!-- ════════════════════ SOUNDTRACK OVERLAY ════════════════════ -->
 <div class="soundtrack-overlay" id="soundtrack-overlay" onclick="if(event.target===this)this.classList.remove('open')">
