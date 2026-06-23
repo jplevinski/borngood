@@ -672,6 +672,128 @@
       .stat-entry { gap: 0.8rem; padding: 0.6rem; }
     }
 
+    /* ── Bestiary ── */
+    .bestiary-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .beast-card {
+      background: var(--bg-mid);
+      border: 1px solid rgba(184,154,91,.15);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: border-color .3s, transform .3s;
+    }
+    .beast-card:hover {
+      border-color: var(--gold);
+      transform: translateY(-3px);
+    }
+    .beast-header {
+      display: flex;
+      gap: 1.5rem;
+      padding: 1.5rem 1.8rem 1rem;
+      align-items: flex-start;
+    }
+    .beast-portrait {
+      width: 140px;
+      height: 140px;
+      border-radius: 10px;
+      object-fit: cover;
+      flex-shrink: 0;
+      border: 2px solid rgba(184,154,91,.25);
+      box-shadow: 0 0 16px rgba(0,0,0,.5);
+    }
+    .beast-title-block { flex: 1; min-width: 0; }
+    .beast-title-block h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.2rem;
+      color: var(--gold);
+    }
+    .beast-type {
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+      margin-bottom: 0.5rem;
+    }
+    .beast-level {
+      display: inline-block;
+      background: rgba(184,154,91,.12);
+      border: 1px solid rgba(184,154,91,.25);
+      border-radius: 6px;
+      padding: 0.2rem 0.7rem;
+      font-family: 'Cinzel', serif;
+      font-size: 0.7rem;
+      color: var(--gold);
+      letter-spacing: 0.08em;
+    }
+    .beast-body {
+      padding: 0 1.8rem 1.5rem;
+    }
+    .beast-body > p {
+      font-size: 0.88rem;
+      line-height: 1.7;
+      color: var(--text);
+      margin-bottom: 1rem;
+    }
+    .beast-stats-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .beast-stat-block {
+      background: rgba(0,0,0,.2);
+      border: 1px solid rgba(184,154,91,.1);
+      border-radius: 8px;
+      padding: 1rem;
+    }
+    .beast-stat-block h4 {
+      font-family: 'Cinzel', serif;
+      font-size: 0.72rem;
+      color: var(--gold);
+      margin-bottom: 0.6rem;
+      letter-spacing: 0.08em;
+    }
+    .beast-stat-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.2rem 0;
+      font-size: 0.78rem;
+    }
+    .beast-stat-row span:first-child { color: var(--text-muted); }
+    .beast-stat-row span:last-child { color: var(--gold); font-family: 'Cinzel', serif; }
+    .beast-ability {
+      display: flex;
+      gap: 0.5rem;
+      align-items: flex-start;
+      padding: 0.35rem 0;
+      border-bottom: 1px solid rgba(184,154,91,.08);
+    }
+    .beast-ability:last-child { border-bottom: none; }
+    .beast-ability-icon { font-size: 1rem; flex-shrink: 0; }
+    .beast-ability-info { flex: 1; }
+    .beast-ability-name {
+      font-family: 'Cinzel', serif;
+      font-size: 0.72rem;
+      color: var(--gold);
+    }
+    .beast-ability-desc {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+    @media (max-width: 600px) {
+      .beast-header { flex-direction: column; align-items: center; text-align: center; }
+      .beast-portrait { width: 120px; height: 120px; }
+      .beast-stats-grid { grid-template-columns: 1fr; }
+    }
+
     .stats-section-title {
       font-family: 'Cinzel', serif;
       font-size: 0.75rem;
@@ -2157,6 +2279,7 @@
         <a href="#" onclick="showPage('geography');closeWorldMenu();return false">Geography</a>
         <a href="#" onclick="showPage('lore');closeWorldMenu();return false">World Lore</a>
         <a href="#" onclick="showPage('factions');closeWorldMenu();return false">Factions</a>
+        <a href="#" onclick="showPage('bestiary');closeWorldMenu();return false">Bestiary</a>
         <a href="#" onclick="showPage('stats');closeWorldMenu();return false">Stats Guide</a>
       </div>
     </li>
@@ -3087,7 +3210,7 @@
     <p>A blinding white flash ripped me awake.</p>
     <p class="dialogue">"GOOD MORNING, CLASS OF 777!"</p>
     <p>I nearly fell out of my cot.</p>
-    <p>Standing in the center of the barracks was <a class="lore-term" onclick="showPage('characters');return false" href="#"><span class="lore-tip"><span class="lt-name">Sylin Merryweather</span><span class="lt-type">Annoyance — Year 6 RA</span><span class="lt-desc">A relentlessly cheerful sixth-year and proud member of The Grove. Wakes cadets at dawn with a Shiver-Beak Rooster.</span><span class="lt-link">→ Read more</span></span>Sylin Merryweather</a>, Year 6 Residential Assistant and insufferably proud member of <a class="lore-term" onclick="showPage('encyclopedia');document.getElementById('ency-the-grove').scrollIntoView({behavior:'smooth',block:'center'});return false" href="#"><span class="lore-tip"><span class="lt-name">The Grove</span><span class="lt-type">Faction — One of the Four</span><span class="lt-desc">Healers, druids, and nature mages who serve as the backbone of any adventuring party.</span><span class="lt-link">→ Read more</span></span>The Grove</a>. His staff blazed with artificial sunrise bullshit while perched atop it was the true instrument of evil — a <a class="lore-term" onclick="showPage('encyclopedia');document.getElementById('ency-shiver-beak-rooster').scrollIntoView({behavior:'smooth',block:'center'});return false" href="#"><span class="lore-tip"><span class="lt-name">Shiver-Beak Rooster</span><span class="lt-type">Creature — Magical Beast</span><span class="lt-desc">An enchanted bird whose screech drains mana and the will to live.</span><span class="lt-link">→ Read more</span></span>Shiver-Beak Rooster</a>.</p>
+    <p>Standing in the center of the barracks was <a class="lore-term" onclick="showPage('characters');return false" href="#"><span class="lore-tip"><span class="lt-name">Sylin Merryweather</span><span class="lt-type">Annoyance — Year 6 RA</span><span class="lt-desc">A relentlessly cheerful sixth-year and proud member of The Grove. Wakes cadets at dawn with a Shiver-Beak Rooster.</span><span class="lt-link">→ Read more</span></span>Sylin Merryweather</a>, Year 6 Residential Assistant and insufferably proud member of <a class="lore-term" onclick="showPage('encyclopedia');document.getElementById('ency-the-grove').scrollIntoView({behavior:'smooth',block:'center'});return false" href="#"><span class="lore-tip"><span class="lt-name">The Grove</span><span class="lt-type">Faction — One of the Four</span><span class="lt-desc">Healers, druids, and nature mages who serve as the backbone of any adventuring party.</span><span class="lt-link">→ Read more</span></span>The Grove</a>. His staff blazed with artificial sunrise bullshit while perched atop it was the true instrument of evil — a <a class="lore-term" onclick="showPage('bestiary');document.getElementById('beast-shiver-beak-rooster').scrollIntoView({behavior:'smooth',block:'center'});return false" href="#"><span class="lore-tip"><span class="lt-name">Shiver-Beak Rooster</span><span class="lt-type">Creature — Magical Beast</span><span class="lt-desc">An enchanted bird whose screech drains mana and the will to live.</span><span class="lt-link">→ Read more</span></span>Shiver-Beak Rooster</a>.</p>
     <p>The scrawny little bastard let out another screech.</p>
     <p>Pain exploded behind my eyes.</p>
     <div class="system-msg">Mana -2</div>
@@ -3116,7 +3239,7 @@
     <p>The heavy oak doors banged open. <a class="lore-term" onclick="showPage('characters');return false" href="#"><span class="lore-tip"><span class="lt-name">Archmage Varric Pyre</span><span class="lt-type">Instructor — Elementalist Extraordinary</span><span class="lt-desc">Master of ice and fire. Member of The Flame. Targets Elias with open hostility.</span><span class="lt-link">→ Read more</span></span>Varric</a> sauntered into the mess hall, radiating effortless superiority. To ensure every eye was fixed exactly where it belonged — on him — he flicked his wrist and conjured a localized, crackling thunderstorm directly over his head. Lightning flashed against the stone ceiling; thunder rattled our plates.</p>
     <p class="dialogue">"A wonderfully good morning to you all," Varric purred, his voice easily cutting through the rumble.</p>
     <p>His eyes swept the room like a landlord assessing a barn full of livestock. They snagged on me for a fraction of a second. His brow twitched into a micro-scowl of profound disappointment before he smoothly looked past me to begin his sermon.</p>
-    <p class="dialogue">"Every great adventurer starts with a singularly pathetic first step," Varric announced, pacing with an insufferable smirk. "Today is yours. It seems the <a class="lore-term" onclick="showPage('encyclopedia');document.getElementById('ency-rustlefoot-goblins').scrollIntoView({behavior:'smooth',block:'center'});return false" href="#"><span class="lore-tip"><span class="lt-name">Rustlefoot Goblins</span><span class="lt-type">Creature — Enemy</span><span class="lt-desc">Bottom-tier pests (level 3 max) outside Tether. Foots, Clerks, and Handlers.</span><span class="lt-link">→ Read more</span></span>Rustlefoot Goblins</a> outside Tether have mistaken our patience for weakness. No longer content with eating our garbage from the landfill, they've graduated to robbing the defenseless. They even slaughtered a resisting elderly woman after she dared to defend herself with a cane."</p>
+    <p class="dialogue">"Every great adventurer starts with a singularly pathetic first step," Varric announced, pacing with an insufferable smirk. "Today is yours. It seems the <a class="lore-term" onclick="showPage('bestiary');document.getElementById('beast-rustlefoot-goblins').scrollIntoView({behavior:'smooth',block:'center'});return false" href="#"><span class="lore-tip"><span class="lt-name">Rustlefoot Goblins</span><span class="lt-type">Creature — Enemy</span><span class="lt-desc">Bottom-tier pests (level 3 max) outside Tether. Foots, Clerks, and Handlers.</span><span class="lt-link">→ Read more</span></span>Rustlefoot Goblins</a> outside Tether have mistaken our patience for weakness. No longer content with eating our garbage from the landfill, they've graduated to robbing the defenseless. They even slaughtered a resisting elderly woman after she dared to defend herself with a cane."</p>
     <p>The hall erupted into a chorus of predictable, idealistic gasps. Those around me looked properly outraged.</p>
     <p class="dialogue">"Yes, yes, do pipe down," Varric sighed, waving a dismissive hand as if their anger was a mild social inconvenience. "She was a delight, really. <a class="lore-term" onclick="showPage('encyclopedia');document.getElementById('ency-grannie-ezmerelda').scrollIntoView({behavior:'smooth',block:'center'});return false" href="#"><span class="lore-tip"><span class="lt-name">Grannie Ezmerelda</span><span class="lt-type">Person — Deceased</span><span class="lt-desc">Beloved former Academy cook murdered by Rustlefoot Goblins.</span><span class="lt-link">→ Read more</span></span>Grannie Ezmerelda</a>. Cooked in this very hall for decades before retirement. Tragic." He paused for a performative, theatrical moment of silence.</p>
     <p class="dialogue">"So, you see, we must clean up the trash. The Rustlefoot pests are bottom-tier garbage — level three at absolute best. Little more than pests. Their pathetic bands consist of three types: the 'Foot,' a basic grunt who dual-wields daggers; the 'Clerk,' who fumbles with rudimentary potions to provide weak heals and laughably futile fire bombs; and the 'Handler,' who commands mangy, wild strays, throws pebbles, and expects you to be intimidated by a mutt."</p>
@@ -3278,7 +3401,7 @@
     <p>That peanut-brained buffoon wanted his absolute discipline, and the System was more than happy to let him enforce it. The sheer absurdity of assigning me to the tank position was laughable. I was quick, agile, and knew how to swing a hammer with leverage. But I was lean—easily swatted aside compared to a lumbering mammoth like Cassian. By any logical metric, I belonged on the front line as an aggressive skirmisher or a high-mobility striker.</p>
     <p>Instead, I was a tank. Bureaucratic, institutional violent conformity, codified by a stat block.</p>
     <p>Just get through this one quest, I told myself, checking the unfamiliar weight of the trainee's shield on my arm. Survive the trial, then convince the bastard to let me switch roles. Maybe if I performed with aggressive, malicious incompetence, he'd realize my build was entirely unsuited for the frontline grind and reassign me out of sheer utility.</p>
-    <p>The parameters of the trial assignment materialized on our interfaces. The mission objective was a simple, sterile numbers game: cull exactly 20% of the local <a class="lore-term" onclick="showPage('encyclopedia');document.getElementById('ency-rustlefoot-goblins').scrollIntoView({behavior:'smooth',block:'center'});return false" href="#"><span class="lore-tip"><span class="lt-name">Rustlefoot Goblins</span><span class="lt-type">Creature — Enemy</span><span class="lt-desc">Bottom-tier pests found outside Tether. Their bands consist of the Foot, the Clerk, and the Handler.</span><span class="lt-link">→ Read more</span></span>Rustlefoot Goblin</a> population. Mathematically, that translated to ten kills per squad.</p>
+    <p>The parameters of the trial assignment materialized on our interfaces. The mission objective was a simple, sterile numbers game: cull exactly 20% of the local <a class="lore-term" onclick="showPage('bestiary');document.getElementById('beast-rustlefoot-goblins').scrollIntoView({behavior:'smooth',block:'center'});return false" href="#"><span class="lore-tip"><span class="lt-name">Rustlefoot Goblins</span><span class="lt-type">Creature — Enemy</span><span class="lt-desc">Bottom-tier pests found outside Tether. Their bands consist of the Foot, the Clerk, and the Handler.</span><span class="lt-link">→ Read more</span></span>Rustlefoot Goblin</a> population. Mathematically, that translated to ten kills per squad.</p>
     <p>With roughly thirty trainees assigned to <a class="lore-term" onclick="showPage('encyclopedia');document.getElementById('ency-the-shield').scrollIntoView({behavior:'smooth',block:'center'});return false" href="#"><span class="lore-tip"><span class="lt-name">The Shield</span><span class="lt-type">Faction — One of the Four</span><span class="lt-desc">Protectors of Valerguard. Knights, guardians, and defenders who believe duty is the highest calling.</span><span class="lt-link">→ Read more</span></span>The Shield</a>, the cohort was split into standard five-man adventuring cells. Cassian, playing the role of the grand commander, didn't actually lower himself to join a specific squad. He positioned himself squarely in the center of the operational zone, distributing trans-communication crystals to his hand-picked squad leaders.</p>
     <p>The crystals were standard-issue gear for low-level Shield officers. They allowed the squad leaders to feed a direct visual data-stream into Cassian's system interface while granting him a high-priority, targeted teleportation anchor to any squad's location.</p>
     <p>They were actively grooming him for institutional command. The realization made my stomach turn. That position should have belonged to someone with an actual brain. Me. Kip. Hell, literally anyone else.</p>
@@ -3941,7 +4064,6 @@
       <button onclick="switchEncyTab('factions')">Factions</button>
       <button onclick="switchEncyTab('places')">Places</button>
       <button onclick="switchEncyTab('magic')">Magic &amp; Systems</button>
-      <button onclick="switchEncyTab('creatures')">Creatures</button>
       <button onclick="switchEncyTab('people')">People &amp; Groups</button>
     </div>
 
@@ -3967,7 +4089,7 @@
       <div class="lore-era">
         <div class="lore-era-label">Year -3</div>
         <h3>The Great Blunder</h3>
-        <p>Eight hundred years ago, mortal civilization stood at its apex. It did not fall to conquest or invasion. It fell to a single <a class="lore-term" onclick="showPage('encyclopedia');document.getElementById('ency-mimic').scrollIntoView({behavior:'smooth',block:'center'});return false" href="#"><span class="lore-tip"><span class="lt-name">Mimic</span><span class="lt-type">Creature — Dungeon Monster</span><span class="lt-desc">The baseline dungeon creature whose cosmic theft triggered the Catastrophe.</span><span class="lt-link">→ Read more</span></span>Mimic</a>'s greed.</p>
+        <p>Eight hundred years ago, mortal civilization stood at its apex. It did not fall to conquest or invasion. It fell to a single <a class="lore-term" onclick="showPage('bestiary');document.getElementById('beast-mimic').scrollIntoView({behavior:'smooth',block:'center'});return false" href="#"><span class="lore-tip"><span class="lt-name">Mimic</span><span class="lt-type">Creature — Dungeon Monster</span><span class="lt-desc">The baseline dungeon creature whose cosmic theft triggered the Catastrophe.</span><span class="lt-link">→ Read more</span></span>Mimic</a>'s greed.</p>
         <p>Driven by an anomalous surge of instinct, this creature committed a cosmic taboo: it detached and stole a <a class="lore-term" onclick="showPage('encyclopedia');document.getElementById('ency-dungeon-core').scrollIntoView({behavior:'smooth',block:'center'});return false" href="#"><span class="lore-tip"><span class="lt-name">Dungeon Core</span><span class="lt-type">Magical Object</span><span class="lt-desc">Living magical anchors that bind monsters to their dungeons. This one was a vessel for the God of Chaos.</span><span class="lt-link">→ Read more</span></span>Dungeon Core</a> from deep beneath the earth. This particular core was no ordinary anchor — it was a direct vessel for the <a class="lore-term" onclick="showPage('encyclopedia');document.getElementById('ency-god-of-chaos').scrollIntoView({behavior:'smooth',block:'center'});return false" href="#"><span class="lore-tip"><span class="lt-name">The God of Chaos</span><span class="lt-type">Deity</span><span class="lt-desc">An ancient, volatile divine entity whose power was channeled through a stolen Dungeon Core.</span><span class="lt-link">→ Read more</span></span>God of Chaos</a>.</p>
         <p>As the Mimic roamed the surface, the stolen core became a violent magical siphon, gorging on ambient mana and environmental energy in an exponential feedback loop. The creature's body could not contain it.</p>
         <p>The result was a 300-megaton arcane detonation that shattered reality itself.</p>
@@ -4294,6 +4416,162 @@
 
     <div class="stat-lightbox" id="stat-lightbox" onclick="this.classList.remove('open')">
       <img id="stat-lightbox-img" src="" alt="Stat Icon — Full Size">
+    </div>
+  </section>
+</div>
+
+<!-- ════════════════════ BESTIARY ════════════════════ -->
+<div id="page-bestiary" class="chapter-page">
+  <div class="chapter-title-block">
+    <div class="chapter-num">Creatures of Valerguard</div>
+    <h2>Bestiary</h2>
+  </div>
+
+  <section class="section">
+    <p style="text-align:center;color:var(--text-muted);margin-bottom:2.5rem;max-width:700px;margin-left:auto;margin-right:auto">A catalog of the beasts, monsters, and magical creatures encountered throughout the story. Stats represent average specimens — individual creatures may vary.</p>
+
+    <div class="bestiary-grid">
+
+      <!-- RUSTLEFOOT GOBLINS -->
+      <div class="beast-card" id="beast-rustlefoot-goblins">
+        <div class="beast-header">
+          <img src="images/rustlefoot-goblins.jpg" alt="Rustlefoot Goblins" class="beast-portrait">
+          <div class="beast-title-block">
+            <h3>Rustlefoot Goblins</h3>
+            <div class="beast-type">Creature — Enemy</div>
+            <div class="beast-level">Level 1 – 3</div>
+          </div>
+        </div>
+        <div class="beast-body">
+          <p>Bottom-tier pests found outside the town of Tether. Squat, four-foot-tall degenerates with warty, greenish-blue skin and tattered rags. Their protruding chins jut out beneath short, disproportionate arms, and their bow-legged feet shuffle in the dirt. After years of scavenging the landfill, they graduated to robbing civilians — and murdered Grannie Ezmerelda when she resisted. The first-year students' inaugural field exercise targets them.</p>
+          <div class="beast-stats-grid">
+            <div class="beast-stat-block">
+              <h4>Average Stats</h4>
+              <div class="beast-stat-row"><span>HP</span><span>50 – 100</span></div>
+              <div class="beast-stat-row"><span>Strength</span><span>3 – 5</span></div>
+              <div class="beast-stat-row"><span>Agility</span><span>6 – 8</span></div>
+              <div class="beast-stat-row"><span>Vitality</span><span>3 – 5</span></div>
+              <div class="beast-stat-row"><span>Intelligence</span><span>2 – 4</span></div>
+            </div>
+            <div class="beast-stat-block">
+              <h4>Known Variants &amp; Abilities</h4>
+              <div class="beast-ability">
+                <span class="beast-ability-icon">🗡️</span>
+                <div class="beast-ability-info">
+                  <div class="beast-ability-name">The Foot (Grunt)</div>
+                  <div class="beast-ability-desc">Dual-wields rusted daggers. Inflicts Bleed on hit (1 HP / 5 sec). Fast, erratic attack patterns.</div>
+                </div>
+              </div>
+              <div class="beast-ability">
+                <span class="beast-ability-icon">🧪</span>
+                <div class="beast-ability-info">
+                  <div class="beast-ability-name">The Clerk (Alchemist)</div>
+                  <div class="beast-ability-desc">Fumbling healer with weak cure potions and fire bombs. Low damage but can sustain allies.</div>
+                </div>
+              </div>
+              <div class="beast-ability">
+                <span class="beast-ability-icon">🪨</span>
+                <div class="beast-ability-info">
+                  <div class="beast-ability-name">The Handler</div>
+                  <div class="beast-ability-desc">Commands mangy wild strays and throws rocks (1 HP per hit). Acts as a distraction unit.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SHIVER-BEAK ROOSTER -->
+      <div class="beast-card" id="beast-shiver-beak-rooster">
+        <div class="beast-header">
+          <img src="images/shiver-beak-rooster.jpg" alt="Shiver-Beak Rooster" class="beast-portrait">
+          <div class="beast-title-block">
+            <h3>Shiver-Beak Rooster</h3>
+            <div class="beast-type">Creature — Magical Beast</div>
+            <div class="beast-level">Level 1 – 2</div>
+          </div>
+        </div>
+        <div class="beast-body">
+          <p>A scrawny, enchanted bird whose screech drains mana and the will to live from anyone within earshot. Used by Sylin Merryweather as a morning alarm for the first-year barracks. Its cry causes skull-rattling pain, teeth-chattering vibrations, and a profound desire to not exist. A weapon of psychological warfare disguised as poultry.</p>
+          <div class="beast-stats-grid">
+            <div class="beast-stat-block">
+              <h4>Average Stats</h4>
+              <div class="beast-stat-row"><span>HP</span><span>15 – 30</span></div>
+              <div class="beast-stat-row"><span>Strength</span><span>1</span></div>
+              <div class="beast-stat-row"><span>Agility</span><span>4 – 6</span></div>
+              <div class="beast-stat-row"><span>Vitality</span><span>2 – 3</span></div>
+              <div class="beast-stat-row"><span>Intelligence</span><span>1</span></div>
+            </div>
+            <div class="beast-stat-block">
+              <h4>Abilities</h4>
+              <div class="beast-ability">
+                <span class="beast-ability-icon">🔊</span>
+                <div class="beast-ability-info">
+                  <div class="beast-ability-name">Mana-Draining Screech</div>
+                  <div class="beast-ability-desc">Drains 2 MP per screech from all targets within earshot. Causes disorientation and existential dread.</div>
+                </div>
+              </div>
+              <div class="beast-ability">
+                <span class="beast-ability-icon">🐓</span>
+                <div class="beast-ability-info">
+                  <div class="beast-ability-name">Enchanted Alarm</div>
+                  <div class="beast-ability-desc">Programmed to screech at dawn. Cannot be silenced through conventional means.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MIMIC -->
+      <div class="beast-card" id="beast-mimic">
+        <div class="beast-header">
+          <img src="images/mimic.jpg" alt="Mimic" class="beast-portrait">
+          <div class="beast-title-block">
+            <h3>Mimic</h3>
+            <div class="beast-type">Creature — Dungeon Monster</div>
+            <div class="beast-level">Level 5 – 30+</div>
+          </div>
+        </div>
+        <div class="beast-body">
+          <p>Baseline dungeon monsters capable of assuming the form of objects to ambush prey. Typically found deep underground in sealed Dungeon networks. One anomalous Mimic — driven by an inexplicable surge of greed — committed the cosmic taboo of stealing a Dungeon Core that happened to be a vessel for the God of Chaos. That single act inadvertently caused the Great Blunder, the extinction of most of humanity, and the birth of the Adventurer System.</p>
+          <div class="beast-stats-grid">
+            <div class="beast-stat-block">
+              <h4>Average Stats</h4>
+              <div class="beast-stat-row"><span>HP</span><span>200 – 1,500+</span></div>
+              <div class="beast-stat-row"><span>Strength</span><span>8 – 18</span></div>
+              <div class="beast-stat-row"><span>Agility</span><span>5 – 12</span></div>
+              <div class="beast-stat-row"><span>Vitality</span><span>10 – 20</span></div>
+              <div class="beast-stat-row"><span>Intelligence</span><span>3 – 7</span></div>
+            </div>
+            <div class="beast-stat-block">
+              <h4>Abilities</h4>
+              <div class="beast-ability">
+                <span class="beast-ability-icon">📦</span>
+                <div class="beast-ability-info">
+                  <div class="beast-ability-name">Shapeshift (Passive)</div>
+                  <div class="beast-ability-desc">Assumes the form of mundane objects — chests, barrels, doors. Indistinguishable from the real thing until disturbed.</div>
+                </div>
+              </div>
+              <div class="beast-ability">
+                <span class="beast-ability-icon">👅</span>
+                <div class="beast-ability-info">
+                  <div class="beast-ability-name">Ambush Bite</div>
+                  <div class="beast-ability-desc">First-strike attack when a target interacts with its disguised form. High crit chance. May inflict Paralysis.</div>
+                </div>
+              </div>
+              <div class="beast-ability">
+                <span class="beast-ability-icon">🧲</span>
+                <div class="beast-ability-info">
+                  <div class="beast-ability-name">Greed Instinct</div>
+                  <div class="beast-ability-desc">Compulsive drive to hoard magical objects. Higher-level Mimics are drawn to increasingly powerful artifacts.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 </div>
@@ -4928,10 +5206,6 @@ const ENCY_ENTRIES = [
     desc:'An academy town just outside the capital city of Tether. Mellonwood exists to serve Tetherpoint Academy — blacksmiths forge gear for students, merchants sell training manuals and enchanted trinkets, and real adventurers walk the streets like ordinary folk.' },
   { id:'ency-ravenscroft', title:'Ravenscroft', sort:'Ravenscroft', type:'Location — Village', cat:'places', img:'',
     desc:'Elias Lumina\'s home village. Ancient and remote, nobody knows when it was founded or where its name came from. A few thousand souls survive on agriculture and herding. Rarely does anyone from Ravenscroft attend Tetherpoint Academy — Elias is the first in generations.' },
-  { id:'ency-rustlefoot-goblins', title:'Rustlefoot Goblins', sort:'Rustlefoot Goblins', type:'Creature — Enemy', cat:'creatures', img:'',
-    desc:'Bottom-tier pests found outside the town of Tether. Level three at best. Their bands consist of three types: the Foot (basic grunts who dual-wield daggers), the Clerk (fumbling alchemists with weak heals and fire bombs), and the Handler (who commands mangy wild strays and throws pebbles). After years of scavenging the landfill, they graduated to robbing civilians — and murdered Grannie Ezmerelda when she resisted. The first-year students\' inaugural field exercise targets them.' },
-  { id:'ency-shiver-beak-rooster', title:'Shiver-Beak Rooster', sort:'Shiver-Beak Rooster', type:'Creature — Magical Beast', cat:'creatures', img:'',
-    desc:'A scrawny, enchanted bird whose screech drains mana and the will to live from anyone within earshot. Used by Sylin Merryweather as a morning alarm for the first-year barracks. Its cry costs 2 mana per screech and causes skull-rattling pain, teeth-chattering vibrations, and a profound desire to not exist. A weapon of psychological warfare disguised as poultry.' },
   { id:'ency-soul-balance', title:'Soul Balance', sort:'Soul Balance', type:'Stat Category — Hidden', cat:'magic', img:'',
     desc:'A mysterious set of stats that most adventurers never know they possess. Unlike Core Stats (Strength, Agility, etc.), Soul Balance measures the moral and emotional fabric of a person: Mercy, Conviction, Resentment, Connection, Hope, and Identity. The Soul Balance exists within everyone, but only those with specific bloodlines — and the work of Daemeon Lumina — can see it displayed in their System Interface. With a Maw Shard, those same individuals may even channel power from the Soul Bar directly.' },
   { id:'ency-soul-enchantment', title:'Soul Enchantment', sort:'Soul Enchantment', type:'Magical Process', cat:'magic', img:'',
@@ -4964,8 +5238,6 @@ const ENCY_ENTRIES = [
     desc:'Ancient underground networks where monsters were bound by natural law, contained deep beneath the earth. Before the Catastrophe, dangerous creatures were systematically cleared by early hunters. The 300-megaton blast cracked the seals of the world\'s dungeon networks forever, releasing monsters onto the surface — which is why modern Valerguard is plagued by roaming beasts.' },
   { id:'ency-god-of-chaos', title:'The God of Chaos', sort:'God of Chaos', type:'Deity', cat:'magic', img:'',
     desc:'An ancient, volatile divine entity whose power was channeled through a specific Dungeon Core deep beneath the earth. When a Mimic stole that core and carried it to the surface, the God\'s chaotic energy fed into an exponential feedback loop that detonated in the Great Blunder. The Maw — ground zero of the explosion — remains saturated with the God\'s released magic to this day.' },
-  { id:'ency-mimic', title:'Mimic', sort:'Mimic', type:'Creature — Dungeon Monster', cat:'creatures', img:'',
-    desc:'A baseline dungeon monster whose anomalous surge of greed triggered the end of the old world. By committing the cosmic taboo of stealing a Dungeon Core — one that happened to be a vessel for the God of Chaos — this single creature inadvertently caused the Great Blunder, the extinction of most of humanity, and the birth of the Adventurer System.' },
   { id:'ency-fifteen-magi', title:'The 15 Original Magi', sort:'Fifteen Original Magi', type:'Historical Figures', cat:'people', img:'',
     desc:'The premier magic-wielders to emerge from the Catastrophe Crystals during the Dark Age. In the third year of the apocalypse, they gathered in the ruins and forged the Original Consensus — a historic treaty that organized the remaining survivors into the Four Factions (The Shield, The Flame, The Grove, and The Veil) based on soul resonance, established the kingdom of Valerguard, and reset the calendar to Year 0. The Fifteen themselves did not join any faction, instead founding the Wizards Emporium as a neutral body to study the System and perform Soul Enchantments. <a href="#" class="lore-term" style="border:none" onclick="showPage(\'lore\');return false">→ Full lore</a>' },
   { id:'ency-dwarven-realms', title:'The Dwarven Realms', sort:'Dwarven Realms', type:'Region — Northern Mountains', cat:'places', img:'',
