@@ -4011,11 +4011,128 @@
     <div class="system-msg">Level Up! You are now a Level 3 Tank — Rage Subclass.</div>
   </div>
 
+  <div class="mobile-dashboard">
+    <div class="collapsible" onclick="this.classList.toggle('open')">
+      <button class="collapsible-toggle">
+        <div><h3>End of Chapter 6 — Stats</h3></div>
+        <span class="chevron">▼</span>
+      </button>
+      <div class="collapsible-body"><div class="collapsible-body-inner">
+        <div class="resource-bars" id="resource-bars-ch6"></div>
+        <div class="stats-section-title">Core Stats</div>
+        <div class="stats-grid" id="core-stats-ch6"></div>
+        <div class="stats-section-title">Soul Balance (Hidden)</div>
+        <div class="stats-grid" id="soul-stats-ch6"></div>
+      </div></div>
+    </div>
+    <div class="collapsible" onclick="this.classList.toggle('open')">
+      <button class="collapsible-toggle">
+        <div><h3>End of Chapter 6 — Inventory</h3></div>
+        <span class="chevron">▼</span>
+      </button>
+      <div class="collapsible-body"><div class="collapsible-body-inner">
+        <div class="inv-wrapper" id="inv-ch6" style="margin:0;border:none;padding:0">
+          <div class="inv-header">
+            <h3>Inventory</h3>
+            <div class="currency">
+              <span><i class="coin coin-gold"></i> 5</span>
+              <span><i class="coin coin-silver"></i> 50</span>
+              <span><i class="coin coin-copper"></i> 8</span>
+            </div>
+          </div>
+          <div class="inv-tabs">
+            <button class="active" onclick="event.stopPropagation();switchInvTab('ch6','equipment')">Equipment</button>
+            <button onclick="event.stopPropagation();switchInvTab('ch6','items')">Items</button>
+            <button onclick="event.stopPropagation();switchInvTab('ch6','potions')">Potions</button>
+          </div>
+          <div class="inv-hint">Tap an item to learn more</div>
+          <div class="inv-grid" id="inv-grid-ch6"></div>
+        </div>
+      </div></div>
+    </div>
+    <div class="collapsible" onclick="this.classList.toggle('open')">
+      <button class="collapsible-toggle">
+        <div><h3>End of Chapter 6 — Abilities</h3></div>
+        <span class="chevron">▼</span>
+      </button>
+      <div class="collapsible-body"><div class="collapsible-body-inner">
+        <div id="abilities-ch6"></div>
+      </div></div>
+    </div>
+    <div class="collapsible" onclick="this.classList.toggle('open')">
+      <button class="collapsible-toggle">
+        <div><h3>End of Chapter 6 — Summary</h3><span class="spoiler-hint">Contains end-of-chapter spoilers</span></div>
+        <span class="chevron">▼</span>
+      </button>
+      <div class="collapsible-body"><div class="collapsible-body-inner">
+        <div id="end-summary-ch6"></div>
+      </div></div>
+    </div>
+  </div>
+
   <div class="chapter-nav">
     <a href="#" class="btn" onclick="showPage('ch5');return false">← Chapter 5</a>
     <a href="#" class="btn" onclick="showPage('home');return false">Home</a>
   </div>
   </div><!-- /chapter-main -->
+
+  <!-- Sticky sidebar (desktop ≥1024px) -->
+  <aside class="chapter-sidebar" id="sidebar-ch6">
+    <div class="sidebar-inner">
+      <div class="sidebar-portrait">
+        <img src="images/elias-lumina.png" alt="Elias Lumina">
+        <div class="portrait-name">Elias Lumina</div>
+      </div>
+      <p class="sidebar-note">These reflect the stats and the inventory at the start of the chapter.</p>
+      <div class="collapsible" onclick="this.classList.toggle('open')">
+        <button class="collapsible-toggle">
+          <div><h3>Stats</h3></div>
+          <span class="chevron">▼</span>
+        </button>
+        <div class="collapsible-body"><div class="collapsible-body-inner">
+          <div class="resource-bars" id="resource-bars-ch6-sb"></div>
+          <div class="stats-section-title">Core Stats</div>
+          <div class="stats-grid" id="core-stats-ch6-sb"></div>
+          <div class="stats-section-title">Soul Balance</div>
+          <div class="stats-grid" id="soul-stats-ch6-sb"></div>
+        </div></div>
+      </div>
+      <div class="collapsible" onclick="this.classList.toggle('open')">
+        <button class="collapsible-toggle">
+          <div><h3>Inventory</h3></div>
+          <span class="chevron">▼</span>
+        </button>
+        <div class="collapsible-body"><div class="collapsible-body-inner">
+          <div class="inv-wrapper" id="inv-ch6-sb" style="margin:0;border:none;padding:0">
+            <div class="inv-header">
+              <h3>Inventory</h3>
+              <div class="currency">
+                <span><i class="coin coin-gold"></i> 5</span>
+                <span><i class="coin coin-silver"></i> 50</span>
+                <span><i class="coin coin-copper"></i> 4</span>
+              </div>
+            </div>
+            <div class="inv-tabs">
+              <button class="active" onclick="event.stopPropagation();switchInvTab('ch6-sb','equipment')">Equipment</button>
+              <button onclick="event.stopPropagation();switchInvTab('ch6-sb','items')">Items</button>
+              <button onclick="event.stopPropagation();switchInvTab('ch6-sb','potions')">Potions</button>
+            </div>
+            <div class="inv-hint">Tap an item to learn more</div>
+            <div class="inv-grid" id="inv-grid-ch6-sb"></div>
+          </div>
+        </div></div>
+      </div>
+      <div class="collapsible" onclick="this.classList.toggle('open')">
+        <button class="collapsible-toggle">
+          <div><h3>Abilities</h3></div>
+          <span class="chevron">▼</span>
+        </button>
+        <div class="collapsible-body"><div class="collapsible-body-inner">
+          <div id="abilities-ch6-sb"></div>
+        </div></div>
+      </div>
+    </div>
+  </aside>
   </div><!-- /chapter-layout -->
 </div>
 
@@ -5326,20 +5443,20 @@ document.addEventListener('keydown', function(e) {
 
 const STATS = {
   core: [
-    { name: 'Strength', ch1: 6, ch2: 6, ch3: 6, ch4: 6, ch5: 7, max: 20 },
-    { name: 'Agility', ch1: 7, ch2: 7, ch3: 7, ch4: 7, ch5: 9, max: 20 },
-    { name: 'Vitality', ch1: 8, ch2: 8, ch3: 8, ch4: 8, ch5: 10, max: 20 },
-    { name: 'Intelligence', ch1: 9, ch2: 9, ch3: 9, ch4: 9, ch5: 9, max: 20 },
-    { name: 'Wisdom', ch1: 10, ch2: 10, ch3: 10, ch4: 10, ch5: 10, max: 20 },
-    { name: 'Charisma', ch1: 8, ch2: 8, ch3: 8, ch4: 8, ch5: 8, max: 20 },
+    { name: 'Strength', ch1: 6, ch2: 6, ch3: 6, ch4: 6, ch5: 7, ch6: 10, max: 20 },
+    { name: 'Agility', ch1: 7, ch2: 7, ch3: 7, ch4: 7, ch5: 9, ch6: 11, max: 20 },
+    { name: 'Vitality', ch1: 8, ch2: 8, ch3: 8, ch4: 8, ch5: 10, ch6: 13, max: 20 },
+    { name: 'Intelligence', ch1: 9, ch2: 9, ch3: 9, ch4: 9, ch5: 9, ch6: 9, max: 20 },
+    { name: 'Wisdom', ch1: 10, ch2: 10, ch3: 10, ch4: 10, ch5: 10, ch6: 10, max: 20 },
+    { name: 'Charisma', ch1: 8, ch2: 8, ch3: 8, ch4: 8, ch5: 8, ch6: 8, max: 20 },
   ],
   soul: [
-    { name: 'Mercy', ch1: 94, ch2: 88, ch3: 88, ch4: 82, ch5: 80, max: 100 },
-    { name: 'Conviction', ch1: 72, ch2: 78, ch3: 82, ch4: 86, ch5: 89, max: 100 },
-    { name: 'Resentment', ch1: 4, ch2: 27, ch3: 42, ch4: 55, ch5: 63, max: 100 },
-    { name: 'Connection', ch1: 91, ch2: 84, ch3: 85, ch4: 80, ch5: 78, max: 100 },
-    { name: 'Hope', ch1: 96, ch2: 87, ch3: 75, ch4: 68, ch5: 64, max: 100 },
-    { name: 'Identity', ch1: 100, ch2: 96, ch3: 96, ch4: 93, ch5: 90, max: 100 },
+    { name: 'Mercy', ch1: 94, ch2: 88, ch3: 88, ch4: 82, ch5: 80, ch6: 72, max: 100 },
+    { name: 'Conviction', ch1: 72, ch2: 78, ch3: 82, ch4: 86, ch5: 89, ch6: 93, max: 100 },
+    { name: 'Resentment', ch1: 4, ch2: 27, ch3: 42, ch4: 55, ch5: 63, ch6: 74, max: 100 },
+    { name: 'Connection', ch1: 91, ch2: 84, ch3: 85, ch4: 80, ch5: 78, ch6: 75, max: 100 },
+    { name: 'Hope', ch1: 96, ch2: 87, ch3: 75, ch4: 68, ch5: 64, ch6: 58, max: 100 },
+    { name: 'Identity', ch1: 100, ch2: 96, ch3: 96, ch4: 93, ch5: 90, ch6: 88, max: 100 },
   ]
 };
 
@@ -5349,6 +5466,7 @@ const HP_MP = {
   ch3: { hp: 100, maxHp: 100, mp: 48, maxMp: 50 },
   ch4: { hp: 100, maxHp: 100, mp: 48, maxMp: 50 },
   ch5: { hp: 150, maxHp: 150, mp: 48, maxMp: 50 },
+  ch6: { hp: 200, maxHp: 200, rage: 100, maxRage: 100 },
 };
 
 const ABILITIES = {
@@ -5364,6 +5482,13 @@ const ABILITIES = {
     { icon: '🔨', name: 'Smash', type: 'Active — Mace', desc: 'A heavy overhead strike that deals bonus damage. Can stagger enemies on critical hits.' },
     { icon: '👟', name: 'Fast Feet', type: 'Passive — Job Lv.1', desc: 'Your natural composition alters the baseline parameters of your current role. Increases Dodge Chance by 5% per Job Level.' },
   ],
+  ch6: [
+    { icon: '🛡️', name: 'Block', type: 'Active — Shield', desc: 'Raise your shield to intercept incoming attacks. Reduces damage based on shield quality and Strength.' },
+    { icon: '🔨', name: 'Smash', type: 'Active — Mace', desc: 'A heavy overhead strike that deals bonus damage. Can stagger enemies on critical hits.' },
+    { icon: '👟', name: 'Fast Feet', type: 'Passive — Job Lv.1', desc: 'Your natural composition alters the baseline parameters of your current role. Increases Dodge Chance by 5% per Job Level.' },
+    { icon: '🦘', name: 'Rage Jump', type: 'Active — Rage Subclass', desc: 'Channel fury into a powerful leap toward a target. Deals impact damage on landing and briefly staggers nearby enemies.' },
+    { icon: '🐂', name: 'Charge', type: 'Active — Rage Subclass', desc: 'Rush forward in a straight line, slamming into the first enemy hit. Deals bonus damage based on distance traveled and can knock targets back.' },
+  ],
 };
 
 
@@ -5371,8 +5496,13 @@ function renderStats(chapter, suffix) {
   var hpMpEl = document.getElementById('resource-bars-' + suffix);
   if (hpMpEl) {
     var r = HP_MP['ch' + chapter] || { hp: 100, maxHp: 100, mp: 50, maxMp: 50 };
-    hpMpEl.innerHTML = '<div class="resource-bar-row"><span class="resource-bar-label">HP</span><div class="resource-bar-bg"><div class="resource-bar-fill hp" style="width:' + (r.hp / r.maxHp * 100) + '%"></div></div><span class="resource-bar-val">' + r.hp + ' / ' + r.maxHp + '</span></div>' +
-      '<div class="resource-bar-row"><span class="resource-bar-label">MP</span><div class="resource-bar-bg"><div class="resource-bar-fill mp" style="width:' + (r.mp / r.maxMp * 100) + '%"></div></div><span class="resource-bar-val">' + r.mp + ' / ' + r.maxMp + '</span></div>';
+    var secondBar = '';
+    if (r.rage !== undefined) {
+      secondBar = '<div class="resource-bar-row"><span class="resource-bar-label">Rage</span><div class="resource-bar-bg"><div class="resource-bar-fill rage" style="width:' + (r.rage / r.maxRage * 100) + '%;background:linear-gradient(90deg,#8b0000,#ff4444)"></div></div><span class="resource-bar-val">' + r.rage + ' / ' + r.maxRage + '</span></div>';
+    } else {
+      secondBar = '<div class="resource-bar-row"><span class="resource-bar-label">MP</span><div class="resource-bar-bg"><div class="resource-bar-fill mp" style="width:' + (r.mp / r.maxMp * 100) + '%"></div></div><span class="resource-bar-val">' + r.mp + ' / ' + r.maxMp + '</span></div>';
+    }
+    hpMpEl.innerHTML = '<div class="resource-bar-row"><span class="resource-bar-label">HP</span><div class="resource-bar-bg"><div class="resource-bar-fill hp" style="width:' + (r.hp / r.maxHp * 100) + '%"></div></div><span class="resource-bar-val">' + r.hp + ' / ' + r.maxHp + '</span></div>' + secondBar;
   }
   ['core', 'soul'].forEach(type => {
     const el = document.getElementById(`${type}-stats-${suffix}`);
@@ -5574,12 +5704,14 @@ renderStats(2, 'ch2');
 renderStats(3, 'ch3');
 renderStats(4, 'ch4');
 renderStats(5, 'ch5');
+renderStats(6, 'ch6');
 // Beginning-of-chapter stats (sidebar)
 renderStats(1, 'ch1-sb');
 renderStats(1, 'ch2-sb');
 renderStats(2, 'ch3-sb');
 renderStats(3, 'ch4-sb');
 renderStats(4, 'ch5-sb');
+renderStats(5, 'ch6-sb');
 
 const INVENTORY = {
   ch1: {
@@ -5680,13 +5812,31 @@ const INVENTORY = {
       { icon: '✉️', name: 'Letter from Uncle Daemeon', type: 'Quest Item', desc: 'A letter written in silver ink. Daemeon urges Elias to join The Veil and discover the truth of their heritage. Most of what the world says about him are lies — or so he claims.', stats: 'Cannot be discarded' },
     ],
     potions: []
+  },
+  ch6: {
+    equipment: [
+      { icon: '👕', name: 'Academy Uniform — Shirt', type: 'Armor — Chest', desc: 'A standard-issue cream-colored shirt bearing the Tetherpoint Academy crest. Torn and blood-stained from the goblin encounters.', stats: 'No stat bonuses' },
+      { icon: '👖', name: 'Academy Uniform — Trousers', type: 'Armor — Legs', desc: 'Dark gray trousers issued to all first-year students. Mud-caked and ripped at the knees.', stats: 'No stat bonuses' },
+      { icon: '🥾', name: 'Academy Uniform — Boots', type: 'Armor — Feet', desc: 'Standard leather boots issued at registration. Now broken in the hard way — goblin blood and forest mud.', stats: 'No stat bonuses' },
+      { icon: '🧥', name: 'Academy Uniform — Cloak', type: 'Armor — Back', desc: 'A charcoal-gray cloak with the Tetherpoint crest clasped at the throat. Singed at the edges from combat.', stats: 'No stat bonuses' },
+      { icon: '🎒', name: 'Canvas Satchel', type: 'Accessory — Bag', desc: 'A weather-beaten bag holding everything Elias owns. Smells faintly of cattle and dried herbs from home.', stats: 'No stat bonuses' },
+      { icon: '🔮', name: 'Luminus Pendant', type: 'Accessory — Neck (Dormant)', desc: 'A Maw Shard pendant from Uncle Daemeon. Blue-green light swirls beneath its surface like a miniature ocean. Ancient symbols drift through the glow. For those with the right bloodline, it can unlock the power to channel the Soul Bar. Will only awaken if its bearer joins The Veil.', stats: 'UNKNOWN LEGACY ITEM — Restrictions Active' },
+      { icon: '🛡️', name: 'Trainee\'s Shield', type: 'Off-Hand — Shield', desc: 'A battered wooden shield issued from the Academy equipment racks. Now bearing fresh dents and goblin claw marks.', stats: '+5 Defense | Gains [Block] Ability' },
+      { icon: '🔨', name: 'Trainee\'s Mace', type: 'Weapon — One-Handed', desc: 'A simple iron mace with a leather-wrapped grip. The head is now stained with goblin blood. Battle-tested.', stats: '+2 Attack, +3 Defense | Gains [Smash] Ability' },
+    ],
+    items: [
+      { icon: '📜', name: 'Academy Admission Papers', type: 'Document', desc: 'Official papers confirming Elias Lumina\'s enrollment in Tetherpoint Academy, Class 777 — The Golden Cohort.', stats: 'Cannot be discarded' },
+      { icon: '🪙', name: 'Father\'s Lucky Coin', type: 'Keepsake', desc: 'A worn copper coin from Tether, given by Elias\'s father on the day he left Ravenscroft. "For when you need reminding where you come from."', stats: 'No stat bonuses' },
+      { icon: '✉️', name: 'Letter from Uncle Daemeon', type: 'Quest Item', desc: 'A letter written in silver ink. Daemeon urges Elias to join The Veil and discover the truth of their heritage. Most of what the world says about him are lies — or so he claims.', stats: 'Cannot be discarded' },
+    ],
+    potions: []
   }
 };
 
 const SLOT_COUNT = 12;
 
-const BEGIN_INV_MAP = { ch1: 'ch1', ch2: 'ch1', ch3: 'ch2', ch4: 'ch3', ch5: 'ch4' };
-const END_INV_MAP = { ch1: 'ch1', ch2: 'ch2', ch3: 'ch3', ch4: 'ch4', ch5: 'ch5' };
+const BEGIN_INV_MAP = { ch1: 'ch1', ch2: 'ch1', ch3: 'ch2', ch4: 'ch3', ch5: 'ch4', ch6: 'ch5' };
+const END_INV_MAP = { ch1: 'ch1', ch2: 'ch2', ch3: 'ch3', ch4: 'ch4', ch5: 'ch5', ch6: 'ch6' };
 function getInvDataKey(chId) {
   const base = chId.replace('-sb', '');
   const isSidebar = chId.endsWith('-sb');
@@ -5759,6 +5909,8 @@ renderInventory('ch4', 'equipment');
 renderInventory('ch4-sb', 'equipment');
 renderInventory('ch5', 'equipment');
 renderInventory('ch5-sb', 'equipment');
+renderInventory('ch6', 'equipment');
+renderInventory('ch6-sb', 'equipment');
 
 // Abilities
 // End-of-chapter abilities (mobile dashboard)
@@ -5767,12 +5919,14 @@ renderAbilities(2, 'ch2');
 renderAbilities(3, 'ch3');
 renderAbilities(4, 'ch4');
 renderAbilities(5, 'ch5');
+renderAbilities(6, 'ch6');
 // Beginning-of-chapter abilities (sidebar)
 renderAbilities(1, 'ch1-sb');
 renderAbilities(1, 'ch2-sb');
 renderAbilities(2, 'ch3-sb');
 renderAbilities(3, 'ch4-sb');
 renderAbilities(4, 'ch5-sb');
+renderAbilities(5, 'ch6-sb');
 
 // End of chapter summaries (after INVENTORY is defined)
 renderEndSummary(1, 'ch1');
@@ -5780,6 +5934,7 @@ renderEndSummary(2, 'ch2');
 renderEndSummary(3, 'ch3');
 renderEndSummary(4, 'ch4');
 renderEndSummary(5, 'ch5');
+renderEndSummary(6, 'ch6');
 
 // Soul stat change reasons (for tooltip on hover)
 const SOUL_REASONS = {
